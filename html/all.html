@@ -1,0 +1,1452 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="/assets/style.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,500,700">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500">
+</head>
+<body>
+
+    <div class="chapter">
+        <img src="/.gitbook/assets/book-cover.png" id="cover" />
+    </div>
+    <div class="chapter">
+<h1 id="vorwort">Vorwort</h1>
+<p>In diesem Buch geht es mir darum einen Einstieg zu ermöglichen, fortgeschrittene Themen aufzugreifen und dabei möglichst React Best-Practices zu vermitteln. Wenn ihr mit dem Buch nicht nur versteht wie etwas funktioniert sondern auch warum, dann habe ich mein Ziel erfüllt. Nun hat jeder Entwickler andere Vorstellungen davon welche Methoden die besten sind und wie man am einfachsten, effizientesten oder schönsten Code schreibt. Allerdings halte ich mich hier stark an die Empfehlungen von den Core-Entwicklern bei Facebook, die die ebenfalls von der Community gut angenommenen Empfehlungen von AirBnB und noch einiger anderer Größen aus der „React-Szene“. Alles gewürzt mit einer Prise eigener Erfahrung.</p>
+<p>So gibt es bspw. mehrere Wege wie man seine Anwendung später publiziert, ob man es mit Tools wie <strong>Browserify</strong> oder <strong>Webpack</strong> zu einem Bundle packt oder nicht. Ob man seine Komponenten als ES2015-Klassen schreibt oder <code>createClass</code> aus „ES5-Zeiten“ verwendet. Dort wo ich es für sinnvoll erachte, werde ich auf die diversen gängigen Methoden eingehen um nicht nur Wege vorzugeben sondern auch Alternativen aufzuzeigen.</p>
+<p>Ich möchte hier jedoch primär möglichst auf die modernsten, aktuellsten und in den meisten Fällen auch einfachsten Methoden eingehen, weshalb ich für die meisten Code-Beispiele von einem Setup mit <strong>Webpack</strong>, <strong>Babel</strong> und <strong>ES2015</strong> (und neuer) ausgehen werde, das ich im weiteren Verlauf aber noch einmal sehr genau beschreiben werde. Wer zuvor nie mit ES2015+ in Berührung kam wird sicherlich einen Augenblick länger benötigen die Beispiele zu verstehen, ich werde mich indes bemühen alle Beispiele verständlich zu halten und auch auf ES2015+ noch genauer eingehen. JavaScript-Grundkenntnisse sollten jedoch bei der Lektüre vorhanden sein.</p>
+<p>Dieses Buch deckt außerdem nur das Thema <strong>Einstieg in React</strong> ab und bietet keinen Einstieg in JavaScript. Grundsätzliche und an einigen wenigen Stellen sicherlich auch etwas tiefergehende Kenntnisse in JavaScript werden daher vorausgesetzt, wobei ich alles möglichst einsteigerfreundlich erkläre, auch wenn man bisher nur einigermaßen oberflächlich mit JavaScript in Kontakt war. Ich setze nicht voraus, dass jeder Leser fehlerfrei erklären kann wie ein JavaScript-Interpreter funktioniert, ich gehe aber sehr wohl davon aus, dass der Leser einigermaßen darüber Bescheid weiß, wie Scopes in JavaScript funktionieren, was ein Callback ist, wie <code>Promise.then()</code> und <code>Promise.catch()</code> funktionieren und wie das Prinzip asynchroner Programmierung mit JavaScript funktioniert.</p>
+<p><strong>Aber keine Sorge:</strong> das klingt komplizierter als es am Ende eigentlich ist. Jeder Leser der in der Vergangenheit bereits bspw. mit jQuery gearbeitet hat, sollte beim größten Teil dieses Buches keine Verständnisprobleme haben und meinen Erklärungen folgen können.</p>
+</div><div class="chapter">
+<h1 id="über-den-autor">Über den Autor</h1>
+<p><strong>Manuel Bieh,</strong> seit 2012 als Freelancer im Bereich Frontend-/JavaScript-Entwicklung tätig.</p>
+<p>Bevor ich mich dazu entschied als Freelancer zu arbeiten hatte ich ebenfalls bereits fast 10 Jahre Erfahrung als Web-Entwickler, meist mit dem Fokus auf Frontend-Entwicklung, in verschiedenen Unternehmen gesammelt. Lange Zeit habe ich mich eher als Generalist statt als Spezialist gesehen und so gab und gibt es wenige bekannte Frontend-Technologien mit denen ich während meiner beruflichen Laufbahn nicht schon mal zumindest kurz in Berührung gekommen wäre. Als Spezialist habe ich mich aber außer wenn es generell um JavaScript geht nirgendwo gesehen. Dies änderte sich dann schlagartig als mir ein befreundeter Entwickler in 2014 erstmals von React erzählte und ich dann durch Neugierde und ganz konkret durch ein Projekt für Zalando erstmals intensiver mit React in Kontakt kam.</p>
+<p>Anfangs fremdelte ich noch etwas, so wie übrigens viele, die neu in React einsteigen, doch je länger und intensiver ich mich mit React auseinandersetzte, desto mehr schlug meine anfängliche Skepsis in Begeisterung um. Seitdem hat mich React so gepackt, dass seitdem meine Projekte allesamt so ausgewählt habe, dass dort React im Einsatz ist (und dessen Einsatz auch sinnvoll ist!). In dieser Zeit habe ich viel gelernt (und lerne auch immer noch jeden Tag dazu), habe dabei in kleinen Teams mit unter 5 und in recht großen Teams mit über 30 Leuten gearbeitet und dort mein React-Wissen eingebracht und selbst immer wieder neue Eindrücke und Wissen mitgenommen.</p>
+<p>Die Komplexität von React ist dabei aber nicht zu unterschätzen. Und so ist es zwar möglich relativ schnell in ziemlich kurzer Zeit eine Anwendung mit React zu entwickeln. Wenn man aber Wert auf hohe Qualität legt gibt es dort viele Stellschrauben an denen man drehen kann um Code-Qualität, Performance und Wartbarkeit zu erhöhen, die teilweise auch Leuten nicht bekannt sind die schon viel und lange mit React entwickelt haben. Und so würde ich mich selbst nach mehrjähriger intensiver und täglicher Arbeit mit React sicher noch immer nicht als absoluten Experten bezeichnen. Aber ich denke, dass mit der Zeit dennoch genug Wissen zusammengekommen ist welches ich in Form dieses Buches weitergeben kann um euch den Einstieg zu erleichtern und auch noch den einen oder anderen Profi-Tipp an die Hand zu geben.</p>
+</div><div class="chapter">
+<h1 id="einführung">Einführung</h1>
+<h2 id="was-ist-react-eigentlich-und-was-ist-es-nicht">Was ist React eigentlich und was ist es nicht?</h2>
+<p>Zitieren wir hier an erster Stelle mal die React-Dokumentation, denn die bringen es sehr prägnant auf den Punkt:</p>
+<blockquote>
+  <p>[React is] a library for building user interfaces.</p>
+</blockquote>
+<p>Auch wenn die Erklärung sehr kurz ist kann man aus ihr alle essentiellen Dinge ableiten die wichtig sind für die Arbeit mit React und um zu verstehen worum es sich dreht. React ist erst einmal nur eine Library, kein vollständiges Framework mit unzähligen Funktionen mit dem ihr ohne weitere Abhängigkeiten komplexe Web-Anwendungen entwickeln könnt. Und da kommen wir auch schon zum zweiten Teil des Satzes: for building user interfaces.</p>
+<p>React ist also erst einmal lediglich eine <strong>Library</strong> die es euch einfach macht <strong>Benutzerinterfaces</strong> zu entwickeln. Keine Services oder Methoden um API-Calls zu machen, keine built-in Models oder ORM. Nur User Interfaces. Sozusagen nur der View-Layer eurer Anwendung. That’s it! In diesem Zusammenhang liest man gelegentlich, dass React das „V“ in <strong>MVC</strong> (_Model-View-Controller_) oder <strong>MVVM</strong> (_Model-View-ViewModel_) darstellt. Das trifft es in meinen Augen ganz gut.</p>
+<p>React bietet einen <strong>deklarativen</strong> Weg um den <strong>Zustand</strong> (_State_) eines User Interfaces zu beschreiben. Vereinfacht gesagt bedeutet das, ihr beschreibt mit eurem Code im Grunde explizit wie euer User Interface aussehen soll, abhängig davon in welchem State eine Komponente sich befindet. Einfaches Beispiel zur Veranschaulichung dieses Prinzips: ist ein Benutzer eingeloggt, zeige das Dashboard, ist er es nicht, zeige das Login-Formular.</p>
+<p>Die Logik selbst befindet sich dabei komplett im JavaScript-Teil der Anwendung (dort, wo sie also immer hingehören sollte) und nicht in den Templates selbst, wie das bei den allermeisten anderen Web-Frameworks die Regel ist. Klingt erst einmal kompliziert, wird aber im weiteren Verlauf immer deutlicher was damit eigentlich gemeint ist.</p>
+<p>React arbeitet dabei komponentenbasiert, d.h. man entwickelt gekapselte funktionale Komponenten die beliebig zusammengestellt (composed) und wiederverwendet werden können. Erweiterung von Komponenten ist zwar möglich, jedoch sehr unüblich in der React-Welt. Hier wird auch von offizieller Seite das Composition Model propagiert, bei dem mehrere Komponenten zu einem „Gesamtbild“ zusammengefügt werden statt mit Inheritance, also Vererbung zu arbeiten.</p>
+<p>Bedeutet das jetzt also, dass ich keine komplexen Web-Anwendungen mit React entwickeln kann? Nein. Absolut nicht. React besitzt ein sehr großes, sehr aktives und zum großen Teil auch sehr hochqualitatives Ecosystem an Libraries, die wiederum auf React basieren, es erweitern oder ergänzen und so zu einem mächtigen Werkzeug werden lassen, das sich hinter großen Frameworks wie Ember oder Angular nicht verstecken braucht. Im Gegenteil. Ist man erst einmal in die Welt des React-Ökosystems eingetaucht und hat sich einen Überblick verschafft, hat man ganz schnell eine Reihe an wirklich guten Tools und Libraries gefunden mit denen man professionelle, super individuelle und hochkomplexe Anwendungen entwickeln kann.</p>
+<h2 id="wann-sollte-ich-react-benutzen-und-wann-nicht">Wann sollte ich React benutzen und wann nicht?</h2>
+<p>Insbesondere kurz nachdem React an Fahrt aufnahm wurde oft die Frage gestellt ob die Tage von jQuery nun gezählt sind, ob man nun alles mit React entwickeln kann oder gar soll oder wann der Einsatz von React sinnvoll oder vielleicht auch gar nicht sinnvoll ist.</p>
+<p>React ist, wie wir bereits geklärt haben erst einmal eine Library für die Erstellung von User Interfaces. User Interfaces bedeuten immer Interaktion. Und Interaktion geht zwangsweise in den meisten Fällen einher mit State-Management. Ich drücke einen Knopf und ein Dropdown öffnet sich. Ich ändere also den Zustand von <em>geschlossen</em> auf <em>offen</em>. Ich gebe Daten in ein Eingabefeld ein und bekomme angezeigt ob meine eingegebenen Daten valide sind. Sind sie es nicht, ändert sich der Zustand des Eingabefeldes von <em>gültig</em> in <em>ungültig</em>. Und genau hier kommt React ins Spiel. Habe ich keine Interaktion oder „sich ändernde Daten“ auf meiner Seite weil ich z.B. eine reine statische Image-Seite für ein Unternehmen entwickle, brauche ich <em>wahrscheinlich</em> kein React.</p>
+<p>Falsch umgesetzt kann React hier sogar schaden, da auf einer Image-Website oftmals der Content im Vordergrund steht und sofern man seine React-Komponenten nicht bereits serverseitig vorrendert, können die meisten Suchmaschinen mit der Seite erst einmal wenig anfangen. React macht es uns aber glücklicherweise sehr einfach unsere Komponenten serverseitig zu rendern, von daher ist das noch ein Problem welches sich in der Regel leicht beheben lässt.</p>
+<p>Habe ich hingegen sehr viel Interaktion und ein Interface das sich oft aktualisiert, wird der Einsatz von React mit ziemlich hoher Wahrscheinlichkeit sehr viel Zeit und Nerven sparen. Grundsätzlich gilt hier die Faustregel: je mehr Interaktion in einer Website oder Web-Anwendung stattfindet und je komplexer diese ist, desto mehr lohnt sich der Einsatz von React. Das griffigste Beispiel sind hier **Single Page Applications **(_SPA_), bei denen die Anwendung nur einmal im Browser aufgerufen und initialisiert wird und jegliche weitere Interaktion und Kommunikation mit dem Server über XHR (den meisten besser bekannt als „AJAX-Requests“) abläuft.</p>
+<p>Ich habe es kürzlich selbst in einem Projekt erlebt, dass ich ein Anmeldeformular entwickeln musste, welches mir ziemlich simpel erschien und ich startete erst einmal ohne React. Im Laufe der Entwicklung stellte sich heraus, dass zum Zwecke besserer Usability immer mehr (Hintergrund-)Interaktion nötig wurde. So sollte bspw. nachträglich eine automatische Live-Validierung von Formulardaten eingebaut und der Anmeldeprozess in 2 Schritte unterteilt werden, so dass ich recht zügig dann doch auf React zurückgegriffen habe, weil mir das manuelle State-Management und die <strong>imperative</strong> Veränderung des User Interfaces einfach zu umständlich wurde.</p>
+<p>Imperativ bedeutet in dem Fall, dass ich dem Browser sage was er machen soll, wohingegen ich bei <em>deklarativem</em> Code, wie man ihn mit React schreibt, lediglich das gewünschte Endergebnis anhängig vom aktuellen Zustand beschreibe. Eines der Kernprinzipien von React. Um beim Beispiel von oben zu bleiben: statt zu sagen „ich bin nun eingeloggt, lieber Browser, bitte blende nun das Login-Formular aus und zeige mir das Dashboard“, definiere ich zwei Ansichten: So, lieber Browser, soll mein Interface aussehen wenn ich eingeloggt bin (Dashboard-Ansicht) und so, wenn ich es nicht bin (Login-Ansicht). Welche der Ansichten angezeigt wird entscheidet dann React anhand des Zustands der Komponente.</p>
+<h2 id="wo-hat-react-seinen-ursprung">Wo hat React seinen Ursprung?</h2>
+<p>React wurde ursprünglich von bzw. bei <strong>Facebook</strong> entwickelt und später dann, bereits 2013, unter der BSD Lizenz als Open Source der Öffentlichkeit zugänglich gemacht, die nach einigen Protesten in eine MIT-Lizenz geändert wurde. Und so basiert auch ein sehr großer Teil von Facebook auf React. Mittlerweile sollen sich dort sogar über <strong>50.000</strong> eigene Komponenten im Einsatz befinden. Was insofern schön ist, als dass Facebook dadurch natürlich ein großes Interesse an der permanenten Weiterentwicklung hat und man nicht befürchten muss, dass man seine Anwendung auf Basis einer Technologie entwickelt hat die plötzlich nicht mehr weiterentwickelt wird.</p>
+<p>Die React Core-Entwickler leisten dabei sehr gute Arbeit darin, die Community frühzeitig in Entscheidungen mit einzubeziehen und mitdiskutieren zu lassen. Eigens dazu gibt es ein Github-Repository mit <a href="https://github.com/reactjs/rfcs">React RFCs</a> („Request for Comments“), mittels dessen geplante Änderungen frühzeitig zur Diskussion gestellt werden und mittels dessen dem React-Team auch eigene Vorschläge unterbreitet werden können. </p>
+<p><strong>Breaking Changes</strong>, also Änderungen die nicht abwärtskompatibel sind, folgen einem festen <em>Deprecation Schema</em> und so werden Methoden, Eigenschaften und Funktionen deren Entfernung geplant ist erst einmal für einige Zeit mit aussagekräftigen <strong>Deprecation Warnings</strong> versehen und sogar Tools bereitgestellt, mit denen sich alter Code weitestgehend automatisiert anpassen lässt (<a href="https://github.com/reactjs/react-codemod">React-Codemod</a>). React hält sich hier strikt an Semver-Konventionen. </p>
+<p>Dies bedeutet das nur neue Major-Releases (<code>16.x.x</code> auf <code>17.x.x</code>) Breaking Changes enthalten, Minor-Releases (bspw. <code>16.2.x</code> auf <code>16.3.x</code>) enthalten neue Features oder bekommen Deprecation Warnings, die den Entwickler auf kommende Major-Releases vorbereiten während Patch-Releases (bspw.<code>16.3.0</code> auf <code>16.3.1</code>) lediglich Bugfixes beinhalten. </p>
+<p>Vor dem Release von Major oder Minor Releases gibt es regelmäßig auch alpha, beta und rc (Release Candidate) Versionen, mit denen man vorab schon einen Blick auf kommende Features werfen kann. Diese sind aber jeweils mit Vorsicht zu genießen, da sich die Funktionsweise neuer Features bis zum endgültigen Release noch ändern könnten.</p>
+<p><img src="https://lh4.googleusercontent.com/Hr0ay3GzvzT9N28o2JJldO6pwPaj9hj2xyQh0F3L11-2HDuS3ftjaUOJ0xRpv7oYNobcPdrMBAGcXKUOBUBq_cLK1i__A0nFhzGB7sT0blghpGFQshzqJrQPaOg0hAyV7UgD8tu0" alt="Beispiel f&#xFC;r eine Deprecation Warning" /></p>
+<p>Dies ist sicher dem Umstand geschuldet, dass eben auch bei Facebook sehr viele React-Komponenten im Einsatz sind und man dort nicht einfach mal eben tiefgreifende Änderungen vornehmen kann ohne Probleme zu verursachen. Die Gedanken und Begründungen der Entwickler lassen sich dabei jederzeit ausführlich im Github Issue-Tracker verfolgen, alle wichtigen Änderungen werden dabei in sog.<a href="https://github.com/facebook/react/issues?utf8=%E2%9C%93&q=is%3Aissue%20is%3Aopen%20umbrella"> Umbrella-Tickets</a> zusammengefasst.  </p>
+</div><div class="chapter">
+<h1 id="ab-ins-kalte-wasser">Ab ins kalte Wasser</h1>
+<p>Nun hatten wir bereits das „Was“, das „Wann“ und das „Wo“. Kommen wir also zum „Wie“ und schreiben unsere erste kleine <strong>React-Komponente</strong>. Neben <strong>React</strong> selbst benötigen wir für die Ausgabe unserer App im Browser auch das Package <strong>ReactDOM</strong> um unsere Anwendung <strong>mounten</strong> zu können, also grob gesagt: im Browser nutzbar zu machen.</p>
+<p>Ein sehr minimalistisches Setup um schnell mit React loslegen zu können, sieht wie folgt aus:</p>
+<pre><code class="markup language-markup">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta charset="UTF-8" /&gt;
+&lt;title&gt;Hallo React!&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div id="app"&gt;&lt;/div&gt;
+&lt;script crossorigin src="https://unpkg.com/react@16.3.0/umd/react.development.js"&gt;&lt;/script&gt;
+&lt;script crossorigin src="https://unpkg.com/react-dom@16.3.0/umd/react-dom.development.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+// Platzhalter für unsere erste Komponente
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<p>Wir erstellen also das Grundgerüst für ein gewöhnliches HTML-Dokument und laden <strong>React</strong> und <strong>ReactDOM</strong> in der jeweils aktuellsten Stable-Version vom unpkg-CDN die uns dann jeweils als globale Variable im <code>window</code> Objekt unter <code>window.React</code> und <code>window.ReactDOM</code> zur Verfügung stehen. Ansonsten sehen wir hier vorerst nur eine leere Seite mit einem (noch inhaltlosen) <code>&lt;div id="app"&gt;</code>. Dieses div nutzen wir gleich als sogenannte <strong>Mount-Node</strong>, um dort unsere erste React-Komponente anzuzeigen.</p>
+<div class="hint hint--info">
+<p>Sind mehrere React-Komponenten im Spiel redet man üblicherweise von einer <strong>App</strong>, <strong>WebApp</strong> oder <strong>Single Page App</strong>. Die Grenzen ab wann eine Komponente als App bezeichnet wird sind dabei aber fließend. Einige Entwickler reden auch schon bei einer einzigen Komponente von einer App. 
+Eine feste Definition gibt es dafür nicht.</p>
+</div>
+<p>Starten wir also klassischerweise mit dem üblichen „Hello World“ Beispiel und setzen das Script an die Stelle an der sich oben der Platzhalter befindet:</p>
+<pre><code class="javascript language-javascript">&lt;script&gt;
+class HelloWorld extends React.Component {
+  render() {
+    return React.createElement('div', {id: 'hello-world'}, 'Hello World');
+  }
+}
+ReactDOM.render(
+  React.createElement(HelloWorld), 
+  document.getElementById('app')
+);
+&lt;/script&gt;</code></pre>
+<p>Und damit haben wir bereits die erste einfache React-Komponente implementiert! Setzen wir diesen Code nun an die Stelle unseres Platzhalters aus dem vorangegangenen Code-Snippet. Sehen wir im Browser die folgende Ausgabe:</p>
+<p><img src="https://lh5.googleusercontent.com/ELTAFiAHh3_lN8ETxYyNxvdSHs9-ZRzdmEZG_43ecDI3tkbJWtqLoaELcyMkKIKQcxyVs0kiaw9WYG_Ms5y8iUUId2mIh5-PiAunsc7XwlQ5BVS51YHi4S3LUcY-Vocb7VbCFqJJ" alt="Unsere erste React-Komponente im Browser." /></p>
+<p>Sieht für’s Erste einmal gar nicht so kompliziert aus, oder? Gehen wir den Code einmal Schritt für Schritt durch. Die relevanten Stellen im Code habe ich fett hervorgehoben.</p>
+<blockquote>
+  <p><code>class HelloWorld</code></p>
+</blockquote>
+<p>Hier geben wir dem Kind seinen Namen. Unsere Komponente hat in dem Fall den Namen <strong>HelloWorld</strong>. Bei der Namensgebung sind der Fantasie grundsätzlich keine Grenzen gesetzt, doch Achtung: React-Komponenten müssen stets mit einem Großbuchstaben beginnen! So wäre helloWorld also kein gültiger Name für eine Komponente, HELLOWORLD hingegen schon (wenn auch sehr unüblich). </p>
+<p>Die gängige Art der Benennung von Komponenten folgt der <strong>UpperCamelCase</strong>-Form. Auch längere, selbsterklärende Namen sind nicht unüblich. So wäre also ein Name wie <strong>UserNotificationView</strong> für eine Komponente keineswegs exotisch.</p>
+<blockquote>
+  <p><code>extends React.Component</code></p>
+</blockquote>
+<p>Hier erweitern wir schließlich die React interne Klasse <code>React.Component</code> wodurch unsere Klasse erst einmal zu einer Komponente wird die wir in React nutzen können. Neben der <code>React.Component</code> gibt es außerdem auch die <code>React.PureComponent</code> als Komponenten-Klasse, sowie eine zweite Form, die sogenannte <em>Stateless Functional Component</em>. Diese ist lediglich eine JavaScript-Funktion, die einem bestimmten Muster folgt. Beide werden im weiteren Verlauf noch ausführlich beleuchtet und sind an dieser Stelle zum Grundverständnis erst einmal weniger wichtig.</p>
+<blockquote>
+  <p><code>render()</code></p>
+</blockquote>
+<p>Unsere Komponente besteht lediglich aus dem einzigen zwingenden Bestandteil einer Komponente, nämlich der <code>render()</code>-Methode. Mittels dieser wird React mitgeteilt wie die entsprechende Komponente dargestellt (sprich: „gerendert“) werden soll. Eine Komponente hat zwingend einen <code>return</code>-Wert. Dieser kann entweder ein explizites <code>null</code> sein, um bewusst nichts anzuzeigen (jedoch nicht <code>undefined</code>!), ein React-Element oder ab Version 16 auch ein Array. </p>
+<p>Im Falle eines Arrays darf dieser Strings, Numbers, React-Elemente oder ebenfalls <code>null</code> als Werte enthalten. Die <code>render()</code>-Methode dient also dazu <strong>deklarativ</strong> den Zustand unseres Interfaces zu beschreiben. All das, was wir aus ihr per <code>return</code> zurückgeben, zeigt uns React beim Render als Ausgabe im Browser an.</p>
+<p>Auch wenn man in der Gestaltung seiner JavaScript-Klassen natürlich vollkommen frei ist und dies daher nicht zwingend notwendig ist, so wird die <code>render()</code>-Methode der Übersicht halber in der Regel meist als letzte Methode einer Komponente definiert. So wird es z.B. in den Code-Guidelines von AirBnB, dessen Entwickler in der React-Szene sehr aktiv sind, aber auch von vielen anderen bekannten Entwicklern vorgegeben oder zumindest empfohlen. Aus eigener Erfahrung kann ich sagen, dass es die tägliche Arbeit mit React deutlich erleichtert sich an diese Empfehlung zu halten<strong>.</strong></p>
+<p><img src="../.gitbook/assets/react-no-render-error.png" alt="Fehlermeldungen bei fehlender render()-Methode" /></p>
+<p><img src="../.gitbook/assets/invalid-react-element.png" alt="Fehlermeldung bei fehlerhafter render()-Methode" /></p>
+<blockquote>
+  <p><code>React.createElement()</code></p>
+</blockquote>
+<p>Wie erwähnt gibt die <code>render()</code>-Methode einer React-<strong>Komponente</strong> in den meisten Fällen ein React-<strong>Element</strong> zurück. React-Elemente sind sozusagen die kleinsten aber dennoch gleichzeitig auch die wesentlichen Bausteine in einer React-Anwendung und beschreiben, was der Benutzer letztendlich auf seinem Bildschirm sieht. Neben <code>React.cloneElement()</code> und <code>React.isValidElement()</code> ist <code>React.createElement()</code> zudem eine von lediglich 3 Top-Level API-Methoden (sieht man von mittlerweile veralteten (_deprecated_) Methoden einmal ab).</p>
+<p>Die Methode erwartet 1-n Parameter:</p>
+<ol>
+<li>„Typ“, das können HTML-Elemente als String sein, also bspw. <code>'div'</code>, <code>'span'</code> oder <code>'p'</code> aber auch andere React-Komponenten</li>
+<li>sog. „Props“, das sind im grundlegenden Sinn schreibgeschützte (_readonly_) „Eigenschafts-Objekte“ einer Komponente. Abgeleitet vom engl. <em>Properties</em> eben.</li>
+<li>sowie beliebig viele Child-Elemente, die selbst wieder React-Elemente, Arrays, Funktionen oder auch einfacher Text sein können. Eine Komponente muss aber nicht zwingend auch Child-Elemente besitzen.</li>
+</ol>
+<p>Letztendlich ist ein React-Element unter der Haube nichts weiter als ein unveränderliches (_immutable_) JavaScript-Objekt zur Beschreibung von Eigenschaften, die React mitteilen wie etwas (und was) dargestellt werden soll. React erstellt nach dieser Beschreibung den sog. <strong>Virtual DOM</strong>. Dieser stellt eine Repräsentation des HTML-Baums in Form eines JavaScript-Objekts dar. Dieser Virtual DOM wird anschließend von React dazu verwendet, um möglichst nur die Teile einer Anwendung zu aktualisieren, in denen auch tatsächlich eine Änderung vorgenommen wurde wenn der Benutzer mit der Anwendung interagiert, Daten verändert oder Events auslöst.</p>
+<p>Dadurch, dass React nicht einfach bei jeder State-Änderung die komplette Anwendung neu in den DOM schreibt, was aus Performance-Sicht sehr kostspielig wäre, sondern mittels eines <strong>Reconciliation</strong> (zu deutsch etwa <em>„Abgleich“</em>) genannten Prozesses zuvor vergleicht was geändert wurde, somit die Schreibvorgänge auf ein Minimum reduziert, wird ein zum Teil enormer Geschwindigkeitsvorteil erreicht gegenüber anderen Frameworks und Libraries die viele DOM-Operationen vornehmen.</p>
+<p>Bei der täglichen Arbeit wird man <code>React.createElement()</code> jedoch für gewöhnlich niemals in dieser Form aufrufen, da uns <strong>JSX</strong>, eine von Facebook entwickelte Syntax-Erweiterung für JavaScript, diese Arbeit abnehmen und massiv erleichtern wird. Dennoch halte ich es für wichtig von ihrer Existenz zu wissen um zu verstehen wie JSX im Hintergrund arbeitet um so mögliche Fehlerquellen ausschließen zu können.</p>
+<p>JSX sieht auf den ersten Blick aus wie HTML bzw. XML/XHTML, jedoch mit deutlich erweitertem Funktionsumfang und der Möglichkeit JavaScript-Ausdrücke darin zu verwenden. JSX ist eine Abstraktion um die Art, wie man React-Elemente erstellt, für den Entwickler <strong>deutlich</strong> zu vereinfachen. So würde unser obiges Beispiel:</p>
+<p><code>React.createElement('div', {id: 'hello-world'}, 'Hello World');</code></p>
+<p>würde in JSX ganz einfach wie folgt geschrieben werden:</p>
+<p><code>&lt;div id="hello-world"&gt;Hello World&lt;/div&gt;</code></p>
+<p>Was für viele Einsteiger in React erst einmal sehr befremdlich wirkt, ich habe in diesem Zusammenhang mal den schönen Begriff <strong>JSX-Schock</strong> gelesen, stellt sich aber nach etwas Rumspielerei jedoch sehr schnell als unglaublich praktisch heraus und ist meines Erachtens einer der wesentlichen Gründe warum React letztendlich so viel an Beliebtheit in so kurzer Zeit gewonnen hat.</p>
+<p>Zurück zum Wesentlichen: unsere Komponente bekommt hier also über den <code>return</code>-Wert der <code>render()</code>-Methode mitgeteilt, dass sie ein Element vom typ <code>div</code> mit der id <code>hello-world</code> und dem Child-Element (in dem Fall ein Textknoten) mit dem Inhalt <code>Hallo Welt</code> darstellen soll.</p>
+<blockquote>
+  <p><code>ReactDOM.render(Element, Container)</code></p>
+</blockquote>
+<p>Zu guter Letzt kommt mit <code>ReactDOM</code> die zweite Library ins Spiel. <strong>ReactDOM</strong> ist zuständig für das Zusammenspiel von React mit dem DOM (_Document Object Model_), also oberflächlich ausgedrückt: dem <strong>Web-Browser</strong>. Wie auch schon React selbst besitzt ReactDOM nur sehr wenige Top-Level API-Methoden. Wir konzentrieren uns vorerst mal auf die <code>render()</code>-Methode, die sozusagen das Herzstück von ReactDOM im Browser ist.</p>
+<p>Trotz der Namensgleichheit hat diese <strong>erst einmal nicht direkt</strong> etwas mit der Methode innerhalb von React-Komponenten zu tun sondern dient lediglich dazu ein React-Element in eine angegebene <strong>„Root-Node“</strong> zu rendern, also stumpf ausgedrückt: anzuzeigen. In unserem Fall wird hier unsere <code>HelloWorld</code>-Komponente in das <code>&lt;div id="app"&gt;&lt;/div&gt;</code> gerendert. Die Root-Node wird dabei <strong>nicht ersetzt</strong>, sondern die Komponente wird <strong>innerhalb des Containers</strong> eingesetzt.</p>
+<p><strong>ReactDOM</strong> sorgt also dafür, <strong>dass</strong> wir die angegebene Komponente überhaupt erst einmal im Browser sehen können. <strong>Was</strong> wir dort genau sehen haben wir zuvor in der <code>render()</code>-Methode der Komponente über das angegebene React-Element als <code>return</code>-Wert beschrieben. Beim Aufruf von <code>ReactDOM.render()</code> wird dabei das als ersten Parameter angegebene <strong>React-Element</strong> in den als zweiten Parameter angegebenen <strong>Container</strong> gerendert.</p>
+<div class="hint hint--info">
+<p>Beim ersten Aufruf der <code>ReactDOM.render()</code> Funktion wird sämtlicher möglicherweise vorhandene Inhalt des Ziel-Containers durch den von React ermittelten, darzustellenden Inhalt ersetzt. Bei jedem weiteren Aufruf verwendet React einen internen Vergleichs-Algorithmus für bestmögliche Effizienz, um nicht die komplette Anwendung vollständig neu zu rendern! </p>
+<p>In der Praxis ist das allerdings weniger von Relevanz, da die <code>ReactDOM.render()</code> Funktion bei der Erstellung von Single Page Apps üblicherweise nur einmalig ausgeführt wird, für gewöhnlich beim Laden einer Seite. React verändert dabei auch niemals den Ziel-Container selbst, sondern lediglich dessen Inhalt. Besitzt das Container-Element also eigene Attribute wie  Klassen, IDs oder data-Attribute bleiben diese auch nach dem Aufruf von <code>ReactDOM.render()</code> erhalten.</p>
+</div>
+<p>Damit ist das generelle Funktionsprinzip von React erst einmal erklärt, unsere erste Komponente ist implementiert und im Browser zu sehen!</p>
+</div><div class="chapter">
+<h1 id="tools-und-setup">Tools und Setup</h1>
+<h2 id="tools">Tools</h2>
+<p>Um störungsfrei und komfortabel mit React arbeiten zu können sollten einige Bedingungen erfüllt sein. Nicht alles davon ist <strong>zwingend</strong> notwendig, es erleichtert das Entwicklerleben jedoch ungemein, weswegen ich dennoch <strong>dringend</strong> dazu rate und auch bei allen folgenden Beispielen davon ausgehen werde, dass ihr diese Tools installiert habt:</p>
+<h3 id="nodejs-und-npm">Node.js und npm</h3>
+<p>Node werden die meisten möglicherweise als „serverseitiges JavaScript“ kennen, das ist allerdings nicht die ganze Wahrheit. In erster Linie ist Node einmal eine JavaScript Laufzeitumgebung, die sich eben hervorragend für Netzwerkanwendungen eignet, also klassische Webserver. Darüber hinaus bringt Node auch ein Tool zur Paketverwaltung mit, nämlich <strong>npm</strong>, mit dem sich spielend einfach neue JavaScript-Libraries auf dem eigenen Rechner installieren lassen. Außerdem lassen sich auch eigene Commandline-Scripts damit schreiben und ausführen, was sich später noch als sehr praktisch erweisen wird.</p>
+<p>Statt Node direkt zu installieren, empfehle ich nvm (Node Version Manager) für Mac und Linux bzw. nvm-windows für Windows. Nvm hat den Vorteil, dass es einerseite keine Admin-Rechte benötigt um Packages global zu installieren und man andererseits mit einem simplen Befehl auf der Kommandozeile (nvm install [version]) die auf dem System installierte Version aktualisieren kann. Für einer Liste aller verfügbaren Version kannst du ganz einfach nvm ls-remote (Mac/Linux) bzw. nvm list available (Windows) benutzen. Ich empfehle im weiteren Verlaufe dieses Buch die aktuelle LTS (Long Term Support) Version zu benutzen.</p>
+<h3 id="yarn">Yarn</h3>
+<p>Während Node mit npm bereits einen guten und soliden Package-Manager mitbringt, geht yarn noch ein Stück weiter, bietet besseres caching, dadurch auch bessere Performance, einfachere Kommandos und kommt darüber hinaus, wie React, ebenfalls aus dem Hause Facebook und wurde dort entwickelt u.a. um die Arbeit mit React noch etwas angenehmer zu gestalten. Während alles, was hier im weiteren Verlauf des Buches beschrieben wird, auch mit npm ausgeführt werden kann, würde ich dennoch empfehlen Yarn zu installieren, da dies gerade in React-Kreisen mehr und mehr an Gewicht gewinnt, insbesondere wegen seiner Einfachheit und seiner verbesserten Performance ggü. npm. Sind Node und npm erst einmal installiert, lässt sich Yarn einfach als globales Package über npm installieren:</p>
+<p><code>npm install --global yarn</code></p>
+<p>oder einfach kurz:</p>
+<p><code>npm i -g yarn
+</code></p>
+<p>Wir haben gerade außerdem unser erstes Package installiert. Easy! Das Commandline-Flag <code>--global</code> (bzw. <code>-g</code>)  sorgt dabei dafür, dass die <code>yarn</code> Executable global installiert wird und von überall auf eurem Gerät auf der Kommandozeile ausgeführt werden kann.</p>
+<h3 id="babel">Babel</h3>
+<p>Babel ist ein Tool, das für gewöhnlich lediglich als Dependency (Abhängigkeit) und für gewöhnlich als npm-Paket in React basierten Projekten zum Einsatz kommt und an dieser Stelle nicht explizit installiert werden muss. Babel erlaubt es nicht oder <em>noch</em>-nicht standardkonformen oder noch nicht von allen gängigen Browsern unterstützten JavaScript-Code in interpretierbaren und ausführbaren Code zu <em>transpilieren</em>.</p>
+<div class="hint hint--info">
+<p>Transpilieren (engl. <em>transpiling</em>) nennt man einen Prozess, bei dem der Sourcecode von einer Sprache in ein entsprechendes funktional identisches Gegenstück einer anderen Sprache umgewandelt wird. In unserem Fall eben von JSX oder ES2015+ in valides, ausführbares und vom Browser unterstütztes JavaScript.</p>
+</div>
+<p>Babel besteht aus einem Core-Modul (<code>@babel/core</code>) das lediglich einige APIs bereitstellt, die dann von <strong>Plugins</strong> für das entsprechende Transpiling verwendet werden. Diese Plugins werden oft zu sog. <strong>Presets</strong> zusammengefasst, die dann wiederum mehrere Plugins gleichzeitig installieren. Die in React basierten Projekten üblichsten Presets sind <code>@babel/preset-react</code> (um JSX zu lesen und zu übersetzen) und <code>@babel/preset-env</code>, welches abhängig von einer Ziel-Umgebung modernes JavaScript so umschreibt, dass es eben auch ältere Browser verstehen.</p>
+<p>Das <a href="https://github.com/-Zeichen">@-Zeichen</a> vor dem Namen bedeutet dabei, dass es sich um eine Organisation innerhalb der npm Registry (dem npm-Paketverzeichnis) handelt und kann als eine Art Namespace betrachtet werden. Im Fall von Babel findet man dort die offiziellen Pakete die von den Babel-Maintainern dort veröffentlich werden. Bevor Babel in der Version 7 erschien gab es diese Organisation noch nicht und die Pakete wurden mit einem Bindestrich im Namen getrennt. So hieß <code>@babel/preset-react</code> eben <code>babel-preset-react</code>, <code>@babel/core</code> war <code>babel-core</code> usw. Also nicht verwirren lassen, sollte euch in einem Projekt mal <code>babel-core</code> statt <code>@babel/core</code> begegnen. In diesem Fall handelt es sich also einfach um Babel 6 (oder eine ältere Version).</p>
+<h3 id="webpack">Webpack</h3>
+<p>Webpack ist ebenfalls eins der zentralen Tools im React-Ecosystem ohne das ein effizentes Arbeiten mit React kaum möglich oder zumindest deutlich umständlicher wäre. Hier handelt es sich um einen sog. <strong>Module-Bundler</strong>, der Modul basierte Entwicklung, wie sie manch einer vielleicht bereits aus NodeJS kennen mag, in den Browser bringt. Dadurch wird es ermöglicht Anwendungscode übersichtlich in einzelnen Files zu verteilen, die jeweils ihre Abhängigkeiten über <code>import</code> oder <code>require()</code> in ihren eigenen <strong>Module-Scope</strong> laden und damit innerhalb des Moduls verfügbar machen. Am Ende fällt dann nur noch eine einzelne JavaScript-Datei heraus (auf Wunsch auch mehrere), so dass nicht mehr jede einzelne unserer Komponenten, und das können schnell mal über 100 werden, einzeln über <code>&lt;script src="..."&gt;&lt;/script&gt;</code> im HTML eingebunden werden muss.</p>
+<p>Wow. Klingt unfassbar kompliziert, passiert aber nach einigen wenigen Beispielen nahezu intuitiv von ganz allein und hat man sich erst einmal daran gewöhnt, wird man sich fragen wie man jemals ohne Module-Bundler arbeiten konnte.</p>
+<p>Neben dem Module-Bundling selbst kann Webpack auch beigebracht werden Dateien mit JSX durch Babel in JavaScript zu transpilieren, Bilder, Stylesheets oder andere Assets in einen build-Ordner zu kopieren der später auf einen Server deployed wird und viele andere Dinge. Wie eine solche Konfiguration aussehen kann beleuchten wir später noch einmal genau, weshalb das Webpack Kommandozeilen-Tool auch an dieser Stelle noch nicht installiert werden muss.</p>
+<h3 id="ide-editor-plugins">IDE-/Editor-Plugins</h3>
+<p>Alle Bekannten Editoren und IDEs wie bspw. Webstorm, Atom, Visual Studio Code oder Sublime (aber auch so ziemlich jeder andere moderne Editor oder IDE) bietet Plugins oder inzwischen sogar bereits native Funktionen für die bessere Unterstützung für React und JSX. Hier rate ich dringend zur Installation dieser Plugins, da diese in der Regel für deutlich besseres Syntax-Highlighting sorgen, teilweise Code-Vervollständigung und andere Nettigkeiten bieten.<br />
+ In Atom ist das <a href="https://atom.io/packages/language-babel">language-babel</a>, in VS Code gibt es hier u.a. <a href="https://marketplace.visualstudio.com/items?itemName=dzannotti.vscode-babel-coloring">Babel ES6/ES7</a> und in Sublime lohnt sich in Blick auf <a href="https://github.com/babel/babel-sublime">babel-sublime</a>. Nutzt ihr Webstorm, habt ihr seit Version 10 sogar native Unterstützung für React-Syntaxhighlighting.</p>
+<h3 id="browser-plugins">Browser-Plugins</h3>
+<p>Für den Browser empfehle ich dringend jeweils die React-Devtools für <a href="https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi">Chrome</a> und <a href="https://addons.mozilla.org/de/firefox/addon/react-devtools/">Firefox</a> zu installieren, für den späteren Verlauf außerdem die Redux-Devtools für beide Browser (<a href="https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd">Chrome</a>, <a href="https://addons.mozilla.org/de/firefox/addon/remotedev/?">Firefox</a>). Die Devtools fügen sich nahtlos als neuer Tab in die bestehenden Browser-Devtools ein und bieten einen enormen Mehrwert beim Debugging von React-Komponenten. </p>
+<p><img src="../.gitbook/assets/image.png" alt="Chrome mit installierten Devtools-Plugins f&#xFC;r React und Redux" /></p>
+<p>So lässt sich bspw. der State direkt im Browser manipulieren und die Auswirkungen live beobachten. Ich würde soweit gehen und behaupten, dass ein effizientes Debugging ohne die Devtools-Erweiterungen kaum oder sogar gar nicht möglich ist.</p>
+<h2 id="setup">Setup</h2>
+<p>Manch einer hat in der Vergangenheit darüber gescherzt, dass man gut und gerne Tage damit verbringen kann ein Setup aufzusetzen bevor man die erste Zeile Code schreibt. Und in der Tat: ein ordentliches Setup ist wichtig, bestimmt es doch ein Stück weit auch die Qualität und Wartbarkeit der Anwendung, die man auf Basis seines Setups entwickelt. </p>
+<p>Hier hat die große React-Community aber bereits sehr gute Vorarbeit geleistet. Und so listet die Seite JavaScriptStuff aktuell <strong>189 Projekte</strong> in der Rubrik <a href="https://www.javascriptstuff.com/react-starter-projects/"><strong>React Starter Projects</strong></a>. Auch Facebook selbst, bzw. konkret <strong>Dan Abramov</strong>, Core-Entwickler bei Facebook und Autor von <strong>Redux</strong>, ist dort mit <strong>Create-React-App</strong> („CRA“) vertreten. Das Projekt ist mit über 45.000 Stars auf Github mittlerweile so etwas wie der de-facto Standard wenn es um React Starter Projekte geht und beschreibt sich auf Github selbst mit: </p>
+<blockquote>
+  <p>Create React apps with no build configuration</p>
+</blockquote>
+<p>Und in der Tat, <strong>Create React App</strong> macht es gerade Einsteigern (aber nicht nur diesen) sehr einfach ein sehr robustes und gutes Setup mit nur einem Befehl auf der Kommandozeile zu erzeugen:</p>
+<p><code>yarn create react-app projektname</code></p>
+<p>Wer stattdessen npm bevorzugt, muss momentan noch zwei Befehle ausführen:</p>
+<p><code>
+npm install -g create-react-app
+</code></p>
+<p>… um die <strong>Create React App</strong> Executable global zu installieren und anschließend</p>
+<p>`create-react-app projektname</p>
+<p>`</p>
+<p>Und schon wird im Ordner „<em>projektname</em>“ ein vollständiges React-Setup mit einigen kleinen Beispiel-Komponenten erzeugt. Ich würde empfehlen dies jetzt einfach mal zu tun, denn die ersten Code-Beispiele werden zu Beginn allesamt auf einem gewöhnlichen CRA-Setup basieren und können so recht einfach ausprobiert werden. </p>
+<div class="hint hint--warning">
+<p>Der Projektname muss den <a href="https://docs.npmjs.com/files/package.json#name">Kriterien für die <code>name</code>-Eigenschaft</a> des <code>package.json</code>-Formats von npm haben. Dies bedeutet, neben einigen anderen Kriterien, er darf nur Kleinbuchstaben beinhalten, keine Leerzeichen und dürfen maximal aus 214 Buchstaben bestehen. Die vollständigen Kriterien finden sich in der npm Dokumentation</p>
+</div>
+<p>Später werde ich euch dann zeigen wie ihr die <code>eject</code>-Funktion benutzt um eigene Änderungen an der Konfiguration vornehmen zu können. Aber für den Beginn (und auch noch recht weit darüber hinaus) reicht erst einmal das das Basis-Setup, da dieses bereits sehr umfangreich ist und viele Themen abdeckt, so dass wir uns weniger mit dem Setup beschäftigen müssen und direkt in den Code eintauchen können.</p>
+<p>Nachdem CRA das Basis-Setup erstellt und seine Paket-Abhängigkeiten (_Dependencies_) installiert hat gibt es uns noch eine kurze Anleitung wie wir mit CRA an unserem ersten React-Projekt arbeiten können.</p>
+<p><img src="https://lh6.googleusercontent.com/im1UToBbzUiXTseQk1AZTD2_WvPVnImgokKU-HLPHPzS06C-H9xdoyL0-xn8q4iDsFCCKXKxERxmuRE7Co0nJTTI1aPEaMg99aS5QXa9xYlwkS0JRVjTV0DM8Yuv8Z83FTgJ8XPN" alt="Create-React-App ist bereit!" /></p>
+<h3 id="yarn-start">yarn start</h3>
+<p>Hiermit starten wir einen Entwicklungs-Server über den wir unsere neu erstellte App im Browser aufrufen können. Dieser kümmert sich auch darum alle Dateien im Ordner zu beobachten und unsere App mit all seinen Abhängigkeiten neu zu „kompilieren“ sobald wir eine Änderung an einem der Files vornehmen.</p>
+<h3 id="yarn-build">yarn build</h3>
+<p>Erstellt einen Build unserer App, die wir dann bspw. auf einen öffentlichen Server deployen können. Dieser Build ist gegenüber dem Development-Build (<code>yarn start</code>) auf Performance optimiert, weswegen das Ausführen von <code>yarn build</code> für gewöhnlich deutlich länger dauert als <code>yarn start</code>.</p>
+<h3 id="yarn-test">yarn test</h3>
+<p>Führt Tests aus. Als Test-Framework bringt CRA das ebenfalls von Facebook entwickelte <strong>Jest</strong> mit. Jest bringt hier aus meiner Sicht einen sehr entschiedenen Vorteil mit gegenüber anderen Testing-Frameworks, nämlich das sog. <strong>Snapshot-Testing</strong> bei dem sozusagen eine Art <em>Abbild</em> des aktuellen Zustands einer Komponente erstellt wird, der den Status Quo darstellt und mit dem zukünftige Test-Zustände verglichen werden. So fallen Änderungen, gewünschte wie ungewünschte, sofort ins Auge.</p>
+<h3 id="yarn-eject">yarn eject</h3>
+<p>Mit <code>yarn eject</code> können wir uns von Create-React-App „verabschieden“. Dabei werden alle build-Scripts, Dependencies und Config-Files in das aktuelle Projektverzeichnis kopiert und wir sind fortan selbst verantwortlich das alles korrekt läuft. Dadurch haben wir mehr Verantwortung, aber eben auch deutlich mehr Freiheiten, da wir von nun an eigene Änderungen an der Standard-Konfiguration von CRA vornehmen können. Da CRA aber schon sehr viel mitbringt, werden wir mit diesem Schritt in diesem Buch noch eine ganze Weile warten, bis wir beim Kapitel angekommen sind in der es um die Konfiguration von Webpack und Co. geht.</p>
+</div><div class="chapter">
+<h1 id="exkurs-es2015">Exkurs ES2015+</h1>
+<h2 id="das-„neue“-javascript">Das „neue“ JavaScript</h2>
+<p><strong>ES2015</strong> ist kurz gesagt eine modernisierte, aktuelle Version von JavaScript mit vielen neuen Funktionen und Syntax-Erleichterungen. <strong>ES2015</strong> ist der Nachfolger von <strong>ECMAScript</strong> in der Version 5 (<strong>ES5</strong>), hieß daher ursprünglich auch einmal <strong>ES6</strong> und wird auch in einigen Blogs und Artikeln immer noch so bezeichnet. Stößt du also beim Lesen von Artikeln zu React auf den Begriff <strong>ES6</strong> ist damit <strong>ES2015</strong> gemeint. Ich schreibe hier meist von <strong>ES2015+</strong> und meine damit Änderungen die seit 2015 in JavaScript eingeflossen sind. Dazu gehören ES2016 (ES7), ES2017 (ES8) und ES2018 (ES9).</p>
+<div class="hint hint--info">
+<p>Das <strong>ES</strong> in <strong>ES2015</strong> und <strong>ES6</strong> steht für <strong>ECMAScript</strong>. Die ECMA International ist die Organisation, die hinter der Standardisierung der <strong>ECMA-262</strong> Spezifikation steht, auf der JavaScript basiert. Seit 2015 werden jährlich neue Versionen der Spezifikation veröffentlicht die aus historischen Gründen erst eine fortlaufende Versionsnummer beginnend ab Version 1 hatten, dann jedoch für mehr Klarheit die Jahreszahl ihrer Veröffentlichung angenommen haben. So wird <strong>ES6</strong> heute offiziell als <strong>ES2015</strong> bezeichnet, <strong>ES7</strong> als <strong>ES2016</strong>, usw.</p>
+</div>
+<p>Wer mit React arbeitet nutzt in vermutlich 99% der Fälle auch <strong>Babel</strong> als <strong>Transpiler</strong> um sein <strong>JSX</strong> entsprechend in <code>createElement()</code>-Aufrufe zu transpilieren. Doch <strong>Babel</strong> transpiliert nicht nur <strong>JSX</strong> in ausführbares JavaScript, sondern hieß ursprünglich mal <strong>6to5</strong> und hat genau das gemacht: mit <strong>ES6</strong>-Syntax geschriebenes JavaScript in <strong>ES5</strong> transpiliert, so dass neuere, zukünftige Features und Syntax-Erweiterungen auch in älteren Browsern ohne Unterstützung für „das neue“ JavaScript genutzt werden konnten.</p>
+<p>Auf die meiner Meinung nach wichtigsten und nützlichsten neuen Funktionen und Möglichkeiten in <strong>ES2015</strong> und den folgenden Versionen möchte ich in diesem Kapitel eingehen. Dabei werde ich mich auf die neuen Funktionen beschränken, mit denen man bei der Arbeit mit React häufiger zu tun haben wird und die euch Entwicklern das Leben am meisten vereinfachen.</p>
+<p><strong>Wenn du bereits Erfahrung mit ES2015 und den nachfolgenden Versionen hast kannst du dieses Kapitel überspringen!</strong></p>
+<h2 id="variablen-deklarationen-mit-let-und-const">Variablen-Deklarationen mit let und const</h2>
+<p>Gab es bisher nur <code>var</code> um eine Variable zu deklarieren in JavaScript, kommen in ES2015 zwei neue Schlüsselwörter dazu mit denen Variablen deklariert werden können: <code>let</code> und <code>const</code>. Eine Variablendeklaration mit <code>var</code> wird dadurch in fast allen Fällen überflüssig, meist sind <code>let</code> oder <code>const</code> die sauberere Wahl. Doch wo ist der Unterschied?</p>
+<p>Anders als <code>var</code> existieren mit <code>let</code> oder <code>const</code> deklarierte Variablen <strong>nur innerhalb des Scopes in dem sie deklariert wurden!</strong> Ein solcher Scope kann eine Funktion sein wie sie bisher auch schon bei <code>var</code> einen neuen Scope erstellt hat aber auch Schleifen oder gar <code>if</code> Statements!</p>
+<p><strong>Grobe Merkregel:</strong> überall dort wo man eine öffnende geschweifte Klammer findet, wird auch ein neuer Scope geöffnet. Konsequenterweise schließt die schließende Klammer diesen Scope wieder. Dadurch sind Variablen deutlich eingeschränkter und gekapselter, was für gewöhnlich eine gute Sache ist.</p>
+<p>Möchte man den Wert einer Variable nochmal überschreiben, beispielsweise in einer Schleife, ist die Variable dafür mit <code>let</code> zu deklarieren. Möchte man die Referenz der Variable unveränderbar halten, sollte <code>const</code> benutzt werden.</p>
+<p>Doch Vorsicht: anders als bei anderen Sprachen bedeutet <code>const</code> nicht, dass der komplette Inhalt der Variable konstant bleibt. Bei Objekten oder Arrays kann deren Inhalt auch bei mit <code>const</code> deklarierten Variablen noch verändert werden. Es kann lediglich das Referenzobjekt auf welche die Variable zeigt nicht mehr verändert werden.</p>
+<h3 id="der-unterschied-zwischen-letconst-und-var">Der Unterschied zwischen <code>let</code>/<code>const</code> und <code>var</code></h3>
+<p>Erst einmal zur Demonstration ein kurzes Beispiel wie sich die Variablendeklaration von <code>let</code> und <code>const</code> von denen mit <code>var</code> unterscheiden und was es bedeutet, dass erstere nur in dem Scope sichtbar sind, in dem sie definiert wurden:</p>
+<pre><code class="javascript language-javascript">for (var i = 0; i &lt; 10; i++) { }
+console.log(i);</code></pre>
+<p><strong>Ausgabe:</strong></p>
+<div class="hint hint--info">
+<p>10</p>
+</div>
+<p>Nun einmal dasselbe Beispiel mit <code>let</code></p>
+<pre><code class="javascript language-javascript">for (let j = 0; j &lt; 10; j++) { }
+console.log(j);</code></pre>
+<p><strong>Ausgabe:</strong></p>
+<div class="hint hint--danger">
+<p>Uncaught ReferenceError: <code>j</code> is not defined</p>
+</div>
+<p>Während auf die Variable <code>var i</code>, einmal definiert, auch außerhalb der <code>for</code>-Schleife zugegriffen werden kann, existiert die Variable <code>let j</code> nur innerhalb des Scopes in dem sie definiert wurde. Und das ist in diesem Fall innerhalb die <code>for</code>-Schleife, die einen neuen Scope erzeugt.</p>
+<p>Dies ist ein kleiner Baustein der uns später dabei helfen wird unsere Komponenten gekapselt und ohne ungewünschte Seiteneffekte zu erstellen.</p>
+<h4 id="unterschiede-zwischen-let-und-const">Unterschiede zwischen <code>let</code> und <code>const</code></h4>
+<p>Folgender Code ist valide und funktioniert, solange die Variable mittels <code>let</code> (oder <code>var</code>) deklariert wurde:</p>
+<pre><code class="javascript language-javascript">let myNumber = 1234;
+myNumber = 5678;
+console.log(myNumber);</code></pre>
+<p><strong>Ausgabe:</strong></p>
+<div class="hint hint--info">
+<p>5678</p>
+</div>
+<p>Der gleiche Code nochmal, nun allerdings mit <code>const</code>:</p>
+<pre><code class="javascript language-javascript">const myNumber = 1234;
+myNumber = 5678;
+console.log(myNumber);</code></pre>
+<p><strong>Ausgabe:</strong></p>
+<div class="hint hint--danger">
+<p>Uncaught TypeError: Assignment to constant variable.</p>
+</div>
+<p>Wir versuchen hier also eine durch <code>const</code> deklarierte Variable direkt zu überschreiben und werden dabei vom JavaScript-Interpreter zurecht in die Schranken gewiesen. Doch was, wenn wir stattdessen nur eine Eigenschaft <em>innerhalb</em> eines mittels <code>const</code> deklarierten Objekts verändern wollen?</p>
+<pre><code class="javascript language-javascript">const myObject = {
+  a: 1
+};
+myObject.b = 2;
+console.log(myObject);</code></pre>
+<p><strong>Ausgabe:</strong></p>
+<div class="hint hint--info">
+<p><code>{a: 1, b: 2}</code></p>
+</div>
+<p>In diesem Fall gibt es keinerlei Probleme, da wir nicht die Referenz verändern, auf die die <code>myObject</code> Variable verweisen soll, sondern das Objekt, auf das verwiesen wird. Dies funktioniert ebenso mit Arrays, die verändert werden können, solange nicht der Wert der Variable selbst geändert wird!</p>
+<p><strong>Erlaubt:</strong></p>
+<pre><code class="javascript language-javascript">const myArray = [];
+myArray.push(1);
+myArray.push(2);
+console.log(myArray);</code></pre>
+<p><strong>Ausgabe:</strong></p>
+<div class="hint hint--info">
+<p><code>[1, 2]</code></p>
+</div>
+<p><strong>Nicht erlaubt, da wir die Variable direkt überschreiben würden:</strong></p>
+<pre><code class="text language-text">const myArray = [];
+myArray = Array.concat(1, 2);</code></pre>
+<div class="hint hint--danger">
+<p>Uncaught TypeError: Assignment to constant variable.</p>
+</div>
+<p>Möchten wir <code>myArray</code> also überschreibbar halten, müssen wir stattdessen <code>let</code> verwenden oder uns damit begnügen dass zwar der Inhalt des mittels <code>const</code> deklarierten Arrays veränderbar ist, nicht jedoch die Variable selbst.</p>
+<h2 id="arrow-functions">Arrow Functions</h2>
+<p><strong>Arrow Functions</strong> sind eine weitere <strong>deutliche</strong> Vereinfachung die uns ES2015 gebracht hat. Bisher funktionierte eine Funktionsdeklaration so: man schrieb das Keyword <code>function</code>, optional gefolgt von einem Funktionsnamen, Klammern, in der die Funktionsargumente beschrieben wurden, sowie dem <strong>Function Body</strong>, also dem eigentlichen Inhalt der Funktion:</p>
+<pre><code class="javascript language-javascript">function(arg1, arg2) {}</code></pre>
+<p><strong>Arrow Functions</strong> vereinfachen uns das ungemein, indem sie erst einmal das <code>function</code> Keyword überflüssig machen:</p>
+<pre><code class="javascript language-javascript">(arg1, arg2) =&gt; {}</code></pre>
+<p>Haben wir zudem nur einen Parameter, sind sogar die Klammern bei den Argumenten optional. Aus unserer Funktion</p>
+<pre><code class="javascript language-javascript">function(arg) {}</code></pre>
+<p>Würde also die folgende <strong>Arrow Function</strong> werden:</p>
+<pre><code class="javascript language-javascript">arg =&gt; {}</code></pre>
+<p>Jap, das ist eine gültige Funktion in ES2015!</p>
+<p>Und es wird noch wilder. Soll unsere Funktion lediglich einen Ausdruck zurückzugeben als <code>return</code>-Wert, sind auch noch die Klammern optional. Vergleichen wir einmal eine Funktion die eine Zahl als einziges Argument entgegennimmt, diese verdoppelt und als <code>return</code>-Wert wieder aus der Funktion zurück gibt. Einmal in ES5:</p>
+<pre><code class="javascript language-javascript">function double(number) {
+  return number * 2;
+}</code></pre>
+<p>… und als ES2015 <strong>Arrow Function</strong>:</p>
+<pre><code class="javascript language-javascript">const double = number =&gt; number * 2;</code></pre>
+<p>In beiden Fällen liefert uns die eben deklarierte Funktion beim Aufruf von bspw. <code>double(5)</code> als Ergebnis <code>10</code> zurück!</p>
+<p>Aber es gibt noch einen weiteren gewichtigen Vorteil, der bei der Arbeit mit React sehr nützlich sein wird: Arrow Functions haben keinen eigenen Constructor, können also nicht als Instanz in der Form <code>new MyArrowFunction()</code> erstellt werden, und binden auch kein eigenes <code>this</code> sondern erben <code>this</code> aus ihrem <strong>Parent Scope</strong>. Insbesondere Letzteres wird noch sehr hilfreich werden.</p>
+<p>Auch das klingt fürchterlich kompliziert, lässt sich aber anhand eines einfachen Beispiels auch recht schnell erklären. Nehmen wir an wir definieren einen Button der die aktuelle Zeit in ein <code>div</code> schreiben soll, sobald ich ihn anklicke. Eine typische Funktion in ES5 könnte wie folgt aussehen:</p>
+<pre><code class="javascript language-javascript">function TimeButton() {
+  var button = document.getElementById('btn');
+  var self = this;
+  this.showTime = function() {
+    document.getElementById('time').innerHTML = new Date();
+  }
+  button.addEventListener('click', function() {
+    self.showTime();
+  });
+}</code></pre>
+<p>Da die als <strong>Event Listener</strong> angegebene Funktion keinen Zugriff auf ihren <strong>Parent Scope</strong>, also den <strong>TimeButton</strong> hat, speichern wir hier hilfsweise <code>this</code> in der Variable <code>self</code>. Kein unübliches Muster in ES5. Alternativ könnte man auch den Scope der Funktion explizit an <code>this</code> binden und dem <strong>Event Listener</strong> beibringen in welchem Scope sein Code ausgeführt werden soll:</p>
+<pre><code class="javascript language-javascript">function TimeButton() {
+  var button = document.getElementById('btn');
+  this.showTime = function() {
+    document.getElementById('time').innerHTML = new Date();
+  }
+  button.addEventListener('click', function() {
+    this.showTime();
+  }.bind(this));
+}</code></pre>
+<p>Hier spart man sich zumindest die zusätzliche Variable <code>self</code>. Auch das ist möglich, aber nicht besonders elegant.</p>
+<p>An dieser Stelle kommt nun die <strong>Arrow Function</strong> ins Spiel, die, wie eben erwähnt, <code>this</code> aus ihrem <strong>Parent Scope</strong> erhält, also in diesem Fall aus unserer <code>TimeButton</code>-Instanz:</p>
+<pre><code class="javascript language-javascript">function TimeButton() {
+  var button = document.getElementById('btn');
+  this.showTime = function() {
+    document.getElementById('time').innerHTML = new Date();
+  }
+  button.addEventListener('click', () {
+    this.showTime();
+  });
+}</code></pre>
+<p>Und schon haben wir im <strong>Event Listener</strong> Zugriff auf <code>this</code> des überliegenden Scopes!</p>
+<p>Keine <code>var self = this</code> Akrobatik mehr und auch kein <code>.bind(this)</code>. Wir können innerhalb des Event Listeners so arbeiten als befänden wir uns noch immer im <code>TimeButton</code> Scope! Das ist später insbesondere bei der Arbeit mit umfangreichen React-Komponenten mit vielen eigenen Class Properties und Methods hilfreich, da es Verwirrungen vorbeugt und nicht immer wieder einen neuen Scope erzeugt.</p>
+<h2 id="neue-methoden-bei-strings-arrays-und-objekten">Neue Methoden bei Strings, Arrays und Objekten</h2>
+<p>Mit ES2015 erhielten auch eine ganze Reihe neue statische und prototype-Methoden Einzug in JavaScript. Auch wenn die meisten davon nicht direkt relevant sind für die Arbeit mit React, erleichtern sie die Arbeit aber gelegentlich doch ungemein, weshalb ich hier ganz kurz auf die wichtigsten eingehen möchte.</p>
+<h3 id="string-methoden">String-Methoden</h3>
+<p>Hat man in der Vergangenheit auf <code>indexOf()</code> oder reguläre Ausdrücke gesetzt um zu prüfen ob ein String einen bestimmten Wert enthält, mit einem bestimmten Wert anfängt oder aufhört, bekommt der String Datentyp nun seine eigenen Methoden dafür.</p>
+<p>Dies sind:</p>
+<pre><code class="javascript language-javascript">string.includes(value);
+string.startsWith(value);
+string.endsWith(value);</code></pre>
+<p>Zurückgegeben wird jeweils ein Boolean, also <code>true</code> oder <code>false.</code> Möchte ich wissen ob mein String <code>Beispiel</code>ein <code>eis</code> enthält, prüfe ich ganz einfach auf</p>
+<pre><code class="javascript language-javascript">'Beispiel'.includes('eis')</code></pre>
+<p>Analog verhält es sich mit <code>startsWith</code>:</p>
+<pre><code class="javascript language-javascript">'Beispiel'.startsWith('Bei')</code></pre>
+<p>… wie auch mit <code>endsWith</code>:</p>
+<pre><code class="javascript language-javascript">'Beispiel'.endsWith('spiel')</code></pre>
+<p>Die Methode arbeitet dabei case-sensitive, also unterscheidet zwischen Groß- und Kleinschreibung.</p>
+<p>Zwei weitere hilfreiche Methoden die mit ES2015 Einzug in JavaScript erhalten haben sind <code>String.prototype.padStart()</code> und <code>String.prototype.padEnd()</code>. Diese Methoden könnt ihr nutzen um einen String auf eine gewisse Länge zu bringen indem ihr am Anfang (<code>.padStart()</code>) oder am Ende (<code>.padEnd()</code>) Zeichen hinzufügt bis die angegebene Länge erreicht ist. Dabei gibt der erste Parameter die gewünschte Länge an, der optionale zweite Parameter das Zeichen mit dem ihr den String bis zu dieser Stelle auffüllen wollt. Gebt ihr keinen zweiten Parameter an, wird standardmäßig ein Leerzeichen benutzt.</p>
+<p>Hilfreich ist das bspw. wenn ihr Zahlen auffüllen wollt, so dass diese immer einheitlich dreistellig sind:</p>
+<pre><code class="javascript language-javascript">  '7'.padStart(3, '0'); // 007
+ '72'.padStart(3, '0'); // 072
+'132'.padStart(3, '0'); // 132</code></pre>
+<p><code>String.prototype.padEnd()</code> funktioniert nach dem gleichen Muster, mit dem Unterschied, dass es euren String am Ende auffüllt, nicht am Anfang.</p>
+<h3 id="arrays">Arrays</h3>
+<p>Bei den Array-Methoden gibt es sowohl neue statische Methoden als auch Methoden auf dem Array-Prototype. Was bedeutet dies? Prototype-Methoden arbeiten „mit dem Array“ als solches, also mit einer bestehenden <strong>Array-Instanz</strong>, statische Methoden sind im weiteren Sinne Helper-Methoden, die gewisse Dinge tun, die „mit Arrays zu tun haben“.</p>
+<h4 id="statische-array-methoden">Statische Array-Methoden</h4>
+<p>Fangen wir mit den statischen Methoden an:</p>
+<pre><code class="javascript language-javascript">Array.of(3); // [3]
+Array.of(1, 2, 3); // [1, 2 ,3]
+Array.from('Example'); // ['E', 'x', 'a', 'm', 'p', 'l', 'e']</code></pre>
+<p><code>Array.of()</code> erstellt eine neue Array-Instanz aus einer beliebigen Anzahl an Parametern, unabhängig von deren Typen. <code>Array.from()</code> erstellt ebenfalls eine Array-Instanz, allerdings aus einem „Array-ähnlichen“ iterierbaren Objekt. Das wohl griffigste Beispiel für ein solches Objekt ist eine <code>HTMLCollection</code> oder eine <code>NodeList</code>. Solche erhält man bspw. bei der Verwendung von DOM-Methoden wie <code>getElementsByClassName()</code> oder dem moderneren <code>querySelectorAll()</code>. Diese besitzen selbst keine Methoden wie <code>.map()</code> oder <code>.filter()</code>. Möchte man über eine solche also iterieren, muss man sie erst einmal in einen Array konvertieren. Dies geht mit ES2015 nun ganz einfach durch die Verwendung von <code>Array.from()</code>.</p>
+<pre><code class="javascript language-javascript">const links = Array.from(document.querySelectorAll('a'));
+Array.isArray(links); // true</code></pre>
+<h4 id="methoden-auf-dem-array-prototypen">Methoden auf dem Array-Prototypen</h4>
+<p>Die Methoden auf dem Array-Prototypen können <strong>direkt auf eine Array-Instanz</strong> angewendet werden. Die gängigsten während der Arbeit mit React und insbesondere später mit Redux sind:</p>
+<pre><code class="javascript language-javascript">Array.find(function);
+Array.findIndex(function);
+Array.includes(value);</code></pre>
+<p>Die <code>Array.find()</code>-Methode dient, wie der Name es erahnen lässt dazu, das <strong>erste</strong> element eines Arrays zu finden, das bestimmte Kriterien erfüllt, die mittels der als ersten Parameter übergebenen Funktion geprüft werden.</p>
+<pre><code class="javascript language-javascript">const numbers = [1,2,5,9,13,24,27,39,50];
+const biggerThan10 = numbers.find((number) =&gt; number &gt; 10); // 13
+
+const users = [
+  {id: 1, name: 'Manuel'}, 
+  {id: 2, name: 'Bianca'}, 
+  {id: 3, name: 'Steve'}
+];
+const userWithId2 = users.find((user) =&gt; user.id === 2); // { id: 2, name: 'Bianca'}</code></pre>
+<p>Die <code>Array.findIndex()</code>-Methode folgt der gleichen Signatur, liefert aber anders als die <code>Array.find()</code>-Methode nicht das gefundene Element selbst zurück, sondern nur dessen Index im Array. In den obigen Beispielen wären dies also <code>3</code> sowie <code>1</code>.</p>
+<p>Die in ES2016 neu dazu gekommene Methode <code>Array.includes()</code> prüft ob ein Wert innerhalb eines Array existiert und gibt uns <strong>endlich</strong> einen Boolean zurück. Wer selbiges in der Vergangenheit mal mit <code>Array.indexOf()</code> realisiert hat wird sich erinnern wie umständlich es war. Nun also ein simples <code>Array.includes()</code>:</p>
+<pre><code class="javascript language-javascript">[1,2,3,4,5].includes(4); // true
+[1,2,3,4,5].includes(6); // false</code></pre>
+<p>Aufgepasst: die Methode ist case-sensitive. <code>['a', 'b'].includes('A')</code> gibt also <code>false</code> zurück.</p>
+<h3 id="objekte">Objekte</h3>
+<h4 id="statische-objekt-methoden">Statische Objekt-Methoden</h4>
+<p>Natürlich haben auch Objekte eine Reihe neuer Methoden und anderer schöner Möglichkeiten spendiert bekommen. Die wichtigsten im Überblick:</p>
+<pre><code class="javascript language-javascript">Object.assign(target, source[, source[,...]]);
+Object.entries(Object)
+Object.keys(Object)
+Object.values(Object)
+Object.freeze(Object)</code></pre>
+<p>Wieder der Reihe nach. Die wohl nützlichste ist aus meiner Sicht <code>Object.assign()</code>. Damit ist es möglich die Eigenschaften eines Objekts oder auch mehrerer Objekte zu einem bestehenden Objekt hinzuzufügen (sozusagen ein Merge). Die Methode gibt dabei das Ergebnis als Objekt zurück. Allerdings findet dabei auch eine Mutation des <strong>Ziel-Objekts</strong> statt, weswegen die Methode mit Bedacht benutzt werden sollte. Beispiele sagen mehr also Worte, bitteschön:</p>
+<pre><code class="javascript language-javascript">const user = { id: 1, name: 'Manuel' };
+const modifiedUser = Object.assign(user, { role: 'Admin' });
+console.log(user); 
+// -&gt; { id: 1, name: 'Manuel', role: 'Admin' }
+console.log(modifiedUser); 
+// -&gt; { id: 1, name: 'Manuel', role: 'Admin' }
+console.log(user === modifiedUser); 
+// -&gt; true</code></pre>
+<p>Hier fügen wir also die Eigenschaft <code>role</code> aus dem Objekt im zweiten Parameter der <code>Object.assign()</code>-Methode zum bestehenden <strong>Ziel-Objekt</strong> hinzu.</p>
+<p>Da React dem Prinzip von <strong>Pure Functions</strong> folgt, das sind Funktionen die in sich geschlossen sind und ihre Eingabeparameter nicht modifizieren, sollten deartige Mutationen möglichst vermieden werden. Dies können wir umgehen indem wir als ersten Parameter einfach ein Object-Literal übergeben:</p>
+<pre><code class="javascript language-javascript">const user = { id: 1, name: 'Manuel' };
+const modifiedUser = Object.assign({}, user, { role: 'Admin' });
+console.log(user); 
+// -&gt; { id: 1, name: 'Manuel' }
+console.log(modifiedUser); 
+// -&gt; { id: 1, name: 'Manuel', role: 'Admin' }
+console.log(user === modifiedUser); 
+// -&gt; false</code></pre>
+<p>Durch die Verwendung eines neu erstellten Objekts als Ziel-Objekt bekommen wir hier eben auch als Rückgabewert ein anderes Objekt als im ersten Beispiel. In einigen Fällen kann es gewünscht sein das <strong>Ziel-Objekt</strong> zu mutieren statt ein neues Objekt zu erstellen, während der Arbeit mit React ist dies jedoch in den deutlich überwiegenden Fällen nicht so.</p>
+<p>Die Methode verarbeitet dabei auch beliebig viele Objekte als Parameter. Gibt es gleichnamige Eigenschaften in einem Objekt, haben spätere Eigenschaften Vorrang:</p>
+<pre><code class="javascript language-javascript">const user = { id: 1, name: 'Manuel' };
+const modifiedUser = Object.assign(
+  {},
+  user,
+  { role: 'Admin' },
+  { name: 'Nicht Manuel', job: 'Developer' }
+);
+console.log(modifiedUser); 
+// -&gt; { id: 1, name: 'Nicht Manuel', role: 'Admin', job: 'Developer' }</code></pre>
+<p>Die drei statischen Objekt-Methoden <code>Object.entries()</code>, <code>Object.keys()</code> und <code>Object.values()</code> funktionieren im Grunde sehr ähnlich, sie liefern zu einem übergebenen Objekt die Eigenschaften (<code>keys</code>), die Werte (<code>values</code>) oder die Einträge (<code>entries</code>) ala <strong>Array</strong> zurück, wobei die <strong>Entries</strong> ein verschachteltes Array sind in der Form <code>[[key, value], [key2, values2], …]</code>.</p>
+<p>Angewendet auf unser obiges Beispiel hat dies also folgende Return-Values zum Ergebnis:</p>
+<pre><code class="javascript language-javascript">Object.keys({ id: 1, name: 'Manuel'}); 
+// -&gt; ['id', 'name']
+Object.values({ id: 1, name: 'Manuel'}); 
+// -&gt; [1, 'Manuel']
+Object.entries({id: 1, name: 'Manuel'}); 
+// -&gt; [['id', 1], ['name', 'Manuel']]</code></pre>
+<p>Zuletzt schauen wir uns <code>Object.freeze()</code> an. Auch diese Methode ist ziemlich selbsterklärend und tut genau was der Name vermuten lässt: sie friert ein Objekt ein, untersagt es dem Entwickler also neue Eigenschaften hinzuzfügen oder alte Eigenschaften zu löschen oder auch nur zu verändern. Auch dies ist im Umgang mit den Objekten, die in React in den meisten Fällen unveränderlich sind (oder zumindest sein sollten) unglaublich praktisch.</p>
+<pre><code class="javascript language-javascript">const user = Object.freeze({ id: 1, name: 'Manuel' });
+user.id = 2;
+delete user.name;
+user.role = 'Admin';
+console.log(user);
+// -&gt; { id: 1, name: 'Manuel' }</code></pre>
+<p>Ein mittels <code>Object.freeze()</code> erstelltes Objekt bietet auch guten Schutz vor versehentlicher mutation mittels der oben beschriebenen, ebenfalls neuen <code>Object.assign()</code>-Methode. Wird versucht ein mittels <code>Object.freeze()</code> erstelltes Objekt per <code>Object.assign()</code> zu modifizieren, führt dies unweigerlich zu seinem <code>TypeError</code>.</p>
+<h4 id="syntax-erweiterungen-und-vereinfachungen">Syntax-Erweiterungen und Vereinfachungen</h4>
+<p>Die letzte Änderungen an der funktionsweise von Objekten sind keine Methode sondern Syntax-Erweiterungen.</p>
+<p>Die erste sind die <strong>Computed Properties</strong> (also etwa <em>berechnete Eigenschaften</em>). Dahinter verbirbt sich die Möglichkeit Ausdrücke (bzw. deren Werte) als Objekt-Eigenschaften zu verwenden. Wollte man bspw. früher eine Eigenschaft in einem Objekt setzen, lief das meist so, dass man das Objekt erstellte (bspw. als <strong>Object-Literal</strong> <code>{}</code> oder per <code>Object.create()</code>), dieses einer Variablen zuwies und anschließend die neue Eigenschaft zum Objekt hinzufügte:</p>
+<pre><code class="javascript language-javascript">const nationality = 'german';
+const user = {
+  name: 'Manuel',
+};
+user[nationality] = true;
+console.log(user);
+// -&gt; { name: 'Manuel', german: true };</code></pre>
+<p><strong>ES2015</strong> erlaubt uns nun, Ausdrücke direkt als Objekt-Eigenschaft zu nutzen, indem wir sie in eckige Klammern <code>[]</code> setzen. Dadurch sparen wir uns den Umweg nachträglich noch Eigenschaften zum Bereits erstellten Objekt hinzuzufügen:</p>
+<pre><code class="javascript language-javascript">const nationality = 'german';
+const user = {
+  name: 'Manuel',
+};
+console.log(user);
+// -&gt; { name: 'Manuel', german: true };</code></pre>
+<p>Das Beispiel ist aus Gründen der einfacheren Verständlichkeit ein simples, doch die Verwendungsmöglichkeiten werden später mitunter noch deutlich komplexer und schaffen uns viele Möglichkeiten um sauberen und gut verständlichen Code zu schreiben, insbesondere wenn es um <strong>JSX</strong> geht.</p>
+<p>Die letzte nennenswerte Neuerung bei Objekten sind die sogenannten <strong>Shorthand Property Names</strong>. Diese ersparen uns eine Menge unnötige Schreibarbeit. Nicht erst seit React kennt man es, dass man auf Code wie den folgenden stößt:</p>
+<pre><code class="javascript language-javascript">const name = 'Manuel';
+const job = 'Developer';
+const role = 'Author';
+
+const user = {
+  name: name,
+  job: job,
+  role: role,
+};</code></pre>
+<p>Ziemlich viele unnötige Dopplungen wenn man sich das mal genau anschaut, oder? Genau diese nimmt uns die <strong>Shorthand Property Name Syntax</strong> in <strong>ES2015</strong> endlich ab. Und so reicht es nur noch die Variable zu schreiben wenn diese den Namen der entsprechenden Objekt-Eigenschaft trägt. Im obigen Fall also:</p>
+<pre><code class="javascript language-javascript">const name = 'Manuel';
+const job = 'Developer';
+const role = 'Author';
+
+const user = {
+  name, job, role
+};</code></pre>
+<p>Jep. Seit <strong>ES2015</strong> führen beide Schreibweisen tatsächlich zum identischen Objekt! Dabei kann die Shorthand Syntax auch problemlos mit der herkömmlichen Syntax kombiniert werden:</p>
+<pre><code class="javascript language-javascript">const name = 'Manuel';
+const job = 'Developer';
+
+const user = {
+  name,
+  job,
+  role: 'Author'
+};</code></pre>
+<h2 id="classes">Classes</h2>
+<p>Mit <strong>ES2015</strong> fanden auch <strong>Klassen</strong> Einzug in JavaScript. <strong>Klassen</strong> kennt man eher aus objektorientierten Sprachen wie Java, in JavaScript gab es sie so explizit bisher allerdings noch nicht. Zwar war es auch schon vorher möglich durch die Verwendung von Funktionsinstanzen objektorientiert zu arbeiten und durch die <code>prototype</code>-Eigenschaft einer Funktion eigene Methoden und Eigenschaften zu definieren, dies war verglichen mit echten objektorientierten Sprachen jedoch sehr mühsam und schreiblastig.</p>
+<p>Dies ändert sich mit <strong>ES2015</strong>, wo es nun erstmals auch Klassen gibt, die mittels <code>class</code> Keyword definiert werden. Das ist für uns insofern interessant, da React, obwohl es viele Prinzipien der funktionalen Programmierung (<strong>Functional Programming</strong>) verfolgt, gleichzeitig auch in einem wesentlichen Punkt auf ES2015 Klassen setzt, nämlich bei der Erstellung von Komponenten, in diesem Fall speziell von <strong>Class Components</strong>. Auch vor der Einführung von ES2015 Klassen war es natürlich möglich Komponenten in React zu definieren, dazu gab es eine eigene <code>createClass()</code>-Methode. Diese ist aber mittlerweile nicht mehr Teil des React Cores und sollte möglichst auch nicht mehr verwendet werden.</p>
+<p>Eine Klasse besteht aus einem Namen, kann (optional) einen <strong>Constructor</strong> haben der bei der Erstellung einer Klassen-Instanz aufgerufen wird und beliebig viele Klassen-Methoden besitzen.</p>
+<pre><code class="javascript language-javascript">class Customer {
+  constructor(firstName, lastName) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+  }
+
+  getFullName() {
+    return this.firstName + ' ' + this.lastName;
+  }
+}
+
+const firstCustomer = new Customer('Max', 'Mustermann');
+console.log(firstCustomer.getFullName());</code></pre>
+<p><strong>Ausgabe:</strong></p>
+<div class="hint hint--info">
+<p>Max Mustermann</p>
+</div>
+<p>Auch das Erweitern bestehender Klassen mittels <code>extends</code> ist dabei möglich:</p>
+<pre><code class="javascript language-javascript">class Customer extends Person {}</code></pre>
+<p>Oder eben:</p>
+<pre><code class="javascript language-javascript">class MyComponent extends React.Component {}</code></pre>
+<p>Auch eine <code>super()</code>-Funktion kennt die neu eingeführte <strong>ES2015</strong>-Klasse, um damit den <strong>Constructor</strong> ihrer Elternklasse aufzurufen. Im Falle von React ist dies immer notwendig wenn ich in meiner eigenen Klasse eine <code>constructor</code>-Methode definiere. Diese muss dann dann <code>super()</code> aufrufen und ihre <code>props</code> an den Constructor der <code>React.Component</code> Klasse weiterzugeben:</p>
+<pre><code class="javascript language-javascript">class MyComponent extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+}</code></pre>
+<p>Tätet ihr das nicht, wäre <code>this.props</code> innerhalb eurer Komponente <code>undefined</code> und ihr könntet nicht auf die Props eurer Komponente zugreifen. Grundsätzlich sollte die Verwendung eines Constructors aber in den allermeisten Fällen nicht nötig sein, denn React stellt eigene sog. <strong>Lifecycle-Methoden</strong> bereit, die der Verwendung des Constructors vorzuziehen sind.</p>
+<h2 id="rest-und-spread-operators-und-destrukturierung">Rest und Spread Operators und Destrukturierung</h2>
+<p>Eine weitere deutliche Vereinfachung ist die Einführung der der sog. Rest und Spread Operators für Objekte und Arrays. Streng genommen handelt es sich dabei bei der Verwendung in Kombination mit Objekten noch gar nicht um ES2015 Features, da diese sich noch in der Diskussion befinden und noch gar nicht endgültig in die ECMAScript Spezifikation aufgenommen wurden. Dies ändert sich erst mit ES2018. Eingeführt wurden Rest und Spread in ES2015 erstmals für Arrays. Durch die Verwendung von Babel ist die Nutzung auch mit Objekten aber heute bereits möglich und für gewöhnlich wird davon in React basierten Projekten auch rege Gebrauch gemacht.</p>
+<p>Aber was ist das jetzt überhaupt? Fangen wir mit dem Spread Operator an.</p>
+<h3 id="spread-operator">Spread Operator</h3>
+<p>Der Spread Operator sorgt dafür Werte sozusagen „auszupacken“. Wollte man in ES5 mehrere Argumente aus einem Array an eine Funktion übergeben, geschah das bisher meist über <code>Function.prototype.apply()</code>:</p>
+<pre><code class="javascript language-javascript">function sumAll(number1, number2, number3) {
+  return number1, number2, number3
+}
+var myArray = [1, 2, 3];
+sumAll.apply(null, myArray);</code></pre>
+<p><strong>Ausgabe:</strong></p>
+<div class="hint hint--info">
+<p>6</p>
+</div>
+<p>Mit dem Spread Operator, der aus drei Punkten (…) besteht, kann ich diese Argumente nun auspacken oder eben „spreaden“:</p>
+<pre><code class="javascript language-javascript">function sumAll(number1, number2, number3) {
+  return number1, number2, number3
+}
+var myArray = [1, 2, 3];
+sumAll(...myArray);</code></pre>
+<p><strong>Ausgabe:</strong></p>
+<div class="hint hint--info">
+<p>6</p>
+</div>
+<p>Ich muss also nicht mehr den Umweg über <code>apply()</code> gehen. Aber nicht nur bei Funktionsargumenten ist das hilfreich. Ich kann ihn auch nutzen um bspw. auf einfache Art und Weise zwei Arrays zu einem einzigen zu kombinieren:</p>
+<pre><code class="javascript language-javascript">const greenFruits = ['kiwi', 'apple', 'pear'];
+const redFruits = ['strawberry', 'cherry', 'raspberry'];
+const allFruits = [...greenFruits, ...redFruits];</code></pre>
+<p><strong>Ergebnis:</strong></p>
+<div class="hint hint--info">
+<p><code>['kiwi', 'apple', 'pear', 'strawberry', 'cherry', 'raspberry']</code></p>
+</div>
+<p>Dabei wird ein neues Array erstellt, welches alle Werte sowohl aus dem <code>greenFruits</code> als auch aus dem <code>redFruits</code> Array enthält. Doch nicht nur das: dabei wird auch ein gänzlich neues Array erstellt und nicht bloß eine Referenz der beiden alten. Dies wird im weiteren Verlauf wenn wir an die <strong>readonly</strong>-Anforderung unserer Props noch sehr nützlich sein. Und so kann man den Spread Operator auch verwenden um eine einfache Kopie eines Arrays zu erstellen:</p>
+<pre><code class="javascript language-javascript">const users = ['Manuel', 'Chris', 'Ben'];
+const selectedUsers = [...users];</code></pre>
+<p><code>selectedUsers</code> ist in diesem Fall eine Kopie unseres <code>users</code> Arrays mit all seinen Werten. Verändern wir nun das Users Array, hat dies auf unser <code>selectedUsers</code> Array keinerlei Auswirkungen.</p>
+<p>Bei Objekten verhält sich der Spread Operator sehr ähnlich. Hier werden statt der einzelnen Werte alle Eigenschaften eines Objekts die „enumerable“ (aufzählbar) sind, also ganz grob gesagt bei der Verwendung in einer <code>for(… in …)</code> Schleife angezeigt werden würden.</p>
+<p>Hier eignet sich der Spread Operator hervorragend um neue Objekte zu erstellen:</p>
+<pre><code class="javascript language-javascript">const globalSettings = { language: 'en-US', timezone: 'Berlin/Germany' };
+const userSettings = { mutedUsers: ['Manuel'] };
+const allSettings = {...globalSettings, ...userSettings};
+console.log(allSettings);</code></pre>
+<p><strong>Ausgabe:</strong></p>
+<pre><code class="javascript language-javascript">{
+  language: 'en-US',
+  timezone: 'Berlin/Germany',
+  mutedUsers: ['Manuel'],
+}</code></pre>
+<p>Die Eigenschaften beider Objekte finden sich dabei im neu erstellten, kombinierten <code>allSettings</code> Objekt wieder. Dabei ist der <strong>Spread Operator</strong> hier nicht auf zwei Objekte beschränkt sondern kann beliebige weitere Objekte zu einem einzelnen neuen Objekt kombinieren. Auch die Kombination mit einzelnen Eigenschaften ist möglich:</p>
+<pre><code class="javascript language-javascript">const settings = {
+  ...userSettings,
+  showWarnings: true,
+}</code></pre>
+<p>Befinden sich in beiden Objekten Eigenschaften mit dem gleichen Namen, hat das letztgenannte Objekt Vorrang:</p>
+<pre><code class="javascript language-javascript">const globalSettings = { language: 'en-US', timezone: 'Berlin/Germany' };
+const userSettings = { language: 'de-DE' };
+const allSettings = {...globalSettings, ...userSettings};
+console.log(allSettings);</code></pre>
+<p><strong>Ausgabe:</strong></p>
+<pre><code class="text language-text">{
+  language: 'de-DE',
+  timezone: 'Berlin/Germany',
+}</code></pre>
+<p>Das zuletzt genannte <code>userSettings</code> Objekt überschreibt hier die gleichnamige Eigenschaft <code>language</code>, die sich auch im <code>globalSettings</code> Objekt befindet. Der Spread Operator funktioniert hier ganz ähnlich wie die in ES2015 neu eingeführte Objekt-Methode <code>Object.assign()</code>. Auch diese wird in ES2015+ basierten Anwendungen gelegentlich genutzt.</p>
+<p>Allerdings gibt es hier den nennenswerten Unterschied, dass sie ein bestehendes Objekt mutiert und nicht per se ein neues Objekt generiert, wie das die Object Spread Variante tut. Und Mutation ist bezogen auf React-Komponenten und ihre Props eben das, was wir ja nicht wollen. Dennoch der Vollständigkeit halber ein kurzes Beispiel.</p>
+<h4 id="objekte-kombinieren-mittels-objectassign">Objekte kombinieren mittels Object.assign()</h4>
+<p><code>Object.assign()</code> nimmt beliebig viele Objekte entgegen und kombiniert diese zu einem einzigen Objekt:</p>
+<pre><code class="javascript language-javascript">const a = { a: 1 };
+const b = { b: 2 };
+const c = { c: 3 };
+console.log(Object.assign(a, b, c));</code></pre>
+<p><strong>Ausgabe:</strong></p>
+<pre><code class="javascript language-javascript">{a: 1, b: 2, c: 3}</code></pre>
+<p>Die Funktion gibt uns also ein neues Objekt zurück, in dem alle 3 übergebenen Objekte zu einem einzigen kombiniert wurden. Aber ist das wirklich ein neues Objekt? <strong>Nein!</strong> Lassen wir uns doch anschließend mal <code>a</code>, <code>b</code> und <code>c</code> in der Console ausgeben:</p>
+<pre><code class="javascript language-javascript">console.log(a);
+console.log(b);
+console.log(c);</code></pre>
+<p><strong>Ausgabe:</strong></p>
+<pre><code class="javascript language-javascript">{a: 1, b: 2, c: 3}
+{b: 2}
+{c: 3}</code></pre>
+<p>Wir stellen also fest: <code>Object.assign()</code> hat uns nicht wirklich ein komplett neues Objekt aus den 3 übergebenen Objekten erstellt sondern lediglich die Eigenschaften des zweiten und dritten Objekts zum ersten übergebenen Objekt hinzugefügt. Und das ist, im Bezug auf <strong>Pure Functions</strong> und <strong>Immutable Objects</strong>, äußerst schlecht und in jedem Fall zu vermeiden!</p>
+<p>Hier gibt es aber einen einfachen Trick um Objekte mittels <code>Object.assign()</code> zu kombinieren und dabei gleichzeitig ein neues Objekt zu erstellen. Dazu übergebt ihr der Funktion als erstes Argument ein leeres Object-Literal <code>{}</code>:</p>
+<pre><code class="text language-text">Object.assign({}, a, b, c);</code></pre>
+<p>… und schon werden dem neu erstellten <code>{}</code> Objekt die Eigenschaften unserer Objekte <code>a</code>, <code>b</code> und <code>c</code> übertragen, die bestehenden Objekte <code>a</code>, <code>b</code> und <code>c</code> bleiben dabei unangetastet!</p>
+<h3 id="destructuring-assignment--destrukturierende-zuweisung">Destructuring Assignment / destrukturierende Zuweisung</h3>
+<p>Bevor ich zum <strong>Rest Operator</strong> komme, der logisch sehr eng mit dem <strong>Spread Operator</strong> in Verbindung steht und meist mit diesem in einem Atemzug genannt wird, möchte ich auf das <strong>Destructuring Assignment</strong> (kurz: <strong>Destructuring</strong>) oder eben die <strong>destrukturierende Zuweisung</strong> (kurz: <strong>Destrukturierung</strong>), wie der schöne Begriff auf Deutsch heißt, eingehen. Ich werde hier wie so oft beim englischen Begriff bleiben, da ich den deutschen Begriff selbst in deutschsprachigen Texten selten bisher gelesen habe.</p>
+<p>Mittels <strong>Destructuring</strong> ist es möglich einzelne Elemente aus Objekten oder Arrays zu extrahieren und Variablen zuzuweisen. Eine weitere <strong>deutliche</strong> Syntax-Erweiterung die uns ES2015 hier beschert hat.</p>
+<h4 id="destructuring-von-arrays">Destructuring von Arrays</h4>
+<p>Stellen wir uns vor wir möchten aus einem geordneten Array mit den Olympia-Teilnehmern im 100m Lauf jeweils den Gewinner der Gold-, Silber- und Bronzemedaille in eine eigene Variable schreiben. Auf herkömmlichen (also ES5) Weg funktionierte das bisher folgendermaßen:</p>
+<pre><code class="javascript language-javascript">const athletes = [
+  'Usain Bolt',
+  'Andre De Grasse ',
+  'Christophe Lemaitre ',
+  'Adam Gemili',
+  'Churandy Martina',
+  'LaShawn Merritt',
+  'Alonso Edward',
+  'Ramil Guliyev',
+];
+
+const gold = athletes[0];
+const silver = athletes[1];
+const bronze = athletes[2];</code></pre>
+<p>Dank <strong>Destructuring</strong> können wir dies auf ein einzelnes Statement verkürzen:</p>
+<pre><code class="javascript language-javascript">const [gold, silver, bronze] = athletes;</code></pre>
+<p>Die Werte der Array-Elemente <code>0</code>, <code>1</code> und <code>2</code> befinden sich dann der Reihe nach in den Variablen <code>gold</code>, <code>silver</code> und <code>bronze</code>, wie auch im ersten Beispiel, jedoch mit deutlich weniger Schreibarbeit!</p>
+<p>Dies funktioniert überall wo wir mit einem Array auf der rechten Seite (also hinter dem <code>=</code> Zeichen) einer Zuweisung arbeiten, also auch wenn wir diesen als <code>return</code>-Wert aus einer Funktion erhalten:</p>
+<pre><code class="javascript language-javascript">const getAllAthletes = () =&gt; {
+  return [
+    'Usain Bolt',
+    'Andre De Grasse ',
+    'Christophe Lemaitre ',
+    'Adam Gemili',
+    'Churandy Martina',
+    'LaShawn Merritt',
+    'Alonso Edward',
+    'Ramil Guliyev',
+  ] 
+}
+
+const [gold, silver, bronze] = getAllAthletes();</code></pre>
+<p>Die Arrow Function hier gibt uns ein Array mit allen Athleten zurück, dementsprechend können wir hier direkt beim Aufruf bereits das Destructuring nutzen und müssen den <code>return</code>-Wert bspw. nicht erst eigens in einer temporären Variable speichern.</p>
+<p>Möchten wir auf diese Weise einzelne Elemente des Arrays auslassen, ist das buchstäblich durch Auslassen des entsprechenden Wertes möglich:</p>
+<pre><code class="javascript language-javascript">const [, silber, bronze] = athletes;</code></pre>
+<p>Hier würden wir auf das Deklarieren einer <code>gold</code> Variable verzichten und nur die Gewinner der Silber- und Bronze-Medaille in entsprechenden Variablen speichern.</p>
+<p>Doch nicht nur bei der offensichtlichen Variablenzuweisung mittels <code>let</code> oder <code>const</code> kann <strong>Array Destructuring</strong> verwendet werden. Auch bei weniger offensichtlichen Zuweisungen, wie bei der Übergabe von Funktionsargumenten in Form eines Arrays.</p>
+<pre><code class="javascript language-javascript">const logWinners = (athletes) =&gt; {
+  const gold = athletes[0];
+  const silver = athletes[1];
+  const bronze = athletes[2];
+  console.log(
+    'Winners of Gold, Silver and Bronze are', 
+    gold, 
+    silver, 
+    bronze
+  );
+}</code></pre>
+<p>Das geht einfacher:</p>
+<pre><code class="javascript language-javascript">const logWinners = ([gold, silver, bronze]) =&gt; {
+  console.log(
+    'Winners of Gold, Silver and Bronze are', 
+    gold, 
+    silver, 
+    bronze
+  );
+}</code></pre>
+<p>Hier reichen wir das Array in unsere <code>logWinners()</code> Funktion herein und statt für jeden Medaillengewinner eine Variable pro Zeile zu deklarieren, nutzen wir auch in diesem Fall ganz einfach wieder die Destructuring Methode von oben.</p>
+<h4 id="destructuring-von-objekten">Destructuring von Objekten</h4>
+<p>Das Prinzip des <strong>Destructurings</strong> ist nicht allein auf Arrays beschränkt. Auch Objekte können auf diese Art Variablen zugeordnet werden, die standardmäßig mit dem Namen einer Eigenschaft übereinstimmen.</p>
+<p>Die Schreibweise ist dabei ähnlich zu der bei Arrays, mit dem Unterschied das wir die Werte nicht anhand ihrer Position im Objekt zuweisen sondern anhand ihres Eigenschafts-Namens. Außerdem setzen wir die Zuweisung in die für Objekte typischen geschweiften Klammern, statt in eckige Klammern.</p>
+<pre><code class="javascript language-javascript">const user = {
+  firstName: 'Manuel',
+  lastName: 'Bieh',
+  job: 'JavaScript Developer',
+  image: 'manuel.jpg',
+};
+const { firstName } = user;</code></pre>
+<p>Die Variable <code>firstName</code> enthält nun den Wert aus <code>user.firstName</code>!</p>
+<p>Das Object Destructuring ist eins der wohl meist verwendeten Features, das man in den meisten React-Komponenten findet. Es erlaubt uns einzelne Props in Variablen zu schreiben und an entsprechenden Stellen im JSX auf unkomplizierte Weise zu verwenden.</p>
+<p>Nehmen wir an dieser Stelle einmal die folgende Stateless Functional Component als Beispiel:</p>
+<pre><code class="javascript language-javascript">const UserPersona = (props) =&gt; {
+  return (
+    &lt;div&gt;
+      &lt;img src={props.image} alt="User Image" /&gt;
+      {props.firstName} {props.lastName}&lt;br /&gt;
+      &lt;strong&gt;{props.job}
+    &lt;/div&gt;
+  );
+};</code></pre>
+<p>Die ständige Wiederholung von <code>props</code> vor jeder Eigenschaft erschwert die Lesbarkeit der Komponente unnötig. Hier können wir uns Object Destructuring zu Nutze machen um einmalig eine Variable für jede Eigenschaft unserer <code>props</code> zu deklarieren.</p>
+<pre><code class="javascript language-javascript">const UserPersona = (props) =&gt; {
+  const { firstName, lastName, image, job } = props;
+  return (
+    &lt;div&gt;
+      &lt;img src={image} alt="User Image" /&gt;
+      {firstName} {lastName}&lt;br /&gt;
+      &lt;strong&gt;{job}
+    &lt;/div&gt;
+  );
+};</code></pre>
+<p>Damit wirkt unsere Komponente schon deutlich aufgeräumter uns lesbarer. Doch es geht noch einfacher. Wie auch bei Arrays ist es auch möglich Objekte direkt bei der Übergabe als Funktionsargument zu destrukturieren. Statt des <code>props</code> Arguments nutzen wir dafür das <strong>Destructuring Assignment</strong> direkt:</p>
+<pre><code class="javascript language-javascript">const UserPersona = ({ firstName, lastName, image, job }) =&gt; (
+  &lt;div&gt;
+    &lt;img src={image} alt="User Image" /&gt;
+    {firstName} {lastName}&lt;br /&gt;
+    &lt;strong&gt;{job}
+  &lt;/div&gt;
+);</code></pre>
+<p>Als Bonus nutzen wir hier sogar die direkte Rückgabe aus der Funktion ohne geschweifte Klammern und explizites <code>return</code> Statement aus dem Kapitel über Arrow Functions, da wir ja nun mit unserem auf 5 Zeilen reduzierten <strong>JSX</strong> einen Ausdruck haben, den wir direkt aus der <strong>Arrow Function</strong> zurückgeben können.</p>
+<p>Während der Arbeit mit React trifft man ständig auf derartige Syntax in <strong>SFCs</strong>, auch bei <strong>Class Components</strong> findet man sehr häufig zu Beginn der <code>render()</code>-Methode einer Komponente ein ähnliches Destructuring Assignment in der Form:</p>
+<pre><code class="javascript language-javascript">render() {
+  const { firstName, lastName, image, job } = this.props;
+  // weiterer Code
+}</code></pre>
+<p>Auch wenn das euch natürlich hinterher freigestellt ist ob ihr das so macht oder innerhalb der Funktion einfach weiterhin direkt auf <code>this.props.firstName</code> zugreift. Dieses Muster hat sich aber mittlerweile zu einer Art Best Practice entwickelt und wurde in den meisten Projekten so gehandhabt, da es den Code am Ende in den meisten Fällen lesbarer werden lässt und auch leichter verständlich ist.</p>
+<p><strong>Umbenennung von Eigenschaften beim Destructuring</strong></p>
+<p>Manchmal ist es notwendig Eigenschaften umzubenennen, entweder weil es bereits Variablen mit dem selben Namen gibt oder die Eigenschaften kein gültiger Variablenname wäre. All das ist denkbar und möglich. Und ES2015 bietet uns auch eine Lösung dafür.</p>
+<pre><code class="javascript language-javascript">const passenger = {
+  name: 'Manuel Bieh',
+  class: 'economy',
+}</code></pre>
+<p>Das obige <code>passenger</code> Objekt enthält die Eigenschaft class, die als Name für eine Eigenschaft gültig ist, als Name für eine Variable jedoch nicht. Ein direktes Destructuring wäre hier also nicht möglich und würde zu einem Fehler führen:</p>
+<pre><code class="javascript language-javascript">const { name, class } = passenger;</code></pre>
+<div class="hint hint--danger">
+<p>Uncaught SyntaxError: Unexpected token }</p>
+</div>
+<p>Um hier den Namen der Variable umzubenennen muss der Eigenschaft der neue Namen getrennt durch einen Doppelpunkt <code>:</code> übergeben werden. Ein korrektes <strong>Destructuring Assignment</strong> wäre also in diesem Fall in etwa folgendes:</p>
+<pre><code class="javascript language-javascript">const { name, class: ticketClass } = passenger;</code></pre>
+<p>Hier schreiben wir den Wert der <code>class</code> Eigenschaft in eine Variable <code>ticketClass</code>, was anders als <code>class</code> ein gültiger Name für eine Variable ist. Der Name des Passagiers landet dabei ganz gewöhnlich in einer Variable mit dem Namen <code>name</code>.</p>
+<p><strong>Standardwerte beim Destructuring vergeben</strong></p>
+<p>Auch die Vergabe von Standardwerten beim <strong>Destructuring</strong> ist möglich! Ist im Objekt welches destrukturiert wird eine Eigenschaft nicht definiert, wird stattdessen der Default verwendet. Ähnlich wie bei der Umbenennung wird dabei die jeweilige Eigenschaft wie gehabt vorangestellt, jedoch gefolgt von einem Gleich-Zeichen und dem entsprechenden Standardwert:</p>
+<pre><code class="javascript language-javascript">const { name = 'Unknown passenger' } = passenger;</code></pre>
+<p>Der Wert von <code>name</code> wäre nun <code>Unknown passenger</code> wenn im <code>passenger</code> Objekt keine Eigenschaft <code>name</code> existiert oder deren Wert <code>undefined</code> ist. Existiert diese hingegen, ist aber leer (also bspw. ein leerer String oder <code>null</code>) wird der Standardwert <strong>nicht</strong> an dessen Stelle verwendet!</p>
+<p><strong>Kombination von Umbenennung und Standardwerten</strong></p>
+<p>Jetzt wird es verrückt, denn auch das ist möglich. Die Umbenennung von Eigenschaften in Variablennamen bei gleichzeitiger Verwendung von Standardwerten. Die Syntax dafür ist allerdings etwas, wo man bei der ersten Begegnung sicherlich einen Moment länger hinschauen muss. Wir bleiben wieder bei unserem <code>passenger</code> Objekt aus den Beispielen zuvor. Anforderung ist nun die Zuweisung der <code>name</code> Eigenschaft zu einer Variable mit dem Namen <code>passengerName</code>, die den Wert <code>Unknown Passenger</code> tragen soll, wenn kein Name vorhanden ist. Außerdem möchten wir weiterhin <code>class</code> in <code>ticketClass</code> umbenennen und den Passagier gleichzeitig in <code>Economy</code> einordnen, sollte es im entsprechenden Objekt keine <code>class</code> Eigenschaft geben.</p>
+<pre><code class="javascript language-javascript">const {
+  name: passengerName = 'Unknown passenger',
+  class: ticketClass = 'economy',
+} = passenger;</code></pre>
+<p>Hier besitzen die Variablen <code>passengerName</code> und <code>ticketClass</code> die werte <code>Unknown passenger</code> und <code>economy</code> wenn diese nicht im destrukturierten Objekt existieren. Doch Vorsicht: das Objekt selbst darf nicht null sein, andernfalls bekommen wir vom JavaScript Interpreter einen unschönen Fehler geworfen:</p>
+<pre><code class="javascript language-javascript">const {
+  name: passengerName = 'Unknown passenger',
+  class: ticketClass = 'economy',
+} = null;</code></pre>
+<div class="hint hint--danger">
+<p>Uncaught TypeError: Cannot destructure property `name` of 'undefined' or 'null'.</p>
+</div>
+<p>Hier gibt es einen unsauberen aber doch oft praktischen Trick um sicherzustellen, dass das Objekt selbst nicht <code>null</code> oder <code>undefined</code> ist. Dazu machen wir uns den <strong>Logical OR Operator</strong> zu nutze und verwenden ein leeres Objekt als Fallback, falls unser eigentliches Objekt eben <code>null</code> oder <code>undefined</code> ist:</p>
+<pre><code class="javascript language-javascript">const {
+  name: passengerName = 'Unknown passenger',
+  class: ticketClass = 'economy',
+} = passenger || {};</code></pre>
+<p>Mit dem angehängten <code>|| {}</code> sagen wir: ist das <code>passenger</code> Objekt <strong>falsy</strong>, nutze stattdessen ein leeres Objekt. Die vermutlich „sauberere“ Variante wäre es vorab zu prüfen ob <code>passenger</code> auch wirklich ein Objekt ist und das Destructuring nur dann auszuführen. Die Variante mit dem <strong>Logical OR</strong> Fallback ist allerdings schön kurz und dürfte in vielen Fällen ausreichen.</p>
+<p><strong>Destructuring</strong> kann übrigens auch problemlos mit dem <strong>Spread Operator</strong> zusammen verwendet werden:</p>
+<pre><code class="javascript language-javascript">const globalSettings = { language: 'en-US' };
+const userSettings = { timezone: 'Berlin/Germany' };
+const { language, timezone } = { ...globalSettings, ...userSettings };</code></pre>
+<p>Hier wird zuerst der <strong>Spread Operator</strong> aufgelöst, also ein Objekt mit allen Eigenschaften aus den beiden Objekten <code>globalSettings</code> und <code>userSettings</code> erzeugt und anschließend per <strong>Destructuring Assignment</strong> entsprechenden Variablen zugewiesen.</p>
+<h3 id="rest-operator">Rest Operator</h3>
+<p>Der Rest Operator dient dazu, um sich um die verbliebenen Elemente aus einem <strong>Destructuring</strong> und in <strong>Funktionsargumenten</strong> zu kümmern. Daher der Name: der Operator kümmert sich um den verbliebenen <strong>„Rest“</strong>. Wie auch schon der <strong>Spread Operator</strong> wird auch der <strong>Rest Operator</strong> mit drei Punkten <code>…</code> eingeleitet, jedoch nicht auf der <strong>rechten</strong> Seite einer Zuweisung, sondern auf der <strong>linken</strong>. Anders als beim Spread Operator kann es pro Ausdruck jedoch nur jeweils <strong>einen</strong> Rest Operator geben!</p>
+<p>Schauen wir uns zuerst einmal den <strong>Rest Operator</strong> bei Funktionsargumenten an. Sagen wir, wir möchten nun eine Funktion schreiben, die beliebig viele Argumente empfängt. Hier möchten wir natürlich auch auf all diese Argumente zugreifen können, egal ob das 2, 5 oder 25 sind. In ES5 Standardfunktionen gibt es das Keyword <code>arguments</code>mittels dessen auf ein Array aller übergebenen Funktionsargumente zugegriffen werden kann innerhalb der Funktion:</p>
+<pre><code class="javascript language-javascript">function Example() {
+  console.log(arguments);
+}
+Example(1, 2, 3, 4, 5);</code></pre>
+<p><strong>Ausgabe:</strong></p>
+<div class="hint hint--info">
+<p><code>Arguments(5) [1, 2, 3, 4, 5, callee: ƒ]</code></p>
+</div>
+<p><strong>Arrow Functions</strong> bieten diese Möglichkeit nicht mehr und werfen stattdessen einen Fehler:</p>
+<pre><code class="javascript language-javascript">const Example = () =&gt; {
+  console.log(arguments);
+}
+Example(1, 2, 3, 4, 5);</code></pre>
+<p><strong>Ausgabe:</strong></p>
+<div class="hint hint--danger">
+<p>Uncaught ReferenceError: arguments is not defined</p>
+</div>
+<p>Hier kommt nun erstmals der <strong>Rest Operator</strong> ins Spiel. Dieser schreibt uns sämtliche übergebene Funktionsargumente die wir nicht bereits in benannte Variablen geschrieben haben in eine weitere Variable mit einem beliebigen Namen:</p>
+<pre><code class="javascript language-javascript">const Example = (...rest) =&gt; {
+  console.log(rest);
+}
+Example(1, 2, 3, 4, 5);</code></pre>
+<p><strong>Ausgabe:</strong></p>
+<div class="hint hint--info">
+<p><code>[1, 2, 3, 4, 5]</code></p>
+</div>
+<p>Dies funktioniert nicht nur als einzelnes Funktionsargument sondern auch wenn wir vorher bereits benannte Parameter definiert haben. Hier kümmert sich der <strong>Rest Operator</strong> dann buchstäblich um den letzten verbliebenen <strong>Rest:</strong></p>
+<pre><code class="javascript language-javascript">const Example = (first, second, third, ...rest) =&gt; {
+  console.log('first:', first);
+  console.log('second:', second);
+  console.log('third:', third);
+  console.log('rest:', rest);
+}
+Example(1, 2, 3, 4, 5);</code></pre>
+<p><strong>Ausgabe:</strong></p>
+<div class="hint hint--info">
+<p><code>first: 1    
+second: 2    
+third: 3    
+rest: [4, 5]</code></p>
+</div>
+<p>Der <strong>Rest Operator</strong> sammelt hier also die restlichen, verbliebenen Elemente aus einem <strong>Destructuring</strong> ein und speichert diese in einer Variable mit dem Namen, der hinter den drei Punkten angegeben wird. Dieser muss dabei nicht wie im obigen Beispiel <code>rest</code> heißen sondern kann jeden gültigen JavaScript-Variablennamen annehmen.</p>
+<p>Das funktioniert aber nicht nur bei Funktionen sondern ebenso bei <strong>Array Destructuring</strong>:</p>
+<pre><code class="javascript language-javascript">const athletes = [
+  'Usain Bolt',
+  'Andre De Grasse',
+  'Christophe Lemaitre',
+  'Adam Gemili',
+  'Churandy Martina',
+  'LaShawn Merritt',
+  'Alonso Edward',
+  'Ramil Guliyev',
+];
+const [gold, silver, bronze, ...competitors] = athletes;
+console.log(gold);
+console.log(silver);
+console.log(bronze);
+console.log(competitors);</code></pre>
+<p><strong>Ausgabe:</strong></p>
+<div class="hint hint--info">
+<pre><code class="javascript language-javascript">'Usain Bolt'
+'Andre De Grasse'    
+'Christophe Lemaitre'`  
+[  
+'Adam Gemili',
+'Churandy Martina',
+'LaShawn Merritt',
+'Alonso Edward',
+'Ramil Guliyev'  
+]
+</code></pre>
+</div>
+<p>… wie auch beim <strong>Object Destructuring:</strong></p>
+<pre><code class="javascript language-javascript">const user = {
+  firstName: 'Manuel',
+  lastName: 'Bieh',
+  job: 'JavaScript Developer',
+  hair: 'Brown',
+}
+const { firstName, lastName, ...other } = user;
+console.log(firstName);
+console.log(lastName);
+console.log(other);</code></pre>
+<p><strong>Ausgabe:</strong></p>
+<div class="hint hint--info">
+<p><code>Manuel</code><br />
+<code>Bieh</code><br />
+<code>{ job: 'JavaScript Developer', hair: 'Brown' }</code></p>
+</div>
+<p>All die Werte, die dabei nicht explizit in eine Variable geschrieben wurden während eines <strong>Destructuring Assignments</strong> können dann in der als <strong>Rest</strong> deklarierten Variable abgerufen werden.</p>
+<h2 id="template-strings">Template Strings</h2>
+<p><strong>Template Strings</strong> in ES2015 sind eine „dritte Schreibweise“ für Strings in JavaScript. Bisher konnten Strings entweder in einfache Anführungszeichen (<code>'Beispiel'</code>) oder in doppelte Anführungszeichen (<code>"Beispiel"</code>) gesetzt werden. Nun kommt auch die Möglichkeit hinzu, diese in Backticks (<code>Beispiel</code>) zu setzen.</p>
+<p><strong>Template Strings</strong> können in zwei Varianten auftreten. Als gewöhnliche <strong>Template Strings</strong>, die JavaScript Ausdrücke enthalten können, sowie in erweiterter Form als sog. <strong>Tagged Template Strings</strong>.</p>
+<p><strong>Tagged Template Strings</strong> sind eine deutlich mächtigere Form von <strong>Template Strings</strong>. Mit ihnen kann die Ausgabe von <strong>Template Strings</strong> mittels einer speziellen Funktion modifiziert werden. Das ist bei der gewöhnlichen Arbeit mit React erst einmal weniger wichtig. Später im Kapitel über <strong>CSS in React</strong> werde ich ihre Funktionsweise nochmal etwas genauer am Beispiel von <strong>Styled Components</strong> erklären. <strong>Styled Components</strong> sind eine Möglichkeit um Komponenten in React designen und basieren ganz grundlegend auf <strong>Tagged Template Strings</strong>.</p>
+<p>Wollte man sie mit JavaScript-Ausdrücken oder Werten mischen, griff man in ES5 meist zu einfacher <strong>String Concatenation:</strong></p>
+<pre><code class="javascript language-javascript">var age = 7;
+var text = 'Meine Tochter ist ' + age + ' Jahre alt';</code></pre>
+<pre><code class="javascript language-javascript">var firstName = 'Manuel';
+var lastName = 'Bieh';
+var fullName = firstName + ' ' + lastName;</code></pre>
+<p>Mit <strong>Template Strings</strong> wurde nun eine Variante von String eingeführt, die selbst wiederum <strong>JavaScript-Ausdrücke</strong> enthalten kann. Diese werden dazu innerhalb eines <strong>Template Strings</strong> in eine Zeichenkette in der Form <code>${ }</code> gesetzt. Um bei den obigen Beispielen zu bleiben:</p>
+<pre><code class="javascript language-javascript">const age = 7;
+const text = `Meine Tochter ist ${age} Jahre alt`;</code></pre>
+<pre><code class="javascript language-javascript">const firstName = 'Manuel';
+const lastName = 'Bieh';
+const fullName = `${firstName} ${lastName}`;</code></pre>
+<p>Dabei können innerhalb der geschweiften Klammern sämtliche JavaScript Ausdrücke verwendet werden. Also auch Funktionsaufrufe:</p>
+<pre><code class="javascript language-javascript">console.log(`Das heutige Datum ist ${new Date().toISOString()}`);
+console.log(`${firstName.toUpperCase()} ${lastName.toUpperCase()}`);</code></pre>
+<h2 id="fazit">Fazit</h2>
+<div class="hint hint--success">
+<p>ES2015 und die nachfolgenden Versionen bieten eine Menge nützliche neue Funktionen die es bisher in JavaScript nicht gab. Viele davon sind bei der Arbeit mit React nahezu nicht wegzudenken. Zu den wichtigsten Neuerungen gehören die hier beschriebenen:</p>
+<ul>
+<li>Variablendeklarationen mit <code>let</code> und <code>const</code></li>
+<li><strong>Arrow Functions</strong>, um Funktionen zu erstellen die kein eigenes <code>this</code> binden</li>
+<li><strong>Klassen</strong>. Machen vieles einfacher und sind die Basis von <strong>React Class Components</strong></li>
+<li>Die <strong>Rest und Spread Operatoren</strong>, die das Lesen und Schreiben von Daten in Arrays und Objekten deutlich vereinfachen</li>
+<li><strong>Template Strings</strong>, um die Arbeit mit JavaScript Ausdrücken in Strings einfacher zu machen</li>
+</ul>
+</div>
+</div><div class="chapter">
+<h1 id="jsx-–-eine-einführung">JSX – eine Einführung</h1>
+<h2 id="jsx-als-wichtiger-bestandteil-in-der-react-entwicklung">JSX als wichtiger Bestandteil in der React-Entwicklung</h2>
+<p>Bevor wir tiefer in die Entwicklung von Komponenten einsteigen möchte ich zuerst einmal auf <strong>JSX</strong> eingehen, da JSX einen wesentlichen Teil bei der Arbeit mit React darstellt. Wie eingangs schon erwähnt stellt JSX einen ganz grundlegenden Teil der meisten React-Komponenten dar und ist aus meiner Sicht einer der Gründe, warum React so schnell und positiv von so vielen Entwicklern angenommen wurde. Mittlerweile bieten auch andere Frameworks wie Vue.js die Möglichkeit JSX zur Komponenten getriebenen Entwicklung einzusetzen.</p>
+<p>JSX sieht auf den ersten Blick erst einmal gar nicht sehr viel anders aus als HTML, oder eher noch XML, da in JSX, eben wie auch in XML und XHTML jedes geöffnete Element ein schließendes Element (<code>&lt;/div&gt;</code>) besitzen oder selbstschließend (<code>&lt;img /&gt;</code>) sein muss. Mit dem grundlegenden Unterschied, dass JSX auf <strong>JavaScript-Ausdrücke</strong> zurückgreifen kann und dadurch sehr mächtig wird. </p>
+<p>Unter der Haube werden in JSX verwendete Elemente in einem späteren Build-Prozess in verschachtelte <code>React.createElement()</code>-Aufrufe umgewandelt. Wir erinnern uns zurück an die Einleitung. Dort hatte ich bereits kurz erwähnt das React eine Baumstruktur an Elementen erzeugt, die selbst aus verschachtelten <code>React.createElement()</code>-Aufrufen besteht.</p>
+<p>Klingt jetzt alles fürchterlich kompliziert, ist aber ganz einfach. Wirklich. Ein Beispiel: sehen wir uns einmal das folgende kurze HTML-Snippet an:</p>
+<pre><code class="jsx language-jsx">&lt;div id="app"&gt;
+  &lt;p&gt;Ein Paragraph in JSX&lt;/p&gt;
+  &lt;p&gt;Ein weiterer Paragraph&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+<p>Wird dieses HTML so in dieser Form in <strong>JSX</strong> verwendet, werden diese Elemente werden später durch Babel in das folgende ausführbare JavaScript transpiliert:</p>
+<pre><code class="javascript language-javascript">React.createElement(
+  "div",
+  { id: "app" },
+  React.createElement(
+    "p",
+    null,
+    "Ein Paragraph in JSX"
+  ),
+  React.createElement(
+    "p",
+    null,
+    "Ein weiterer Paragraph"
+  )
+);</code></pre>
+<p>Das erste Funktionsargument für <code>createElement()</code> ist dabei jeweils der Tag-Name eines DOM-Elements als String-Repräsentation oder ein anderes JSX-Element, dann allerdings als Funktionsreferenz.</p>
+<p>Das zweite Argument repräsentiert die <strong>Props</strong> eines Elements, also in etwa vergleichbar mit HTML-Attributen, wobei die Props in React deutlich flexibler sind und anders als herkömmliche HTML-Attribute nicht auf Strings beschränkt sind, sondern auch Arrays, Objekte oder gar andere React-Komponenten als Wert enthalten können.</p>
+<p>Alle weiteren Argumente stellen die Kind-Elemente (_„children“_) des Elements dar. Im obigen Beispiel hat unser <code>div</code> zwei Paragraphen (<code>&lt;p&gt;</code>) als Kind-Elemente, welche selbst keine eigenen Props haben (<code>null</code>) und lediglich einen Text-String (<code>Ein Paragraph in JSX</code> bzw <code>Ein weiterer Paragraph</code>) als Kind-Element besitzt. </p>
+<p>Wem das jetzt zu kompliziert klingt den kann ich beruhigen: das geht in der Praxis hinterher wie von selbst von der Hand. Fast so, als würde man HTML-Markup schreiben. Dennoch halte ich es für wichtig die Hintergründe zumindest einmal gelesen zu haben um spätere Beispiele besser nachvollziehen zu können.</p>
+<h2 id="ausdrücke-in-javascript">Ausdrücke in JavaScript</h2>
+<p>Was bedeutet dies nun für unsere JavaScript-Ausdrücke, auf die wir ja nun auch in JSX zurückgreifen können? </p>
+<p>Zuerst einmal ist ein Ausdruck in JavaScript, kurz gesagt, ein Stück Code, der am Ende einen „Wert“ erzeugt bzw ein „Ergebnis“ zur Folge hat. Vereinfacht gesagt: alles was man bei der Variablenzuweisung auf die <strong>rechte</strong> Seite des Gleich-Zeichens (=) schreiben kann.</p>
+<pre><code class="javascript language-javascript">1 + 5</code></pre>
+<p>… ist ein solcher Ausdruck, dessen Wert <code>6</code> beträgt. </p>
+<pre><code class="javascript language-javascript">'Hal'+'lo'</code></pre>
+<p>… ist ein anderer Ausdruck der die zwei Strings <code>Hal</code> und <code>lo</code> per <strong>String Concatenation</strong> zu einem Wert <code>Hallo</code> zusammenfügt. </p>
+<p>Stattdessen könnten wir aber auch einfach gleich schreiben:</p>
+<pre><code class="javascript language-javascript">6
+'Hallo'
+[1,2,3,4]
+{a: 1, b: 2, c: 3}
+true
+null</code></pre>
+<p>… da <strong>JavaScript-Datentypen</strong> allesamt auch als Ausdruck verwendet werden können.</p>
+<p>Die ES2015 <strong>Template String Syntax</strong>, die Backticks (`````) benutzt, ist ebenfalls ein Ausdruck. Klar, sind sie doch letztlich nichts anderes als ein String:</p>
+<pre><code class="javascript language-javascript">`Hallo ${name}`</code></pre>
+<p>Was hingegen <strong>kein</strong> Ausdruck ist, ist:</p>
+<pre><code class="javascript language-javascript">if (active &amp;&amp; visibility === 'visible') { … } </code></pre>
+<p>… da ich zum Beispiel auch nicht schreiben könnte:</p>
+<pre><code class="javascript language-javascript">const isVisible = if (active &amp;&amp; visibility === 'visible') { … }</code></pre>
+<p>Das würde mir jeder JavaScript-Interpreter wegen ungültiger Syntax um die Ohren hauen.</p>
+<p>Lasse ich das <code>if</code> hier hingegen allerdings weg habe ich einen <strong>Logical AND Operator</strong>, der wiederum ein Ausdruck ist und einen Wert zum Ergebnis hat (in diesem Fall <code>true</code> oder <code>false</code>):</p>
+<pre><code class="javascript language-javascript">const isVisible = active &amp;&amp; visibility === 'visible'</code></pre>
+<p>Ebenso ist der Ternary-Operator ( ? : ) ein Ausdruck:</p>
+<pre><code class="javascript language-javascript">Bedingung ? wahr : unwahr</code></pre>
+<p>Ausdrücke sind aber nicht auf boolsche Werte, Nummern, Strings beschränkt sondern können auch Objekte, Arrays, Funktionsaufrufe und sogar Arrow-Functions sein, die ebenfalls neu in ES2015 eingeführt werden und uns hier nicht das letzte mal begegnet sein werden. </p>
+<p>Beispiel für eine Arrow-Function:</p>
+<pre><code class="javascript language-javascript">(number) =&gt; {
+  return number * 2;
+}</code></pre>
+<p>All das wird später noch wichtig werden. Um dem ganzen jetzt endgültig die Krone aufzusetzen können Ausdrücke selbst wiederum wieder JSX beinhalten und so kann man das Spiel endlos weiterführen. Uff.</p>
+<p>Da das später noch wichtig wird, hier nochmal einige Beispiele für JSX, das gültige Ausdrücke beinhaltet:</p>
+<h4 id="simple-mathematik">Simple Mathematik</h4>
+<pre><code class="jsx language-jsx">&lt;span&gt;5 + 1 = {5 + 1}&lt;/span&gt;</code></pre>
+<h4 id="ternary-operator">Ternary Operator</h4>
+<pre><code class="jsx language-jsx">(
+  &lt;span&gt;
+    Heute ist {new Date().getDay() === 1 ? 'Montag' : 'nicht Montag'}
+  &lt;/span&gt;
+)</code></pre>
+<h4 id="ternary-operator-als-wert-einer-prop">Ternary Operator als Wert einer Prop</h4>
+<pre><code class="jsx language-jsx">&lt;div className={user.isAdmin ? 'is-admin' : null}&gt;…&lt;/div&gt;</code></pre>
+<h4 id="arraymap-mit-jsx-als-rückgabewert-das-wiederum-einen-ausdruck-enthält">Array.map() mit JSX als Rückgabewert das wiederum einen Ausdruck enthält</h4>
+<pre><code class="jsx language-jsx">(
+  &lt;ul&gt;
+    {['Tim', 'Struppi'].map((name) =&gt; &lt;li&gt;{name})&lt;/li&gt;)}
+  &lt;/ul&gt;
+)</code></pre>
+<h4 id="zahlenwerte-in-props">Zahlenwerte in Props</h4>
+<pre><code class="jsx language-jsx">&lt;input type="range" min={0} max={100} /&gt;</code></pre>
+<p>All dies sind erste Beispiele wie Ausdrücke dafür verwendet werden können um aus JSX mehr als nur simples HTML zu machen.</p>
+<h2 id="was-man-außerdem-wissen-sollte"><strong>Was man außerdem wissen sollte</strong></h2>
+<p>Wer die Beispiele aufmerksam studiert hat, dem werden je nach JavaScript-Kenntnissen vielleicht einige Dinge aufgefallen sein. Zuerst einmal tauchen in den Beispielen scheinbar willkürlich Klammern auf. Dies hat den Hintergrund, dass JSX stets in Klammern, also „<code>(</code>“ und „<code>)</code>“ geschrieben werden muss wenn sich das JSX sich über mehr als eine Zeile erstreckt (also doch nicht willkürlich.)</p>
+<p>Prinzipiell schadet es nicht sein komplettes JSX immer in Klammern zu schreiben, auch wenn es sich nur um eine einzige Zeile handelt, Viele Leute bevorzugen das sogar aus Gründen der Einheitlichkeit, wirklich zwingend notwendig ist das aber nur bei mehrzeiligem JSX.</p>
+<p>Möchten wir statt eines <strong>Strings</strong> einen <strong>Ausdruck</strong> innerhalb der Props nutzen wie im Beispiel <em>„Ternary Operator als Wert einer Prop“</em>, so nutzen wir dafür statt einfacher oder doppelter Attribut-Anführungszeichens auch hier die geschweiften Klammern um React mitzuteilen: hier drin befindet sich ein Ausdruck.</p>
+<div class="hint hint--warning">
+<p>Bei Objekten als Wert müssen jeweils <strong>zwei</strong> öffnende und schließende Klammern geschrieben werden. Die äußeren Klammern leiten den Ausdruck ein (bzw. beenden diesen) und die inneren sind die, des eigentlichen Objekts:</p>
+<p><code>&lt;User data={{ name: 'Manuel', location: 'Berlin' }} /&gt;</code></p>
+<p>Das gilt in ähnlicher Form auch für Array-Literals, natürlich mit dem Unterschied, dass die inneren Klammern die eckigen sind, die das Array-Literal kennzeichnen:</p>
+<p><code>&lt;List items={[1, 2, 3, 4, 5]} /&gt;</code></p>
+</div>
+<p>Weiter könnte manch einem aufgefallen sein, dass im gleichen Beispiel die Prop <code>className</code> verwendet wird. Wer jemals mit der DOM Element im Browser gearbeitet hat dem wird vielleicht im Gedächtnis geblieben sein, dass mittels <code>Element.className</code> auf das <code>class</code>-Attribute eines Elements zugegriffen werden kann. Ganz genau so ist das auch in React, das sich an den Eigenschaften der DOM <code>Element</code> Klasse bedient.</p>
+<p>Möchte man gewisse HTML-Attribute in JSX setzen, ist dafür also die JavaScript-Entsprechung zu verwenden. <code>class</code> ist ein geschütztes Keyword in JavaScript um eine Klasse zu kennzeichnen, also verwenden wir an dieser Stelle stattdessen <code>className</code>. Gleiches gilt für <code>for</code>, was in JavaScript als Keyword benutzt wird um Schleifen einzuleiten, in HTML aber hingegen um <code>&lt;label&gt;</code> Elementen mitzuteilen, welches Eingabefeld sie beschreiben. Statt <code>for</code> schreiben wir in JSX also angelehnt an das DOM <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLLabelElement/htmlFor">HTMLLabelElement Interface</a> <code>htmlFor</code>:</p>
+<pre><code class="jsx language-jsx">&lt;fieldset&gt;
+  &lt;input type="text" id="name" /&gt;
+  &lt;label htmlFor="name"&gt;Name&lt;/label&gt;
+&lt;/fieldset&gt;</code></pre>
+<p>Dieses Muster zieht sich konsequent durch alle bekannten HTML-Attribute. Möchtest du ein HTML-Attribut in JSX setzen, musst du dafür die Schreibweise der entsprechenden JavaScript DOM Element-Eigenschaft verwenden. So wird aus <code>tabindex</code> eben <code>tabIndex</code>, <code>readonly</code> wird zu <code>readOnly</code>, <code>maxlength</code> wird zu <code>maxLength</code>, usw.</p>
+<p>Aber: Keine Angst! Im Development-Modus gibt React eine entsprechende Warnung aus, so dass es dir selten passieren sollte, dass du entsprechenden fehlerhaften Code nicht bemerkst:</p>
+<p><img src="https://lh6.googleusercontent.com/cgdej1K-RlV-97RDzKO2X_yQFhNNknM1rBge0--1I8ID59-IQTHWK9nfGNM0PdN44WTRKe4hPE-r3zZpgnQUstLHR-vCbegZn440oLLGCU7chWa6gkbfcMhQbwBB6swb1lL83jTM" alt="Warnung in der Browser Console bei der Verwendung illegaler Props" /></p>
+<p>Wer es genau wissen will, hier die vollständige Liste unterstützter HTML-Attribute wie sie in der offiziellen React-Doku steht (festhalten, wird lang):</p>
+<blockquote>
+  <p><code>accept acceptCharset accessKey action allowFullScreen alt async autoComplete autoFocus autoPlay capture cellPadding cellSpacing challenge charSet checked cite classID className colSpan cols content contentEditable contextMenu controls controlsList coords crossOrigin data dateTime default defer dir disabled download draggable encType form formAction formEncType formMethod formNoValidate formTarget frameBorder headers height hidden high href hrefLang htmlFor httpEquiv icon id inputMode integrity is keyParams keyType kind label lang list loop low manifest marginHeight marginWidth max maxLength media mediaGroup method min minLength multiple muted name noValidate nonce open optimum pattern placeholder poster preload profile radioGroup readOnly rel required reversed role rowSpan rows sandbox scope scoped scrolling seamless selected shape size sizes span spellCheck src srcDoc srcLang srcSet start step style summary tabIndex target title type useMap value width wmode wrap</code></p>
+</blockquote>
+<p>Das gleiche gilt übrigens auch für SVG-Elemente, die man ebenfalls innerhalb von JSX verwenden kann, da SVG valides XML ist! Die Liste der unterstützten SVG-Attribute ist aber gut und gerne 3 mal so lang und längst nicht so relevant im Alltag, weswegen ich dich in diesem Fall aber nun wirklich an die entsprechende Stelle in der offiziellen Doku verweisen muss: <a href="https://reactjs.org/docs/dom-elements.html#all-supported-html-attributes">https://reactjs.org/docs/dom-elements.html#all-supported-html-attributes</a></p>
+<h2 id="sonderfall-inline-styles">Sonderfall Inline-Styles</h2>
+<p>Natürlich gibt es auch Sonderfälle. Das style-Attribut ist ein solcher. Während Inline-Styles in HTML mit den originalen CSS-Eigenschaftsnamen und als String geschrieben werden, benutzt React, du ahnst es: JavaScript-Eigenschaften und außerdem ein Objekt statt eines einfachen Strings.</p>
+<p>Schreibst du in herkömmlichem HTML:</p>
+<pre><code class="markup language-markup">&lt;div style="margin-left: 12px; border-color: red; padding: 8px"&gt;&lt;/div&gt;</code></pre>
+<p>Sieht das Gegenstück in JSX so aus:</p>
+<pre><code class="jsx language-jsx">&lt;div style={{ marginLeft: '12px', borderColor: 'red', padding: '8px'}}&gt;&lt;/div&gt;</code></pre>
+<p>Ein weiterer Sonderfall sind Events. Da diese sehr umfangreich sind, widmen wir uns dem Thema später in einem eigenen Kapitel nochmal.</p>
+<h2 id="kommentare-in-jsx">Kommentare in JSX</h2>
+<p>Auch Kommentare sind möglich in JSX, funktionieren aber nicht wie in HTML in der Form:</p>
+<pre><code class="markup language-markup">&lt;!-- Dies ist ein Beispiel für einen Kommentar --&gt;</code></pre>
+<p>… sondern werden ebenfalls wie Ausdrücke in geschweifte Klammern gefasst, und dann in Form eines JavaScript Mehrzeilenkommentars geschrieben:</p>
+<pre><code class="jsx language-jsx">{/* So sieht ein Kommentar in JSX aus */}</code></pre>
+<p>Derartige Kommentare können sich natürlich auch über mehrere Zeilen erstrecken. Einzeilige JavaScript Kommentare die mit einem doppelten Slash (<code>//</code>) eingeleitet werden sind hingegen nicht möglich in JSX. Hier muss also auch bei einem kurzen einzeiligen Kommentar die <code>/* */</code> Syntax für mehrzeilige Kommentare verwendet werden.</p>
+<p>Damit solltest du auch schon ausreichend Kenntnisse über JSX erlangt haben, um die nachfolgenden Beispiele und Beschreibungen mit weiteren Verlauf immer besser verstehen und nachvollziehen zu können</p>
+<h2 id="fazit">Fazit</h2>
+<div class="hint hint--success">
+<ul>
+<li>Mehrzeiliges JSX muss stets in Klammern gesetzt werden</li>
+<li>JSX kann JavaScript-Ausdrücke verarbeiten. Diese müssen in geschweifte Klammern gesetzt werden und können dann auch in Props verwendet werden.</li>
+<li>Um Attribute für HTML-Elemente zu setzen muss die Schreibweise des DOM Element Interface benutzt werden (<code>htmlFor</code> statt <code>for</code>, <code>className</code> statt <code>class</code>)</li>
+<li>CSS Inline-Styles werden als JavaScript Object geschrieben</li>
+<li>Kommentare werden ebenfalls in geschweifte Klammern gesetzt und verwenden Multiline-Comment Syntax: <code>/* */</code></li>
+</ul>
+</div>
+</div><div class="chapter">
+<h1 id="rendering-von-elementen">Rendering von Elementen</h1>
+<p>In einigen der vorherigen Kapitel habe ich sie wie selbstverständlich bereits einige Male erwähnt, doch was genau sind <strong>React Elemente</strong> eigentlich?</p>
+<p><strong>React Elemente</strong> sind der kleinstmögliche Baustein in einer <strong>React Anwendung</strong>. Anhand der <strong>Elemente</strong> beschreibt ihr, was der Benutzer später auf dem Bildschirm zu sehen bekommt. Trotz ihres gleichen Namens unterscheiden sie sich von DOM-Elementen in einem wesentlichen Punkt: sie sind lediglich ein einfaches Objekt und damit auch günstig (im Sinne der Performance) zu erstellen. Die bloße Erstellung eines <strong>React Elements</strong> mittels <code>React.createElement()</code> löst noch keine DOM Operation aus!</p>
+<div class="hint hint--warning">
+<p>React <strong>Elemente</strong> werden oftmals mit React <strong>Komponenten</strong> durcheinander geworfen oder im Sprachgebrauch analog verwendet. Das ist aber nicht korrekt! <strong>Elemente</strong> sind das, aus was <strong>Komponenten</strong> letztendlich bestehen. <strong>Komponenten</strong> werden im nächsten Kapitel noch ausführlich behandelt, bevor es damit weitergeht, solltest du jedoch zuerst dieses Kapitel über <strong>Elemente</strong> gelesen haben.</p>
+</div>
+<p>Wir wissen bereits wie wir mittels <strong>JSX</strong> ein <strong>React Element</strong> erstellen und das <strong>JSX</strong> nur eine Vereinfachung ist, um uns viel Schreibarbeit und ständige <code>React.createElement()</code>-Aufrufe zu ersparen. Doch wie rendern wir ein erstelltes Element nun, also mit anderen Worten, zeigen wir es im Browser an?</p>
+<p>Hier bedienen wir uns an <code>ReactDOM</code>, genauer gesagt dessen eigener <code>render()</code>-Methode. Um ein React Element zu rendern benötigen wir grundsätzlich eine <strong>Root-</strong> oder <strong>Mount-Node</strong>. Dies ist eine DOM-Node die sozusagen als Platzhalter dient und die React mitteilt, wohin ein Element gerendert werden soll. Theoretisch kannst du problemlos mehrere Root-Nodes in deinem HTML-Dokument haben. React kontrolliert diese alle unabhängig voneinander. Statt also nur einer großen React-Anwendung kannst du also auch auch viele kleine (oder auch große) Anwendungen in einem einzigen HTML-Dokument unterbringen. Üblich ist es aber normalerweise nur <strong>eine Root-Node</strong> für deine React-Anwendung zu haben.</p>
+<p>Kommen wir also zum Wesentlichen: um ein React <strong>Element</strong> zu rendern übergibst du dieses als erstes Argument der <code>ReactDOM.render()</code>-Methode, zusammen mit der <strong>Root-Node</strong> als zweitem Argument, also der DOM-Node, in das dein <strong>Element</strong> gerendert werden soll.</p>
+<p>Stellen wir uns einmal vor du hast ein <code>div</code> mit der ID <code>root</code>in deinem HTML-Dokument, das als <strong>Root-Node</strong> dienen soll:</p>
+<pre><code class="markup language-markup">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id="root"&gt;&lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<p>Der entsprechende Aufruf ist dann der folgende:</p>
+<pre><code class="jsx language-jsx">var myFirstElement = &lt;div&gt;Mein erstes React Element&lt;/div&gt;;
+ReactDOM.render(myFirstElement, document.getElementById('root'));</code></pre>
+<p>Führst du diesen Code nun im Browser aus, siehst du <strong>innerhalb</strong> des <code>root</code>-divs nun dein <code>&lt;div&gt;Mein erstes React Element&lt;/div&gt;</code>.</p>
+<p><strong>React Elemente</strong> sind dabei <strong>immutable</strong>, also unveränderlich. Dies bedeutet, ist ein Element einmal erstellt, repräsentiert es immer einen bestimmten Zustand („State“) im User Interface. Die offizielle React Dokumentation spricht hier metaphorisch von einem Einzelbild in einem Film. Möchten wir unser User Interface aktualisieren, müssen wir dazu ein neues <strong>React Element</strong> mit den veränderten Daten erstellen. Keine Angst, das klingt umständlicher als es ist und passiert später einmal ganz intuitiv.</p>
+<p>React selbst ist dabei so klug, dass es durch einen Vergleichsalgorithmus nur die Teile einer Anwendung aktualisiert, die sich auch tatsächlich verändert haben. Dabei werden <strong>React Elemente</strong> und ihre Kind-Elemente mit ihren Vorgängerversionen vergleichen und lösen nur eine DOM-Operation aus wenn eine Änderung vorliegt. Dies führt dazu, dass React Anwendungen, richtig gemacht, sehr gute Rendering-Performance aufweisen, da DOM-Operationen in der Regel sehr kostspielig (also Performance lastig) sind, durch React und seinen <strong>Reconciliation</strong> genannten Prozess aber auf ein Minimum verringert werden. Dabei werden nicht immer grundsätzlich ganze DOM-Elemente neu erzeugt anhand der Beschreibung eines <strong>React-Elements</strong>, sondern es werden auch nur einzelne Attribute aktualisiert, sollte sich nur ein solches geändert haben.</p>
+<p>Schauen wir uns das mal in der Praxis an:</p>
+<pre><code class="javascript language-javascript">function showTime() {
+  var time = new Date().toLocaleTimeString();
+  var timeElement = (
+    &lt;div&gt;
+      &lt;p&gt;Es ist jetzt {time} Uhr&lt;/p&gt;
+    &lt;/div&gt;
+  );
+  ReactDOM.render(timeElement, document.getElementById('root'));
+}
+setInterval(showTime, 1000);</code></pre>
+<p>Wieder erstellen wir ein <strong>React-Element</strong>, diesmal soll es uns beim Aufruf von <code>ReactDOM.render()</code> die aktuelle Zeit ausgeben. Da wir stets die genaue Uhrzeit wissen wollen, stecken wir das Element und den <code>ReactDOM.render()</code> Aufruf in eine Funktion, die per <code>setInterval</code> alle 1000 ms aufgerufen wird.</p>
+<p>Ein Blick in die <strong>Chrome Devtools</strong> offenbart: bei jedem <code>ReactDOM.render()</code>-Aufruf wird stets nur die Uhrzeit selbst aktualisiert, die restlichen Elemente, wie die DOM-Nodes oder auch nicht betroffene Teil des angezeigten Textes bleiben unangetastet:</p>
+<p><img src=".gitbook/assets/react-update.png" alt="React aktualisiert nur die Zeit selbst, nichts anderes." /></p>
+<p>Und hier lernen wir zugleich auch eins der grundlegenden React Prinzipien in der Praxis kennen: das <strong>deklarative</strong> Vorgehen zur Erstellung von User Interfaces. Statt unserer Mini-App <strong>imperativ</strong> zu sagen, dass sie bitte sekündlich die Uhrzeit aktualisieren soll, definieren wir stattdessen <strong>deklarativ</strong> im <strong>React-Element</strong>, dass wir an einer gewissen Stelle jeweils stets bei jedem Re-Rendering die aktuelle Uhrzeit sehen möchten.</p>
+<p>Eine ähnliche Funktionalität ohne React implementiert hätte stattdessen wohl in etwa so ausgesehen:</p>
+<pre><code class="javascript language-javascript">function changeTime() {
+  var time = new Date().toLocaleTimeString();
+  var target = document.getElementById('root');
+  target.textContent = 'Es ist jetzt ' + time  ' Uhr';
+}
+setInterval(changeTime, 1000);</code></pre>
+<p>Der Vorteil beim deklarativen Vorgehen ist, dass wir nur noch <strong>Zustände beschreiben</strong> und sagen wie etwas angezeigt werden soll und nicht selber jeden Schritt festlegen wie wir diesen Zielzustand erreichen wollen. Das macht insbesondere bei komplexeren Anwendungen viele Dinge einfacher, übersichtlicher und ist dadurch zugleich deutlich weniger fehleranfälliger.</p>
+<div class="hint hint--info">
+<p>In der Praxis ist es eher üblich, dass <code>ReactDOM.render()</code> nur ein einziges Mal, meist beim Öffnen einer Seite aufgerufen wird. Der wiederholte Aufruf der <code>render()</code>-Methode dient hier nur zur Veranschaulichung wie <strong>ReactDOM</strong> und React <strong>Elemente</strong> zusammenspielen. </p>
+<p>Das Re-Rendering übernehmen meist <strong>stateful Components</strong> (also Komponenten, die einen eigenen Zustand speichern). Mit Komponenten geht es im nächsten Kapitel weiter!</p>
+</div>
+</div><div class="chapter">
+<h1 id="komponenten-in-react">Komponenten in React</h1>
+<h2 id="die-zwei-erscheinungsformen-von-react-components">Die zwei Erscheinungsformen von React Components</h2>
+<p>Eine erste einfache <strong>HelloWorld</strong>-Komponente haben wir schon beim <a href="einfuehrung/ab-ins-kalte-wasser.md">Sprung ins kalte Wasser</a> implementiert. Jedoch war dies natürlich eine sehr simple Komponente, die nicht gerade sehr praxisnah war und auch längst nicht alles beinhaltet hat was uns React bietet und lediglich zur ersten Veranschaulichung dienen sollte, um die grundsätzliche Funktionsweise von von <strong>React</strong> und <strong>React-Komponenten</strong> kennenzulernen.</p>
+<p>Das Prinzip von <strong>Komponenten</strong> ist einfach erklärt: eine <strong>Komponente</strong> erlaubt es komplexe User Interfaces in einzelne kleine Stücke zu unterteilen. Diese sind im Idealfall wiederverwendbar, isoliert und in sich geschlossen. Sie verarbeiten beliebigen Input von außen in Form von sogenannter <strong>Props</strong> (engl. für „Properties“, also Eigenschaften) und beschreiben letztendlich anhand ihrer <code>render()</code>-Funktion was auf dem Bildschirm erscheint.</p>
+<p>Komponenten können grob in zwei verschiedenen Varianten auftreten: rein funktionale Komponenten (engl. <strong>Functional Component</strong>), auch <strong>Stateless Functional Component</strong> (_SFC_) genannt, sowie <strong>Class Components</strong>, die eine gewöhnliche standard ES2015-Klasse repräsentieren.</p>
+<h3 id="functional-components--stateless-functional-components">Functional Components / Stateless Functional Components</h3>
+<p>Die deutlich einfachste Art um in React eine Komponente zu definieren ist sicherlich die funktionale Komponente, die, wie der Name es bereits andeutet, tatsächlich lediglich eine einfache JavaScript-Funktion ist:</p>
+<pre><code class="jsx language-jsx">function Hello(props) {
+  return &lt;div&gt;Hello {props.name}&lt;/div&gt;
+}</code></pre>
+<p>Diese Funktion erfüllt alle Kriterien einer gültigen <strong>React-Komponente</strong>: sie hat als <code>return</code>-Wert ein explizites <code>null</code> (<code>undefined</code> ist dagegen <strong>nicht</strong> gültig!) oder ein gültiges <code>React.Element</code> (hier in Form von <strong>JSX</strong>) und sie empfängt ein <code>props</code>-Objekt als erstes und einziges Funktionsargument, wobei sogar dieses optional ist und ebenfalls <code>null</code> sein kann.</p>
+<h3 id="class-components--stateful-components">Class Components / Stateful Components</h3>
+<p>Die zweite Möglichkeit wie eine <strong>React-Komponente</strong> erstellt werden kann habe ich im Eingangsbeispiel schon kurz gezeigt: <strong>Class Components</strong>. Diese bestehen aus einer ES2015-Klasse, die von der <code>React.Component</code> oder <code>React.PureComponent</code>(dazu später mehr) Klasse ableitet und hat mindestens eine Methode mit dem Namen <code>render()</code>:</p>
+<pre><code class="jsx language-jsx">class Hello extends React.Component {
+  render() {
+    return &lt;div&gt;Hello {this.props.name}&lt;/div&gt;
+  }
+}</code></pre>
+<p>Wichtiger Unterschied hier: während eine <strong>funktionale Komponente</strong> ihre <strong>Props</strong> einer <strong>Komponente</strong> als Funktionsargumente übergeben bekommt, bekommt die <code>render()</code>-Methode einer <strong>Klassen-Komponente</strong> selbst keinerlei Argumente übergeben, sondern es wird allein über die Instanz-Eigenschaft <code>this.props</code> auf die <strong>Props</strong> zugegriffen!</p>
+<p>Die beiden obigen Komponenten resultieren hier in einer komplett identischen Ausgabe!</p>
+<div class="hint hint--info">
+<p>Ein Kriterium das beide Arten von Komponenten gemeinsam haben ist, dass der <code>displayName</code>, also der Name einer gültigen Komponente stets mit einem <strong>Großbuchstaben</strong> anfängt. Der Rest des Namens kann aus Großbuchstaben oder Kleinbuchstaben bestehen, wichtig ist lediglich, dass der erste Buchstabe stets ein Großbuchstabe ist! </p>
+<p>Beginnt der Name einer Komponente mit einem Kleinbuchstaben, behandelt React diese stattdessen als reines DOM-Element. <code>section</code> würde React also als DOM-Element interpretieren, während eine eigene Komponente durchaus den Namen <code>Section</code> haben kann und wegen ihres Großbuchstabens am Anfang von React korrekt vom <code>section</code> DOM-Element unterschieden werden würde.</p>
+</div>
+<p>Ein weiterer wichtiger Unterschied zu <strong>funktionalen Komponenten</strong> ist, dass <strong>Class Components</strong> einen eigenen <strong>State</strong> (dt.: Zustand) verwalten können, also <strong>stateful</strong> sind, während <strong>funktionale Komponenten</strong> lediglich mit statischen Props arbeiten (daher <strong>Stateless Functional Component</strong>).</p>
+<p>Wie wir in <strong>Class Components</strong> mit dem <strong>State</strong> arbeiten, diesen modifizieren und uns zu eigen machen ist sehr komplex, weswegen dem Thema ein eigenes Kapitel gewidmet ist. Dieses folgt direkt im Anschluss an dieses hier und ich würde empfehlen erst dieses Kapitel zu beenden um die Funktionsweise von Klassen zu verstehen, bevor wir hier tiefer einsteigen.</p>
+<h2 id="component-composition-–-mehrere-komponenten-in-einer">Component Composition – mehrere Komponenten in einer</h2>
+<p>Bisher haben unsere Beispiel-Komponenten jeweils nur DOM-Elemente ausgegeben. <strong>React-Komponenten</strong> können aber auch andere React-Komponenten beinhalten. Wichtig hierbei ist nur, dass die Komponente sich im selben Scope befindet, also entweder direkt im gleichen Scope definiert wurde oder bei der Verwendung von CommonJS- oder ES-Modules ins aktuelle File importiert wurden mittels <code>require()</code> oder <code>import</code>. </p>
+<p><strong>Ein Beispiel:</strong></p>
+<pre><code class="jsx language-jsx">function Hello(props) {
+  return &lt;div&gt;Hallo {props.name}&lt;/div&gt;;
+}
+
+function MyApp() {
+  return (
+    &lt;div&gt;
+      &lt;Hello name="Manuel" /&gt;
+      &lt;Hello name="Tom" /&gt;
+    &lt;/div&gt;
+  );
+}
+
+ReactDOM.render(
+  &lt;MyApp /&gt;, 
+  document.getElementById('app')
+);</code></pre>
+<p>Die Komponente <code>&lt;MyApp&gt;</code> gibt hier ein <code>&lt;div&gt;</code> zurück, das zweimal die Hello-Komponente aus dem vorherigen Beispiel benutzt um Manuel und Tom zu begrüßen. Das Resultat:</p>
+<pre><code class="jsx language-jsx">&lt;div&gt;
+  &lt;div&gt;Hallo Manuel&lt;/div&gt;
+  &lt;div&gt;Hallo Tom&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+<p>Wichtig: eine Komponente darf stets nur ein einzelnes Root-Element zurückgeben! Dies kann sein:</p>
+<ul>
+<li>ein einzelnes React-Element: <code>&lt;Hello name="Manuel" /&gt;</code> </li>
+<li>Auch in verschachtelter Form, solange es nur ein einzelnes Element auf äußerer Ebene gibt: <code>&lt;Parent&gt;&lt;Child /&gt;&lt;/Parent&gt;</code> </li>
+<li>ein DOM-Element (auch dieses darf wiederum verschachtelt sein und andere Elemente beinhalten): <code>&lt;div&gt;…&lt;/div&gt;</code> </li>
+<li>Oder selbstschließend: <code>&lt;img src="logo.jpg" alt="Bild: Logo" /&gt;</code> </li>
+<li><code>null</code> (aber niemals <code>undefined</code>!)</li>
+</ul>
+<p>Seit React 16 dürfen das außerdem auch sein:</p>
+<ul>
+<li>ein Array welches wiederum gültige return-Werte (s.o.) beinhaltet: <code>[&lt;div key="1"&gt;Hallo&lt;/div&gt;, &lt;Hello key="2" name="Manuel" /&gt;]</code> </li>
+<li>ein String: <code>'Hallo Welt'</code> </li>
+<li>Ein sogenanntes „Fragment“ – eine Art spezielle „Komponente“, das selbst nicht im gerenderten Output auftaucht und als Container dienen kann, falls man andererseits gegen die Regel verstoßen würde nur ein Root-Element aus der Funktion zurückzugeben oder invalides HTML erzeugen würde: <code>&lt;React.Fragment&gt;&lt;li&gt;1&lt;/li&gt;&lt;li&gt;2&lt;/li&gt;&lt;li&gt;3&lt;/li&gt;&lt;/React.Fragment&gt;</code></li>
+</ul>
+<p>Komponenten können dabei beliebig zusammengesetzt (_„composed“_) werden. So bietet es sich oftmals an große und komplexe Komponenten in einzelne, kleinere und übersichtlichere Komponenten zu unterteilen um diese leichter verständlich und optimalerweise sogar auch wiederverwendbar zu machen. Dies ist oftmals ein lebender Prozess bei dem man ab einem gewissen Punkt bemerkt, dass eine Unterteilung in mehrere einzelne Komponenten möglicherweise sinnvoll wäre.</p>
+<h2 id="komponenten-aufteilen-–-übersicht-bewahren">Komponenten aufteilen – Übersicht bewahren</h2>
+<p>Werfen wir doch mal einen Blick auf eine beispielhafte Kopfleiste, die ein Logo, eine Navigation und eine Suchleiste enthält. Kein ganz unübliches Muster also schaut man sich Web-Anwendungen an:</p>
+<pre><code class="jsx language-jsx">function Header() {
+  return (
+    &lt;header&gt;
+      &lt;div className="logo"&gt;
+        &lt;img src="logo.jpg" alt="Image: Logo" /&gt;
+      &lt;/div&gt;
+      &lt;ul className="navigation"&gt;
+        &lt;li&gt;&lt;a href="/"&gt;Homepage&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="/team"&gt;Team&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="/services"&gt;Services&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="/contact"&gt;Contact&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+      &lt;div className="searchbar"&gt;
+          &lt;form method="post" action="/search"&gt;
+            &lt;p&gt;
+              &lt;label htmlFor="q"&gt;Suche:&lt;/label&gt;
+              &lt;input type="text" id="q" name="q" /&gt;
+            &lt;/p&gt;
+            &lt;input type="submit" value="Suchen" /&gt;
+          &lt;/form&gt;
+      &lt;/div&gt;
+    &lt;/header&gt;
+  );
+}</code></pre>
+<p>Wir wissen bereits, dass Komponenten in React problemlos auch andere Komponenten beinhalten können und das diese Komponenten-basierte Arbeitsweise auch der Idee und dem Mindset von React entspricht. Was bietet sich hier also an? Richtig: wir teilen unsere doch bereits relativ große, unübersichtliche Komponente in mehrere kleinere Häppchen auf, die jeweils alle nur einen einzigen, ganz bestimmten Zweck erfüllen.</p>
+<p>Da wäre das Logo, das wir sicherlich an anderer Stelle nochmal verwenden können. Die Navigation kann möglicherweise neben dem Header auch nochmal in einer Sitemap eingesetzt werden. Auch die Suchleiste soll vielleicht irgendwann mal nicht mehr nur im Header zum Einsatz kommen, sondern vielleicht auch auf der Suchergebnisseite selbst.</p>
+<p>In Komponenten gesprochen, landen wir dann bei folgendem Endresultat:</p>
+<pre><code class="jsx language-jsx">function Logo() {
+  return (
+    &lt;div className="logo"&gt;
+      &lt;img src="logo.jpg" alt="Image: Logo" /&gt;
+    &lt;/div&gt;
+  );
+}
+
+function Navigation() {
+  return (
+    &lt;ul className="navigation"&gt;
+      &lt;li&gt;&lt;a href="/"&gt;Homepage&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="/team"&gt;Team&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="/services"&gt;Services&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="/contact"&gt;Contact&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  );
+}
+
+function Searchbar() {
+  return (
+    &lt;div className="searchbar"&gt;
+      &lt;form method="post" action="/search"&gt;
+        &lt;p&gt;
+          &lt;label htmlFor="q"&gt;Suche:&lt;/label&gt;
+          &lt;input type="text" id="q" name="q" /&gt;
+        &lt;/p&gt;
+        &lt;input type="submit" value="Suchen" /&gt;
+      &lt;/form&gt;
+    &lt;/div&gt;
+  );
+}
+
+function Header() {
+  return (
+    &lt;header&gt;
+      &lt;Logo /&gt;
+      &lt;Navigation /&gt;
+      &lt;Searchbar /&gt;
+    &lt;/header&gt;
+  );
+}</code></pre>
+<p>Auch wenn der Code jetzt erstmal länger geworden ist haben wir uns dadurch dennoch einige große Vorteile geschaffen.</p>
+<h3 id="leichtere-kollaboration">Leichtere Kollaboration</h3>
+<p>Alle Komponenten können (und sollten!) in einem eigenen File gespeichert werden, was die Arbeit im Team immens erleichtert. So könnte jedes Team-Mitglied oder auch einzelne Teams innerhalb eines großen Projekt-Teams für eine oder mehrere Komponenten hauptverantwortlich sein („Ownership übernehmen“) und Änderungen in diesen vornehmen, während das Risiko die Änderungen eines Kollegen zu überschreiben oder später Git Merge-Konflikte auflösen zu müssen immens sinkt. Teams werden zu <em>Konsumenten</em> von Komponenten anderer Teams, die anhand eventuell verfügbarer Props ein simples Interface für ihre Komponente bereitstellen.</p>
+<h3 id="single-responsibility-prinzip">Single Responsibility Prinzip</h3>
+<p>Wir haben nun außerdem „sprechende“ Komponenten, von denen jede eine klar definierte Aufgabe hat, die direkt anhand ihres Namens ersichtlich wird. Das Logo zeigt mir überall wo es verwendet wird dasselbe Logo an. Möchte ich später eine Änderung an der Suchleiste vornehmen, suche ich gezielt nach der Searchbar.js und ändere diese entsprechend meinen neuen Anforderungen. Die Header-Komponente dient als übergeordnete Komponente die selbst dafür verantwortlich ist, alle ihre Bestandteile zu beinhalten und diese überall hin mitzubringen, wo sie eingesetzt wird. </p>
+<h3 id="wiederverwendbarkeit">Wiederverwendbarkeit</h3>
+<p>Und nicht zuletzt haben wir ganz nebenbei noch Wiederverwendbarkeit geschaffen. Möchte ich wie erwähnt das Logo nicht nur im Header sondern auch im Footer verwenden hält mich natürlich nichts davon ab, dieselbe Komponente auch in meiner Footer-Komponente zu verwenden. Habe ich verschiedene Seitenbereiche mit unterschiedlichen Layouts, die jedoch alle denselben Header darstellen, kann ich dazu meine schlanke und übersichtliche Header-Komponente überall dort verwenden, wo ich ich ihn benötige.  Der Konsument einer Komponente muss dazu nicht einmal wissen aus welchen einzelnen Komponenten sie besteht. Es reicht, lediglich die gewünschte Komponente zu importieren da diese sich selbst um ihre Abhängigkeiten kümmert.</p>
+<h2 id="props-–-die-„datenempfänger“-einer-komponente">Props – die „Datenempfänger“ einer Komponente</h2>
+<p>Nun habe ich bereits soviel über <strong>Props</strong> geschrieben. Höchste Zeit also einmal das Geheimnis zu lüften und genauer darauf einzugehen. Was sind also „Props“?</p>
+<p>Durch die <strong>Props</strong> nehmen Komponenten beliebige Arten von Daten entgegen und können innerhalb der <strong>Komponente</strong> auf diese Daten zugreifen. Denken wir an unsere <strong>funktionale Komponente</strong> zurück, erinnern wir uns vielleicht, dass in diesem Fall die <strong>Props</strong> tatsächlich als ganz gewöhnliches Argument an die Funktion übergeben wurden. Ähnlich ist das Prinzip bei einer <strong>Class Component</strong>, mit dem Unterschied, dass die <strong>Props</strong> über den Constructor der Klasse in die Komponente hereingereicht werden und über <code>this.props</code> innerhalb der Klassen-Instanz verfügbar sind, statt über ein Funktionsargument, wie das bei funktionalen Komponenten der Fall ist.</p>
+<p>Wichtig dabei ist: wann immer eine Komponente von außen neue <strong>Props</strong> hereingereicht bekommt, löst dies ein Re-Rendering der Komponente aus! Dieses Verhalten kann mittels der <code>shouldComponentUpdate()</code> <strong>Lifecycle-Methode</strong> explizit unterbunden werden, doch dazu gibt es im nachfolgenden Kapitel mehr. Wichtig ist erst einmal der allgemeine Grundsatz: empfängt eine <strong>Komponente</strong> von außen neue <strong>Props</strong>, veranlasst dies React dazu eine <strong>Komponente</strong> mitsamt ihrer Kind-Komponenten neu zu rendern.</p>
+<h3 id="props-sind-readonly-innerhalb-einer-komponente">Props sind readonly innerhalb einer Komponente</h3>
+<p>Unabhängig davon wie die Props in welcher Art von Komponente auch immer landen, eines ist ihnen gemeinsam: sie sind innerhalb der Komponente <strong>immer readonly</strong>, dürfen (und können) also nur gelesen, nicht aber modifiziert werden! Der Profi spricht hier auch von <strong>Immutability</strong> oder <strong>Immutable Objects</strong>. Um mit veränderlichen Daten zu arbeiten kommt später der React <strong>State</strong> ins Spiel. Aber eins nach dem anderen.</p>
+<p>Modifiziert eine Funktion ihren Input nicht und hat auch keine Abhängigkeit nach außen, so spricht man in der funktionalen Programmierung von einer puren Funktion (engl.: <strong>Pure Function</strong>) und die Idee dahinter ist recht simpel: so soll sichergestellt werden, dass eine Funktion in sich geschlossen ist, daher davon unbeeindruckt bleibt wenn sich außerhalb der Funktion etwas ändert, die Funktion bekommt alle benötigten Parameter hereingereicht, ist frei von Seiteneffekten (engl.: <strong>Side Effects</strong>) und erzielt somit bei gleichen Eingabewerten auch immer die exakt identische Ausgabe. <strong>Gleicher Input, gleicher Output!</strong></p>
+<p>Mit anderen Worten: egal welche Variablen außerhalb der Funktion ihren Wert ändern, egal wie oft andere Funktionen anderswo aufgerufen werden: bekommt eine Pure Function die gleichen Parameter wie zuvor, gibt sie mir auch das gleiche Ergebnis wie zuvor zurück. Immer und ausnahmslos.</p>
+<p>Warum ist das wichtig? Nun, React verfolgt bei seinen Komponenten das Prinzip von <strong>Pure Functions</strong>. Erhält eine Komponente die gleichen Props von außen hineingereicht, ist der initiale Output auch immer identisch.</p>
+<h3 id="pure-functions-im-detail">Pure Functions im Detail</h3>
+<p>Da das Prinzip von <strong>Pure Functions</strong> ein grundlegendes ist bei der Arbeit mit React möchte ich diese Anhand einiger Beispiele etwas näher beleuchten. Hier geht es überwiegend um Theorie, die sich sicherlich komplizierter anhört als das später bei der praktischen Arbeit mit React der Fall sein wird. Dennoch möchte ich diese zum besseren Verständnis nicht unerwähnt lassen.</p>
+<h4 id="beispiel-für-eine-simple-pure-function">Beispiel für eine simple Pure Function</h4>
+<pre><code class="javascript language-javascript">function pureDouble(number) {
+  return number * 2; 
+}</code></pre>
+<p>Unsere erste simple Funktion bekommt eine Nummer übergeben, verdoppelt diese und gibt das Ergebnis zurück. Egal ob ich die Funktion 1, 10 oder 250 mal aufrufe: übergebe ich der Funktion bspw. eine <code>5</code> als Wert, erhalte ich eine <code>10</code> zurück. Immer und ausnahmslos. Same input, same output.</p>
+<h4 id="beispiel-für-eine-impure-function">Beispiel für eine Impure Function</h4>
+<pre><code class="javascript language-javascript">function impureCalculation(number) {
+  return number + window.outerWidth;
+}</code></pre>
+<p>Die zweite Funktion ist nicht mehr pure, weil sie nicht zuverlässig immer den gleichen Output liefert, selbst wenn ihr Input identisch ist. Momentan ist mein Browser-Fenster 1920 Pixel breit. Rufe ich die Funktion mit <code>10</code> als Argument auf, erhalte ich <code>1930</code> zurück (<code>10 + 1920</code>). Verkleinere ich nun das Fenster auf 1280 Pixel und rufe die Funktion erneut, mit exakt der gleichen <code>10</code> als Argument auf bekomme ich dennoch ein anderes Ergebnis (<code>1290</code>) als beim ersten Mal. Es handelt sich also nicht um eine Pure Function.</p>
+<p>Eine Möglichkeit diese Funktion „pure“ zu machen wäre, ihr meine Fensterbreite als weiteres Funktionsargument zu übergeben:</p>
+<pre><code class="javascript language-javascript">function pureCalculation(number, outerWidth) {
+  return number + outerWidth;
+}</code></pre>
+<p>So liefert die Funktion beim Aufruf von pureCalculation(10, window.outerWidth) zwar immer noch ein Ergebnis was von meiner Fensterbreite abhängt, die Funktion ist dennoch „pure“ da sie beim gleichen Input weiterhin den gleichen Output liefert. Einfacher kann man das nachvollziehen wenn man die Funktion mal auf ihre wesentlichen Eigenschaften reduziert:</p>
+<pre><code class="javascript language-javascript">function pureSum(number1, number2) {
+  return number1 + number2;
+};</code></pre>
+<p><strong>Gleicher Input, Gleicher Output.</strong></p>
+<h4 id="weiteres-beispiel-für-eine-impure-function">Weiteres Beispiel für eine Impure Function</h4>
+<p>Stellen wir uns einmal vor wir möchten eine Funktion implementieren die als Input ein Objekt empfängt mit Parametern zu einem Auto.</p>
+<pre><code class="javascript language-javascript">var car = {speed: 0, seats: 5};
+function accelerate(car) {
+  car.speed += 1;
+  return car;
+}</code></pre>
+<p>Das obige Beispiel ist ebenfalls eine Funktion die nicht „pure“ ist, da sie ihren Eingabewert modifiziert und somit beim zweiten Aufruf bereits ein anderes Ergebnis als Ausgabewert hat als noch beim ersten Aufruf:</p>
+<pre><code class="javascript language-javascript">console.log(accelerate(car)) 
+&gt; {speed: 1, seats: 5}
+
+console.log(accelerate(car)) 
+&gt; {speed: 2, seats: 5}</code></pre>
+<p>Wie sorgen wir also nun dafür, dass auch unser letztes Beispiel „pure“ wird? Indem wir den Eingabewert nicht mehr modifizieren und stattdessen jedes Mal ein neues Objekt erzeugen, basierend auf dem Eingabewert, und dieses neue Objekt aus der Funktion zurückgebend,</p>
+<pre><code class="javascript language-javascript">var car = {speed: 0};
+function accelerate(car) {
+  return {
+    speed: car.speed + 1,
+  }
+}</code></pre>
+<p>Neues Ergebnis:</p>
+<pre><code class="text language-text">console.log(accelerate(car)) 
+&gt; {speed: 1}
+
+console.log(accelerate(car)) 
+&gt; {speed: 1}</code></pre>
+<p><strong>Gleicher Input: gleicher Output:</strong> wir sind „pure“!</p>
+<p>Ihr wundert euch jetzt vielleicht warum ich euch das erzähle und hier mit langweiliger Theorie nerve, wo ihr doch eigentlich nur React lernen wollt (jedenfalls würde ich mir das an dieser Stelle denken, wenn ich mir vorstelle dieses Buch auch aus diesem Grund zu lesen).</p>
+<p>React ist eine sehr liberale Library, die dem Entwickler sehr viele Freiheiten lässt. Aber eine Sache ist oberstes Gebot und da kennt React auch wirklich keinen Spaß: <strong>Komponenten müssen sich im Hinblick auf ihre Props wie „Pure Functions“ verhalten und bei gleichen Props stets die gleiche Ausgabe erzeugen!</strong></p>
+<p>Haltet ihr euch da nicht dran, kann es bei der Arbeit mit React zu sehr eigenartigen Effekten kommen, zu unerwünschten und nicht nachvollziehbaren Ergebnissen führen und euch das Leben beim Bugfixing zur Hölle machen. Und genau aus diesem Grund lernt ihr ja React: weil ihr ein einfaches aber dennoch zugleich unglaublich mächtiges Tool haben wollt, mit denen ihr nach etwas Einarbeitung in unglaublich schneller Zeit wirklich professionelle User Interfaces entwickeln könnt, ohne euch dabei selbst in den Wahnsinn zu treiben. All das bietet euch React, solange ihr euch an diese Regel haltet.</p>
+<p>Das hat für uns aber gleichzeitig den sehr angenehmen Nebeneffekt, dass sich Komponenten in der Regel auch sehr einfach testen lassen.</p>
+<p>So und was bedeutet jetzt genau das <em>„readonly innerhalb einer Komponente“</em>? Das ist mit unserem neuen Wissen über „Pure Functions“ recht schnell erklärt: egal wie ich in der Komponente auf die Props zugreife, ob direkt über das <code>props</code>-Argument einer SFC (_„Stateless Functional Component“_), über den <code>constructor()</code> in einer Class-Component oder an beliebiger anderer Stelle innerhalb einer Class-Component mittels <code>this.props</code>: ich kann und darf (und will!) den Wert der hereingereichten Props nicht ändern.</p>
+<p>Anders sieht das natürlich <strong>außerhalb</strong> aus. Hier kann ich den Wert problemlos ändern (vorausgesetzt natürlich, wir befinden uns nicht wiederum in einer Komponente, welche die Prop die wir modifizieren wollen selbst nur hereingereicht bekommen hat).</p>
+<h4 id="was-nicht-möglich-ist">Was nicht möglich ist</h4>
+<pre><code class="jsx language-jsx">function Example(props) {
+  props.number = props.number + 1;
+  props.fullName = [props.firstName, props.lastName].join(' ');
+  return (
+    &lt;div&gt;({props.number}) {props.fullName} &lt;/div&gt;
+  );
+}
+
+ReactDOM.render(
+  &lt;Example number={5} firstName="Manuel" lastName="Bieh" /&gt;,
+  document.getElementById('app')
+);</code></pre>
+<p><strong>Ausgabe:</strong></p>
+<div class="hint hint--danger">
+<p>TypeError: Cannot add property number, object is not extensible</p>
+</div>
+<p>Hier versuche ich direkt die <code>number</code> und <code>fullName</code> Props innerhalb meiner Example-Komponente zu ändern, was natürlich nicht funktionieren kann, da wir ja gelernt haben, dass Props grundsätzlich readonly sind.</p>
+<h4 id="was-allerdings-möglich-ist">Was allerdings möglich ist</h4>
+<p>Manchmal möchte ich aber eben doch einen neuen Wert von einer hereingereichten Prop ableiten. Das ist auch gar kein Problem, React 17 bietet dafür sogar noch eine umfassende Funktion <code>getDerivedStateFromProps()</code>, auf die ich im entsprechenden Kapital nochmal gesondert und sehr detailliert eingehen werde.</p>
+<p>Möchte ich aber eben nur mal eben einen Wert anzeigen der sich von der Prop ableitet, die ich als Komponente hereingereicht bekomme, geht das indem nur die Ausgabe auf Basis der Prop anpasse ohne zu probieren den Wert zurück zu schreiben.</p>
+<pre><code class="jsx language-jsx">var React = require('react');
+var ReactDOM = require('react-dom');
+
+function Example(props) {
+  return (
+    &lt;div&gt;({props.number + 1}) {[props.firstName, props.lastName].join(' ')}&lt;/div&gt;
+  );
+}
+
+ReactDOM.render(
+  &lt;Example number={5} firstName="Manuel" lastName="Bieh" /&gt;,
+  document.getElementById('app')
+);</code></pre>
+<p><strong>Ausgabe:</strong></p>
+<pre><code class="jsx language-jsx">&lt;div&gt;(6) Manuel Bieh&lt;/div&gt;</code></pre>
+<p>In diesem Fall modifiziere ich also lediglich die Ausgabe basierend auf den <code>props</code>, nicht jedoch das <code>props</code>-Objekt selbst. Das ist überhaupt kein Problem.</p>
+<h4 id="was-ebenfalls-möglich-ist">Was ebenfalls möglich ist</h4>
+<p>Jetzt bleibt noch abschließend zu klären wie Props denn nun außerhalb einer Komponente geändert werden können, denn bisher war immer nur die Rede davon, dass Props nur innerhalb einer Komponente nicht verändert werden dürfen.</p>
+<p>Auch das lässt sich am Besten anhand eines konkreten, allerdings noch recht abstrakten Beispiels erklären:</p>
+<pre><code class="jsx language-jsx">var React = require('react');
+var ReactDOM = require('react-dom');
+
+var renderCounter = 0;
+setInterval(function () {
+  renderCounter++;
+  renderApp();
+}, 2000);
+
+const App = (props) =&gt; {
+  return &lt;div&gt;{props.renderCounter}&lt;/div&gt;
+};
+
+function renderApp() {
+  ReactDOM.render(
+    &lt;App renderCounter={renderCounter} /&gt;,
+    document.getElementById('app')
+  );
+}
+
+renderApp();</code></pre>
+<p>Was passiert hier? Zunächst einmal setzen wir eine Variable <code>renderCounter</code> auf den Anfangswert <code>0</code>. Diese Variable zählt für uns gleich mit wie oft wir unsere <code>App</code>-Komponente rendern oder genauer gesagt, wie oft wir im Endeffekt die <code>ReactDOM.render()</code> Funktion aufrufen, die dann entsprechend bei jedem Aufruf dafür sorgt, dass die <code>App</code>-Komponente erneut gerendert wird.</p>
+<p>Anschließend starten wir einen Intervall, der die besagte Funktion regelmäßig alle 2000 Millisekunden ausführt. Dabei führt der Intervall nicht nur im 2 Sekunden-Takt die Funktion aus, sondern zählt auch gleichzeitig unsere <code>renderCounter</code> Variable um 1 hoch. Was hier jetzt passiert ist ganz spannend: wir modifizieren die <code>renderCounter</code> Prop unserer App <strong>„von außen“</strong>.</p>
+<p>Die Komponente selbst bleibt dabei komplett „pure“. Wird sie aufgerufen mit:</p>
+<pre><code class="jsx language-jsx">&lt;App renderCounter={5} /&gt;</code></pre>
+<p>gibt sie uns als Ergebnis zurück:</p>
+<pre><code class="markup language-markup">&lt;div&gt;5&lt;/div&gt;</code></pre>
+<p>Und zwar egal wie oft die Komponente inzwischen tatsächlich gerendert wurde. Gleicher Input, gleicher Output.</p>
+<p>Innerhalb unserer Komponente sind und bleiben wir weiterhin „pure“. Wir modifizieren den Eingabewert nicht und wir haben in der Komponente auch keinerlei direkten Abhängigkeiten nach außen, die unser Render-Ergebnis beeinflussen könnten. Der Wert wird lediglich außerhalb unserer Komponente geändert und neu in die Komponente <strong>hereingegeben</strong>, was uns aber an dieser Stelle auch gar nicht weiter interessieren braucht, da es für uns lediglich wichtig ist, dass unsere Komponente mit gleichen Props auch weiterhin das gleiche Ergebnis liefert. Und das ist hier zweifellos gegeben. Wer die Props außerhalb unserer Komponente modifiziert, wie oft und in welcher Form ist uns ganz gleich, solange wir das nicht selber innerhalb unserer Komponente tun. Okay, Prinzip verstanden?</p>
+<h4 id="props-sind-ein-abstrahiertes-funktionsargument">Props sind ein abstrahiertes Funktionsargument</h4>
+<p>Da Props, reduziert man sie auf das Wesentliche, nichts anderes als ein Funktionsargument sind, können sie auch in dessen diversen Formen auftreten. Alles, was auch Functions oder Constructors in JavaScript als Argument akzeptieren, kann auch als Wert für eine Prop verwendet werden. Vom simplen String, über Objekte, Funktionen oder gar andere React-Elemente (die ja, wie wir bereits wissen, hinter den Kulissen auch nichts anderes als ein Funktionsaufruf sind) kann das nahezu alles sein, solange es eben ein valider Ausdruck ist.</p>
+<pre><code class="jsx language-jsx">&lt;MyComponent
+  counter={3}
+  text="example"
+  showStatus={true}
+  config={{ uppercase: true }}
+  biggerNumber={Math.max(27, 35)}
+  arbitraryNumbers={[1, 4, 28, 347, 1538]}
+  dateObject={Date}
+  dateInstance={new Date()}
+  icon={
+    &lt;svg x="0px" y="0px" width="32px" height="32px"&gt;
+      &lt;circle fill="#CC3300" cx="16" cy="16" r="16" /&gt;
+    &lt;/svg&gt;
+  }
+  callMe={() =&gt; {
+    console.log('Somebody called me');
+  }}
+/&gt;</code></pre>
+<p>Auch wenn die meisten Props hier inhaltlich wenig Sinn ergeben und nur zur Veranschaulichung dienen, so sind sie dennoch syntaktisch korrektes JSX, demonstrieren wie mächtig sie sind und in welchen verschiedenen Formen sie auftreten können.</p>
+<h3 id="props-sind-nicht-auf-eine-verschachtelungsebene-beschränkt">Props sind nicht auf eine Verschachtelungsebene beschränkt</h3>
+<p>Eine Komponente die Props empfängt kann diese problemlos auch an Kind-Komponenten weiterreichen. Dies kann einerseits hilfreich sein wenn man große Komponenten in mehrere kleinere Komponenten unterteilt und gewisse Props an Kind-Komponenten weitergegeben werden müssen, kann aber bei komplexen Anwendungen teilweise dazu führen dass es schwer erkenntlich wird wo der genaue Ursprung einer Prop ist und wo ich anfangen muss zu suchen, wenn ich den Wert einer Prop ändern möchte.</p>
+<pre><code class="jsx language-jsx">function User(props) {
+  return (
+    &lt;div&gt;
+      &lt;h1&gt;{props.name}&lt;/h1&gt;
+      &lt;UserImage image={props.image} /&gt;
+      &lt;ListOfPosts items={props.posts} /&gt;
+    &lt;/div&gt;
+  )
+}
+
+ReactDOM.render(
+  &lt;User name={user.name} image={user.image} posts={user.posts} /&gt;,
+  document.getElementById('app')
+);</code></pre>
+<h3 id="die-wichtigsten-punkte-im-überblick">Die wichtigsten Punkte im Überblick</h3>
+<div class="hint hint--success">
+<p>Komponenten müssen sich hinsichtlich ihrer Props als „Pure Functions“ verhalten und bei gleichen Props stets die gleiche Ausgabe erzeugen.</p>
+<ul>
+<li>Props sind innerhalb einer Komponente grundsätzlich als <strong>readonly</strong> zu betrachten</li>
+<li>Komponenten können eine <strong>beliebige Menge an Props</strong> übergeben bekommen.</li>
+<li>In JSX übergibt man Props in ähnlicher Form wie in HTML Attribute</li>
+<li>Anders als in HTML, sind in JSX diverse Arten von Werten erlaubt. Werte die nicht vom Typ String sind, werden dabei in <strong>geschweifte Klammern</strong> gefasst</li>
+<li>Props können <strong>sämtliche JavaScript-Ausdrücke</strong> („Expressions“) als Wert entgegennehmen</li>
+<li>Empfangene Props können beliebig viele Ebenen tief im Komponenten-Baum an Kind-Elemente weitergegeben werden</li>
+</ul>
+</div>
+</div><div class="chapter">
+<h1 id="state-und-lifecycle-methods">State und Lifecycle-Methods</h1>
+<p>Kommen wir zu dem, was die Arbeit mit React erstmal wirklich effizient macht: <strong>State</strong>, <strong>stateful Components</strong> und die sogenannten <strong>Lifecycle-Methods</strong>.</p>
+<p>Wie im Kapitel über Komponenten bereits angesprochen können <strong>stateful Components</strong> einen eigenen  Zustand, den <strong>State</strong>, halten, verwalten und verändern. Dabei gilt der Grundsatz: <strong>ändert sich der State einer Komponente, löst dies immer auch ein Re-Rendering der Komponente aus!</strong> Dieses Verhalten kann in <strong>Class Components</strong> auch explizit unterbunden werden, was in einigen Fällen sinnvoll ist. Aber der Grundsatz bleibt unverändert: eine State-Änderung löst ein Re-Rendering einer Komponente und ihrer Kind-Komponenten aus.</p>
+<p>Das ist insofern hilfreich, als dass wir nicht mehr manuell <code>ReactDOM.render()</code> aufrufen müssen wann immer wir meinen dass sich etwas an unserem Interface geändert hat, sondern die Komponenten dies stattdessen selbst entscheiden können.</p>
+<p>Neben dem State an sich gibt es auch eine handvoll sogenannter Lifecycle-Methoden. Dies sind Methoden die <strong>optional</strong> in einer <strong>Class Component</strong> definiert werden können und von React bei bestimmten Anlässen ausgeführt werden. Beispielsweise wenn eine Komponente erstmals gemountet wird oder sich dessen Props aktualisiert haben.</p>
+<h2 id="eine-erste-stateful-component">Eine erste stateful Component</h2>
+<p>Der <strong>State</strong> innerhalb einer Komponente ist verfügbar über die Instanz-Eigenschaft <code>this.state</code> und ist innerhalb einer <strong>Komponente</strong> gekapselt. Weder Eltern- noch Kind-Komponenten können ohne weiteres auf den State einer anderen Komponente zugreifen.</p>
+<p>Um in einer Komponente einen initialen Zustand zu definieren gibt es zwei einfache Wege, einen dritten lernen wir später noch mit der Lifecycle-Methode <code>getDerivedStateFromProps()</code> kennen.</p>
+<p>Initialen State kann man definieren, indem man im Constructor die Instanz-Eigenschaft <code>this.state</code> setzt:</p>
+<pre><code class="javascript language-javascript">class MyComponent extends React.Component {
+  constructor(props) {
+    this.state = {
+      counter: props.counter,
+    };
+  }
+}</code></pre>
+<p>… oder indem man den State als <strong>ES2017</strong> <strong>Class Property</strong> definiert, was deutlich kürzer ist, jedoch momentan noch das <strong>Babel-Plugin</strong> <code>@babel/plugin-proposal-class-properties</code> (vor Babel 7: <code>babel-plugin-transform-class-properties</code>) benötigt:</p>
+<pre><code class="javascript language-javascript">class MyComponent extends React.Component {
+  state = {
+    counter: this.props.counter,
+  };
+}</code></pre>
+<p><strong>Create-React-App</strong> unterstützt die <strong>Class Property Syntax</strong> standardmäßig und da viele React-Projekte heute vollständig oder zumindest zu gewissen Teilen auf dem CRA-Setup oder Varianten davon basieren, kommt diese Syntax heute in den meisten Projekten zum Einsatz und kann genutzt werden. Sollte dies mal in einem Projekt nicht der Fall zu sein, empfehle ich dringend die Installation und Nutzung des Babel-Plugins, da es wirklich viele unnötige Zeilen Code bei der täglichen Arbeit mit React einspart, während es gleichzeitig in nur wenigen Minuten eingerichtet ist.</p>
+<p>Ist der <strong>State</strong> erst einmal definiert, können wir innerhalb der <strong>Class Component</strong> mittels <code>this.state</code> <strong>lesend</strong> auf ihn zugreifen. Lesend ist hier ein entscheidendes Stichwort. Denn auch wenn es prinzipiell möglich ist den State direkt über <code>this.state</code> zu verändern sollte dies aus verschiedenen Gründen vermieden werden.</p>
+<h2 id="den-state-verändern-mit-thissetstate">Den State verändern mit this.setState()</h2>
+<p>Um State zu verändern stellt React eine eigene Klassen-Methode bereit: </p>
+<pre><code class="javascript language-javascript"> this.setState()</code></pre>
+<p>Wann immer der State innerhalb einer Komponente verändert werden soll, sollte dafür <code>this.setState()</code> verwendet werden. Der Aufruf von <code>this.setState()</code> führt dann dazu, dass React entsprechende Lifecycle-Methoden (wie bspw. <code>componentDidUpdate()</code>) ausführt und eine Komponente <strong>neu rendert!</strong> Würden wir den State stattdessen direkt verändern, also bspw. <code>this.state.counter = 1;</code> schreiben, hätte dies keinerlei Auswirkungen auf unsere Komponente und alles würde aussehen wie bisher, da der Render-Prozess <strong>nicht</strong> ausgelöst werden würde!</p>
+<p>Die Methode ist von der Funktionsweise her allerdings etwas komplexer als es auf den ersten Moment aussehen mag. Und so wird nicht einfach nur der alte State durch den neuen State ersetzt und ein Re-Rendering ausgelöst. Es passieren auch noch allerhand andere Dinge. Der Reihe nach.</p>
+<p>Zuerst einmal kann die Funktion <strong>zwei verschiedene Arten von Argumenten</strong> entgegennehmen. Das ist einerseits ein <strong>Objekt</strong> mit neuen oder aktualisierten State-Eigenschaften, sowie andererseits eine <strong>Updater-Funktion,</strong> die wiederum ein Objekt zurückgibt oder <code>null</code>, falls nichts geändert werden soll. Bestehende gleichnamige Eigenschaften innerhalb des State-Objekts werden dabei <strong>überschrieben</strong>, alle anderen bleiben <strong>unangetastet!</strong> Möchten wir eine Eigenschaft im State zurücksetzen, müssen wie diese dazu also explizit auf <code>null</code> oder <code>undefined</code> setzen. Der übergebene State wird also immer mit dem bestehenden State <strong>zusammengefügt</strong>, niemals <strong>ersetzt!</strong></p>
+<p>Nehmen wir nochmal unseren oben definierten State mit einer <code>counter</code> Eigenschaft, deren initialer Wert für dieses Beispiel erst einmal <code>0</code> ist. Nun verändern wir den State und möchten diesem zusätzlich eine <code>date</code> Eigenschaft mit dem aktuellen Datum hinzufügen. Übergeben als Objekt wäre unser Aufruf:</p>
+<pre><code class="javascript language-javascript">this.setState({
+  date: new Date(),
+});</code></pre>
+<p>Nutzen wir stattdessen eine <strong>Updater-Funktion</strong>, wäre unser Aufruf:</p>
+<pre><code class="javascript language-javascript">this.setState(() =&gt; {
+  return {
+    date: new Date(),
+  };
+});</code></pre>
+<p>Oder kurz:</p>
+<pre><code class="javascript language-javascript">this.setState(() =&gt; ({
+  date: new Date(),
+});</code></pre>
+<p>Unsere Komponente hat anschließend den neuen State:</p>
+<pre><code class="javascript language-javascript">{
+  counter: 0,
+  date: new Date(),
+}</code></pre>
+<p>Um sicherzustellen stets auf den aktuellen State zuzugreifen, sollte eine <strong>Updater-Funktion</strong> verwendet werden, die den jeweils aktuellen State als ersten Parameter übergeben bekommt. Ein beliebter Fehler der vielen Entwicklern bei der Arbeit mit React schon passiert ist, ist es direkt nach einem <code>setState()</code>-Aufruf auf <code>this.state</code> zuzugreifen und sich zu wundern, dass der State noch immer der alte ist.</p>
+<div class="hint hint--danger">
+<p>React „sammelt“ schnell aufeinanderfolgende <code>setState()</code>-Aufrufe und <strong>führt diese nicht unmittelbar aus</strong>, um unnötig häufiges und überflüssiges Re-Rendering von Komponenten zu vermeiden. Schnell aufeinanderfolgende <code>setState()</code>-Aufrufe werden später in gesammelter Form ausgeführt. Das ist wichtig, da wir somit auch nicht unmittelbar nach einem <code>setState()</code>-Aufruf mittels <code>this.state</code> auf den neu gesetzten State zugreifen können.</p>
+</div>
+<p>Stellen wir uns eine Situation vor in der unser <code>counter</code>-State dreimal in schneller Abfolge erhöht werden soll. Intuitiv würde man nun vermutlich folgenden Code schreiben:</p>
+<pre><code class="text language-text">this.setState({ counter: this.state.counter + 1 });
+this.setState({ counter: this.state.counter + 1 });
+this.setState({ counter: this.state.counter + 1 });</code></pre>
+<p>Was denkst du, wie ist der neue State wenn der initiale State <code>0</code> war? <code>3</code>? Falsch. Er ist <code>1</code>! Hier kommt der angesprochene <strong>Batching-Mechanismus</strong> von React zum Zug. Um ein sich zu schnell aktualisierendes User Interface zu vermeiden, wartet React hier erst einmal ab. Am Ende kann man den obigen Code simpel gesagt <strong>vom Funktionsprinzip her</strong> in etwa gleichsetzen mit:</p>
+<pre><code class="text language-text">this.state = Object.assign(
+  this.state, 
+  { counter: this.state.counter + 1 },
+  { counter: this.state.counter + 1 },
+  { counter: this.state.counter + 1 },
+);</code></pre>
+<p>Die <code>counter</code>-Property überschreibt sich hier also immer wieder selbst, nimmt aber stets <code>this.state.counter</code> als Basiswert für die Erhöhung um 1.</p>
+</div>
+</body>
+</html>
