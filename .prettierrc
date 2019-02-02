@@ -1,6 +1,11 @@
 printWidth: 80
 singleQuote: true
-tabWidth: 4
+tabWidth: 2
 trailingComma: es5
 semi: true
 arrowParens: always
+
+overrides:
+  - files: "*.md"
+    options:
+      parser: markdown
