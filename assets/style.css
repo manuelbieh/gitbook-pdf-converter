@@ -6,13 +6,18 @@
 
 body {
   font-family: Roboto, Times New Roman, sans-serif;
-  font-size: 15px;
-  line-height: 1.7;
+  font-size: 15pt;
+  line-height: 1.6;
 }
 
-@page {
+/* @page {
   size: a4;
   margin: 1in 0.5in;
+} */
+
+@page {
+  size: a5;
+  margin: 0.5in 0.25in;
 }
 
 .chapter {
@@ -30,7 +35,7 @@ body {
   display: none;
 }
 
-.chapter
+/* .chapter
   + .chapter
   + .chapter
   + .chapter
@@ -39,7 +44,7 @@ body {
   + .chapter
   ~ .chapter {
   display: none;
-}
+} */
 
 pre {
   margin-left: -0.5in;
