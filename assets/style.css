@@ -2,6 +2,7 @@
   /* margin: 0;
     padding: 0; */
   box-sizing: border-box;
+  font-variant-ligatures: none;
 }
 
 body {
@@ -54,7 +55,9 @@ pre {
 
 pre,
 code {
-  font-family: 'Dank Mono', 'Source Code Pro', Menlo, monospace;
+  /* font-family: Menlo, monospace; */
+  font-family: 'Dank Mono', Menlo, monospace;
+  font-family: dm, Menlo, monospace;
 }
 
 h1 {
@@ -103,11 +106,13 @@ pre {
 }
 
 .hint {
-  position: relative;
+  background-position: 12px 20px;
+  background-repeat: no-repeat;
   margin-top: 20px;
   margin-bottom: 20px;
   padding: 21px 20px 1px 50px;
   page-break-inside: avoid;
+  position: relative;
 }
 
 .hint pre,
@@ -127,20 +132,30 @@ pre {
 
 .hint--danger {
   border-left: 4px solid #d9534f;
-  background: #fdf7f7;
+  background-color: #fdf7f7;
+  border-left: 4px solid #d9534f;
+  border-color: #d9534f;
+  background-image: url(./icons/close.svg);
+  background-size: 24px 24px;
   border-color: #d9534f;
 }
 
 .hint--info {
-  border-left: 4px solid #42acf3;
-  background: #eff5ff;
+  /* background: #eff5ff; */
+  background-color: #eff5ff;
+  background-image: url(./icons/info.svg);
+  background-size: 24px 24px;
   border-color: #42acf3;
+  border-left: 4px solid #42acf3;
+
 }
 
 .hint--warning {
   border-left: 4px solid #f0ad4e;
-  background: #fcf8f2;
+  background-color: #fcf8f2;
   border-color: #f0ad4e;
+  background-image: url(./icons/warning.svg);
+  background-size: 28px 28px;
 }
 
 .has-image {
@@ -163,5 +178,9 @@ pre {
 
   #cover {
     position: relative;
+  }
+
+  .hint {
+    background-position: 18px 24px;
   }
 }

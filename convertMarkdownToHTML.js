@@ -1,21 +1,17 @@
-const fs = require('fs');
+const fs = require('fs-extra');
 const path = require('path');
-const mkdirp = require('mkdirp');
+// const mkdirp = require('mkdirp');
 const showdown = require('showdown');
 const markdownLinkExtractor = require('markdown-link-extractor');
 const showdownHighlight = require('showdown-highlight');
 const prettier = require('prettier');
-const express = require('express');
-const puppeteer = require('puppeteer');
 require('./lib/gitbook-hints');
 
 const converter = new showdown.Converter({
   extensions: ['gitbook-hints', showdownHighlight],
 });
-// const converter = new showdown.Converter();
 converter.setFlavor('github');
 
-const app = express();
 const summary = fs.readFileSync('./content/SUMMARY.md', {
   encoding: 'utf-8',
 });
@@ -34,9 +30,7 @@ const chapter = fs.readFileSync('./templates/chapter.html', {
 });
 
 const convertFile = (filename) => {
-  const prettierOptions = prettier.resolveConfig(
-    __dirname + '/.prettierrc'
-  );
+  // const prettierOptions = prettier.resolveConfig(__dirname + '/.prettierrc');
 
   const rawFile = prettier.format(
     fs
@@ -44,6 +38,7 @@ const convertFile = (filename) => {
         encoding: 'utf-8',
       })
       // this is to circumvent a Showdown bug:
+      // https://github.com/showdownjs/showdown/issues/653
       .replace(/\\\(/g, '(')
       .replace(/\\\)/g, ')'),
     {
@@ -62,24 +57,25 @@ const convertFile = (filename) => {
     .replace(
       /<p>(.*)<img(.*)alt="(.*)"(.*)>(.*)<\/p>/g,
       '<p class="has-image">$1<span><img$2alt="$3"$4><span class="caption">$3</span></span>$5</p>'
-    );
+    )
+    .replace(/..\/.gitbook\/assets/g, './assets/.gitbook');
   // .replace(/<img(.*)alt="(.*)"(.*)>/,'<span><img$1alt="$2"$3><span>$2</span></span>')
 
-  return chapter.replace('{{content}}', convertedFile);
+  return chapter.replace(/{{\s*content\s*}}/, convertedFile);
 };
 
 const writeHtml = (filename, html) => {
-  mkdirp.sync(path.dirname(`./html/${filename}`));
+  fs.mkdirpSync(path.dirname(`./public/${filename}`));
   fs.writeFileSync(
-    `./html/${filename.replace(/(.md|.html)$/i, '.html')}`,
+    `./public/${filename.replace(/(.md|.html)$/i, '.html')}`,
     html
   );
 };
 
-const convertAndSave = (filename) => {
-  const html = convertFile(filename);
-  writeHtml(filename, html);
-};
+// const convertAndSave = (filename) => {
+//   const html = convertFile(filename);
+//   writeHtml(filename, html);
+// };
 
 const combineChapters = () => {
   const combined = links.reduce((acc, filename) => {
@@ -87,7 +83,11 @@ const combineChapters = () => {
     return acc;
   }, '');
 
-  return layout.replace('{{content}}', combined);
+  return layout.replace(/{{\s*content\s*}}/, combined);
 };
 
-writeHtml('all.html', combineChapters());
+writeHtml('index.html', combineChapters());
+
+fs.mkdirpSync('./public/assets/.gitbook');
+fs.copySync('./content/.gitbook/assets', './public/assets/.gitbook');
+fs.copySync('./assets', './public/assets');
