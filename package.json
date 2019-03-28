@@ -6,7 +6,8 @@
   "scripts": {
     "convert": "node convertMarkdownToHTML",
     "generate": "node generatePdf",
-    "start": "yarn convert && yarn generate"
+    "start": "yarn convert && yarn generate",
+    "update": "cd content && git pull"
   },
   "keywords": [],
   "author": "Manuel Bieh <node@manuelbieh.de> (https://github.com/manuelbieh)",
@@ -18,7 +19,7 @@
     "markdown-link-extractor": "^1.2.0",
     "mkdirp": "^0.5.1",
     "prettier": "1.16.4",
-    "puppeteer": "^1.12.1",
+    "puppeteer": "^1.13.0",
     "showdown": "^1.9.0",
     "showdown-highlight": "^2.1.3"
   },

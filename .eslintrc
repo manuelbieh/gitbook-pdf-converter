@@ -1,0 +1,7 @@
+{
+  "extends": ["wiremore"],
+  "rules": {
+    "indent": [2, 2],
+    "security/*": 0
+  }
+}
