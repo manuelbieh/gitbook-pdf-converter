@@ -17,15 +17,14 @@ body {
 } */
 
 @page {
-  /* size: a4; */
-  size: 17cm 24cm;
-  margin: 1in 1in;
+  size: a4;
+  margin: 0.5in 0.25in;
 }
 
-/* .chapter {
+.chapter {
   margin-left: 0.5in;
   margin-right: 0.5in;
-} */
+}
 
 @media print {
   body {

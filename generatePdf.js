@@ -23,11 +23,11 @@ const server = app.listen(3000, () => {
 
       await page.pdf({
         path: 'printed.pdf',
-        // format: 'A4',
+        format: 'A4',
         // width: '17cm',
         // height: '24cm',
         printBackground: true,
-        preferCSSPageSize: true,
+        // preferCSSPageSize: true,
       });
       await browser.close();
       server.close();
