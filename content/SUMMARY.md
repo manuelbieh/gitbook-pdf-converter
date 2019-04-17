@@ -24,7 +24,6 @@
   * [Error Boundaries](erweiterte-konzepte/error-boundaries.md)
   * [Portals](erweiterte-konzepte/portals.md)
   * [Code Splitting](erweiterte-konzepte/code-splitting.md)
-  * [Server Side Rendering](erweiterte-konzepte/server-side-rendering.md)
   * [Typechecking mit PropTypes, Flow und TypeScript](erweiterte-konzepte/type-checking.md)
 * [Hooks](hooks/README.md)
   * [Einführung in Hooks](hooks/einfuehrung.md)
@@ -37,5 +36,5 @@
   * [State Management](ecosystem/state-management.md)
   * [Mehrsprachigkeit](ecosystem/mehrsprachigkeit.md)
   * [Informationsquellen](ecosystem/informationsquellen.md)
-  * [Tools](ecosystem/tools.md)
+  * [Tools und Frameworks](ecosystem/tools.md)
 

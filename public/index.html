@@ -192,7 +192,7 @@ ReactDOM.render(
 <p>So lässt sich bspw. der State direkt im Browser manipulieren und die Auswirkungen live beobachten. Ich würde soweit gehen und behaupten, dass ein effizientes Debugging ohne die Devtools-Erweiterungen kaum oder sogar gar nicht möglich ist.</p>
 <h2 id="zero-config-setup">Zero Config Setup</h2>
 <p>Manch einer hat in der Vergangenheit darüber gescherzt, dass man gut und gerne Tage damit verbringen kann ein Setup aufzusetzen bevor man die erste Zeile Code schreibt. Und in der Tat: ein ordentliches Setup ist wichtig, bestimmt es doch ein Stück weit auch die Qualität und Wartbarkeit der Anwendung, die man auf Basis seines Setups entwickelt.</p>
-<p>Hier hat die große React-Community aber bereits sehr gute Vorarbeit geleistet. Und so listet die Seite JavaScriptStuff aktuell <strong>189 Projekte</strong> in der Rubrik <a href="https://www.javascriptstuff.com/react-starter-projects/"><strong>React Starter Projects</strong></a>. Auch Facebook selbst, bzw. konkret <strong>Dan Abramov</strong>, Core-Entwickler bei Facebook und Autor von <strong>Redux</strong>, ist dort mit <strong>Create-React-App</strong> („CRA“) vertreten. Das Projekt ist mit über 45.000 Stars auf Github mittlerweile so etwas wie der de-facto Standard wenn es um React Starter Projekte geht und beschreibt sich auf Github selbst mit:</p>
+<p>Hier hat die große React-Community aber bereits sehr gute Vorarbeit geleistet. Und so listet die Seite JavaScriptStuff aktuell <strong>198 Projekte</strong> in der Rubrik <a href="https://www.javascriptstuff.com/react-starter-projects/"><strong>React Starter Projects</strong></a>. Auch Facebook selbst, bzw. konkret <strong>Dan Abramov</strong>, Core-Entwickler bei Facebook und Autor von <strong>Redux</strong>, ist dort mit <strong>Create-React-App</strong> („CRA“) vertreten. Das Projekt ist mit über 45.000 Stars auf Github mittlerweile so etwas wie der de-facto Standard wenn es um React Starter Projekte geht und beschreibt sich auf Github selbst mit:</p>
 <blockquote>
   <p>Create React apps with no build configuration</p>
 </blockquote>
@@ -244,7 +244,11 @@ Happy hacking!</code></pre>
 <h3 id="yarn-test">yarn test</h3>
 <p>Führt Tests aus. Als Test-Framework bringt CRA das ebenfalls von Facebook entwickelte <strong>Jest</strong> mit. Jest bringt hier aus meiner Sicht einen sehr entschiedenen Vorteil mit gegenüber anderen Testing-Frameworks, nämlich das sog. <strong>Snapshot-Testing</strong> bei dem sozusagen eine Art <em>Abbild</em> des aktuellen Zustands einer Komponente erstellt wird, der den Status Quo darstellt und mit dem zukünftige Test-Zustände verglichen werden. So fallen Änderungen, gewünschte wie ungewünschte, sofort ins Auge.</p>
 <h3 id="yarn-eject">yarn eject</h3>
-<p>Mit <code>yarn eject</code> können wir uns von Create-React-App „verabschieden“. Dabei werden alle build-Scripts, Dependencies und Config-Files in das aktuelle Projektverzeichnis kopiert und wir sind fortan selbst verantwortlich das alles korrekt läuft. Dadurch haben wir mehr Verantwortung, aber eben auch deutlich mehr Freiheiten, da wir von nun an eigene Änderungen an der Standard-Konfiguration von CRA vornehmen können. Wann und ob dieser Schritt überhaupt jemals nötig wird ist völlig abhängig vom Projekt. Ich selbst habe bereits in Projekten über Monate mit dem CRA Standard-Setup gearbeitet, in anderen Projekten hat es sich bereits nach wenigen Tagen oder Wochen ergeben, dass Änderungen am Setup vorgenommen werden müssen, so dass ein Eject recht frühzeitig vorgenommen wurde.</p>
+<p>Mit <code>yarn eject</code> können wir uns von Create React App „verabschieden“. Dabei werden alle build-Scripts, Dependencies und Config-Files in das aktuelle Projektverzeichnis kopiert und wir sind fortan selbst verantwortlich das alles korrekt läuft. Dadurch haben wir mehr Verantwortung, aber eben auch deutlich mehr Freiheiten, da wir von nun an eigene Änderungen an der Standard-Konfiguration von CRA vornehmen können. Wann und ob dieser Schritt überhaupt jemals nötig wird ist völlig abhängig vom Projekt. Ich selbst habe bereits in Projekten über Monate mit dem CRA Standard-Setup gearbeitet, in anderen Projekten hat es sich bereits nach wenigen Tagen oder Wochen ergeben, dass Änderungen am Setup vorgenommen werden müssen, so dass ein Eject recht frühzeitig vorgenommen wurde.</p>
+<div class="hint hint--info">
+<p>Um die Code-Beispiele in diesem Buch nachzuvollziehen empfehle ich an dieser Stelle <strong>Create React App</strong> zu installieren. Die große Mehrzahl der Beispiele können dann per Copy and Paste in die App.js-Datei aus Create React App übertragen und ausgeführt werden. Um den Lern-Effekt zu erhöhen würde ich sogar empfehlen die Beispiele nicht zu kopieren, sondern tatsächlich abzutippen.</p>
+<p>Wer CRA nicht installieren möchte oder es eilig hat, dem sei <a href="https://codesandbox.io/">CodeSandbox</a> ans Herz gelegt. Hier kann in einer per Knopfdruck ein neues Setup mit Create React App als Basis erstellt und dann in einer Browser-Entwicklungsumgebung herumprobiert werden.</p>
+</div>
 </div>
 <div class="chapter">
   <h1 id="die-grundlagen">Die Grundlagen</h1>
@@ -1156,7 +1160,7 @@ getUser(id)
 <h4 id="zahlenwerte-in-props">Zahlenwerte in Props</h4>
 <pre><code class="hljs jsx language-jsx">&lt;input type=<span class="hljs-string">"range"</span> min={<span class="hljs-number">0</span>} max={<span class="hljs-number">100</span>} /&gt;</code></pre>
 <p>All dies sind erste Beispiele wie Ausdrücke dafür verwendet werden können um aus JSX mehr als nur simples HTML zu machen.</p>
-<h2 id="was-man-außerdem-wissen-sollte"><strong>Was man außerdem wissen sollte</strong></h2>
+<h2 id="was-man-außerdem-wissen-sollte">Was man außerdem wissen sollte</h2>
 <p>Wer die Beispiele aufmerksam studiert hat, dem werden je nach JavaScript-Kenntnissen vielleicht einige Dinge aufgefallen sein. Zuerst einmal tauchen in den Beispielen scheinbar willkürlich Klammern auf. Dies hat den Hintergrund, dass JSX stets in Klammern, also „<code>(</code>“ und „<code>)</code>“ geschrieben werden muss wenn sich das JSX sich über mehr als eine Zeile erstreckt (also doch nicht willkürlich.)</p>
 <p>Prinzipiell schadet es nicht sein komplettes JSX immer in Klammern zu schreiben, auch wenn es sich nur um eine einzige Zeile handelt, Viele Leute bevorzugen das sogar aus Gründen der Einheitlichkeit, wirklich zwingend notwendig ist das aber nur bei mehrzeiligem JSX.</p>
 <p>Möchten wir statt eines <strong>Strings</strong> einen <strong>Ausdruck</strong> innerhalb der Props nutzen wie im Beispiel <em>„Ternary Operator als Wert einer Prop“</em>, so nutzen wir dafür statt einfacher oder doppelter Attribut-Anführungszeichens auch hier die geschweiften Klammern um React mitzuteilen: hier drin befindet sich ein Ausdruck.</p>
@@ -3207,45 +3211,34 @@ ReactDOM.render(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-n
 <pre><code class="hljs jsx language-jsx"><span class="hljs-keyword">const</span> LanguageContext = React.createContext(defaultValue);</code></pre>
 <p>Mit lediglich dieser einen Zeile haben wir bereits einen neuen <strong>Context</strong> erstellt. Der <strong>Context</strong> besteht nun aus einer <strong>Provider-</strong> und eine <strong>Consumer-</strong>Komponente: <code>LanguageContext.Provider</code> sowie <code>LanguageContext.Consumer</code>.</p>
 <p>Innerhalb unserer Anwendung kann der <strong>Context</strong> nun genutzt werden, indem ein bestimmter Baum von einem Provider umschlossen wird:</p>
-<p>{% code-tabs %}<br />
-{% code-tabs-item title="LanguageContext.js" %}</p>
-<pre><code class="hljs jsx language-jsx"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
-
+<pre><code class="hljs jsx language-jsx"><span class="hljs-comment">// LanguageContext.js</span>
+<span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
 <span class="hljs-keyword">const</span> LanguageContext = React.createContext(<span class="hljs-string">'de'</span>);
-
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> LanguageContext;</code></pre>
-<p>{% endcode-tabs-item %}<br />
-{% endcode-tabs %}</p>
-<pre><code class="hljs jsx language-jsx"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
+<pre><code class="hljs jsx language-jsx"><span class="hljs-comment">// index.js</span>
+<span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
 <span class="hljs-keyword">import</span> ReactDOM <span class="hljs-keyword">from</span> <span class="hljs-string">'react-dom'</span>;
 <span class="hljs-keyword">import</span> LanguageContext <span class="hljs-keyword">from</span> <span class="hljs-string">'./LanguageContext'</span>;
 
-<span class="hljs-keyword">const</span> App = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
-  <span class="hljs-keyword">return</span> (
-    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">LanguageContext.Provider</span> <span class="hljs-attr">value</span>=<span class="hljs-string">{</span>'<span class="hljs-attr">en</span>'}&gt;</span>
-      {/* innerhalb dieses Baums steht uns nun der Wert 'de' zur Verfügung */}
-    <span class="hljs-tag">&lt;/<span class="hljs-name">LanguageContext.Provider</span>&gt;</span>
-  );
-};
+<span class="hljs-keyword">const</span> App = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> (
+  <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">LanguageContext.Provider</span> <span class="hljs-attr">value</span>=<span class="hljs-string">{</span>'<span class="hljs-attr">en</span>'}&gt;</span>
+    {/* innerhalb dieses Baums steht uns nun der Wert 'de' zur Verfügung */}
+  <span class="hljs-tag">&lt;/<span class="hljs-name">LanguageContext.Provider</span>&gt;</span>
+);
 
 ReactDOM.render(<span class="hljs-tag">&lt;<span class="hljs-name">App</span> /&gt;</span>, document.getElementById('#root'));</span></code></pre>
 <p>Möchten wir in einer Komponente nun auf den Wert des <strong>Contexts</strong> zugreifen, umschließen wir eine Komponente und machen uns das <strong>Function as a Child</strong> Prinzip das wir uns im vorherigen Kapitel angeschaut haben zu nutze:</p>
-<p>{% code-tabs %}<br />
-{% code-tabs-item title="DisplaySelectedLanguage.js" %}</p>
-<pre><code class="hljs jsx language-jsx"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
+<pre><code class="hljs jsx language-jsx"><span class="hljs-comment">// DisplaySelectedLanguage.js</span>
+<span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
 <span class="hljs-keyword">import</span> LanguageContext <span class="hljs-keyword">from</span> <span class="hljs-string">'./LanguageContext'</span>;
 
-<span class="hljs-keyword">const</span> DisplaySelectedLanguage = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
-  <span class="hljs-keyword">return</span> (
-    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">LanguageContext.Consumer</span>&gt;</span>
-      {(value) =&gt; <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Die ausgewählte Sprache ist {value}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>}
-    <span class="hljs-tag">&lt;/<span class="hljs-name">LanguageContext.Consumer</span>&gt;</span>
-  );
-};
+<span class="hljs-keyword">const</span> DisplaySelectedLanguage = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> (
+  <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">LanguageContext.Consumer</span>&gt;</span>
+    {(value) =&gt; <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Die ausgewählte Sprache ist {value}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>}
+  <span class="hljs-tag">&lt;/<span class="hljs-name">LanguageContext.Consumer</span>&gt;</span>
+);
 
 export default DisplaySelectedLanguage;</span></code></pre>
-<p>{% endcode-tabs-item %}<br />
-{% endcode-tabs %}</p>
 <p>Wir können nun an einer beliebigen Stelle innerhalb unserer Anwendung die <code>SelectedLanguage</code> Komponente verwenden und haben dort immer den jeweils vom Provider bereitgestellten Wert verfügbar. Ändert sich der Wert im <strong>Provider</strong> werden auch alle <strong>Consumer-</strong>Komponenten unterhalb des entsprechenden Providers mit dem aktualisierten Wert neu gerendert!</p>
 <p>Ein vollständiges, wenn auch recht konstruiertes Beispiel kann dann wie folgt aussehen:</p>
 <pre><code class="hljs jsx language-jsx"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
@@ -3253,20 +3246,18 @@ export default DisplaySelectedLanguage;</span></code></pre>
 <span class="hljs-keyword">import</span> LanguageContext <span class="hljs-keyword">from</span> <span class="hljs-string">'./LanguageContext'</span>;
 <span class="hljs-keyword">import</span> DisplaySelectedLanguage <span class="hljs-keyword">from</span> <span class="hljs-string">'./DisplaySelectedLanguage'</span>;
 
-<span class="hljs-keyword">const</span> App = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
-  <span class="hljs-keyword">return</span> (
-    &lt;LanguageContext.Provider value="en"&gt;
-      &lt;header&gt;Herzlich willkommen&lt;/header&gt;
-      &lt;div className="content"&gt;
-        &lt;div className="sidebar" /&gt;
-        &lt;div className="mainContent"&gt;
-          &lt;DisplaySelectedLanguage /&gt;
-        &lt;/div&gt;
+<span class="hljs-keyword">const</span> App = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> (
+  &lt;LanguageContext.Provider value="en"&gt;
+    &lt;header&gt;Herzlich willkommen&lt;/header&gt;
+    &lt;div className="content"&gt;
+      &lt;div className="sidebar" /&gt;
+      &lt;div className="mainContent"&gt;
+        &lt;DisplaySelectedLanguage /&gt;
       &lt;/div&gt;
-      &lt;footer&gt;© 2019&lt;/footer&gt;
-    &lt;/LanguageContext.Provider&gt;
-  );
-};
+    &lt;/div&gt;
+    &lt;footer&gt;© 2019&lt;/footer&gt;
+  &lt;/LanguageContext.Provider&gt;
+);
 
 ReactDOM.render(&lt;App /&gt;, document.getElementById('#root'));</code></pre>
 <p>Obwohl wir keinerlei <strong>Props</strong> an die <code>DisplaySelectedLanguage</code>-Komponente übergeben hat diese dennoch Kenntnis von der aktuell ausgewählten Sprache und zeigt korrekt an:</p>
@@ -3328,6 +3319,7 @@ const Greeting = () =&gt; (
     {(contextValue) =&gt; contextValue.translations.greeting}
   &lt;/LanguageContext.Consumer&gt;
 );
+
 const Headline = () =&gt; (
   &lt;LanguageContext.Consumer&gt;
     {(contextValue) =&gt; contextValue.translations.headline}
@@ -3352,22 +3344,19 @@ const LanguageSelector = () =&gt; {
   );
 };
 
-function App() {
-  return (
-    &lt;Localized&gt;
-      &lt;LanguageSelector /&gt;
-      &lt;p&gt;
-        &lt;Greeting /&gt;
-      &lt;/p&gt;
-      &lt;p&gt;
-        &lt;Headline /&gt;
-      &lt;/p&gt;
-    &lt;/Localized&gt;
-  );
-}
+const App = () =&gt; (
+  &lt;Localized&gt;
+    &lt;LanguageSelector /&gt;
+    &lt;p&gt;
+      &lt;Greeting /&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+      &lt;Headline /&gt;
+    &lt;/p&gt;
+  &lt;/Localized&gt;
+);
 
-const rootElement = document.getElementById('root');
-ReactDOM.render(&lt;App /&gt;, rootElement);</code></pre>
+ReactDOM.render(&lt;App /&gt;, document.getElementById('root'));</code></pre>
 <p>Zuerst definieren wir ein Objekt <code>defaultLanguageContextValue</code> welches den Default-Wert unseres neuen Context-Objekts darstellt. Dieses besteht aus:</p>
 <ul>
 <li>einem Objekt <code>translationStore</code>, welches alle vorhandenen Übersetzungen beinhaltet.</li>
@@ -3385,20 +3374,18 @@ ReactDOM.render(&lt;App /&gt;, rootElement);</code></pre>
     {(contextValue) =&gt; contextValue.translations[translationKey]}
   <span class="hljs-tag">&lt;/<span class="hljs-name">LanguageContext.Consumer</span>&gt;</span>
 );</span></code></pre>
-<p>Unsere App-Komponente sieht dann entsprechend so aus:</p>
-<pre><code class="hljs jsx language-jsx"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">App</span>(<span class="hljs-params"></span>) </span>{
-  <span class="hljs-keyword">return</span> (
-    &lt;Localized&gt;
-      &lt;LanguageSelector /&gt;
-      &lt;p&gt;
-        &lt;Translated translationKey="greeting" /&gt;
-      &lt;/p&gt;
-      &lt;p&gt;
-        &lt;Translated translationKey="headline" /&gt;
-      &lt;/p&gt;
-    &lt;/Localized&gt;
-  );
-}</code></pre>
+<p>Unsere <code>App</code>-Komponente sieht dann entsprechend so aus:</p>
+<pre><code class="hljs jsx language-jsx"><span class="hljs-keyword">const</span> App = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> (
+  &lt;Localized&gt;
+    &lt;LanguageSelector /&gt;
+    &lt;p&gt;
+      &lt;Translated translationKey="greeting" /&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+      &lt;Translated translationKey="headline" /&gt;
+    &lt;/p&gt;
+  &lt;/Localized&gt;
+);</code></pre>
 <p>Die <code>Headline</code> und <code>Greeting</code> Komponenten aus dem vorherigen Beispiel können wir uns dann einfach sparen.</p>
 <p><strong>Achtung:</strong> gerade bei Übersetzungen ist es nicht unüblich die Schlüssel für die Übersetzungen einfach kurz „key“ zu nennen und so hätte es durchaus einen gewissen Charme auch die Prop in der <code>Translated</code>-Komponente <code>key</code> zu nennen. So wäre das doch schön kurz und gut lesbar:</p>
 <pre><code class="hljs jsx language-jsx">&lt;Translated key=<span class="hljs-string">"greeting"</span> /&gt;</code></pre>
@@ -3434,6 +3421,7 @@ ReactDOM.render(&lt;App /&gt;, rootElement);</code></pre>
     <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.context.translations[<span class="hljs-keyword">this</span>.props.translationKey];
   }
 }
+
 Translated.contextType = LanguageContext;</code></pre>
 <p>Wir würden den <code>contextType</code> also außerhalb der Komponente definieren und nicht mehr innerhalb. Im Grunde genommen ist das aber letztendlich Geschmackssache und hat sonst keine Implikationen oder Nachteile. Es ist allein eine andere Syntax-Variante, die erst in späteren ECMAScript-Versionen oder eben durch Transpiling mittels Babel möglich ist. Möglich gemacht wird sie durch das Babel-Plugin <code>@babel/plugin-proposal-class-properties</code>.</p>
 <h3 id="performance-fallstrick">Performance Fallstrick</h3>
@@ -3996,9 +3984,6 @@ ReactDOM.render(<span class="hljs-tag">&lt;<span class="hljs-name">App</span> /&
 <div class="hint hint--warning">
 <p><strong>Vorsicht:</strong> momentan werden <strong>Lazy</strong> und <strong>Suspense</strong> nur bei der Verwendung in <strong>clientseitigen</strong> Anwendungen unterstützt. Unterstützung für <strong>serverseitiges</strong> Rendering gibt es für dieses Feature aktuell noch nicht und befindet sich derzeit in Arbeit.</p>
 </div>
-</div>
-<div class="chapter">
-  <h1 id="server-side-rendering">Server Side Rendering</h1>
 </div>
 <div class="chapter">
   <h1 id="typechecking-mit-proptypes-flow-und-typescript">Typechecking mit PropTypes, Flow und TypeScript</h1>
@@ -5617,23 +5602,1041 @@ ReactDOM.render(<span class="hljs-tag">&lt;<span class="hljs-name">App</span> /&
 <p><strong>Redux</strong> erfreut sich dabei noch immer an steigender Beliebtheit und hat wachsende Downloadzahlen zu verzeichnen obwohl es bereits mehrmals von irgendwelchen Propheten tot gesagt wurde. Als die finale <strong>Context API</strong> in <strong>React 16.3.0</strong> veröffentlicht wurde hieß es, dass <strong>Redux</strong> damit obsolet würde (wurde es nicht), als mit <strong>React 16.8.0</strong> die <strong>Hooks</strong> und hier insbesondere der stark an <strong>Redux</strong> angelehnte <strong>useReducer-Hook</strong> eingeführt wurde gab es diese Stimmen erneut.</p>
 <p>In der Realität sieht das so aus, dass die Zahl der Installationen auch nach Einführung von <strong>Context</strong> und <strong>Hooks</strong> weiter steigen und <strong>Redux</strong> selbst intern <strong>Gebrauch</strong> dieser neuen Möglichkeiten macht, um einerseits die Performance zu verbessern und andererseits die Verwendung der eigenen API zu vereinfachen. Darüber hinaus hat <strong>Redux</strong> inzwischen ein unheimlich großes Ecosystem an eigenen Addons und Tools um sich versammelt, das auch durch die in React neu hinzugekommenen Funktionen nicht ersetzt wird.</p>
 <h3 id="einführung-in-redux">Einführung in Redux</h3>
-<p>Bei <strong>Redux</strong> handelt es sich also wie eingangs beschrieben um einen <em>vorhersehbaren State Container</em>. Doch was bedeutet das genau? An dieser Stelle möchte ich gern etwas weiter ausholen, da ich es für wichtig erachte das Grundprinzip zu verstehen um hinterher Fehler zu vermeiden die schnell gemacht werden, hat man das Prinzip hinter <strong>Redux</strong> nicht zumindest in sehr groben Ansätzen verinnerlicht.</p>
-<p>Erst einmal haben wir mit <strong>Redux</strong> ein Tool, das in Teilen angelehnt ist an die Prinzipien der <strong>Flux Architektur</strong>. Diese wurde - wie auch <strong>React</strong> selbst - von <strong>Facebook</strong> entwickelt, um die Entwicklung clientseitiger Web Anwendungen zu vereinfachen. Das Grundprinzip sieht dabei einen <strong>unidirektionalen Datenfluss</strong> vor, bei dem Daten immer nur <strong>in eine Richtung</strong> fließen. Also das Prinzip, wie wir es bereits aus <strong>React</strong> selbst kennen: eine <strong>Aktion</strong> (bspw. ein Button-Klick) ändert den <strong>State</strong>, die <strong>State-Änderung</strong> löst ein <strong>Rerendering</strong> aus und erlaubt es dann weitere Aktionen auszuführen.</p>
-<p>Nach diesem Prinzip funktioniert auch <strong>Redux</strong>, mit dem großen Unterschied jedoch, dass der State eben <strong>global</strong> verwaltet wird und alle Komponenten, egal wo im Seitenbaum sich diese befinden, auf <strong>sämtliche Daten</strong> zugreifen können.</p>
+<p>Bei <strong>Redux</strong> handelt es sich also wie beschrieben um einen <em>vorhersehbaren State Container</em>. Doch was bedeutet das genau? An dieser Stelle möchte ich gern etwas weiter ausholen, da ich es für wichtig erachte das Grundprinzip zu verstehen um hinterher Fehler zu vermeiden die schnell gemacht werden, hat man das Prinzip hinter <strong>Redux</strong> nicht zumindest in sehr groben Ansätzen verinnerlicht.</p>
+<p>Erst einmal haben wir mit <strong>Redux</strong> ein Tool, das in Teilen angelehnt ist an die Prinzipien der <strong>Flux Architektur</strong>. Diese wurde - wie auch <strong>React</strong> selbst - von <strong>Facebook</strong> entwickelt, um die Entwicklung clientseitiger Web Anwendungen zu vereinfachen. Das Grundprinzip sieht dabei einen <strong>unidirektionalen Datenfluss</strong> vor, bei dem Daten immer nur <strong>in eine Richtung</strong> fließen. Also das Prinzip, wie wir es bereits aus <strong>React</strong> selbst kennen: eine <strong>Aktion</strong> (bspw. ausgelöst durch einen Button-Klick) ändert den <strong>State</strong>, die <strong>State-Änderung</strong> löst ein <strong>Rerendering</strong> aus und erlaubt es dann weitere Aktionen auszuführen.</p>
+<p>Nach diesem Prinzip funktioniert auch <strong>Redux</strong>, mit dem entscheidenden Unterschied jedoch, dass der State eben <strong>global</strong> verwaltet wird statt nur innerhalb einer Komponente und somit alle Komponenten, egal wo im Seitenbaum sich diese befinden, auf <strong>sämtliche Daten</strong> zugreifen können.</p>
+<p>Um Redux in einem Projekt zu nutzen, müssen wir es natürlich zuerst wieder einmal über die Kommandozeile installieren:</p>
+<pre><code class="hljs bash language-bash">npm install redux react-redux</code></pre>
+<p>bzw. mit Yarn:</p>
+<pre><code class="hljs bash language-bash">yarn add redux react-redux</code></pre>
+<p>Installiert werden hier <strong>zwei</strong> Pakete. Die Library <code>redux</code> selbst und <code>react-redux</code>. Während mit dem <code>redux</code> Paket die eigentliche State Management Library installiert wird, werden mit <code>react-redux</code> die sog. <strong>Bindings</strong> installiert. Auf gut Deutsch gesagt ist dies einfach nur ein Paket mit einigen <strong>React-Komponenten</strong> die konkret für die Verwendung von <strong>Redux</strong> mit <strong>React</strong> entwickelt und daraufhin optimiert wurden. Keine große Magie.</p>
+<p>Theoretisch wäre auch die Verwendung von <strong>Redux</strong> alleine möglich, allerdings müssten wir uns dann selbst darum kümmern zu schauen wann Komponenten neu gerendert werden und darum, wie Daten aus einer Komponente in den State Container rein und wieder raus kommen. Da wir das nicht wollen, weil sich jemand anderes der sich viel besser damit auskennt als wir alle das bereits gemacht hat, nutzen wir eben zusätzlich <code>react-redux</code>.</p>
+<h3 id="store-actions-und-reducer">Store, Actions und Reducer</h3>
+<p>Nicht von den möglicherweise noch unbekannten Begriffen verunsichern lassen. Wir gehen sie der Reihe nach durch und irgendwann macht es Klick.</p>
+<p>Alle Daten in <strong>Redux</strong> befinden sich in einem sogenannten <strong>Store</strong>, der sich um die Verwaltung des globalen <strong>States</strong> kümmert. Theoretisch kann eine Anwendung auch mehrere Stores haben, im Konzept von Flux ist das sogar explizit so vorgesehen, in <strong>Redux</strong> ist das jedoch um Komplexität zu reduzieren eher unüblich und so beschränken sich React Anwendungen die <strong>Redux</strong> einsetzen meist auch auf lediglich einen <em>einzigen</em> <strong>Store</strong> als <strong>Single Source of Truth</strong>, also als <em>die</em> einzige wahre Quelle für alle Daten. Der Store stellt Methoden bereit um die sich in ihm befindlichen Daten zu verändern (<code>dispatch</code>), zu lesen (<code>getState</code>), und auf Änderungen zu reagieren (<code>subscribe</code>).</p>
+<p>Die einzige Möglichkeit um Daten in einem <strong>Store</strong> zu verändern ist dabei durch das Auslösen (<em>„dispatchen“</em>) von <strong>Actions</strong>. Auch hier lässt sich <strong>Redux</strong> wieder von Ideen aus der Flux Architektur inspirieren und macht es erforderlich diese <strong>Actions</strong> im Format der <strong>Flux Standard Actions</strong> (FSA) zu halten. Eine solche <strong>FSA</strong> bestehen aus einem simplen JavaScript-Objekt das immer <strong>zwingend</strong> eine <code>type</code>-Eigenschaft besitzen <em>muss</em> und darüber hinaus die drei weiteren Eigenschaften <code>payload</code>, <code>meta</code> und <code>error</code> besitzen <em>kann</em>, wobei uns in erster Linie einmal die <code>payload</code> interessieren soll, mit der wir es in 9 von 10 Fällen in denen wir eine <strong>Action</strong> <em>dispatchen</em> zu tun haben werden.</p>
+<p>Die <strong>Payload</strong> stellt sozusagen den <em>Inhalt</em> einer <strong>Action</strong> dar und kann vom simplen Boolean oder String, über numerische Werte, bis hin zu komplexen Arrays oder Objekten beliebige Daten beinhalten die serialisierbar sind, also in Form einer JSON-Repräsentation gespeichert werden können.</p>
+<p>Beispiel für eine typische <strong>Action</strong> in <strong>Redux</strong>:</p>
+<pre><code class="hljs javascript language-javascript">{
+  <span class="hljs-attr">type</span>: <span class="hljs-string">"SET_USER"</span>,
+  <span class="hljs-attr">payload</span>: {
+    <span class="hljs-attr">id</span>: <span class="hljs-string">"d929e553-7079-4309-8c7d-2d2db39922c6"</span>,
+    <span class="hljs-attr">name</span>: <span class="hljs-string">"Manuel"</span>
+  }
+}</code></pre>
+<p>Wird eine <strong>Action</strong> durch die vom <strong>Store</strong> bereitgestellte <code>dispatch</code>Methode ausgelöst, wird der zum Zeitpunkt des Aufrufs aktuelle <strong>State</strong> zusammen mit der ausgelösten <strong>Action</strong> an die <strong>Reducer</strong> übergeben. Ein <strong>Reducer</strong> ist eine <strong>pure Function</strong>, die wir ebenfalls bereits aus React kennen, und dient dazu um aus dem <strong>aktuellen State</strong> und der jeweiligen Action mit ihren <code>type</code> und <code>payload</code> Eigenschaften einen <strong>neuen State</strong> zu erzeugen. Zur Erinnerung: eine <strong>pure Function</strong> erzeugt stets die <strong>selbe Ausgabe</strong> bei <strong>gleichen Eingabeparametern</strong>, egal wie oft diese aufgerufen wird. Dieses Verhalten ist es, das sie vorhersehbar und dadurch auch gleichzeitig einfach testbar macht.</p>
+<p>Beispiel für einen <strong>Reducer</strong>:</p>
+<pre><code class="hljs javascript language-javascript"><span class="hljs-keyword">const</span> reducer = <span class="hljs-function">(<span class="hljs-params">state, action</span>) =&gt;</span> {
+  <span class="hljs-keyword">switch</span> (action.type) {
+    <span class="hljs-keyword">case</span> <span class="hljs-string">'PLUS'</span>: {
+      <span class="hljs-keyword">return</span> state + action.payload;
+    }
+    <span class="hljs-keyword">case</span> <span class="hljs-string">'MINUS'</span>: {
+      <span class="hljs-keyword">return</span> state - action.payload;
+    }
+    <span class="hljs-keyword">default</span>: {
+      <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+    }
+  }
+};</code></pre>
+<p>Ein <strong>Store</strong> erwartet bei seiner Erstellung grundsätzlich einen einzigen <strong>Reducer</strong>, jedoch bietet <strong>Redux</strong> hier mit der <code>combineReducers()</code>-Funktion eine Möglichkeit um diese <strong>Reducer</strong>-Funktion zur besseren Verständlichkeit und Lesbarkeit in beliebig viele kleine Teilstücke zu splitten und anschließend zu einem großen, gemeinsamen <strong>Reducer</strong> zusammen zu setzen, auch <strong>Root-Reducer</strong> genannt. Wird dann eine Action <em>dispatched</em> wird jeder <strong>Reducer</strong> mit jeweils den gleichen Parametern, nämlich dem <strong>State</strong> und der <strong>Action</strong>, aufgerufen. Diese Methode schauen wir uns in diesem Kapitel später noch etwas genauer an.</p>
+<p>Da jeder <strong>Reducer</strong> auf die <code>type</code>-Eigenschaft einer <strong>Action</strong> reagiert ist es ein Stück weit zur weit verbreiteten Konvention geworden alle verwendeten Types in gleichnamige Variablen auszulagern, da ein Tippfehler im ersten Moment nicht immer gleich auffällt (bspw. <code>USER_ADDDED</code>), der JavaScript-Interpreter jedoch einen Fehler wirft beim Zugriff auf eine nicht definierte Variable. So findet man in Apps in denen <strong>Redux</strong> eingesetzt wird zu Beginn einer Datei oft einen Code-Block von folgendem Format:</p>
+<pre><code class="hljs javascript language-javascript"><span class="hljs-keyword">const</span> PLUS = <span class="hljs-string">'PLUS'</span>;
+<span class="hljs-keyword">const</span> MINUS = <span class="hljs-string">'MINUS'</span>;</code></pre>
+<p>Dies dient eben dazu, um Kohärenz bei den verwendeten <strong>Action Types</strong> sicher zu stellen.</p>
+<h3 id="einen-store-erstellen">Einen Store erstellen</h3>
+<p>Um einen Store zu erstellen der unseren globalen State verwalten wird, importieren wir die <code>createStore</code> Funktion aus dem <code>redux</code> Paket, rufen diese auf und übergeben ihr eine <strong>Reducer</strong>-Funktion. Die Funktion gibt uns daraufhin das Store-Objekt zurück mit Methoden um mit dem Store zu arbeiten: <code>dispatch</code>, <code>getState</code> sowie <code>subscribe</code>, wobei letztere eine eher untergeordnete Rolle bei der Arbeit mit React spielt, da die Komponenten aus dem <code>react-redux</code> Paket sich um das Rerendering von Komponenten kümmern, die von einer Änderung am <strong>State</strong> betroffen sind.</p>
+<pre><code class="hljs javascript language-javascript"><span class="hljs-keyword">import</span> { createStore } <span class="hljs-keyword">from</span> <span class="hljs-string">'redux'</span>;
+
+<span class="hljs-keyword">const</span> initialState = <span class="hljs-number">0</span>;
+
+<span class="hljs-keyword">const</span> counterReducer = <span class="hljs-function">(<span class="hljs-params">state = initialState, action</span>) =&gt;</span> {
+  <span class="hljs-keyword">switch</span> (action.type) {
+    <span class="hljs-keyword">case</span> <span class="hljs-string">'PLUS'</span>: {
+      <span class="hljs-keyword">return</span> state + (action.payload || <span class="hljs-number">0</span>);
+    }
+    <span class="hljs-keyword">case</span> <span class="hljs-string">'MINUS'</span>: {
+      <span class="hljs-keyword">return</span> state - (action.payload || <span class="hljs-number">0</span>);
+    }
+    <span class="hljs-keyword">default</span>: {
+      <span class="hljs-keyword">return</span> state;
+    }
+  }
+};
+
+<span class="hljs-keyword">const</span> store = createStore(counterReducer);</code></pre>
+<p>Hier haben wir einen ersten und noch sehr simplen Store mit einem Counter-Reducer erstellt. Da wir der <code>createStore</code> Funktion hier nur den ersten Parameter übergeben, wird die <code>counterReducer</code>-Funktion beim Initialisieren mit <code>undefined</code> als vorherigen <code>state</code> aufgerufen, weshalb der <code>initialState</code> als Standardparameter eingesetzt wird. Dieser entspricht hier dem numerischen Wert <code>0</code>.</p>
+<p>Übergeben wir der <code>createStore</code> Funktion einen zweiten Parameter, so würde dieser als erster State beim Initialisieren an die Reducer-Funktion übergeben werden:</p>
+<pre><code class="hljs javascript language-javascript"><span class="hljs-keyword">const</span> store = createStore(counterReducer, <span class="hljs-number">3</span>);</code></pre>
+<p>Hier wäre der Startwert für unseren <code>state</code>-Parameter der an die <code>counterReducer</code>-Funktion übergeben wird <code>3</code> statt <code>undefined</code>, der <code>initialState</code> Standardparameter würde nicht einspringen und unser Counter würde bei <code>3</code> beginnen zu zählen, statt bei <code>0</code>.</p>
+<p>Als initiale <strong>Action</strong> wird eine Redux-interne Action <em>dispatched</em>, die die Form <code>{type: '@@redux/INIT5.3.p.j.l.8'}</code> besitzt. Daher greift in unserem <code>switch</code>-Block der <code>default</code>-Fall und gibt einfach nur den übergebenen <code>state</code> (der in diesem Fall dem <code>initialState</code> entspricht) zurück.</p>
+<p>Ein solcher <code>default</code>-Fall ist wichtig. Greift kein anderer <code>case</code> im <code>switch</code>, muss stets der letzte Stand des States aus der Funktion zurückgegeben werden um unerwünschte Seiteneffekte zu vermeiden. Die <code>Reducer</code>-Funktion wird bei <strong>jedem</strong> <code>dispatch</code>-Aufruf ausgeführt und ihr Rückgabewert bestimmt immer den <strong>nächsten State!</strong></p>
+<p>Rufen wir nun gleich nach der Initialisierung <code>store.getState()</code> auf, erhalten wir unseren <code>initialState</code> zurück: <code>0</code>:</p>
+<pre><code class="hljs javascript language-javascript"><span class="hljs-built_in">console</span>.log(store.getState()); <span class="hljs-comment">// 0</span></code></pre>
+<p>Wir können nun etwas rumspielen, verschiedene <strong>Actions dispatchen</strong> und schauen wie unser <strong>State</strong> auf die <strong>Actions</strong> jeweils reagiert:</p>
+<pre><code class="hljs javascript language-javascript">store.dispatch({ <span class="hljs-attr">type</span>: <span class="hljs-string">'PLUS'</span>, <span class="hljs-attr">payload</span>: <span class="hljs-number">2</span> });
+<span class="hljs-built_in">console</span>.log(store.getState()); <span class="hljs-comment">// 2</span>
+
+store.dispatch({ <span class="hljs-attr">type</span>: <span class="hljs-string">'PLUS'</span>, <span class="hljs-attr">payload</span>: <span class="hljs-number">1</span> });
+<span class="hljs-built_in">console</span>.log(store.getState()); <span class="hljs-comment">// 3</span>
+
+store.dispatch({ <span class="hljs-attr">type</span>: <span class="hljs-string">'MINUS'</span>, <span class="hljs-attr">payload</span>: <span class="hljs-number">2</span> });
+<span class="hljs-built_in">console</span>.log(store.getState()); <span class="hljs-comment">// 1</span></code></pre>
+<p>Hier <em>dispatchen</em> wir zweimal eine <strong>Action</strong> mit dem <code>type</code> <code>PLUS</code> und einmal eine Action vom <code>type</code> <code>MINUS</code>. Wir übergeben jeweils eine <code>payload</code>, mit der wir angeben um wie viele Ziffern wir den letzten State hoch- oder runterzählen wollen. Unsere <strong>State-Mutation</strong> findet also wie folgt statt:</p>
+<pre><code class="hljs javascript language-javascript"><span class="hljs-number">0</span> (initialer State) + <span class="hljs-number">2</span> (payload) = <span class="hljs-number">2</span> (neuer State)
+<span class="hljs-number">2</span> (alter State)     + <span class="hljs-number">1</span> (payload) = <span class="hljs-number">3</span> (neuer State)
+<span class="hljs-number">3</span> (alter State)     - <span class="hljs-number">2</span> (payload) = <span class="hljs-number">1</span> (neuer State)</code></pre>
+<p>Dieser State ist dabei noch denkbar simpel und besteht lediglich aus einem einzigen Wert. Später werden wir uns noch anschauen wie wir komplexeren <strong>State</strong> aus verschiedenen Objekten und mit mehreren <strong>Reducern</strong> erstellen.</p>
+<h3 id="action-creators-vs-actions">Action Creators vs. Actions</h3>
+<p>Wer Artikel über <strong>Redux</strong> liest oder auch in die offizielle Doku schaut wird immer wieder mit den Begriffen <strong>Action</strong> und <strong>Action Creator</strong> konfrontiert. Mir selbst fiel es anfangs etwas schwer die Unterschiede zu verstehen und ich weiß auch von anderen, dass es nicht nur mir so erging. Erschwerend kommt hinzu, dass die Begriffe auch gelegentlich synonym verwendet werden obwohl sie es nicht sind. Daher möchte ich an dieser Stelle kurz einen keinen Exkurs einwerfen um die beiden Begriffe <strong>Action Creator</strong> und <strong>Action</strong> voneinander abzugrenzen.</p>
+<p>Die <strong>Action</strong> haben wir oben bereits kennengelernt und ist ein einfaches und möglichst <em>serialisierbares</em> <strong>Objekt</strong>, mit dem wir beschreiben wie wir den State verändern wollen. Es enthält immer zwingend eine <code>type</code>-Eigenschaft und meist auch eine <code>payload</code>.</p>
+<p>Ein <strong>Action</strong> <em><strong>Creator</strong></em> hingegen ist eine <strong>Funktion</strong>, die schlussendlich eine <strong>Action</strong> <strong>zurückgibt</strong>, also sozusagen eine <strong>Factory</strong>, die eine <strong>Action</strong> <em>erstellt</em> (daher: <em>Creator</em>). Meist werden <strong>Action Creators</strong> dazu verwendet um in ihnen <strong>Logik zu kapseln</strong>, die zur Erstellung einer <strong>Action</strong> notwendig ist. Manchmal werden sie aber auch einfach verwendet um die doch recht umständliche Natur der <strong>Actions</strong> hinter einer einprägsamen Funktion weg zu abstrahieren. <strong>Action Creators</strong> werden dann an Stelle der ursprünglichen <strong>Action</strong> als Parameter der <code>dispatch</code>-Methode aufgerufen.</p>
+<p>Typische <strong>Action Creators</strong> aus unserem obigen Beispiel würden dann bspw. so aussehen:</p>
+<pre><code class="hljs javascript language-javascript"><span class="hljs-keyword">const</span> add = <span class="hljs-function">(<span class="hljs-params">number</span>) =&gt;</span> {
+  <span class="hljs-keyword">return</span> { <span class="hljs-attr">type</span>: <span class="hljs-string">'PLUS'</span>, <span class="hljs-attr">payload</span>: number };
+};
+
+<span class="hljs-keyword">const</span> subtract = <span class="hljs-function">(<span class="hljs-params">number</span>) =&gt;</span> {
+  <span class="hljs-keyword">return</span> { <span class="hljs-attr">type</span>: <span class="hljs-string">'MINUS'</span>, <span class="hljs-attr">payload</span>: number };
+};</code></pre>
+<p>Oder wer mit den <strong>Shorthand Notationen</strong> aus <strong>ES2015+</strong> vertraut ist kann das Ganze auch noch weiter abkürzen:</p>
+<pre><code class="hljs javascript language-javascript"><span class="hljs-keyword">const</span> add = <span class="hljs-function">(<span class="hljs-params">payload</span>) =&gt;</span> ({ <span class="hljs-attr">type</span>: <span class="hljs-string">'PLUS'</span>, payload });
+<span class="hljs-keyword">const</span> subtract = <span class="hljs-function">(<span class="hljs-params">payload</span>) =&gt;</span> ({ <span class="hljs-attr">type</span>: <span class="hljs-string">'MINUS'</span>, payload });</code></pre>
+<p>Anschließend werden die entsprechenden <strong>Action Creators</strong> als Parameter der <code>dispatch</code>-Methode aufgerufen, statt die <strong>Actions</strong> direkt zu übergeben:</p>
+<pre><code class="hljs javascript language-javascript">store.dispatch(add(<span class="hljs-number">2</span>));
+store.dispatch(add(<span class="hljs-number">1</span>));
+store.dispatch(subtract(<span class="hljs-number">2</span>));</code></pre>
+<p>Dies geht bei entsprechender Benamung der <strong>Action Creator</strong> Funktionen deutlich zu Gunsten besserer Verständlichkeit des Codes. <strong>Action Creator</strong> sind dabei ein wichtiges Puzzlestück im Redux-Konzept und aus der täglichen Arbeit nicht wegzudenken da sie uns viel Schreibarbeit und Wiederholungen ersparen und somit auch potentielle Fehlerquellen wie bspw. Tippfehler beim <code>type</code> einer <strong>Action</strong> verringern (etwa <code>PLSU</code> statt <code>PLUS</code>).</p>
+<h3 id="komplexe-reducer">Komplexe Reducer</h3>
+<p>Die bisherigen Beispiele dienten dazu mit dem Konzept von <strong>Actions</strong> und <strong>Reducern</strong> vertraut zu werden und um zu verstehen, wie <strong>Actions</strong> verwendet werden, um mit dem <strong>Reducer</strong> den <strong>Store</strong> zu mutieren. Typischerweise besteht der <strong>State</strong> in einer React-Anwendung aber aus deutlich komplexeren Daten und Objekten. Werfen wir also einen Blick auf einen Store, wie er realistisch in einer kleinen Anwendung aussehen könnte.</p>
+<p>Als Beispiel soll uns das State-Management für eine fiktive kleine <strong>Todo-App</strong> dienen, die sowohl eine Liste mit Todos verwaltet, als auch einen eingeloggten Benutzer beinhaltet. Unser State halt also die beiden Toplevel-Eigenschaften <code>todos</code> (vom Typ Array) und <code>user</code> (vom Typ Objekt). Dies bilden wir in unserem initialen State auch so ab:</p>
+<pre><code class="hljs javascript language-javascript"><span class="hljs-keyword">const</span> initialState = <span class="hljs-built_in">Object</span>.freeze({
+  <span class="hljs-attr">user</span>: {},
+  <span class="hljs-attr">todos</span>: [],
+});</code></pre>
+<p>Zusätzlich, da wir sicherstellen wollen, dass bei jedem Aufruf ein neues State-Objekt erzeugt wird und nicht das alte mutiert wird, umschließen wir unseren initialen State mit einem <code>Object.freeze()</code>. Dies sorgt dafür, dass wir einen <code>TypeError</code> bekommen, sollte das <strong>State-Objekt</strong> direkt mutiert werden.</p>
+<p>Schauen wir uns an wie eine <strong>Reducer</strong>-Funktion aussieht könnte, mit der wir den eingeloggten Benutzer setzen, neue Todos hinzufügen und entfernen sowie deren Status ändern können:</p>
+<pre><code class="hljs javascript language-javascript"><span class="hljs-keyword">const</span> rootReducer = <span class="hljs-function">(<span class="hljs-params">state = initialState, action</span>) =&gt;</span> {
+  <span class="hljs-keyword">switch</span> (action.type) {
+    <span class="hljs-keyword">case</span> <span class="hljs-string">'SET_USER'</span>: {
+      <span class="hljs-keyword">return</span> {
+        <span class="hljs-attr">user</span>: {
+          <span class="hljs-attr">name</span>: action.payload.name,
+          <span class="hljs-attr">accessToken</span>: action.payload.accessToken,
+        },
+        <span class="hljs-attr">todos</span>: state.todos,
+      };
+    }
+    <span class="hljs-keyword">case</span> <span class="hljs-string">'ADD_TODO'</span>: {
+      <span class="hljs-keyword">return</span> {
+        <span class="hljs-attr">user</span>: state.user,
+        <span class="hljs-attr">todos</span>: state.todos.concat({
+          <span class="hljs-attr">id</span>: action.payload.id,
+          <span class="hljs-attr">text</span>: action.payload.text,
+          <span class="hljs-attr">done</span>: <span class="hljs-built_in">Boolean</span>(action.payload.done),
+        }),
+      };
+    }
+    <span class="hljs-keyword">case</span> <span class="hljs-string">'REMOVE_TODO'</span>: {
+      <span class="hljs-keyword">return</span> {
+        <span class="hljs-attr">user</span>: state.user,
+        <span class="hljs-attr">todos</span>: state.todos.filter(<span class="hljs-function">(<span class="hljs-params">todo</span>) =&gt;</span> todo.id !== action.payload),
+      };
+    }
+    <span class="hljs-keyword">case</span> <span class="hljs-string">'CHANGE_TODO_STATUS'</span>: {
+      <span class="hljs-keyword">return</span> {
+        <span class="hljs-attr">user</span>: state.user,
+        <span class="hljs-attr">todos</span>: state.todos.map(<span class="hljs-function">(<span class="hljs-params">todo</span>) =&gt;</span> {
+          <span class="hljs-keyword">if</span> (todo.id !== action.payload.id) {
+            <span class="hljs-keyword">return</span> todo;
+          }
+          <span class="hljs-keyword">return</span> {
+            ...todo,
+            <span class="hljs-attr">done</span>: action.payload.done,
+          };
+        }),
+      };
+    }
+    <span class="hljs-keyword">default</span>: {
+      <span class="hljs-keyword">return</span> state;
+    }
+  }
+};
+
+<span class="hljs-keyword">const</span> store = createStore(rootReducer);</code></pre>
+<p>Ich möchte hier gar nicht auf alles was hier passiert zu tief ins Detail eingehen, da es hier darum gehen soll wie ein großer, unübersichtlicher <strong>Reducer</strong> in mehrere kleinere und idealerweise übersichtlichere aufgeteilt werden kann. Doch einige Stellen sind für das generelle Verständnis nicht unwichtig. Gehen wir also der Reihe nach den <code>switch</code>-Block durch, bei dem uns jeder <code>case</code>-Block ein neues State-Objekt zurück gibt.</p>
+<p>Angefangen bei <code>SET_USER</code>: das hier erzeugte <strong>State-Objekt</strong> ändert das <code>user</code>-Objekt und setzt dessen <code>name</code>-Eigenschaft auf <code>action.payload.name</code>, sowie die <code>accessToken</code>-Eigenschaft auf <code>action.payload.accessToken</code>. Wer mag, der kann hier stattdessen auch <code>user</code> auf <code>action.payload</code> setzen, dann würden alle in der entsprechenden <strong>Payload</strong> der <strong>Action</strong> übergebenen Eigenschaften im <code>user</code>-Objekt landen. Dabei sollte dann aber sichergestellt sein, dass die <code>action.payload</code> immer ein Objekt ist, da wir ansonsten die Ausgangsform des <code>user</code>-Objekts verändern würden was zu Problemen führen kann, wenn bspw. auch andere Teile des <strong>Reducers</strong> auf das Objekt zugreifen und das Objekt plötzlich keines mehr ist. In unserem Beispiel ignorieren wir aber alle anderen Eigenschaften indem wir explizit nur <code>name</code> und <code>accessToken</code> aus der <strong>Payload</strong> der ausgelösten Action holen.</p>
+<p>Neben dem modifizierten <code>user</code> geben wir auch eine <code>todos</code>-Eigenschaft zurück, die wir auf <code>state.todos</code> setzen, also beim bisherigen Wert belassen. <strong>Dies ist wichtig</strong>, da in unserem State-Objekt die <code>todos</code> ansonsten komplett aus dem State entfernt werden würden und wir nun zwar den Benutzer gesetzt, unsere Todos jedoch aus dem State verloren hätten!</p>
+<p>Weiter geht es mit <code>ADD_TODO</code>: Hier ist es andersherum und wir geben zuerst einmal den <code>user</code>-Ast unseres State-Trees unverändert zurück. Anschließend fügen wir das neue Todo-Item mittels <code>.concat()</code>-Methode dem <code>todo</code>-Array hinzu. Hier ist es wichtig <code>concat()</code> und nicht <code>push()</code> zu benutzen, da <code>push()</code> eine sog. <em>mutative</em> Methode ist, also den bestehenden State verändert statt einen neuen State zu erzeugen. Mittels <code>state.todos.concat</code> nehmen wir das aktuelle <code>todos</code>-Array als Basis und erzeugen daraus ein neues Array mit dem neuen Todo-Item und geben dieses zurück.</p>
+<p>Sehr ähnliches passiert im nächsten Fall: <code>REMOVE_TODO</code>. Hier geben wir wieder zuerst den <code>user</code>-Ast zurück, ehe wir im <code>todos</code>-Array nach dem zu entfernenden Eintrag suchen, um diesen anschließend herauszufiltern. Welcher Eintrag zu entfernen ist, das übergeben wir der Action als <code>action.payload</code> in Form einer Todo-ID. Das gefilterte Array ist dann unser neuer <code>todos</code>-State. Wir nutzen hier die <code>Array.filter()</code>-Methode, da diese anders als bspw. <code>Array.splice()</code> nicht <em>mutativ</em> ist und ein neues Array erzeugt.</p>
+<p>Zuletzt haben wir den <code>CHANGE_TODO_STATUS</code> Fall. Mit diesem ändern wir den Status des Todo-Elements, also von <em>Zu erledigen</em> (<code>false</code>) auf <em>Erledigt</em> (<code>true</code>) - oder eben andersherum. Dazu geben wir, erneut, das unveränderte <code>user</code>-Objekt aus dem vorherigen State zurück und iterieren anschließend mittels <code>state.todos.map()</code>durch alle Todos. In der Map-Funktion schauen wir ob die ID des aktuellen Todo-Objekts der ID aus der <code>action.payload</code> entspricht. Ist dies nicht der Fall, geben wir einfach jeweilige Todo-Element unverändert zurück.</p>
+<p>Entspricht die ID aus der Payload der ID des aktuellen Todo-Elements, erzeugen wir ein neues Objekt, schreiben alle Eigenschaften mit ihren jeweiligen Werten mittels ES2015+ Spread-Syntax (<code>{ ...todo }</code>) in das neu erzeugte Objekt und überschreiben die <code>done</code>-Eigenschaft mit dem neuen Wert aus der Action-Payload. Wir generieren hier ein neues Objekt statt einfach das bestehende zu überschreiben, da wir ja einen neuen State erzeugen müssen damit unser <strong>Reducer</strong> eine <strong>Pure Function</strong> bleibt. Die Verwendung der <code>Array.map()</code>-Methode sorgt bereits dafür, dass wir außerdem ein neues Array erzeugen.</p>
+<p>Hier haben wir es lediglich mit zwei Ästen in unserem State-Tree zu tun: <code>user</code> und <code>todos</code> - und dennoch wird unsere <strong>Reducer</strong>-Funktion bereits sehr lang. Bei steigender Komplexität des States wird die Funktion entsprechend noch länger und vor allem: <strong>fehleranfälliger</strong>. Da wir neben dem veränderten Teil des States auch immer alle anderen Teile zurückgeben müssen - also etwa den unveränderten <code>user</code> wenn wir die <code>todos</code> modifizieren oder eben die <code>todos</code> wenn wir den <code>user</code> modifizieren, wird die Funktion sehr schnell unübersichtlich und schwierig zu verwalten. Zur Erleichterung könnten wir hier auch die Object Spread Syntax aus ES2015+ nutzen und aus dem bisherigen State einen neuen State erzeugen und anschließend den veränderten Ast des State-Trees überschreiben. Das könnte dann am Beispiel des <code>ADD_TODO</code> Falls so aussehen:</p>
+<pre><code class="hljs javascript language-javascript"><span class="hljs-keyword">case</span> <span class="hljs-string">"ADD_TODO"</span>: {
+  <span class="hljs-keyword">return</span> {
+    ...state,
+    <span class="hljs-attr">todos</span>: state.todos.concat(action.payload),
+  };
+}</code></pre>
+<p>Aber auch das macht die Sache nur unwesentlich einfacher für uns, da es uns noch immer recht schnell passieren kann, dass wir vergessen den alten, unveränderten Teil des States mit zurück zu geben.</p>
+<p>Aus diesem Grund stellt <strong>Redux</strong> die <code>combineReducer()</code>-Methode bereit. Mit ihr wird es möglich unsere <strong>Reducer</strong>, bzw. den <strong>State</strong> den diese erzeugen, in einzelne benannte Teilbereiche aufzuteilen, die sich dann jeweils um eine bestimmte Aufgabe kümmern und in eigene Dateien ausgelagert werden können.</p>
+<p>Ausgehend von unserem Beispiel hätten wir hier also die beiden <strong>Reducer-</strong>Funktionen <code>user</code> und <code>todos</code>. Beide befinden sich in einer eigenen Datei, die die <strong>Reducer-</strong>Funktion als <code>default</code> exportiert:</p>
+<pre><code class="hljs javascript language-javascript"><span class="hljs-comment">// user/reducer.js</span>
+<span class="hljs-keyword">const</span> initialState = <span class="hljs-built_in">Object</span>.freeze({});
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> (state = initialState, action) =&gt; {
+  <span class="hljs-keyword">switch</span> (action.type) {
+    <span class="hljs-keyword">case</span> <span class="hljs-string">'SET_USER'</span>: {
+      <span class="hljs-keyword">return</span> {
+        <span class="hljs-attr">name</span>: action.payload.name,
+        <span class="hljs-attr">accessToken</span>: action.payload.accessToken,
+      };
+    }
+    <span class="hljs-keyword">default</span>: {
+      <span class="hljs-keyword">return</span> state;
+    }
+  }
+};</code></pre>
+<pre><code class="hljs javascript language-javascript"><span class="hljs-comment">// todos/reducer.js</span>
+<span class="hljs-keyword">const</span> initialState = <span class="hljs-built_in">Object</span>.freeze([]);
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> (state = initialState, action) =&gt; {
+  <span class="hljs-keyword">switch</span> (action.type) {
+    <span class="hljs-keyword">case</span> <span class="hljs-string">'ADD_TODO'</span>: {
+      <span class="hljs-keyword">return</span> state.concat(action.payload);
+    }
+    <span class="hljs-keyword">case</span> <span class="hljs-string">'REMOVE_TODO'</span>: {
+      <span class="hljs-keyword">return</span> state.filter(<span class="hljs-function">(<span class="hljs-params">todo</span>) =&gt;</span> todo.id !== action.payload);
+    }
+    <span class="hljs-keyword">case</span> <span class="hljs-string">'CHANGE_TODO_STATUS'</span>: {
+      <span class="hljs-keyword">return</span> state.map(<span class="hljs-function">(<span class="hljs-params">todo</span>) =&gt;</span> {
+        <span class="hljs-keyword">if</span> (todo.id !== action.payload.id) {
+          <span class="hljs-keyword">return</span> todo;
+        }
+        <span class="hljs-keyword">return</span> {
+          ...todo,
+          <span class="hljs-attr">done</span>: action.payload.done,
+        };
+      });
+    }
+    <span class="hljs-keyword">default</span>: {
+      <span class="hljs-keyword">return</span> state;
+    }
+  }
+};</code></pre>
+<p>Wer genau hinschaut stellt fest, dass unsere große, unübersichtliche <strong>Reducer</strong>-Funktion nicht nur in zwei kleinere und deutlich übersichtlichere Funktionen aufgeteilt wurden. Die Funktionen selbst wurden darüber hinaus auch vereinfacht. Statt jeweils auch den <em>unveränderten</em> Teil des <strong>State-Trees</strong> aus dem <strong>Reducer</strong> zurück zu geben, geben wir nur noch den Teil des States zurück, der <em>relevant für den jeweiligen</em> <strong>Reducer</strong> ist. Im <strong>User-Reducer</strong> ist das eben der <strong>Benutzer</strong>, im <strong>Todos-Reducer</strong> entsprechend die <strong>Todos</strong>.</p>
+<p>Um unsere beiden <em>kleineren</em> <strong>Reducer</strong> nun wieder zu einer <em>großen</em> <strong>Reducer</strong>-Funktion zusammenzufügen, die wir dann als einzige an die <code>createStore()</code>-Funktion übergeben können, nutzen wir <code>combineReducers()</code>. Diese Funktion erwartet ein Objekt, dessen Eigenschaftennamen denen des erzeugten State-Tree entsprechen. Die Werte müssen jeweils selbst gültige <strong>Reducer</strong> sein:</p>
+<pre><code class="hljs javascript language-javascript"><span class="hljs-keyword">import</span> { combineReducers, createStore } <span class="hljs-keyword">from</span> <span class="hljs-string">'redux'</span>;
+<span class="hljs-keyword">import</span> userReducer <span class="hljs-keyword">from</span> <span class="hljs-string">'./store/user/reducer'</span>;
+<span class="hljs-keyword">import</span> todosReducer <span class="hljs-keyword">from</span> <span class="hljs-string">'./store/todos/reducer'</span>;
+
+<span class="hljs-keyword">const</span> rootReducer = combineReducers({
+  <span class="hljs-attr">todos</span>: todosReducer,
+  <span class="hljs-attr">user</span>: userReducer,
+});
+
+<span class="hljs-keyword">const</span> store = createStore(rootReducer);</code></pre>
+<p>Die <code>combineReducers()</code>-Funktion fügt dabei alle Reducer aus dem übergebenen Objekt zu einer neuen Funktion zusammen, die nun als unser <strong>Root Reducer</strong> an die <code>createStore()</code>-Funktion übergeben werden kann. Die erzeugte Funktion ruft dabei beim Auslösen einer Action <em>jeden</em> übergebenen Reducer auf und erstellt aus deren Rückgabewerten dann ein neues State-Objekt, das von der Form dem, des initial übergebenen Objekts entspricht. In unserem Beispiel von oben ist der initiale State also:</p>
+<pre><code class="hljs javascript language-javascript">{
+  <span class="hljs-string">"todos"</span>: [],
+  <span class="hljs-string">"user"</span>: {}
+}</code></pre>
+<p>Tipp: durch die geschickte Nutzung der ES2015+ Object Shorthand Notation können wir noch ein klein wenig Code sparen, indem wir die Imports so nennen wie die Eigenschaften, die sie im State später einmal repräsentieren. Also:</p>
+<pre><code class="hljs javascript language-javascript"><span class="hljs-keyword">import</span> user <span class="hljs-keyword">from</span> <span class="hljs-string">'./store/user/reducer'</span>;
+<span class="hljs-keyword">import</span> todos <span class="hljs-keyword">from</span> <span class="hljs-string">'./store/todos/reducer'</span>;</code></pre>
+<p>Das Objekt das an <code>combineReducers()</code> übergeben wird, schrumpft dann auf ein übersichtlicheres:</p>
+<pre><code class="hljs javascript language-javascript"><span class="hljs-keyword">const</span> rootReducer = combineReducers({ todos, user });</code></pre>
+<p>Die Nutzung von <code>combineReducers()</code> ist allerdings an einige formelle Regeln gebunden die, einmal verinnerlicht, aber nicht wirklich hinderlich oder gar schwer zu merken sind. So muss jede Reducer-Funktion die an <code>combineReducers()</code> übergeben wird die folgenden Kriterien erfüllen:</p>
+<ul>
+<li>Für jede unbekannte <strong>Action</strong> (also jede <strong>Action</strong>, auf deren <code>type</code>-Eigenschaft wir nicht reagieren) die ein <strong>Reducer</strong> (in seinem <em>zweiten</em> Argument) übergeben bekommt, muss der <code>state</code> zurückgegeben werden, den der <strong>Reducer</strong> stets als <em>erstes</em> Argument bekommt.</li>
+<li>Anders als „von Hand“ erzeugte, einfache <strong>Root Reducer</strong> darf eine innerhalb von <code>combineReducer()</code> verwendete <strong>Reducer</strong>-Funktion niemals <code>undefined</code> zurückgeben. Die <code>combineReducers()</code>-Funktion wirft dann einen <strong>Error</strong> um auf diesen Umstand hinzuweisen und dabei die Suche der Fehler-Ursache nicht durch Verlagerung des Fehlers an andere Stelle unnötig zu erschweren. In unserem Beispiel tun wir das, indem wir im <code>default</code>-Fall innerhalb des <code>switch</code>-Blocks den <code>state</code> zurückgeben.</li>
+<li>Wenn der im ersten Argument übergebene <code>state</code> vom Typ <code>undefined</code> ist, muss der <strong>initiale State</strong> zurückgegeben werden. Dazu ist es am einfachsten den initialen State als Standardwert zu setzen, wie wir es im obigen Beispiel auch getan haben via <code>state = initialState</code>.</li>
+</ul>
+<p><strong>Übrigens:</strong> <code>combineReducer()</code> lässt sich auch beliebig „verschachteln“. Und so können auch die <strong>Reducer</strong>-Funktionen die an <code>combineReducer()</code> übergeben werden selbst bereits durch <code>combineReducer()</code> erzeugt worden sein. Dabei sollte allerdings beachtet werden, dass zu fein granulare Aufteilung in immer kleinere State-Äste den Code irgendwann nicht mehr unbedingt übersichtlicher macht. In der Praxis habe ich persönlich bisher mit einer Verschachtelungstiefe von maximal <em>einer</em> Ebene (also insgesamt zwei <code>combineReducer()</code>-Aufrufen, einer innen, einer außen) gearbeitet.</p>
+<h3 id="asynchrone-actions">Asynchrone Actions</h3>
+<p>Alle <strong>Actions</strong> in vorherigen Beispielen wurden bisher immer <strong>synchron</strong> ausgeführt. D.h. ihre <strong>Action Creators</strong> wurden ausgeführt wann immer wir den State modifizieren wollten ohne dass wir auf das Ergebnis asynchroner Prozesse warten mussten. In dynamischen Web-Anwendungen, in denen die Stärken von <strong>React</strong> am meisten zum Vorschein kommen, haben wir jedoch regelmäßig mit <strong>asynchronen Datenflüssen</strong> zu tun, insbesondere mit Netzwerk-Requests. Hier helfen uns unsere <em>synchronen</em> <strong>Action Creator</strong>-Funktionen nicht wirklich weiter, da die <code>dispatch</code>-Methode eines <strong>Stores</strong> ja zwingend eine <strong>Action</strong> erwartet, die, wie wir bereits gelernt haben ein simples und einfaches Objekt mit einer <code>type</code>-Eigenschaft ist.</p>
+<p>Hier kommt jetzt das <strong>Middleware</strong>-Konzept von <strong>Redux</strong> ins Spiel, und mit ihr insbesondere die <strong>Redux Thunk Middleware</strong>. Doch der Reihe nach.</p>
+<p>Die <code>createStore</code>-Funktion aus dem <code>redux</code>-Paket, die wir etwas weiter oben bereits benutzt haben um verschiedene Stores zu erzeugen, verarbeitet bis zu drei Parameter:</p>
+<ul>
+<li>Die <strong>Reducer</strong>-Funktion, die als einziger Parameter zwingend angegeben werden <strong>muss</strong> und sich in Verbindung mit den ausgelösten <strong>Actions</strong> um die Mutation unseres <strong>States</strong> kümmert indem sie mit jeder ausgelösten <strong>Action</strong> einen <strong>State</strong> zurückgibt.</li>
+<li>Einen <strong>initialen State</strong>, der bspw. beim Initialisieren des Stores bereits mit Daten befüllt sein kann. Dieser initiale State wird bei der Initialisierung des Stores auch auch die <strong>Reducer</strong>-Funktion übergeben.</li>
+<li>Eine sog. <strong>Enhancer</strong>-Funktion (zu dt. etwa: <em>Erweiterungs-Funktion</em>), mit der wir unseren erzeugten Store um eigene Funktionalität erweitern können. Wie etwa die eben angesprochene <strong>Middleware</strong>.</li>
+</ul>
+<p>Bekommt die <code>createStore</code>-Funktion zwei Parameter übergeben, behandelt sie den zweiten Parameter als <strong>Enhancer</strong> wenn der Parameter eine <strong>Funktion</strong> ist. Andernfalls wird der zweite Parameter als <strong>initialer State</strong> an die <strong>Reducer</strong>-Funktion übergeben.</p>
+<p>Eine <strong>Middleware</strong> in <strong>Redux</strong> legt sich dabei um die <code>dispatch</code>-Methode, fängt Aufrufe an diese ab, erlaubt es die aufgerufene <strong>Action</strong> zu modifizieren <em>bevor</em> diese an den <strong>Reducer</strong> übergeben wird und gibt am Ende ihrer Ausführung eine neue <code>dispatch</code>-Funktion zurück. Möchten wir nun bspw. asynchrone Funktionen bzw. Promises als Parameter an die <code>dispatch()</code>-Methode übergeben, können wir den <strong>Store-Enhancer</strong> nutzen um <strong>Middleware</strong> zu registrieren, die es uns erlaubt genau dies zu tun. Die bekannteste dieser Art ist besagte <strong>Thunk Middleware</strong>.</p>
+<p>Zur Installation:</p>
+<pre><code class="hljs bash language-bash">npm install redux-thunk</code></pre>
+<p>oder in Yarn:</p>
+<pre><code class="hljs bash language-bash">yarn add redux-thunk</code></pre>
+<p>Ist die <strong>Thunk Middleware</strong> installiert, müssen wir sie über die <strong>Redux</strong>-eigene <code>applyMiddleware()</code>-Funktion beim <strong>Enhancer</strong> <em>registrieren</em>. Dazu importieren wir die <strong>Middleware</strong> und die <code>applyMiddleware()</code>-Funktion direkt aus <strong>Redux</strong> und übergeben ihr jede <strong>Middleware</strong> die wir nutzen wollen als eigenen Parameter. In unserem Fall ist das erst einmal nur <code>thunk</code>:</p>
+<pre><code class="hljs javascript language-javascript"><span class="hljs-keyword">import</span> { applyMiddleware, createStore } <span class="hljs-keyword">from</span> <span class="hljs-string">'redux'</span>;
+<span class="hljs-keyword">import</span> thunk <span class="hljs-keyword">from</span> <span class="hljs-string">'redux-thunk'</span>;
+
+<span class="hljs-comment">// ...</span>
+
+<span class="hljs-keyword">const</span> store = createStore(reducer, applyMiddleware(thunk));</code></pre>
+<p>Durch die Einbindung der <strong>Thunk-Middleware</strong> können wir nun <strong>Action Creator</strong> schreiben, die <em>asynchronen</em> Code ausführen und ihre <strong>Actions</strong> dann <em>dispatchen</em> wenn ein Ergebnis vorliegt. Eine <strong>Thunk</strong>-Funktion ist dabei ein <strong>Action Creator</strong>, der selbst wiederum eine Funktion zurückgibt, deren beiden Parameter eine<code>dispatch()</code> und <code>getState()</code> Funktion sind. In der <strong>Thunk Action Creator</strong>-Funktion können wir dann selbst entscheiden wann der Zeitpunkt gekommen ist um unsere Action zu <em>dispatchen</em>.</p>
+<pre><code class="hljs javascript language-javascript"><span class="hljs-keyword">const</span> delayedAdd = <span class="hljs-function">(<span class="hljs-params">newTodo</span>) =&gt;</span> {
+  <span class="hljs-keyword">return</span> <span class="hljs-function">(<span class="hljs-params">dispatch, getState</span>) =&gt;</span> {
+    setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+      <span class="hljs-keyword">return</span> dispatch({
+        <span class="hljs-attr">type</span>: <span class="hljs-string">'ADD_TODO'</span>,
+        <span class="hljs-attr">payload</span>: newTodo,
+      });
+    }, <span class="hljs-number">500</span>);
+  };
+};
+
+store.dispatch(
+  delayedAction({
+    <span class="hljs-attr">id</span>: <span class="hljs-number">1</span>,
+    <span class="hljs-attr">text</span>: <span class="hljs-string">'Thunk Actions erklären'</span>,
+    <span class="hljs-attr">done</span>: <span class="hljs-literal">false</span>,
+  })
+);</code></pre>
+<p>In diesem Beispiel erzeugen wir einen <code>delayedAdd</code> <strong>Action Creator</strong>. Dieser erhält das neue Todo-Element übergeben und gibt dann eine neue Funktion in der Form <code>(dispatch, getState) =&gt; {}</code> zurück. Die <strong>Thunk-Middleware</strong> sorgt dann dafür, dass dieser Funktion die <code>dispatch()</code> und <code>getState()</code> Funktionen entsprechend hereingereicht werden. Nach einer Verzögerung von, in diesem Beispiel, 500 ms rufen wir die <code>dispatch()</code>-Funktion mit der <code>ADD_TODO</code> <strong>Action</strong> auf und fügen das neue Objekt hinzu.</p>
+<p>Um die Action zu <em>dispatchen</em> können wir den <em>asynchronen</em> <strong>Action Creator</strong> nun genauso verwenden wie wir auch bisher unsere <em>synchronen</em> <strong>Action Creators</strong> <em>dispatched</em> haben, nämlich durch das Übergeben der aufgerufenen Funktion an die <code>dispatch()</code>-Funktion des <strong>Store</strong>: <code>store.dispatch(ActionCreator)</code>. Die Thunk-Middleware erkennt dann, dass es sich um eine <strong>Thunk</strong>-Funktion handelt, führt sie aus und reicht ihr die beiden Argumente <code>dispatch</code> und <code>getState</code> hinein.</p>
+<p>Wer bereits mit der <strong>Arrow Function Syntax</strong> aus ES2015 vertraut ist kann das Ganze übrigens auch noch weiter abkürzen:</p>
+<pre><code class="hljs javascript language-javascript"><span class="hljs-keyword">const</span> delayedAdd = <span class="hljs-function">(<span class="hljs-params">newTodo</span>) =&gt;</span> (dispatch, getState) =&gt; {
+  setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+    <span class="hljs-keyword">return</span> dispatch({
+      <span class="hljs-attr">type</span>: <span class="hljs-string">'ADD_TODO'</span>,
+      <span class="hljs-attr">payload</span>: newTodo,
+    });
+  }, <span class="hljs-number">500</span>);
+};</code></pre>
+<p>Hier geben wir über die verkürzte <strong>Arrow Function</strong> mit <strong>impliziten Rückgabewert</strong> direkt die dann von der <strong>Thunk-Middleware</strong> aufgerufene Funktion zurück, ohne das <code>return</code> Schlüsselwort dafür verwenden zu müssen. Das spart noch einmal zwei Zeilen Code, macht den Code aber gerade zu Beginn etwas schwieriger zu verstehen.</p>
+<h3 id="ein-typisches-beispiel-für-asynchrone-actions-aus-der-praxis">Ein typisches Beispiel für asynchrone Actions aus der Praxis</h3>
+<p>In vielen Anwendungen in denen mit Schnittstellen (APIs) gearbeitet wird ist es ein gängiges Muster den Benutzer auf den Lade-Status hinzuweisen sobald Daten von der API bezogen werden. Bspw. über einen grafischen Spinner oder auch nur durch einen Text-Hinweis wie etwa <em>„Daten werden geladen“</em>. Hier eignet sich eine entsprechende <strong>Thunk Action</strong> hervorragend um diesen Anwendungsfall mit einem entsprechenden <strong>Reducer</strong> abzudecken.</p>
+<p>Dazu erstellen wir im <strong>Reducer</strong> drei Fälle in denen wir auf die folgenden <strong>Actions</strong> regieren:</p>
+<ul>
+<li><code>FETCH_REPOS_REQUEST</code>, um zu Beginn des Netzwerk-Requests etwa Fehler aus voran gegangenen Requests zurück zu setzen und um unseren Lade-Status zu initiieren,</li>
+<li><code>FETCH_REPOS_SUCCESS</code> , die wir bei erfolgreich erfolgtem Request aufrufen und die das Ergebnis des Requests bekommt sowie das Datum der letzten Aktualisierung dieser Daten, sowie</li>
+<li><code>FETCH_REPOS_FAILURE</code> mit der wir auf aufgetretene Fehler reagieren und bspw. einen <code>error</code> Flag setzen um den Benutzer davon in Kenntnis zu setzen, dass sein Request fehlgeschlagen ist.</li>
+</ul>
+<p>In Form von Code könnte dies dann bspw. so aussehen:</p>
+<pre><code class="hljs javascript language-javascript"><span class="hljs-keyword">import</span> { applyMiddleware, createStore } <span class="hljs-keyword">from</span> <span class="hljs-string">'redux'</span>;
+<span class="hljs-keyword">import</span> thunk <span class="hljs-keyword">from</span> <span class="hljs-string">'redux-thunk'</span>;
+<span class="hljs-keyword">import</span> axios <span class="hljs-keyword">from</span> <span class="hljs-string">'axios'</span>;
+
+<span class="hljs-keyword">const</span> initialState = <span class="hljs-built_in">Object</span>.freeze({
+  <span class="hljs-attr">error</span>: <span class="hljs-literal">null</span>,
+  <span class="hljs-attr">items</span>: [],
+  <span class="hljs-attr">isFetching</span>: <span class="hljs-literal">false</span>,
+  <span class="hljs-attr">lastUpdated</span>: <span class="hljs-literal">null</span>,
+  <span class="hljs-attr">selectedAccount</span>: <span class="hljs-string">'manuelbieh'</span>,
+});
+
+<span class="hljs-keyword">const</span> rootReducer = <span class="hljs-function">(<span class="hljs-params">state = initialState, action</span>) =&gt;</span> {
+  <span class="hljs-keyword">switch</span> (action.type) {
+    <span class="hljs-keyword">case</span> <span class="hljs-string">'FETCH_REPOS_REQUEST'</span>: {
+      <span class="hljs-keyword">return</span> {
+        ...state,
+        <span class="hljs-attr">isFetching</span>: <span class="hljs-literal">true</span>,
+        <span class="hljs-attr">error</span>: <span class="hljs-literal">null</span>,
+      };
+    }
+    <span class="hljs-keyword">case</span> <span class="hljs-string">'FETCH_REPOS_SUCCESS'</span>: {
+      <span class="hljs-keyword">return</span> {
+        ...state,
+        <span class="hljs-attr">isFetching</span>: <span class="hljs-literal">false</span>,
+        <span class="hljs-attr">items</span>: action.payload.items,
+        <span class="hljs-attr">lastUpdated</span>: action.payload.lastUpdated,
+      };
+    }
+    <span class="hljs-keyword">case</span> <span class="hljs-string">'FETCH_REPOS_FAILED'</span>: {
+      <span class="hljs-keyword">return</span> {
+        ...state,
+        <span class="hljs-attr">isFetching</span>: <span class="hljs-literal">false</span>,
+        <span class="hljs-attr">error</span>: action.payload,
+      };
+    }
+    <span class="hljs-keyword">default</span>: {
+      <span class="hljs-keyword">return</span> state;
+    }
+  }
+};
+
+<span class="hljs-keyword">const</span> fetchGithubRepos = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> (dispatch, getState) =&gt; {
+  dispatch({ <span class="hljs-attr">type</span>: <span class="hljs-string">'FETCH_REPOS_REQUESTED'</span> });
+  <span class="hljs-keyword">const</span> state = getState();
+  axios
+    .get(<span class="hljs-string">`https://api.github.com/users/<span class="hljs-subst">${state.selectedAccount}</span>/repos`</span>)
+    .then(<span class="hljs-function">(<span class="hljs-params">response</span>) =&gt;</span> {
+      dispatch({
+        <span class="hljs-attr">type</span>: <span class="hljs-string">'FETCH_REPOS_SUCCESS'</span>,
+        <span class="hljs-attr">payload</span>: {
+          <span class="hljs-attr">lastUpdated</span>: <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(),
+          <span class="hljs-attr">items</span>: response.data,
+        },
+      });
+    })
+    .catch(<span class="hljs-function">(<span class="hljs-params">error</span>) =&gt;</span> {
+      dispatch({
+        <span class="hljs-attr">type</span>: <span class="hljs-string">'FETCH_REPOS_FAILURE'</span>,
+        <span class="hljs-attr">error</span>: <span class="hljs-literal">true</span>,
+        <span class="hljs-attr">payload</span>: error.response.data,
+      });
+    });
+};
+
+<span class="hljs-keyword">const</span> store = createStore(rootReducer, applyMiddleware(thunk));
+
+store.dispatch(fetchGithubRepos());</code></pre>
+<p><em>Dispatchen</em> wir hier den <code>fetchGithubRepos()</code> <strong>Action Creator</strong> passiert folgendes:</p>
+<p>Zunächst erkennt die <strong>Thunk-Middleware</strong>, dass es sich nicht um eine einfache <strong>Action</strong> (also ein Objekt) sondern um eine Funktion handelt, führt diese aus in der Form <code>Action()(dispatch, getState)</code>. Der <strong>Action Creator</strong> erhält die <code>dispatch</code>-Funktion übergeben um selbst wiederum <strong>Actions</strong> aus der <strong>Action Creator</strong> Funktion heraus <em>dispatchen</em> zu können.</p>
+<p>Im <strong>Action Creator</strong> <em>dispatchen</em> wir nun zunächst einmal die <code>FETCH_REPOS_REQUESTED</code> Action. Der <strong>Reducer</strong> reagiert auf die Action, erzeugt ein neues <strong>State-Objekt</strong> indem der <em>bestehende</em> <strong>State</strong> per <strong>ES2015+ Spread Operator</strong> in ein neues Objekt kopiert wird und außerdem einen ggf. existierenden <code>error</code> zurücksetzt auf <code>null</code>. Gleichzeitig wird der State mittels <code>isFetching</code> davon in Kenntnis gesetzt, dass nun ein Request folgen wird. Das ist hier etwas Geschmackssache und so bevorzugen es einige die <code>error</code>-Eigenschaft erst dann wieder auf <code>null</code> zu setzen, wenn der anstehende Request auch tatsächlich erfolgreich war.</p>
+<p>Für den Request holen wir uns nun mittels <code>getState()</code> zunächst den <em>aktuellen</em> <strong>State</strong>, aus diesem holen wir uns aus <code>selectedAccount</code> dann den ausgewählten Account, zu dem wir uns anschließend über den API Request die GitHub-Repos besorgen. Wir starten den Request (und nutzen hier wie schon in früheren Beispielen Axios zur Vereinfachung) und reagieren auf zwei mögliche Fälle:</p>
+<ul>
+<li>Der Request ist erfolgreich und wir beziehen Daten von der GitHub API. Wir <em>dispatchen</em> dann die nächste <strong>Action</strong>, <code>FETCH_REPOS_SUCCESS</code>, übergeben die aktuelle Uhrzeit (die wir später bspw. für Caching oder automatische Reloads benutzen können) sowie das Array mit den Repos, die sich in <code>response.data</code> verbirgt. Da der Request außerdem nicht mehr aktiv ist, setzen wir <code>isFetching</code> wieder zurück auf <code>false</code>.</li>
+<li>Der Request schlägt fehlt. In diesem Fall <em>dispatchen</em> wir die <code>FETCH_REPOS_FAILURE</code> Action und übergeben die Fehlermeldung die Axios hier in <code>error.response.data</code> bereithält als Payload. Auch hier setzen wir <code>isFetching</code> wieder zurück auf <code>false</code>, da der Request auch hier beendet ist, wenn auch mit einem für uns unschönen Ergebnis, nämlich einem Fehler.</li>
+</ul>
+<p>Unser State enthält nun die GitHub-Repos des laut <code>state.selectedAccount</code> ausgewählten Benutzers wenn der Request erfolgreich war oder eine Fehlermeldung wenn er es nicht war. Auf beide Fälle könnten wir nun in unserem User Interface entsprechend reagieren!</p>
+<h3 id="debugging-mit-den-redux-devtools">Debugging mit den Redux Devtools</h3>
+<p>Zum Inspizieren des Stores haben wir diverse Möglichkeiten, so gibt es bspw. eine praktische <strong>Logger-Middleware</strong>, die uns für jede dispatchte <strong>Action</strong> den vorherigen State, die Action selbst und den neuen State in die Browser-Console logged: <a href="https://github.com/LogRocket/redux-logger">https://github.com/LogRocket/redux-logger</a></p>
+<p>Wir können selbstverständlich jederzeit auch manuell mittels <code>console.log(store.getState())</code> den aktuellen State ausgeben, wobei das mühsam ist und insbesondere bei asynchronen Actions manchmal etwas verwirrend sein kann.</p>
+<p>Und dann gibt es die <strong>Redux Devtools</strong>. Diese kommen als Browser-Extension daher und integrieren sich nahtlos in die Developer Tools in Chrome und Firefox, auch mit künftigen Edge Versionen ist die Verwendung der <strong>Redux Devtools</strong> möglich sobald die Browser-Engine erst einmal final auf Chromium umgestellt wurde. Gefunden werden können die Extensions in den jeweiligen Add-On Stores:</p>
+<ul>
+<li>Chrome: <a href="https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd">https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd</a></li>
+<li>Firefox: <a href="https://addons.mozilla.org/en-US/firefox/addon/reduxdevtools/">https://addons.mozilla.org/en-US/firefox/addon/reduxdevtools/</a></li>
+</ul>
+<p>Sind die <strong>Redux Devtools</strong> erst einmal installiert, bekommen die Developer Tools im Browser einen neuen Tab <strong>„Redux“</strong>, unter dem wir sie finden können. Doch zur Verwendung müssen wir einige Vorkehrungen in unserem Code treffen. Wir müssen sie als weiteren <strong>Enhancer</strong> zu unserem <strong>Store</strong> hinzufügen.</p>
+<p class="has-image"><span><img src="./assets/.gitbook/redux-devtools.png" alt="Browser Devtools mit installiertem Redux Addon" /><span class="caption">Browser Devtools mit installiertem Redux Addon</span></span></p>
+<p>Die <strong>Redux Devtools</strong> registrieren sich mit zwei eigenen globalen Variable auf dem <code>window</code>-Objekt im Browser: <code>window.REDUX_DEVTOOLS_EXTENSION</code> und <code>window.REDUX_DEVTOOLS_EXTENSION_COMPOSE</code>. Nutzen wir keine eigenen Store Enhancer, wie beispielsweise <code>applyMiddleware()</code> um bspw. Middlewares wie Thunk zu registrieren ist die Sache recht simpel: wir schauen mittels Logical AND Operator (<code>&amp;&amp;</code>) ob die <strong>Redux Devtools</strong> installiert sind und übergeben wenn das der Fall ist einen Aufruf der <code>window.REDUX_DEVTOOLS_EXTENSION</code> an die <code>createStore()</code>-Funktion:</p>
+<pre><code class="hljs javascript language-javascript">createStore(
+  rootReducer,
+  <span class="hljs-built_in">window</span>.__REDUX_DEVTOOLS_EXTENSION__ &amp;&amp; <span class="hljs-built_in">window</span>.__REDUX_DEVTOOLS_EXTENSION__()
+);</code></pre>
+<p>Damit sehen wir nun automatisch jede ausgelöste <strong>Action</strong> in den <strong>Devtools</strong>, können uns in Detail anschauen welche <strong>Action</strong> mit welcher <strong>Payload</strong> <em>dispatched</em> wurde und können sogar manuell <strong>Actions</strong> <em>dispatchen</em>. Außerdem gibt es die Möglichkeit des <strong>Time Travelings</strong>, also dem „Zurückblättern“ zu vorherigen Zuständen des Stores. Dies ist mitunter sehr hilfreich beim Debugging.</p>
+<p>Hier ist es besonders wichtig dass unsere <strong>Reducer</strong> <em>Pure Functions</em> sind, damit sie beim Durchblättern durch die Historie des <strong>Stores</strong> auch jedesmal wieder erneut den gleichen <strong>State</strong> erzeugen wie beim ursprünglichen Aufruf. Ansonsten läuft man möglicherweise einem Bug hinterher, der einfach nicht reproduzierbar ist, da er mit jedem Aufruf einen unterschiedlichen <strong>State</strong> erzeugt.</p>
+<p>Wird wie bei unserem letzten Beispiel bereits eine Enhancer-Funktion verwendet, nutzen wir stattdessen die <code>window.REDUX_DEVTOOLS_EXTENSION_COMPOSE</code> Funktion. Diese Funktion ist eine <code>compose</code>-Funktion die es ermöglicht <em>mehrere</em> <strong>Enhancer</strong>-Funktionen zu einer <em>einzelnen</em> zu kombinieren die dann der Reihe nach aufgerufen werden. Also das gleiche Prinzip, wie wir es schon bei der <code>combineReducers()</code>-Methode für <strong>Reducer</strong> kennengelernt haben.</p>
+<p>Auch Redux selbst bietet mit <code>compose</code> eine solche Funktion um mehrere Enhancer-Funktionen zu einer einzelnen zu kombinieren. Diese importieren wir der Einfachheit halber um eine neue, eigene <code>composeEnhancer()</code>-Funktion zu erstellen die nun von einer Bedingung abhängt: sind die Redux Devtools installiert, nutzt sie die <code>REDUX_DEVTOOLS_EXTENSION_COMPOSE</code>-Funktion um die <strong>Devtools</strong> dem <strong>Store-Enhancer</strong> zuzufügen. Sind sie nicht installiert nutzen wir stattdessen die Redux eigene <code>compose()</code>-Funktion um eine Funktion von gleicher Signatur zu erzeugen:</p>
+<pre><code class="hljs javascript language-javascript"><span class="hljs-keyword">import</span> { applyMiddleware, compose, createStore } <span class="hljs-keyword">from</span> <span class="hljs-string">'redux'</span>;
+<span class="hljs-keyword">import</span> thunk <span class="hljs-keyword">from</span> <span class="hljs-string">'thunk-middleware'</span>;
+
+<span class="hljs-keyword">const</span> composeEnhancers =
+  <span class="hljs-keyword">typeof</span> <span class="hljs-built_in">window</span> === <span class="hljs-string">'object'</span> &amp;&amp; <span class="hljs-built_in">window</span>.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+    ? <span class="hljs-built_in">window</span>.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({})
+    : compose;
+
+<span class="hljs-comment">// ...</span>
+
+<span class="hljs-keyword">const</span> store = createStore(
+  rootReducer,
+  composeEnhancers(applyMiddleware(thunk))
+);</code></pre>
+<p>Wer sich jetzt hier von den ganzen Funktionen und Begrifflichkeiten überwältigt fühlt den kann ich etwas trösten: das ist in der Praxis normal gar nicht so sehr von Relevanz das alles zu verstehen und zu beherrschen. Ich selbst nutze die <strong>Redux Devtools</strong> in jedem Projekt in dem ich <strong>Redux</strong> verwende und noch immer muss ich jedesmal erneut nachschlagen, wie genau das doch gleich funktionierte mit der Einbindung der Devtools. Speziell dieser Text dient daher also primär dazu das Bewusstsein dafür zu schaffen wie das Debugging von <strong>Redux-Stores</strong> möglich ist und denjenigen, die gern genaueres darüber wissen möchten einen kleinen Leitfaden mit an die Hand zu geben.</p>
+<h3 id="verwendung-von-redux-mit-react">Verwendung von Redux mit React</h3>
+<p>Nun haben wir bereits ziemlich genau kennengelernt wie wir einen neuen <strong>Store</strong> erzeugen, wie wir <strong>Actions</strong> <em>dispatchen</em>, welche Rolle der <strong>Reducer</strong> spielt und wie wir <strong>Middleware</strong> einsetzen. Doch wie bringen wir das jetzt unter einen Hut mit <strong>React?</strong></p>
+<p>Hier kommt nun das <code>react-redux</code> Paket ins Spiel, das gleich zu Beginn des Kapitels bereits einmal angerissen wurde. Dies sind die <em>„offiziellen React Bindings für Redux“</em>, also die offizielle Anbindung von <strong>Redux</strong> an <strong>React</strong>, die von den Redux-Entwicklern gepflegt wird und ursprünglich von Dan Abramov entwickelt wurde, der inzwischen auch Teil des offiziellen React Core Teams ist.</p>
+<p>Das Paket besteht aus im wesentlichen aus lediglich zwei React-Komponenten, bzw. einer Komponente und einer Funktion, die eine <strong>Higher Order Component</strong> erzeugt (plus einer weiteren Funktion, die von React Redux selbst intern verwendet wird, in der täglichen Arbeit aber praktisch nicht von Relevanz ist). Da wäre zum einen die <code>Provider</code>-Komponente, die wir um den Teil unseres Komponenten-Baums legen, innerhalb dessen wir später auf den gemeinsam genutzten <strong>Store</strong> zugreifen wollen, sowie die <code>connect()</code>-Funktion, die eine <strong>Higher Order Component</strong> zurückgibt und mit der wir einzelne Komponenten dann mit dem Store zu <em>verbinden</em> können.</p>
+<h4 id="die-provider-komponente">Die Provider Komponente</h4>
+<p>Da eine Anwendung in den meisten Fällen nur einen <strong>Store</strong> besitzt und alle Komponenten dieser Anwendung auf genau diesen Zugriff bekommen sollen, wird die <code>Provider</code>-Komponente üblicherweise sehr weit oben in der Komponenten-Hierarchie eingesetzt. Nicht selten als die erste und damit oberste Komponente überhaupt. Die <code>Provider</code>-Komponente bekommt dabei einen <strong>Redux Store</strong> als <code>store</code>-Prop übergeben und enthält darüber hinaus Kind-Elemente. Alle ihre Kind-Elemente haben dann entsprechend die Möglichkeit auf den in der <code>store</code>-Prop angegebenen <strong>Store</strong> zuzugreifen, diesen also zu lesen und durch das Auslösen von <strong>Actions</strong> zu verändern:</p>
+<pre><code class="hljs jsx language-jsx"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
+<span class="hljs-keyword">import</span> ReactDOM <span class="hljs-keyword">from</span> <span class="hljs-string">'react-dom'</span>;
+<span class="hljs-keyword">import</span> { createStore } <span class="hljs-keyword">from</span> <span class="hljs-string">'redux'</span>;
+<span class="hljs-keyword">import</span> { Provider } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-redux'</span>;
+
+<span class="hljs-keyword">const</span> dummyReducer = <span class="hljs-function">(<span class="hljs-params">state = {}, action</span>) =&gt;</span> {
+  <span class="hljs-keyword">return</span> state;
+};
+
+<span class="hljs-keyword">const</span> store = createStore(dummyReducer);
+
+<span class="hljs-keyword">const</span> App = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> (
+  <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Hier haben wir nun Zugriff auf den erzeugten Redux-Store<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span>
+);
+
+ReactDOM.render(
+  <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Provider</span> <span class="hljs-attr">store</span>=<span class="hljs-string">{store}</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">App</span> /&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">Provider</span>&gt;</span></span>,
+  <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'root'</span>)
+);</code></pre>
+<p>Statt wie in den meisten anderen Beispielen in diesem Buch übergeben wir hier der <code>ReactDOM.render()</code>-Methode diesmal nicht nur das <code>&lt;App /&gt;</code>-Element, sondern umschließen dieses außerdem mit der <code>Provider</code>-Komponente, die den zuvor erzeugten (Dummy-)Store übergeben bekommt.</p>
+<p>Die <code>Provider</code>-Komponente kann auch ineinander geschachtelt werden, Komponenten die mit dem Store verbunden werden nutzen dann immer den <strong>Store</strong> der <em>nächsthöheren</em> <code>Provider</code>-Komponente. Ein solches Vorgehen ist aber eher unüblich und man würde in einer solchen Situation, in der zwei Stores parallel existieren sollen, wohl eher die Reducer beider Stores über die <code>combineReducer()</code>-Funktion zu einem gemeinsamen Store verbinden um schließlich wieder nur noch ein gemeinsames <code>Provider</code>-Element für alle Komponenten zu nutzen.</p>
+<h4 id="komponenten-via-connect-funktion-mit-dem-store-verbinden">Komponenten via connect-Funktion mit dem Store verbinden</h4>
+<p>Dies war noch die eher leichtere Übung. Etwas umständlicher wird es beim zweiten Teil, nämlich dem <strong>Verbinden</strong> einer React-Komponente mit dem <strong>Redux Store</strong> über besagte <code>connect()</code>-Funktion. Diese kann bis zu 4 Parameter erhalten, wovon die ersten 3 Funktionen sind, die selbst wiederum zum Teil bis zu 3 Parameter übergeben bekommen können. Au weia. Die gute Nachricht: in den deutlich überwiegenden Fällen benötigen wir in der Praxis maximal 2 der 4 Parameter und bei diesen beiden auch jeweils nur jeweils den ersten Parameter. Arbeiten wir uns der Reihe nach daran ab, von simpel zu komplex.</p>
+<p>Die grundsätzliche Funktionssignatur ist die folgende:</p>
+<pre><code class="hljs javascript language-javascript">connect(
+  mapStateToProps,
+  mapDispatchToProps,
+  mergeProps,
+  options
+);</code></pre>
+<p>Zuerst einmal erzeugt der Aufruf der <code>connect()</code>-Funktion eine <strong>Higher Order Component</strong>. Diese können wir nutzen, um bestimmte Teile des States aus dem Store an die von dieser umschlossenen Komponente zu übergeben. Um zu entscheiden welcher Teil des States an die Komponente übergeben wird nutzen wir den ersten Parameter, die meist als <code>mapStateToProps</code>-Funktion bezeichnet wird, so, wie sie auch in der Doku genannt wird.</p>
+<h4 id="zugriff-auf-teile-des-globalen-states-über-mapstatetoprops">Zugriff auf Teile des globalen States über mapStateToProps</h4>
+<p>Die <code>mapStateToProps</code>-Funktion bekommt als ersten Parameter den kompletten <strong>State</strong> von Redux übergeben, als zweiten, optionalen Parameter die in der Doku als <code>ownProps</code> bezeichneten „eigenen“ Props der Komponente. Also diejenigen, die ggf. an die erzeugte HOC übergeben werden. Je nachdem ob nur einer oder zwei Parameter übergeben werden, wird die Funktion dann entweder immer nur dann aufgerufen wenn sich etwas im <strong>Redux State</strong> ändert <em>oder</em> auch dann, wenn sich die <strong>Props</strong> die der Komponente ggf. übergeben werden ändern.</p>
+<pre><code class="hljs javascript language-javascript"><span class="hljs-keyword">const</span> mapStateToProps = <span class="hljs-function">(<span class="hljs-params">state, ownProps</span>) =&gt;</span> {
+  <span class="hljs-comment">// ...</span>
+};</code></pre>
+<p>In beiden Fällen wird von der Funktion ein <strong>Objekt</strong> als Rückgabewert erwartet. Die Eigenschaften dieses Objekts werden dann als die sog. <code>stateProps</code> an die Komponente übergeben. Erinnern wir uns nochmal zurück an unseren Todo-Store von etwas weiter oben. Als Beispiel möchten wir nun einer Komponente die Todos vorgefiltert nach ihrem Status (erledigt oder nicht erledigt) übergeben, sowie die Anzahl der Todos insgesamt.</p>
+<p>Unsere <code>mapStateToProps</code>-Funktion sieht dann etwa so aus:</p>
+<pre><code class="hljs jsx language-jsx"><span class="hljs-keyword">const</span> mapStateToProps = <span class="hljs-function">(<span class="hljs-params">state</span>) =&gt;</span> {
+  <span class="hljs-keyword">return</span> {
+    <span class="hljs-attr">openTodos</span>: state.todos.filter(<span class="hljs-function">(<span class="hljs-params">todo</span>) =&gt;</span> todo.completed !== <span class="hljs-literal">true</span>),
+    <span class="hljs-attr">completedTodos</span>: state.todos.filter(<span class="hljs-function">(<span class="hljs-params">todo</span>) =&gt;</span> todo.completed === <span class="hljs-literal">true</span>),
+    <span class="hljs-attr">totalCount</span>: state.todos.length,
+  };
+};</code></pre>
+<p>Die Eigenschaften dieses Objekts, also <code>openTodos</code>, <code>completedTodos</code> und <code>totalCount</code> werden dann als <strong>Props</strong> an die umschlossene Komponente übergeben. Dies passiert indem wir der connect()-Funktion die mapStateToProps Funktion übergeben. Diese gibt uns dann eine HOC zurück, der wir wiederum die Komponente übergeben, in der wir auf unsere drei Props aus dem State zugreifen wollen:</p>
+<pre><code class="hljs jsx language-jsx"><span class="hljs-keyword">const</span> ConnectedTodoList = connect(mapStateToProps)(TodoList);</code></pre>
+<p>Nutzen wir nun im <strong>JSX</strong> ein <code>&lt;ConnectedTodoList /&gt;</code> Element und befindet sich dieses auch innerhalb eines von der <code>Provider</code>-Komponente umschlossenen Teils der Anwendung, wird die <code>TodoList</code> gerendert mit den obigen Props aus dem globalen <strong>Redux Store:</strong></p>
+<pre><code class="hljs jsx language-jsx"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
+<span class="hljs-keyword">import</span> ReactDOM <span class="hljs-keyword">from</span> <span class="hljs-string">'react-dom'</span>;
+<span class="hljs-keyword">import</span> { combineReducers, createStore } <span class="hljs-keyword">from</span> <span class="hljs-string">'redux'</span>;
+<span class="hljs-keyword">import</span> { Provider, connect } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-redux'</span>;
+<span class="hljs-keyword">import</span> user <span class="hljs-keyword">from</span> <span class="hljs-string">'./store/user/reducer'</span>;
+<span class="hljs-keyword">import</span> todos <span class="hljs-keyword">from</span> <span class="hljs-string">'./store/todos/reducer'</span>;
+
+<span class="hljs-keyword">const</span> rootReducer = combineReducers({ todos, user });
+
+<span class="hljs-keyword">const</span> store = createStore(rootReducer);
+
+<span class="hljs-keyword">const</span> TodoList = <span class="hljs-function">(<span class="hljs-params">props</span>) =&gt;</span> (
+  <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>
+      {props.totalCount} Todos. Davon {props.completedTodos.length}{' '}
+      abgeschlossen und {props.openTodos.length} noch offen.
+    <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+);
+
+<span class="hljs-keyword">const</span> mapStateToProps = <span class="hljs-function">(<span class="hljs-params">state</span>) =&gt;</span> {
+  <span class="hljs-keyword">return</span> {
+    <span class="hljs-attr">openTodos</span>: state.todos.filter(<span class="hljs-function">(<span class="hljs-params">todo</span>) =&gt;</span> todo.completed !== <span class="hljs-literal">true</span>),
+    <span class="hljs-attr">completedTodos</span>: state.todos.filter(<span class="hljs-function">(<span class="hljs-params">todo</span>) =&gt;</span> todo.completed === <span class="hljs-literal">true</span>),
+    <span class="hljs-attr">totalCount</span>: state.todos.length,
+  };
+};
+
+<span class="hljs-keyword">const</span> ConnectedTodoList = connect(mapStateToProps)(TodoList);
+
+ReactDOM.render(
+  <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Provider</span> <span class="hljs-attr">store</span>=<span class="hljs-string">{store}</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">ConnectedTodoList</span> /&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">Provider</span>&gt;</span></span>,
+  <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'root'</span>)
+);</code></pre>
+<p>Hier rendern wir eine ziemlich spartanische <code>TodoList</code>-Komponente, die uns zu Demonstrationszwecken lediglich die Anzahl aller Todos, sowie die Anzahl der offenen und bereits erledigten Todos anzeigt.</p>
+<p>Über den zweiten möglichen Parameter der <code>mapStateToProps</code>-Funktion, üblicherweise als <code>ownProps</code> bezeichnet, ist es möglich innerhalb der Funktion auf die <strong>Props</strong> der Komponente zuzugreifen um bspw. darüber entscheiden zu können welchen Teil des States wir in die verbundene Komponente hereinreichen wollen. Möchten wir also bspw. entweder immer nur die offenen Todos <em>oder</em> die geschlossenen Todos zurückgeben, und soll die Entscheidung darüber auf einer Prop basieren, könnte der entsprechende Teil so aussehen:</p>
+<pre><code class="hljs jsx language-jsx"><span class="hljs-keyword">const</span> mapStateToProps = <span class="hljs-function">(<span class="hljs-params">state, ownProps</span>) =&gt;</span> {
+  <span class="hljs-keyword">const</span> filteredTodos =
+    ownProps.type === <span class="hljs-string">'completed'</span>
+      ? state.todos.filter(<span class="hljs-function">(<span class="hljs-params">todo</span>) =&gt;</span> todo.completed === <span class="hljs-literal">true</span>)
+      : state.todos.filter(<span class="hljs-function">(<span class="hljs-params">todo</span>) =&gt;</span> todo.completed !== <span class="hljs-literal">true</span>);
+
+  <span class="hljs-keyword">return</span> {
+    <span class="hljs-attr">totalCount</span>: state.todos.length,
+    <span class="hljs-attr">todos</span>: filteredTodos,
+  };
+};
+
+<span class="hljs-keyword">const</span> ConnectedTodoList = connect(mapStateToProps)(TodoList);
+
+ReactDOM.render(
+  <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Provider</span> <span class="hljs-attr">store</span>=<span class="hljs-string">{store}</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">ConnectedTodoList</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"completed"</span> /&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">Provider</span>&gt;</span>,
+  document.getElementById('root')
+);</span></code></pre>
+<p>Über <code>ownProps.type</code> schauen wir zunächst, ob wir die erledigten Todos anzeigen wollen oder die offenen. Anschließend filtern wir <code>state.todos</code> entsprechend und geben jeweils nur die gewünschten Todos aus dem State zurück. Da wir nun die übergebenen Todos nicht mehr nach Typ unterteilen sondern in der <code>mapStateToProps</code>-Funktion bereits eine Vorauswahl treffen, geben wir die Todos unter einer allgemeinen <code>todos</code>-Eigenschaft zurück, wodurch wir nun via <code>props.todos</code> auf diese Zugreifen können innerhalb der Komponente.</p>
+<p>Über die <code>mapStateToProps()</code>-Funktion erhalten wir also Lese-Zugriff auf den kompletten <strong>State</strong> aus unserem <strong>Redux Store</strong>. Sämtliche Daten die wir in einer Komponente nutzen wollen geben wir hier als Objekt zurück. Die entsprechende React-Komponente wird dann immer nur neu gerendert wenn sich auch tatsächlich die relevanten Daten im Store geändert haben. Dann wird entsprechend ein Rerendering der verbundenen Komponente ausgelöst.</p>
+<h4 id="actions-dispatchen-über-mapdispatchtoprops">Actions dispatchen über mapDispatchToProps</h4>
+<p>Weiter geht es mit dem zweiten Parameter für die <code>connect()</code>-Funktion: <code>mapDispatchToProps</code>:</p>
+<pre><code class="hljs javascript language-javascript"><span class="hljs-keyword">const</span> mapDispatchToProps = <span class="hljs-function">(<span class="hljs-params">dispatch, ownProps</span>) =&gt;</span> {
+  <span class="hljs-comment">// ...</span>
+};</code></pre>
+<p>oder alternativ:</p>
+<pre><code class="hljs javascript language-javascript"><span class="hljs-keyword">const</span> mapDispatchToProps = {
+  <span class="hljs-comment">// ...</span>
+};</code></pre>
+<p>Während wir mittels <code>mapStateToProps</code> <strong>lesend</strong> auf den Store zugreifen, erlaubt es uns <code>mapDispatchToProps</code> durch das Dispatchen von Actions <strong>schreibend</strong> auf den Store einzuwirken. Die Funktionssignatur ist dabei sogar erst einmal recht ähnlich zu <code>mapStateToProps</code>, nur bekommen wir als ersten Parameter eben nicht den State übergeben, sondern die <code>dispatch</code>-Methode des Stores, mit dem wir uns verbinden. Der zweite Parameter entspricht auch hier den <code>ownProps</code>, also den <strong>Props</strong>, die der Komponente selbst übergeben werden. Als kleine Besonderheit ist es möglich ein <code>mapDispatchToProps</code>-<strong>Objekt</strong> statt einer Funktion an den <code>connect()</code>-Aufruf zu übergeben. Doch dazu später mehr. Schauen wir uns zuerst einmal an wie die <code>mapDispatchToProps</code>-<strong>Funktion</strong> verwendet wird.</p>
+<p>Dazu wollen wir unsere <code>TodoList</code>-Komponente um die Möglichkeit erweitern neue Todos hinzuzufügen, als erledigt zu markieren oder ganz aus der Liste zu löschen. Die entsprechenden <strong>Actions</strong> sind im Beispiel über <strong>Reducer</strong> weiter oben in diesem Kapitel bereits vorgesehen: <code>ADD_TODO</code>, <code>REMOVE_TODO</code> und <code>CHANGE_TODO_STATUS</code>. Nun wollen wir es ermöglichen, dass ein Benutzer der mit unserer Anwendung interagiert, diese <strong>Actions</strong> auslösen kann:</p>
+<pre><code class="hljs javascript language-javascript"><span class="hljs-comment">// Helper-Funktion zur Erzeugung einer (hoffentlich ;)) eindeutigen ID</span>
+<span class="hljs-keyword">const</span> getPseudoRandomId = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span>
+  <span class="hljs-built_in">Math</span>.random()
+    .toString(<span class="hljs-number">36</span>)
+    .slice(<span class="hljs-number">-6</span>);
+
+<span class="hljs-keyword">const</span> mapDispatchToProps = <span class="hljs-function">(<span class="hljs-params">dispatch</span>) =&gt;</span> {
+  <span class="hljs-keyword">return</span> {
+    <span class="hljs-attr">addTodo</span>: <span class="hljs-function">(<span class="hljs-params">text</span>) =&gt;</span>
+      dispatch({
+        <span class="hljs-attr">type</span>: <span class="hljs-string">'ADD_TODO'</span>,
+        <span class="hljs-attr">payload</span>: {
+          <span class="hljs-attr">id</span>: getPseudoRandomId(),
+          text,
+        },
+      }),
+    <span class="hljs-attr">removeTodo</span>: <span class="hljs-function">(<span class="hljs-params">id</span>) =&gt;</span>
+      dispatch({
+        <span class="hljs-attr">type</span>: <span class="hljs-string">'REMOVE_TODO'</span>,
+        <span class="hljs-attr">payload</span>: id,
+      }),
+    <span class="hljs-attr">changeStatus</span>: <span class="hljs-function">(<span class="hljs-params">id, done</span>) =&gt;</span>
+      dispatch({
+        <span class="hljs-attr">type</span>: <span class="hljs-string">'CHANGE_TODO_STATUS'</span>,
+        <span class="hljs-attr">payload</span>: {
+          id,
+          done,
+        },
+      }),
+  };
+};</code></pre>
+<p>Hier geben wir ein Objekt mit den drei Eigenschaften <code>addTodo</code>, <code>removeTodo</code> und <code>changeStatus</code> zurück, die unter jeweils genau diesem Namen an eine verbundene Komponente, also in unserem Fall an die <code>TodoList</code>, in ihren <strong>Props</strong> übergeben wird. Dazu übergeben wir die <code>mapStateToProps()</code>-Funktion als zweiten Parameter an <code>connect()</code>:</p>
+<pre><code class="hljs javascript language-javascript"><span class="hljs-keyword">const</span> ConnectedTodoList = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(TodoList);</code></pre>
+<p>Die <strong>Actions</strong>, die wir hier in <code>mapDispatchToProps</code> inline übergeben, werden für gewöhnlich in entsprechende <strong>Action Creator</strong> Funktionen extrahiert. Diese sorgen für bessere Lesbarkeit, sind leichter testbar und normalerweise auch verständlicher:</p>
+<pre><code class="hljs javascript language-javascript"><span class="hljs-keyword">const</span> addTodo = <span class="hljs-function">(<span class="hljs-params">text</span>) =&gt;</span> ({
+  <span class="hljs-attr">type</span>: <span class="hljs-string">'ADD_TODO'</span>,
+  <span class="hljs-attr">payload</span>: {
+    <span class="hljs-attr">id</span>: getPseudoRandomId(),
+    text,
+  },
+});
+
+<span class="hljs-keyword">const</span> removeTodo = <span class="hljs-function">(<span class="hljs-params">id</span>) =&gt;</span> ({
+  <span class="hljs-attr">type</span>: <span class="hljs-string">'REMOVE_TODO'</span>,
+  <span class="hljs-attr">payload</span>: id,
+});
+
+<span class="hljs-keyword">const</span> changeStatus = <span class="hljs-function">(<span class="hljs-params">id, done</span>) =&gt;</span> ({
+  <span class="hljs-attr">type</span>: <span class="hljs-string">'CHANGE_TODO_STATUS'</span>,
+  <span class="hljs-attr">payload</span>: {
+    id,
+    done,
+  },
+});</code></pre>
+<p>Unsere <code>mapStateToProps</code>-Funktion verkürzt sich dann und wird deutlich übersichtlicher:</p>
+<pre><code class="hljs javascript language-javascript"><span class="hljs-keyword">const</span> mapDispatchToProps = <span class="hljs-function">(<span class="hljs-params">dispatch</span>) =&gt;</span> {
+  <span class="hljs-keyword">return</span> {
+    <span class="hljs-attr">addTodo</span>: <span class="hljs-function">(<span class="hljs-params">text</span>) =&gt;</span> dispatch(addTodo(text)),
+    <span class="hljs-attr">removeTodo</span>: <span class="hljs-function">(<span class="hljs-params">id</span>) =&gt;</span> dispatch(removeTodo(id)),
+    <span class="hljs-attr">changeStatus</span>: <span class="hljs-function">(<span class="hljs-params">id, done</span>) =&gt;</span> dispatch(changeStatus(id, done)),
+  };
+};</code></pre>
+<p>Doch diese Variante hat noch einen weiteren entscheidenden Vorteil: da wir hier einiges an Wiederholung im Code haben und Entwickler Wiederholungen natürlich möglichst vermeiden, bietet uns Redux eine Abkürzung. Stimmen die Funktionssignaturen der <strong>Action Creators</strong> mit denen der Funktionen überein, wie wir sie aus <code>mapDispatchToProps</code> zurückgeben, können wir unsere <strong>Action Creators</strong> als <strong>ES2015+ Shorthand Objekt</strong> zurückgeben! <strong>Redux</strong> setzt den notwendigen <code>dispatch()</code>-Aufruf dann von allein um alle Funktionen herum.</p>
+<p>Mit dem folgenden Code erreichen wir also die identische Funktionalität wie mit dem Code aus dem vorherigen Beispiel:</p>
+<pre><code class="hljs javascript language-javascript"><span class="hljs-keyword">const</span> mapDispatchToProps = {
+  addTodo,
+  removeTodo,
+  changeStatus,
+};</code></pre>
+<p>Doch Vorsicht: dies funktioniert tatsächlich nur wenn auch alle <strong>Action Creator</strong>-Funktionen mit den gleichen Funktionen aus der verbundenen React-Komponente aufgerufen werden und <code>mapDispatchToProps</code> genau in dieser Form als Objekt übergeben wird!</p>
+<p>Durch die Verwendung der beiden Funktionen <code>mapStateToProps</code> und <code>mapDispatchToProps</code> ergibt sich ein Aufruf der in etwa dem folgenden entspricht:</p>
+<pre><code class="hljs jsx language-jsx">&lt;TodoList todos={...} addTodo={...} removeTodo={...} changeStatus={...} /&gt;</code></pre>
+<p>Alle Eigenschaften, die die wir aus <code>mapStateToProps</code> wie auch die, die wir aus <code>mapDispatchToProps</code> zurückgeben, werden an die Komponente übergeben, die mittels <code>connect()</code>-Funktion mit dem <strong>Store</strong> verbunden wird. In der Komponente (in obigen Beispiel in der <code>TodoList</code>-Komponente) können wir dann über die <strong>Props</strong> darauf zugreifen und durch den Aufruf der Funktionen aus <code>mapDispatchToProps</code> <strong>Actions</strong> <em>dispatchen</em> oder durch den Zugriff auf die Eigenschaften aus <code>mapStateToProps</code> den State aus dem <strong>Store</strong> auslesen.</p>
+<p>Möchten wir nur <code>mapDispatchToProps()</code> an den <code>connect()</code>-Aufruf übergeben um aus einer Komponente heraus <strong>Actions</strong> dispatchen zu können, müssen jedoch den State selbst in der Komponente nicht lesen, kann als erster Parameter <code>null</code> übergeben werden:</p>
+<pre><code class="hljs javascript language-javascript"><span class="hljs-keyword">const</span> ConnectedTodoList = connect(
+  <span class="hljs-literal">null</span>,
+  mapDispatchToProps
+)(TodoList);</code></pre>
+<h4 id="die-stateprops-und-die-dispatchprops-zusammenführen-mit-mergeprops">Die StateProps und die DispatchProps zusammenführen mit mergeProps</h4>
+<p>Der dritte Parameter deckt einen Fall ab, der in der Praxis eher äußerst selten vorkommt. Ich möchte ihn daher an dieser Stelle der Vollständigkeit halber nicht unerwähnt lassen, aber auch nicht zu sehr im Detail drauf eingehen. Hier handelt es sich um die <code>mergeProps()</code>-Funktion:</p>
+<pre><code class="hljs javascript language-javascript"><span class="hljs-keyword">const</span> mergeProps = <span class="hljs-function">(<span class="hljs-params">stateProps, dispatchProps, ownProps</span>) =&gt;</span> {
+  <span class="hljs-comment">// ...</span>
+};</code></pre>
+<p>Die Funktion bekommt als ersten Parameter das Ergebnis von <code>mapStateToProps</code> und<code>mapDispatchToProps</code>, sowie abermals <code>ownProps</code> übergeben. Als Rückgabewert wird ein neues Objekt erwartet, dessen Eigenschaften dann ebenfalls über die Props an die mit dem Store verbundene Komponente übergeben werden.</p>
+<p>Diese Funktion kann hilfreich sein wenn man bspw. ohne die Verwendung der <strong>Thunk Middleware</strong> gewisse <strong>Actions</strong> dispatchen möchte, die auf Daten aus dem State angewiesen sind. Auch denkbar wäre es, die <strong>Actions</strong> zu filtern, basierend auf dem State, so dass eine Komponente bspw. eine mögliche <code>updateProfile()</code> <strong>Action</strong> nicht hereingereicht bekommt wenn <code>state.profile</code> nicht existiert, der Benutzer also etwa nicht eingeloggt ist. Solche Bedingungen lassen sich aber innerhalb der Komponenten selbst in der Regel deutlich eleganter lösen.</p>
+<h4 id="zuletzt-die-optionen-als-vierter-parameter-für-connect">Zuletzt: die Optionen als vierter Parameter für connect()</h4>
+<p>Wer soweit ist den 4. Parameter zu benötigen, der sollte ziemlich genau wissen was er dort tut. Redux ist standardmäßig so optimiert, dass die Optionen nur in sehr seltenen Ausnahmefällen überhaupt benutzt werden müssen. So kann etwa ein eigener Context angegeben werden den Redux nutzen soll oder es können eigene Vergleichsfunktionen übergeben werden, mittels denen ermittelt wird ob eine Komponente neu gerendert werden soll oder nicht. Die komplette Liste der verfügbaren Optionen ist die folgende:</p>
+<pre><code class="hljs javascript language-javascript">{
+  <span class="hljs-attr">context</span>: <span class="hljs-built_in">Object</span>,
+  <span class="hljs-attr">pure</span>: boolean,
+  <span class="hljs-attr">areStatesEqual</span>: <span class="hljs-built_in">Function</span>,
+  <span class="hljs-attr">areOwnPropsEqual</span>: <span class="hljs-built_in">Function</span>,
+  <span class="hljs-attr">areStatePropsEqual</span>: <span class="hljs-built_in">Function</span>,
+  <span class="hljs-attr">areMergedPropsEqual</span>: <span class="hljs-built_in">Function</span>,
+  <span class="hljs-attr">forwardRef</span>: boolean,
+}</code></pre>
+<p>Wer das Gefühl hat die Optionen zu benötigen (meist ist die Antwort darauf „nein“) schaut am besten einmal in die offizielle Doku: <a href="https://react-redux.js.org/api/connect#options-object">https://react-redux.js.org/api/connect#options-object</a></p>
+<h4 id="wie-wir-alle-teile-des-puzzles-miteinander-verbinden">Wie wir alle Teile des Puzzles miteinander verbinden</h4>
+<p>Nun wissen wir welchen Zweck der <code>Provider</code> erfüllt und wie wir die <code>connect()</code>-Funktion einsetzen. Werfen wir nun doch einmal einen Blick auf ein sehr umfangreiches aber dafür auch vollständiges Beispiel einer voll funktionsfähigen TodoList-App, mit der wir neue Todos hinzufügen, diese als erledigt oder nicht erledigt markieren und auch wieder entfernen können:</p>
+<pre><code class="hljs javascript language-javascript"><span class="hljs-comment">// store/todos/reducer.js</span>
+<span class="hljs-keyword">const</span> initialState = <span class="hljs-built_in">Object</span>.freeze([]);
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> (state = initialState, action) =&gt; {
+  <span class="hljs-keyword">switch</span> (action.type) {
+    <span class="hljs-keyword">case</span> <span class="hljs-string">'ADD_TODO'</span>: {
+      <span class="hljs-keyword">return</span> state.concat(action.payload);
+    }
+    <span class="hljs-keyword">case</span> <span class="hljs-string">'REMOVE_TODO'</span>: {
+      <span class="hljs-keyword">return</span> state.filter(<span class="hljs-function">(<span class="hljs-params">todo</span>) =&gt;</span> todo.id !== action.payload);
+    }
+    <span class="hljs-keyword">case</span> <span class="hljs-string">'CHANGE_TODO_STATUS'</span>: {
+      <span class="hljs-keyword">return</span> state.map(<span class="hljs-function">(<span class="hljs-params">todo</span>) =&gt;</span> {
+        <span class="hljs-keyword">if</span> (todo.id !== action.payload.id) {
+          <span class="hljs-keyword">return</span> todo;
+        }
+        <span class="hljs-keyword">return</span> {
+          ...todo,
+          <span class="hljs-attr">done</span>: action.payload.done,
+        };
+      });
+    }
+    <span class="hljs-keyword">default</span>: {
+      <span class="hljs-keyword">return</span> state;
+    }
+  }
+};</code></pre>
+<pre><code class="hljs javascript language-javascript"><span class="hljs-comment">// store/todos/actions.js</span>
+<span class="hljs-keyword">const</span> getPseudoRandomId = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span>
+  <span class="hljs-built_in">Math</span>.random()
+    .toString(<span class="hljs-number">36</span>)
+    .slice(<span class="hljs-number">-6</span>);
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> addTodo = <span class="hljs-function">(<span class="hljs-params">text</span>) =&gt;</span> ({
+  <span class="hljs-attr">type</span>: <span class="hljs-string">'ADD_TODO'</span>,
+  <span class="hljs-attr">payload</span>: {
+    <span class="hljs-attr">id</span>: getPseudoRandomId(),
+    text,
+  },
+});
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> removeTodo = <span class="hljs-function">(<span class="hljs-params">id</span>) =&gt;</span> ({
+  <span class="hljs-attr">type</span>: <span class="hljs-string">'REMOVE_TODO'</span>,
+  <span class="hljs-attr">payload</span>: id,
+});
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> changeStatus = <span class="hljs-function">(<span class="hljs-params">id, done</span>) =&gt;</span> ({
+  <span class="hljs-attr">type</span>: <span class="hljs-string">'CHANGE_TODO_STATUS'</span>,
+  <span class="hljs-attr">payload</span>: {
+    id,
+    done,
+  },
+});</code></pre>
+<pre><code class="hljs jsx language-jsx"><span class="hljs-comment">// TodoList.js</span>
+<span class="hljs-keyword">import</span> React, { useState } <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
+<span class="hljs-keyword">import</span> { connect } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-redux'</span>;
+<span class="hljs-keyword">import</span> { addTodo, removeTodo, changeStatus } <span class="hljs-keyword">from</span> <span class="hljs-string">'./store/todos/actions'</span>;
+
+<span class="hljs-keyword">const</span> TodoList = <span class="hljs-function">(<span class="hljs-params">props</span>) =&gt;</span> {
+  <span class="hljs-keyword">const</span> [todoText, setTodoText] = useState(<span class="hljs-string">''</span>);
+
+  <span class="hljs-keyword">return</span> (
+    &lt;div&gt;
+      &lt;p&gt;{props.todos.length} Todos.&lt;/p&gt;
+      &lt;ul&gt;
+        {props.todos.map((todo) =&gt; (
+          &lt;li key={todo.id}&gt;
+            &lt;button
+              type="button"
+              onClick={() =&gt; {
+                props.removeTodo(todo.id);
+              }}
+            &gt;
+              löschen
+            &lt;/button&gt;
+            &lt;label
+              style={{ textDecoration: todo.done ? 'line-through' : 'none' }}
+            &gt;
+              &lt;input
+                type="checkbox"
+                name={todo.id}
+                checked={Boolean(todo.done)}
+                onChange={(e) =&gt; {
+                  const { name, checked } = e.target;
+                  props.changeStatus(name, checked);
+                }}
+              /&gt;
+              {todo.text}
+            &lt;/label&gt;
+          &lt;/li&gt;
+        ))}
+      &lt;/ul&gt;
+      &lt;input onChange={(e) =&gt; setTodoText(e.target.value)} value={todoText} /&gt;
+      &lt;button
+        type="button"
+        onClick={() =&gt; {
+          props.addTodo(todoText);
+          setTodoText('');
+        }}
+      &gt;
+        hinzufügen
+      &lt;/button&gt;
+    &lt;/div&gt;
+  );
+};
+
+const mapStateToProps = (state) =&gt; ({
+  todos: state.todos,
+});
+
+const mapDispatchToProps = {
+  addTodo,
+  removeTodo,
+  changeStatus,
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(TodoList);</code></pre>
+<pre><code class="hljs jsx language-jsx"><span class="hljs-comment">// index.js</span>
+<span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
+<span class="hljs-keyword">import</span> ReactDOM <span class="hljs-keyword">from</span> <span class="hljs-string">'react-dom'</span>;
+<span class="hljs-keyword">import</span> { combineReducers, createStore } <span class="hljs-keyword">from</span> <span class="hljs-string">'redux'</span>;
+<span class="hljs-keyword">import</span> { Provider } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-redux'</span>;
+<span class="hljs-keyword">import</span> todosReducer <span class="hljs-keyword">from</span> <span class="hljs-string">'./store/todos/reducer'</span>;
+<span class="hljs-keyword">import</span> TodoList <span class="hljs-keyword">from</span> <span class="hljs-string">'./TodoList'</span>;
+
+<span class="hljs-keyword">const</span> rootReducer = combineReducers({
+  <span class="hljs-attr">todos</span>: todosReducer,
+});
+
+<span class="hljs-keyword">const</span> store = createStore(rootReducer);
+
+<span class="hljs-keyword">const</span> App = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> (
+  <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Provider</span> <span class="hljs-attr">store</span>=<span class="hljs-string">{store}</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">TodoList</span> /&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">Provider</span>&gt;</span></span>
+);
+
+ReactDOM.render(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">App</span> /&gt;</span>, document.getElementById('root'));</span></code></pre>
+<p>Hier definieren wir zunächst mal unseren <code>todosReducer</code>, sowie die drei <strong>Actions</strong> <code>addTodo</code>, <code>removeTodo</code> und <code>changeStatus</code>, die uns jeweils aus vorherigen Beispielen bekannt vorkommen dürften. Zur besseren Übersicht lagern wir sowohl <strong>Reducer</strong> als auch <strong>Actions</strong> in eigene Dateien aus, die wir in ein eigenes Unterverzeichnis <code>./store/todos</code> legen.</p>
+<div class="hint hint--warning">
+<p>Achtung, kontrovers: über die „korrekte“ Ordnerstruktur beim Aufteilen einer Anwendung in mehrere Dateien werden immer wieder hitzige Debatten geführt. Ich selbst habe mit vielen unterschiedlichen Strukturen gearbeitet und fand die Aufteilung nach Domäne (also etwa <code>todos</code>, <code>user</code>, <code>repositories</code>, …) und nach Typ (<code>actions</code>, <code>reducer</code>, …) am übersichtlichsten. Andere wiederum bevorzugen es alle Actions in einem Ordner <code>actions</code> zu sammeln, alle Reduer in einem Ordner <code>reducer</code>. Wieder andere vermeiden die Aufteilung von Actions und Reducern in separate Dateien.</p>
+<p>Hier gibt es kein eindeutiges <em>Richtig</em> oder <em>Falsch</em>. Dies hängt einerseits von den persönlichen Vorlieben ab, andererseits aber auch ein Stück weit vom sonstigen Aufbau der Anwendung, ihrer Größe, ihrer Komplexität und letztendlich auch davon, wie und von wem die Anwendung auf Entwicklerseite verwendet wird.</p>
+</div>
+<p>Weiter erstellen wir eine neue Datei die unsere <code>TodoList</code>-Komponente beinhalten wird: <code>./TodoList.js</code>. Mit ihr werden wir gleich unsere Todos anzeigen, neue anlegen oder wieder entfernen, sowie einzelne Todos als erledigt markieren können. Dazu verbinden wir die Komponente über <code>connect()</code> mit dem Store. Dementsprechend müssen wir in der Komponente auch unsere <strong>Actions</strong> importieren, die wir in <code>mapDispatchToProps</code> an <code>connect()</code> übergeben werden. Der besseren Übersichtlichkeit halber nutzen wir die <strong>Object Shorthand Syntax</strong>:</p>
+<pre><code class="hljs javascript language-javascript"><span class="hljs-keyword">const</span> mapDispatchToProps = {
+  addTodo,
+  removeTodo,
+  changeStatus,
+};</code></pre>
+<p>Die Funktionen werden dann von React Redux automatisch von einem <code>dispatch</code>-Aufruf umschlossen.</p>
+<p>In <code>mapStateToProps</code> legen wir fest, dass wir den <code>todos</code>-Ast unseres Stores an die Komponente übergeben wollen. Sowohl <code>mapStateToProps</code> als auch <code>mapDispatchToProps</code> übergeben wir dann an die <code>connect()</code>-Funktion:</p>
+<pre><code class="hljs javascript language-javascript">connect(
+  mapStateToProps,
+  mapDispatchToProps
+);</code></pre>
+<p>Doch das ist noch nicht alles: die <code>connect()</code>-Funktion erzeugt uns eine neue <strong>HOC</strong>, an die wir unsere <code>TodoList</code>-Komponente übergeben:</p>
+<pre><code class="hljs javascript language-javascript">connect(...)(TodoList);</code></pre>
+<p>Unsere <code>TodoList</code>-Komponente ist nun mit dem <strong>Redux-Store</strong> verbunden, wir müssen nun nur darauf achten, dass wir sie entsprechend auch nur innerhalb eines <code>&lt;Provider&gt;</code>-Elements verwenden. Wir nutzen außerdem <code>export default</code> vor dem Aufruf der <code>connect()</code>-Funktion um unsere mit dem Store verbundene Komponente zu exportieren.</p>
+<p>Zuletzt werfen wir einen Blick auf die <code>index.js</code>, die letztendlich den „Einstiegspunkt“ unserer App darstellt. Hier findet der <code>ReactDOM.render()</code>-Aufruf statt, mit dem wir unsere App in das jeweilige DOM-Element rendern. Doch bevor es soweit ist, passiert hier noch einiges:</p>
+<p>Wir importieren <code>combineReducers</code> und <code>createStore</code> aus <code>redux</code>. Damit erstellen wir gleich unser <code>store</code>-Objekt. Dazu importieren wir unseren ausgelagerten <code>todosReducer</code>, den wir an <code>combineReducers()</code> übergeben um einen neuen <strong>Root Reducer</strong> zu erstellen. Das wäre an dieser Stelle noch unnötig, da wir ohnehin nur einen einzigen <strong>Reducer</strong> haben und diesen daher direkt an <code>createStore()</code> übergeben könnten. Allerdings gehen wir in diesem Fall bereits vorsorglich davon aus, dass unsere Anwendung noch weiter wachsen wird und wir mit der Zeit sicherlich noch weitere <strong>Reducer</strong> hinzufügen werden.</p>
+<p>Wir importieren außerdem die <code>Provider</code>-Komponente aus <code>react-redux</code>. An diese übergeben wir später den eben erstellten <strong>Store</strong>. Aus der <code>TodoList.js</code> importieren wir unsere verbundene Komponente, die wir letztlich in unserer <code>App</code>-Komponente <em>innerhalb</em> der <code>Provider</code>-Komponente mit unserem <code>store</code>-Objekt verwenden.</p>
+<p>Interagieren wir nun mit der TodoList können wir entsprechend neue Todos anlegen, diese über eine Checkbox als erledigt markieren oder über den Löschen-Button vollständig wieder entfernen.</p>
+<p>An dieser Stelle macht es sicherlich am meisten Sinn etwas mit der Komponente rumzuspielen und zu schauen wie sich die Interaktion auf den Store auswirkt. Dazu sollten die Redux-Devtools für unseren Store aktiviert werden. Dazu ändern wir in der <code>index.js</code> die Zeile:</p>
+<pre><code class="hljs javascript language-javascript"><span class="hljs-keyword">const</span> store = createStore(rootReducer);</code></pre>
+<p>In die folgende:</p>
+<pre><code class="hljs javascript language-javascript"><span class="hljs-keyword">const</span> store = createStore(rootReducer, __REDUX_DEVTOOLS_EXTENSIONS__());</code></pre>
+<p>Dabei muss sichergestellt sein, dass im verwendeten Browser die Redux Devtools installiert sind.</p>
+<h3 id="fazit">Fazit</h3>
+<p>Ich muss gestehen, dass ich die Komplexität dieses Kapitels bei weitem unterschätzt habe. <strong>Redux</strong> gehört für mich in vielen Projekten seit Jahren zum Alltagsgeschäft und so fühlt sich die Verwendung von <strong>Redux</strong> mittlerweile ein Stück weit sehr <em>natürlich</em> an, also wie etwas, über dass ich nicht viel nachdenken muss. Grundsätzlich würde ich <strong>Redux</strong> als Tool beschreiben, dass es schafft sehr komplexes State Management sehr einfach, nachvollziehbar und eben <em>vorhersehbar</em> zu machen.</p>
+<p>Beim Schreiben dieses Kapitels habe ich dann erst einmal wieder gemerkt wie überwältigend <strong>Redux</strong> aber gerade für Einsteiger sein kann und so kann ich mir vorstellen, dass einige der in diesem Kapitel beschriebenen Dinge trotz meiner Erläuterungen nicht unbedingt gleich verständlich sein werden. Hier sollte es aber tatsächlich helfen mit geöffneten Devtools etwas mit den Actions und den Reducern herumzuspielen um zu verstehen wie das eine das andere beeinflusst und wie die das Zusammenspiel aller Komponenten, also dem Store, dem State, den Props einer Komponente, der <code>connect()</code>-Funktion und letztendlich der Actions und Reducer letztendlich ablaufen.</p>
+<p>Sollte es danach immer noch Fragen geben könnt ihr euch jederzeit gern mit Bezug auf dieses Buch an mich wenden!</p>
 </div>
 <div class="chapter">
   <h1 id="mehrsprachigkeit">Mehrsprachigkeit</h1>
-<p>react-i18next (~4k ⭐ auf Github). react-intl (~10k ⭐ auf Github)</p>
+<p>Eins der Themen, das neben <strong>Routing</strong> und <strong>State Management</strong> immer wieder aufkommt ist <strong>Mehrsprachigkeit</strong>. Wie bekomme ich meine Anwendung übersetzt, so dass ein deutscher Benutzer ein deutsches Interface sieht, während andere Benutzer bspw. ein englisches Interface sehen.</p>
+<p>Ich möchte in diesem Kapitel nicht generell in die Tiefen der <strong>Internationalisierung</strong> (meist abgekürzt: <strong>i18n</strong>) einsteigen, denn hier soll es um <strong>React</strong> gehen. Ich setze daher ein gewisses (geringes) Grundverständnis voraus, was die Internationalisierung von User Interfaces angeht und konzentriere mich daher insbesondere darauf, wie man diese in React umsetzen kann.</p>
+<p>Wie Mehrsprachigkeit in sehr simpler Form für einfache Apps mittels <strong>Context API</strong> umgesetzt werden kann, wurde bereits im Kapitel über die <strong>Context API</strong> demonstriert, wo wir eine sehr rudimentäre Form der Mehrsprachigkeit beispielhaft mit eben dieser API umgesetzt haben. Mit zunehmender Komplexität einer Anwendung steigt aber auch die Komplexität an die Mehrsprachigkeit. Plötzlich werden Dinge wichtig wie die Verwendung von Platzhaltern oder die Verwendung des Plurals. Hier ist es dann irgendwann sinnvoll auf Pakete zurückzugreifen, die genau zu diesem Zweck entwickelt worden sind.</p>
+<p>Hier gibt es einige bewährte Optionen im <strong>React Ecosystem</strong> auf die wir zurückgreifen können. Zu den bekannteren gehören hier <strong>Lingui</strong>, <strong>Polyglot</strong>, <strong>i18next</strong> oder <strong>react-intl</strong> und auch Facebook hat mit <strong>FBT</strong> ein eigenes Framework für die Internationalisierung von React Anwendungen im Angebot. In diesem Kapitel geht es vorrangig um <code>i18next</code> und dessen React Bindings <code>react-i18next</code>.</p>
+<p>Warum? Nun, ich habe in verschiedenen Projekten mit <code>react-intl</code> und <code>react-i18next</code> gearbeitet, habe die anderen Alternativen ausführlich evaluiert und bin der festen Überzeugung, dass <strong>i18next</strong> in vielerlei Hinsicht die beste der genannten Alternativen darstellt. Es existiert eine sehr große und aktive Community rund um <strong>i18next</strong>, es werden neben <strong>React</strong> auch noch viele andere Frameworks, Libraries und Plattformen unterstützt, es läuft ohne großen Aufwand sowohl clientseitig im Browser als auch serverseitig in Node.js und das Übersetzungsformat von <strong>i18next</strong> wird von so ziemlich allen großen online Übersetzungs-Services als Exportformat angeboten.</p>
+<p>Darüber hinaus bot es als erstes Paket bereits wenige Tage nach deren Erscheinen Unterstützung für Hooks und wurde sogar gezielt auf dessen Verwendung optimiert ohne dabei die Abwärtskompatibilität einzubüßen. Dabei bleibt die API überwiegend simpel und einfach zu benutzen und bietet maximale Flexibilität. Um es mit anderen Worten zu sagen: das ganze Paket ist sehr komplett und lässt wenig bis gar keine Wünsche offen.</p>
+<h3 id="setup-von-i18next">Setup von i18next</h3>
+<p>Um es zu installieren rufen wir wieder unser Terminal auf und geben ein:</p>
+<pre><code class="hljs bash language-bash">npm install i18next react-i18next</code></pre>
+<p>bzw. mit Yarn:</p>
+<pre><code class="hljs bash language-bash">yarn add i18next react-i18next</code></pre>
+<p>Wir installieren hier mit <code>i18next</code> das <strong>Internationalisierungs-Framework</strong> selbst, sowie mit <code>react-i18next</code> dessen <strong>React Bindings</strong>, also sozusagen eine Reihe an Komponenten und Funktionen die uns die Arbeit mit i18next in React deutlich erleichtern. So, wie wir das Prinzip schon im Kapitel zu State Management mit <code>redux</code> und <code>react-redux</code> kennengelernt haben.</p>
+<p>Starten wir zunächst einmal indem wir uns zwei Objekte anlegen, die unsere Übersetzungen beinhalten. Eins mit Texten in Deutsch, eins mit Texten in Englisch:</p>
+<pre><code class="hljs javascript language-javascript"><span class="hljs-keyword">const</span> de = {
+  <span class="hljs-attr">greeting</span>: <span class="hljs-string">'Hallo Welt!'</span>,
+  <span class="hljs-attr">headline</span>: <span class="hljs-string">'Heute lernen wir Internationalisierung mit React'</span>,
+  <span class="hljs-attr">messageCount</span>: <span class="hljs-string">'{{count}} neue Nachricht'</span>,
+  <span class="hljs-attr">messageCount_plural</span>: <span class="hljs-string">'{{count}} neue Nachrichten'</span>,
+};
+
+<span class="hljs-keyword">const</span> en = {
+  <span class="hljs-attr">greeting</span>: <span class="hljs-string">'Hello world!'</span>,
+  <span class="hljs-attr">headline</span>: <span class="hljs-string">'Today we learn Internationalization with React'</span>,
+  <span class="hljs-attr">messageCount</span>: <span class="hljs-string">'{{count}} new message'</span>,
+  <span class="hljs-attr">messageCount_plural</span>: <span class="hljs-string">'{{count}} new messages'</span>,
+};</code></pre>
+<p>Um <strong>i18next</strong> nun in unserer Anwendung zu verwenden, müssen wir es importieren, initialisieren und das React Plugin übergeben. Dies sollte idealerweise am Anfang unserer Anwendung passieren. Möglichst bevor wir unsere App-Komponente an den <code>ReactDOM.render()</code>-Aufruf übergeben.</p>
+<p>Dazu importieren wir das <code>i18next</code>-Paket selbst, sowie den benannten Export <code>initReactI18next</code> aus dem <code>react-i18next</code>-Paket:</p>
+<pre><code class="hljs javascript language-javascript"><span class="hljs-keyword">import</span> i18next <span class="hljs-keyword">from</span> <span class="hljs-string">'i18next'</span>;
+<span class="hljs-keyword">import</span> { initReactI18next } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-i18next'</span>;</code></pre>
+<p>Anschließend nutzen wir die <code>.use()</code>-Methode um das React Plugin an <strong>i18next</strong> zu übergeben, sowie die <code>.init()</code>-Methode um <strong>i18next</strong> zu initialisieren:</p>
+<pre><code class="hljs javascript language-javascript">i18next
+  .use(initReactI18next)
+  .init({ ... });</code></pre>
+<p>Die <code>init()</code>-Methode erwartet dabei ein Config-Objekt, das mindestens die beiden Eigenschaften <code>lng</code> (für die ausgewählte Sprache) sowie <code>resources</code> (für die Übersetzungen selbst) beinhalten sollte. Darüber hinaus ist es oft sinnvoll eine <code>fallbackLng</code> zu erstellen, also eine Fallback-Sprache, die dann benutzt wird wenn eine Übersetzung in der ausgewählten Sprache nicht vorhanden ist. Insgesamt bietet <strong>i18next</strong> hier über 30 verschiedene Konfigurationsoptionen an, doch die genannten drei sind die, die uns für den Moment interessieren:</p>
+<pre><code class="hljs javascript language-javascript">i18next.use(initReactI18next).init({
+  <span class="hljs-attr">lng</span>: <span class="hljs-string">'en'</span>,
+  <span class="hljs-attr">fallbackLng</span>: <span class="hljs-string">'en'</span>,
+  <span class="hljs-attr">resources</span>: {
+    <span class="hljs-attr">en</span>: {
+      <span class="hljs-attr">translation</span>: en,
+    },
+    <span class="hljs-attr">de</span>: {
+      <span class="hljs-attr">translation</span>: de,
+    },
+  },
+});</code></pre>
+<p>Wir setzen also die Sprache erst einmal auf Englisch, ebenso die Fallback-Sprache. Dann folgt ein <code>resources</code>-Objekt das etwas Erläuterung bedarf. Das Objekt hat die Form:</p>
+<pre><code class="hljs text language-text"><span class="hljs-string">[Sprache]</span>.<span class="hljs-string">[Namespace]</span>.<span class="hljs-string">[Translation Key]</span> = Übersetzung</code></pre>
+<p>Die Sprache dürfte klar sein. Das kann <code>de</code> für Deutsch sein, <code>en</code> für Englisch oder auch <code>de-AT</code> für deutsch mit österreichischer Regionalisierung. Die Eigenschaft besitzt als Wert ein Objekt, bestehend aus mindestens einem bis zu theoretisch unbegrenzt vielen <strong>Namespaces</strong>.</p>
+<p>Der <strong>Namespace</strong> ist ein zentrales Feature in <strong>i18next</strong> das benutzt werden kann, aber nicht muss. Es erlaubt dem Entwickler größere Übersetzungsdateien in mehrere Teile zu splitten, die bei Bedarf dynamisch nachgeladen werden können. Während dieses Feature bei kleineren Anwendungen nicht unbedingt sinnvoll ist, kann es in größeren und komplexeren Anwendungen dazu benutzt werden um Übersetzungen klein und übersichtlich zu halten, etwa indem jeder größere Seitenbereich einen eigenen <strong>Namespace</strong> erhält. Übersetzungsdateien für diesen Seitenbereich könnten dann separat gepflegt und nur dann geladen werden wenn diese auch benötigt werden.</p>
+<p>In <strong>i18next</strong> muss zwingend immer mindestens <em>ein</em> <strong>Namespace</strong> benutzt werden. Standardmäßig heißt dieser <code>translation</code>, dies kann aber durch die <code>defaultNS</code>-Option im Konfigurationsobjekt der <code>.init()</code>-Methode geändert werden. Der <strong>Namespace</strong> ist dabei selbst wiederum ein Objekt, das letztendlich die eigentlichen Übersetzungen enthält in der Form <code>translationKey: value</code>, also etwa <code>greeting: 'Hallo Welt!'</code>.</p>
+<p>Der Wert selbst <em>kann</em> wiederum ein Objekt sein:</p>
+<pre><code class="hljs javascript language-javascript">{
+  <span class="hljs-attr">greeting</span>: {
+    <span class="hljs-attr">morning</span>: <span class="hljs-string">'Guten Morgen!'</span>,
+    <span class="hljs-attr">evening</span>: <span class="hljs-string">'Guten Abend!'</span>,
+  }
+}</code></pre>
+<p>Oder in verkürzter Form:</p>
+<pre><code class="hljs javascript language-javascript">{
+  <span class="hljs-string">'greeting.morning'</span>: <span class="hljs-string">'Guten Morgen!'</span>,
+  <span class="hljs-string">'greeting.evening'</span>: <span class="hljs-string">'Guten Abend!'</span>,
+}</code></pre>
+<p>Auch das liegt aber im Ermessen des Entwicklers.</p>
+<h3 id="verwendung-von-übersetzungen-in-react-komponenten">Verwendung von Übersetzungen in React Komponenten</h3>
+<p>Ist <strong>i18next</strong> erst einmal korrekt eingerichtet und die Übersetzungen angelegt können wir auch schon damit weitermachen unsere Komponenten zu übersetzen. Auch hier bietet uns <strong>i18next</strong> volle Flexbilität: wir bekommen eine <code>withTranslation</code>-HOC für die Verwendung mit <strong>Klassen-Komponenten</strong>, einen <code>useTranslation</code>-Hook, zur Verwendung in <strong>Function Components</strong> und für Fälle, in denen wir Komponenten innerhalb von Übersetzungen nutzen wollen gibt uns <code>react-i18next</code> auch eine entsprechende <code>Trans</code>-Komponente an die Hand.</p>
+<h4 id="verwendung-mit-klassen-komponenten-und-withtranslation-hoc">Verwendung mit Klassen-Komponenten und withTranslation()-HOC</h4>
+<p>Wir gehen sie der Reihe nach durch und fangen mit der <code>withTranslation()</code>-Funktion an. Diese erzeugt uns eine <strong>HOC</strong> an die wir die zu übersetzende Komponente übergeben und bekommen daraufhin die Props <code>t</code> und <code>i18n</code> in diese hereingereicht. Dazu importieren wir die Funktion zuerst als benannten Export aus dem <code>react-i18next</code>-Paket:</p>
+<pre><code class="hljs javascript language-javascript"><span class="hljs-keyword">import</span> { withTranslation } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-i18next'</span>;</code></pre>
+<p>Anschließend rufen wir die Funktion auf, erhalten eine HOC und übergeben dieser die Komponente, in der wir auf die übersetzten Werte zugreifen möchten. Nutzen wir <strong>Namespaces</strong> können wir außerdem den oder die gewünschten <strong>Namespaces</strong> an die <code>withTranslation()</code>-Funktion übergeben:</p>
+<pre><code class="hljs javascript language-javascript"><span class="hljs-comment">// Ohne Namespaces (hier wird der Default-Wert benutzt):</span>
+<span class="hljs-keyword">const</span> TranslatedComponent = withTranslation()(TranslatedComponent);
+
+<span class="hljs-comment">// Mit nur einem Namespace:</span>
+<span class="hljs-keyword">const</span> TranslatedComponent = withTranslation(<span class="hljs-string">'namespace'</span>)(Component);
+
+<span class="hljs-comment">// Mit mehreren Namespaces:</span>
+<span class="hljs-keyword">const</span> TranslatedComponent = withTranslation([<span class="hljs-string">'namespace1'</span>, <span class="hljs-string">'namespace2'</span>])(
+  TranslatedComponent
+);</code></pre>
+<p>In der Praxis hat es sich für mich bewährt einzelne Komponenten in eigene Dateien auszulagern und die <code>withTranslation()</code>-HOC beim Export um die Komponente zu legen:</p>
+<pre><code class="hljs jsx language-jsx"><span class="hljs-comment">// Greeting.js</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Greeting</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
+  render() {
+    <span class="hljs-keyword">const</span> { t } = <span class="hljs-keyword">this</span>.props;
+    <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>{t('greeting')}<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span>;
+  }
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> withTranslation()(Greeting);</code></pre>
+<p>So können wir dann beim Import gleich die übersetzte Komponente importieren:</p>
+<pre><code class="hljs javascript language-javascript"><span class="hljs-keyword">import</span> Greeting <span class="hljs-keyword">from</span> <span class="hljs-string">'./Greeting.js'</span>;</code></pre>
+<p>Hier importieren wir dann entsprechend die Komponente mit den durch i18next erweiterten Props <code>t</code>, <code>i18n</code> und <code>tReady</code>.</p>
+<p>Die <code>t</code> Funktion ist dabei die zentrale Funktion für alles was mit Übersetzungen zu tun hat. Sie bekommt einen <strong>Translation Key</strong> übergeben und gibt uns den übersetzten Wert zurück, basierend auf unserer aktuell eingestellten Sprache:</p>
+<pre><code class="hljs jsx language-jsx">&lt;h1&gt;{t('greeting')&lt;/h1&gt;
+// -&gt; &lt;h1&gt;Hello world!&lt;/h1&gt;</code></pre>
+<p>Nutzen wir Platzhalter oder Plurale in unseren Übersetzungen, können diese als zweiter Parameter übergeben werden:</p>
+<pre><code class="hljs javascript language-javascript">&lt;p&gt;{t('messageCount', { count: 3 })}&lt;/p&gt;
+// -&gt; &lt;p&gt;3 new messages&lt;/p&gt;</code></pre>
+<p>Die <code>i18n</code> Prop enthält die zuvor initialisierte <strong>i18next</strong>-Instanz. Sie bietet uns einige Eigenschaften und Methoden die für unsere Übersetzungen relevant sein können. Die beiden wichtigsten sind dabei sicherlich:</p>
+<ul>
+<li><code>i18n.language</code>, um die aktuell ausgewählte Sprache auszulesen</li>
+<li><code>i18n.changeLanguage()</code>, um die ausgewählte Sprache zu ändern</li>
+</ul>
+<p>Um bspw. in einer Komponente die Sprache von <code>en</code> in <code>de</code> zu ändern, kann hier der Aufruf von <code>i18n.changeLanguage('de')</code> benutzt werden.</p>
+<h4 id="verwendung-mit-function-components-und-usetranslation-hook">Verwendung mit Function Components und useTranslation()-Hook</h4>
+<p>Natürlich können nicht nur <strong>Klassen-Komponenten</strong> mit der <code>withTranslation()</code>-HOC benutzt werden sondern auch <strong>Function Components</strong>. Allerdings können wir in letzteren auch den <code>useTranslation()</code>-Hook verwenden, der die Komponente meist noch etwas übersichtlicher werden lässt. Dazu importieren wir den Hook wie auch die HOC ebenfalls aus dem <code>react-i18next</code>-Paket:</p>
+<pre><code class="hljs javascript language-javascript"><span class="hljs-keyword">import</span> { useTranslation } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-i18next'</span>;</code></pre>
+<p>Der <strong>Hook</strong> lässt uns dann per <strong>Destructuring Assignment Syntax</strong> aus ES2015+ die beiden Eigenschaften <code>t</code> und <code>i18n</code> aus ihm extrahieren:</p>
+<pre><code class="hljs jsx language-jsx"><span class="hljs-keyword">const</span> Greeting = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+  <span class="hljs-keyword">const</span> { t, i18n } = useTranslation();
+  <span class="hljs-keyword">return</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>{t('greeting')}<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onClick</span>=<span class="hljs-string">{()</span> =&gt;</span> i18n.changeLanguage('de')}&gt;de<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onClick</span>=<span class="hljs-string">{()</span> =&gt;</span> i18n.changeLanguage('en')}&gt;en<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+  );
+};</code></pre>
+<p>Wie auch bereits in der <code>withTranslation()</code>-HOC ist <code>t</code> hier die Funktion um Übersetzungen über ihren <strong>Translation Key</strong> auszugeben und <code>i18n</code> die <strong>i18next</strong>-Instanz. Der Hook stellt also exakt die gleiche Funktionalität bereit wie auch die HOC, ist in <strong>Function Components</strong> aber deutlich übersichtlicher, weil expliziter. Um bestimmte <strong>Namespaces</strong> zu verwenden, können dem Hook wie schon der <code>withTranslation()</code>-Funktion ein String oder ein Array mit Strings übergeben werden:</p>
+<pre><code class="hljs javascript language-javascript"><span class="hljs-keyword">const</span> { t } = useTranslation(<span class="hljs-string">'namespace'</span>);
+<span class="hljs-keyword">const</span> { t } = useTranslation([<span class="hljs-string">'namespace1'</span>, <span class="hljs-string">'namespace2'</span>]);</code></pre>
+<p>Wird kein Namespace übergeben, greift auch hier die Default-Einstellung.</p>
+<h3 id="komplexe-übersetzungen-mit-der-trans-komponente">Komplexe Übersetzungen mit der Trans-Komponente</h3>
+<p>In einigen Fällen kann es notwendig sein React-Komponenten in Übersetzungen zu verwenden. Das ist bspw. der Fall, möchte man die <code>Link</code>-Komponente vom React Router nutzen, um innerhalb einer Übersetzung auf eine andere URL zu verlinken. Das ist nur durch die Verwendung der <code>t()</code>-Funktion nicht ohne weiteres möglich. Hierzu stellt uns <code>react-i18next</code> die <code>Trans</code>-Komponente bereit. Die Verwendung ist nicht immer ganz einfach zu verstehen, aber sie ist ein sehr mächtiges Werkzeug.</p>
+<p>Nehmen wir also an wir wollen innerhalb unserer Übersetzung die <code>Link</code>-Komponente verwenden. Der Code sieht vor der Übersetzung also in etwa so aus:</p>
+<pre><code class="hljs jsx language-jsx">&lt;p&gt;
+  <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"checkbox"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"terms"</span> /&gt;</span>
+    Ich akzeptiere die <span class="hljs-tag">&lt;<span class="hljs-name">Link</span> <span class="hljs-attr">to</span>=<span class="hljs-string">"/terms"</span>&gt;</span>AGB<span class="hljs-tag">&lt;/<span class="hljs-name">Link</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span></code></pre>
+<p>Die Verwendung der Link-Komponente in einer Übersetzung würde hier nicht funktionieren, da Übersetzungen grundsätzlich Strings sind und wir keine Möglichkeit hätten um festzulegen, dass es sich bei <code>&lt;Link&gt;</code> um die Link-Komponente aus dem React-Router Paket handelt.</p>
+<p>Die Lösung ist hier nun die Verwendung der <code>Trans</code>-Komponente. Übersetzungen die mit dieser Komponente verwendet werden können nummerierte Platzhalter besitzen. An ihre Stelle werden Komponenten eingesetzt, die an gleicher Position in der <code>Trans</code>-Komponente verwendet werden.</p>
+<p>Schauen wir uns das obige Beispiel also einmal unter Verwendung von <code>Trans</code> an:</p>
+<pre><code class="hljs jsx language-jsx"><span class="hljs-comment">// Übersetzungen:</span>
+<span class="hljs-keyword">const</span> de = {
+  <span class="hljs-attr">terms</span>: <span class="hljs-string">'Ich akzeptiere die &lt;1&gt;AGB&lt;/1&gt;.'</span>,
+};
+
+<span class="hljs-keyword">const</span> en = {
+  <span class="hljs-attr">terms</span>: <span class="hljs-string">'I accept the &lt;1&gt;Terms and Conditions&lt;/1&gt;.'</span>,
+};
+
+<span class="hljs-comment">// JSX:</span>
+&lt;p&gt;
+  <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"checkbox"</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">Trans</span> <span class="hljs-attr">i18nKey</span>=<span class="hljs-string">"terms"</span>&gt;</span>
+      I accept the <span class="hljs-tag">&lt;<span class="hljs-name">Link</span> <span class="hljs-attr">to</span>=<span class="hljs-string">"/terms"</span>&gt;</span>Terms and Conditions<span class="hljs-tag">&lt;/<span class="hljs-name">Link</span>&gt;</span>.
+    <span class="hljs-tag">&lt;/<span class="hljs-name">Trans</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span>;</code></pre>
+<p>Hier umschließen wir unseren Text mit einem <code>Trans</code>-Element. Der Text dient dabei lediglich als Platzhalter der verwendet wird wenn es zu dem in der <code>i18nKey</code>-Prop angegebenen Wert keine entsprechende Übersetzung gibt. Nun geht es ans Zählen. Wo welcher Text wie ersetzt wird und an welche Stelle eine Komponente tritt ergibt sich aus dem Index-Wert der Kind-Elemente. Analog dazu, wie auch <code>React.createElement()</code>-Funktioniert.</p>
+<p>Im obigen Beispiel ergibt sich also folgendes Zähl-Ergebnis:</p>
+<pre><code class="hljs text language-text"><span class="hljs-number">0</span>: I accept the
+<span class="hljs-number">1</span>: &lt;<span class="hljs-keyword">Link</span> <span class="hljs-keyword">to</span>=<span class="hljs-string">"/terms"</span>&gt;Terms <span class="hljs-literal">and</span> Conditions&lt;/<span class="hljs-keyword">Link</span>&gt;
+<span class="hljs-number">2</span>: .</code></pre>
+<p>An die Stelle <code>&lt;1&gt;Terms and Conditions&lt;/1&gt;</code> tritt also hier das <code>&lt;Link&gt;</code>-Element, da es im Children-Array den Index-Wert 1 besitzt.</p>
+<p>Nun kann das gerade in komplexeren Strukturen in denen es vielleicht sogar mehrere Links gibt ziemlich umständlich werden das zu zählen. Hier bietet <code>react-i18next</code> zwei Möglichkeiten um die Platzhalter automatisch zu generieren. Beide werden als Option beim Initialisieren von i18next gesetzt.</p>
+<p>Die erste Option ist das Setzen von <code>saveMissing</code> auf <code>true</code> und die Verwendung einer <code>missingKeyHandler</code> Funktion. Im folgenden Beispiel nutzen wir ein simples <code>console.log()</code> um fehlende Übersetzungen in die Browser-Konsole zu loggen:</p>
+<pre><code class="hljs javascript language-javascript">i18next.use(initReactI18next).init({
+  <span class="hljs-attr">saveMissing</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-attr">missingKeyHandler</span>: <span class="hljs-function">(<span class="hljs-params">language, namespace, key, fallbackValue</span>) =&gt;</span> {
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Fehlende Übersetzung:'</span>, fallbackValue);
+  },
+  <span class="hljs-comment">// weitere Optionen</span>
+});</code></pre>
+<p>Wird nun ein <code>i18nKey</code> benutzt der nicht existiert, wird stattdessen der Fallback-Wert, also der Wert aus dem Trans-Element in die Browser Konsole geschrieben:</p>
+<div class="hint hint--info">
+<p>Fehlende Übersetzung: I accept the &lt;1&gt;Terms and Conditions&lt;/1&gt;.</p>
+</div>
+<p>Für diese kann nun eine entsprechende Übersetzung angelegt werden. Der React Router Link wurde in der Ausgabe bereits durch den passenden Platzhalter-Index ersetzt, in diesem Fall also <strong>1</strong>.</p>
+<p>Als zweite Option können wir statt des <code>missingKeyHandler</code> die <code>debug</code>-Option auf <code>true</code> setzen.</p>
+<pre><code class="hljs javascript language-javascript">i18next.use(initReactI18next).init({
+  <span class="hljs-attr">debug</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-comment">// weitere Optionen</span>
+});</code></pre>
+<p>Wir erhalten dann eine Reihe an Debugging-Informationen, wie eben auch einen Hinweis auf fehlende Übersetzungen. Die Ausgabe ist dann etwa:</p>
+<div class="hint hint--info">
+<p>i18next::translator: missingKey de translation terms I accept the &lt;1&gt;Terms and Conditions&lt;/1&gt;.</p>
+</div>
+<p>Die Ausgabe ist hier etwas unfänglicher als bei der eigenen <code>missingKeyHandler</code>-Variante, dafür reicht es hier aber auch aus, lediglich eine Option auf <code>true</code> zu setzen.</p>
+<p>Innerhalb von <code>&lt;Trans&gt;</code>-Elementen kann übrigens auch die <code>t</code>-Funktion wie gewohnt verwendet werden. So wäre etwa auch folgendes möglich:</p>
+<pre><code class="hljs jsx language-jsx">&lt;Trans i18nKey="terms"&gt;
+  I accept the{' '}
+  &lt;Link to="/terms" title={t('termsTitle')}&gt;
+    Terms and Conditions
+  &lt;/Link&gt;
+  .
+&lt;/Trans&gt;</code></pre>
+<h3 id="fazit">Fazit</h3>
+<p>Mit den in diesem Kapitel gezeigten Beispielen ist es relativ einfach seine Anwendung gleich mehrsprachig zu entwickeln. In der Praxis hat sich i18next dabei für mich persönlich als sehr universelles und vollständiges Tool erwiesen. Die Integration in verscheidene Libraries und Frameworks funktioniert einwandfrei, es bietet alle Funktionen die ein solches i18n-Framework benötigt und mit nur wenigen Funktionen und Komponenten (<code>i18n.changeLanguage()</code>, <code>t</code>, <code>&lt;Trans&gt;</code>) ist es darüber hinaus relativ leicht zu erlernen.</p>
+<p>Einmal korrekt aufgesetzt und eingerichtet, hier empfehle ich einen Blick auf die <a href="https://www.i18next.com/overview/configuration-options">vollständigen Optionen von i18next</a>, realisiert man dabei Mehrsprachigkeit in seiner React-Anwendung, ohne dass es sich wie ein Mehraufwand anfühlt. Dafür sorgen auch Online-Services wie <a href="https://locize.com/">Locize.com</a> oder <a href="https://www.lokalise.co">Lokalise.co</a> um nur einige Beispiele zu nennen, mit denen die Erstellung von Übersetzungen verwaltet und zum Teil sogar automatisiert outgesourced werden kann.</p>
 </div>
 <div class="chapter">
   <h1 id="informationsquellen">Informationsquellen</h1>
 <p>Die meisten Informationsquellen in Bezug auf React sind englischsprachig. Selbst deutsche Muttersprachler haben zum Teil englische Bücher geschrieben oder schreiben ihre Newsletter oder Blogs auf Englisch, weil damit natürlich eine deutlich größere Zielgruppe erreicht werden kann. Dies war und ist einer der Gründe, warum ich dieses Buch in deutscher Sprache verfasst habe: ich denke, dass es viele deutschsprachige Entwickler da draußen gibt, die sich gerne in ihrer Muttersprache in ein Thema einlesen möchten.</p>
 <p>Dies ändert allerdings nichts daran, dass so ziemlich alle Informationsquellen da draußen nur in Englisch existieren. Ganz kommt man also nicht um Englisch herum wenn man sich nicht nur einlesen sondern auch stets auf dem neuesten Stand bleiben möchte. Ich bitte daher um Verzeihung, wenn die Informationsquellen hier zum deutlich überwiegenden Teil nur in englischer Sprache genannt werden.</p>
-<h2 id="twitter">Twitter</h2>
+<h3 id="twitter">Twitter</h3>
 <p>Twitter ist seit jeher eine top aktuelle Quelle wenn es darum geht zu wissen was gerade angesagt ist. Auch das React-Team veröffentlicht neue Änderungen regelmäßig sehr zeitnah auf Twitter. Wer also hier noch keinen Account hat, aber regelmäßig auf dem Laufenden bleiben will, der sollte sich schleunigst einen Account zulegen und hin und wieder mal dort reinschauen.</p>
 <p>Ich bin mir ziemlich sicher, dass ich einer Menge Leute unrecht tun werde indem ich hier eine Vielzahl an Accounts auflisten werde, die meiner Meinung nach sehr regelmäßig und zum deutlich überwiegenden Teil interessante Tweets über React verfassen. Denn ich werde vermutlich genau so viele Accounts die ebenso erwähnenswert wären nicht erwähnen. Hier jedoch eine Liste an Accounts denen ich selber folge und die ich ohne Einschränkung empfehlen kann:</p>
 <p><a href="https://www.twitter.com/reactjs">@reactjs</a> <a href="https://www.twitter.com/dan_abramov">@dan_abramov</a> <a href="https://www.twitter.com/sophiebits">@sophiebits</a> <a href="https://www.twitter.com/sebmarkbage">@sebmarkbage</a> <a href="https://www.twitter.com/acdlite">@acdlite</a> <a href="https://www.twitter.com/brian_d_vaughn">@brian_d_vaughn</a> <a href="https://www.twitter.com/trueadm">@trueadm</a> <a href="https://www.twitter.com/threepointone">@threepointone</a> <a href="https://www.twitter.com/aweary">@aweary</a> (allesamt React Core Contributors) <a href="https://www.twitter.com/ryanflorence">@ryanflorence</a> <a href="https://www.twitter.com/mjackson">@mjackson</a> <a href="https://www.twitter.com/ken_wheeler">@ken_wheeler</a> <a href="https://www.twitter.com/kentcdodds">@kentcdodds</a> <a href="https://www.twitter.com/kyleshevlin">@kyleshevlin</a> <a href="https://www.twitter.com/mweststrate">@mweststrate</a> <a href="https://www.twitter.com/jaredpalmer">@jaredpalmer</a> <a href="https://www.twitter.com/sebmck">@sebmck</a> <a href="https://www.twitter.com/thekitze">@thekitze</a> <a href="https://www.twitter.com/PhilippSpiess">@PhilippSpiess</a> <a href="https://www.twitter.com/monicalent">@monicalent</a> <a href="https://www.twitter.com/nikkitaftw">@nikkitaftw</a> <a href="https://www.twitter.com/rwieruch">@rwieruch</a> <a href="https://www.twitter.com/jlongster">@jlongster</a> <a href="https://www.twitter.com/eveporcello">@eveporcello</a> <a href="https://www.twitter.com/vincentriemer">@vincentriemer</a> <a href="https://www.twitter.com/kylemathews">@kylemathews</a> <a href="https://www.twitter.com/rauchg">@rauchg</a> <a href="https://www.twitter.com/erinfoox">@erinfoox</a> <a href="https://www.twitter.com/jevakallio">@jevakallio</a> <a href="https://www.twitter.com/okonetchnikov">@okonetchnikov</a> <a href="https://www.twitter.com/manuelbieh">@manuelbieh</a> <a href="https://www.twitter.com/manjula_dube">@manjula_dube</a> <a href="https://www.twitter.com/acemarke">@acemarke</a> <a href="https://www.twitter.com/wisecobbler">@wisecobbler</a> <a href="https://www.twitter.com/mxstbr">@mxstbr</a> <a href="https://www.twitter.com/cpojer">@cpojer</a> <a href="https://www.twitter.com/lithinn">@lithinn</a> <a href="https://www.twitter.com/dabit3">@dabit3</a> <a href="https://www.twitter.com/saifadin">@saifadin</a> <a href="https://www.twitter.com/rickhanlonii">@rickhanlonii</a> <a href="https://www.twitter.com/tylermcginnis">@tylermcginnis</a> <a href="https://www.twitter.com/wesbos">@wesbos</a> <a href="https://www.twitter.com/_developit">@_developit</a> <a href="https://www.twitter.com/ProvablyFlarnie">@ProvablyFlarnie</a> <a href="https://www.twitter.com/emmawedekind">@emmawedekind</a> <a href="https://www.twitter.com/FischaelaMeer">@FischaelaMeer</a></p>
-<h2 id="newsletter">Newsletter</h2>
+<h3 id="newsletter">Newsletter</h3>
 <p>Keine Angst, hier meine ich nicht die Werbeschleudern die jeder von uns ständig ungefragt bekommt und bei denen man sich fragt, ob man sich dort wirklich jemals angemeldet hat. In der React-Szene gibt es tatsächlich eine ganze Reihe sehr interessanter, liebevoll gepflegter und schön gestalteter Newsletter die es sich definitiv lohnt zu abonnieren. Die meisten davon werden wöchentlich verschickt und enthalten einen guten Überblick darüber, was in der letzten Woche in der React-Welt so passiert ist. Für alle, denen Twitter zu schnelllebig, stressig oder zu anstrengend ist:</p>
 <ul>
 <li><a href="https://react.statuscode.com/">React Status</a> (Peter Cooper / Cooperpress)</li>
@@ -5642,11 +6645,74 @@ ReactDOM.render(<span class="hljs-tag">&lt;<span class="hljs-name">App</span> /&
 <li><a href="http://newsletter.fullstackreact.com">Fullstack React</a> (Sophia Shoemaker)</li>
 <li><a href="https://reactdigest.net/">React Digest</a> (Jakub Chodounsky / Bonobopress)</li>
 </ul>
+<h3 id="communities">Communities</h3>
+<ul>
+<li>Deutsche Slack Community: <a href="https://reactjs.de/">https://reactjs.de/</a></li>
+<li><a href="https://spectrum.chat/react">https://spectrum.chat/react</a></li>
+<li><a href="https://www.reactiflux.com/">https://www.reactiflux.com/</a></li>
+</ul>
+<h3 id="podcasts">Podcasts</h3>
+<p>Wie auch schon bei den Newslettern gibt es einige hochwertige Podcasts über React, jedoch sind mir hier ausschließlich englischsprachige Podcasts bekannt. Wen dies nicht abschreckt, der hört gern mal bei den folgenden Podcasts rein:</p>
+<ul>
+<li><a href="https://undefined.fm/">The Undefined</a> (Ken Wheeler und Jared Palmer)</li>
+<li><a href="https://reactpodcast.com/">React Podcast</a> (Michael Chan aka <a href="https://github.com/chantastic">@chantastic</a>)</li>
+<li><a href="https://syntax.fm/">Syntax.fm</a> (Wes Bos und Scott Tolinski)</li>
+</ul>
 </div>
 <div class="chapter">
-  <h1 id="tools">Tools</h1>
-<p>Storybook, Docz React Cosmos</p>
-<p>Gatsby, Next.js, React-Static</p>
+  <h1 id="tools-und-frameworks">Tools und Frameworks</h1>
+<p>Um React herum haben sich mittlerweile ein ganzes Ökosystem an Tools gebildet. Vom Static Site Generator, um simple bis medium-komplexe statische Websites auf Basis von React-Komponenten zu erzeugen über Prototyping-Tools bis hin zu Tools, um die Komponenten der eigenen Anwendung in einer Art Styleguide übersichtlich darzustellen ist hier vieles vertreten. In diesem Unterkapitel möchte ich eine <em>kurze</em> Übersicht über die bekanntesten Tools und Frameworks aus der React-Welt geben.</p>
+<h3 id="storybook">Storybook</h3>
+<blockquote>
+  <p>Storybook is a development environment for UI components. It allows you to browse a component library, view the different states of each component, and interactively develop and test components.</p>
+</blockquote>
+<p><strong>Storybook</strong> ist ein Tool zur Erstellung von Isolierten UI-Komponenten für React, Vue.js und Angular. <strong>Storybook</strong> dient dabei als eine Art Sandbox-Umgebung in der Komponenten für sich alleine in sog. <strong>Stories</strong> entwickelt werden können und stellt diese in einem übersichtlichen und einfach zu bedienendem Interface dar. Durch die Isolation wird ein sehr hohes Level an Abstraktion ermöglicht, die es auch erlaubt Edge-cases darzustellen und zu testen.</p>
+<p><strong>Lizenz:</strong> MIT (Open Source)  <br />
+<strong>URL:</strong> <a href="https://storybook.js.org/">https://storybook.js.org/</a>  <br />
+<strong>GitHub:</strong> <a href="https://github.com/storybooks/storybook">https://github.com/storybooks/storybook</a></p>
+<h3 id="react-styleguidist">React Styleguidist</h3>
+<blockquote>
+  <p>React Styleguidist is a component development environment with hot reloaded dev server and a living style guide that you can share with your team.</p>
+</blockquote>
+<p><strong>Styleguidist</strong> geht in die selbe Richtung wie Storybook. Auch mit Styleguidist ist es möglich einen Styleguide aus den UI Komponenten der eigenen Anwendung zu erstellen. Allerdings ist Styleguidist hier etwas impliziter als Storybook und so wird der Styleguide schon zu einem recht hohen Maß aus den <strong>PropTypes</strong> von Komponenten sowie aus <strong>JSDoc</strong>-Kommentaren angereichert. Für alles weitere dienen dann Markdown Dateien im Ordner der jeweiligen Komponente.</p>
+<p><strong>Lizenz:</strong> MIT (Open Source)  <br />
+<strong>URL:</strong> <a href="https://react-styleguidist.js.org/">https://react-styleguidist.js.org/</a>  <br />
+<strong>GitHub:</strong> <a href="https://github.com/styleguidist/react-styleguidist">https://github.com/styleguidist/react-styleguidist</a></p>
+<h3 id="docz">Docz</h3>
+<blockquote>
+  <p>It has never been so easy to document your things!</p>
+</blockquote>
+<p>Docz ist ein Tool das, wie der Name es bereits erahnen lässt, zur Dokumentation von Komponenten dient. Auch Docz ist letztlich eine Art Styleguide wie bereits die ersten beiden Tools. Dennoch sticht es irgendwo heraus, denn es ist komplett MDX basiert. MDX ist eine um React-Komponenten erweiterte Version des Markdown-Formats. Komponenten werden in <code>.mdx</code>-Dateien beschrieben und können wie in JavaScript selbst importiert und verwendet werden.</p>
+<p><strong>Lizenz:</strong> MIT (Open Source)  <br />
+<strong>URL:</strong> <a href="https://docz.site/">https://docz.site/</a>  <br />
+<strong>GitHub:</strong> <a href="https://github.com/pedronauck/docz">https://github.com/pedronauck/docz</a></p>
+<h3 id="react-cosmos">React Cosmos</h3>
+<blockquote>
+  <p>Dev tool for creating reusable React components</p>
+</blockquote>
+<p>Noch ein Stück weiter geht <strong>React Cosmos</strong>. Während die ersten drei genannten Tools ihren Fokus auf die Kapselung und die Darstellung reiner UI-Komponenten legen, bricht React Cosmos diese Kapselung bewusst auf und erlaubt es auch externe Abhängigkeiten wie React Router oder Redux durch das Konzept von <em>Fixtures</em> und <em>Proxies</em> darzustellen und zu testen.</p>
+<p><strong>Lizenz:</strong> MIT (Open Source)  <br />
+<strong>GitHub:</strong> <a href="https://github.com/react-cosmos/react-cosmos">https://github.com/react-cosmos/react-cosmos</a></p>
+<h3 id="gatsby">Gatsby</h3>
+<blockquote>
+  <p>Gatsby is a free and open source framework based on React that helps developers build blazing fast websites and apps</p>
+</blockquote>
+<p><strong>Gatsby</strong> gehört in die Kategorie der sog. Static Site Generators, also einem Generator für statische Websites. Diese werden in <strong>Gatsby</strong> aus React-Komponenten und GraphQL erzeugt und bestehen letztendlich aus statischen HTML-Dateien. Dabei erzeugt <strong>Gatsby</strong> auch ein JavaScript-Bundle das beim Aufruf deiner Seite geladen wird. Ist das Bundle erst einmal geladen macht <strong>Gatsby</strong> Gebrauch von clientseitigem Rendering, was zur Folge hat, dass die erzeugten Seiten unglaublich schnell („blazing fast“) angezeigt werden, da ab diesem Zeitpunkt der HTTP-Overhead entfällt. <strong>Gatsby</strong> wurde als Open Source Projekt gestartet (und ist dies auch bis heute) und erhielt als solches im Mai 2018 eine beeindruckende Finanzierung von 3,8 Mio USD.</p>
+<p><strong>Lizenz:</strong> MIT (Open Source)  <br />
+<strong>URL:</strong> <a href="https://www.gatsbyjs.org/">https://www.gatsbyjs.org/</a>  <br />
+<strong>GitHub:</strong> <a href="https://github.com/gatsbyjs/gatsby">https://github.com/gatsbyjs/gatsby</a></p>
+<h3 id="react-static">React Static</h3>
+<blockquote>
+  <p>React-Static is a fast, lightweight, and powerful progressive static site generator based on React and its ecosystem.</p>
+</blockquote>
+<p><strong>React Static</strong> ist eine Alternative zu <strong>Gatsby</strong>. Auch <strong>React Static</strong> ist ein Static Site Generator mit dem statische Websites basierend auf React generiert werden können. Durch seine hohe Finanzierungsrunde ist Gatsby sicherlich das bekanntere der beiden Tools, jedoch ist auch React Static eine durchaus ernste Alternative in diesem Bereich mit einer großen und sehr aktiven Community.</p>
+<p><strong>Lizenz:</strong> MIT (Open Source)  <br />
+<strong>GitHub:</strong> <a href="https://github.com/nozzle/react-static">https://github.com/nozzle/react-static</a></p>
+<h3 id="nextjs">Next.js</h3>
+<p>Next.js bezeichnet sich selbstbewusst als „The React Framework" für diverse Anwendungsfälle wie statische und dynamische Websites, große wie kleine Unternehmen, mobile oder klassische Websites und vieles mehr. Und in der Tat ist dieses Framework in der React-Community mit über 36.000 Stars auf GitHub ein anerkanntes Tool zur Entwicklung von Anwendungen mit React und eine echte Alternative zu Create React App. Anders als CRA kommt Next.js gleich mit Unterstützung von serverseitig gerenderten Seiten, was es insbesondere für SEO relevante Themen interessant werden lässt.</p>
+<p><strong>Lizenz:</strong> MIT (Open Source)  <br />
+<strong>URL:</strong> <a href="https://nextjs.org/">https://nextjs.org/</a>  <br />
+<strong>GitHub:</strong> <a href="https://github.com/zeit/next.js">https://github.com/zeit/next.js</a></p>
 </div>
 
   </body>

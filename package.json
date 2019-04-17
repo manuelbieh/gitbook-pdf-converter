@@ -4,9 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "yarn update && yarn start",
     "convert": "node convertMarkdownToHTML",
-    "generate": "node generatePdf",
-    "start": "yarn convert && yarn generate",
+    "generate:pdf": "node generatePdf",
+    "start": "yarn convert && yarn generate:pdf",
     "update": "cd content && git pull"
   },
   "keywords": [],

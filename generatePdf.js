@@ -1,3 +1,4 @@
+const fs = require('fs');
 const express = require('express');
 const puppeteer = require('puppeteer');
 require('./lib/gitbook-hints');
@@ -16,22 +17,49 @@ const server = app.listen(3000, () => {
       args: ['--no-sandbox', '--disable-setuid-sandbox'],
     });
     try {
+      const now = new Date();
+      const dateTime = `${now.getFullYear()}${(now.getMonth() + 1)
+        .toString()
+        .padStart(2, 0)}${now
+        .getDate()
+        .toString()
+        .padStart(2, 0)}-${now
+        .getHours()
+        .toString()
+        .padStart(2, 0)}${now
+        .getMinutes()
+        .toString()
+        .padStart(2, 0)}`;
+
       const page = await browser.newPage();
+      const footer = fs.readFileSync('./templates/footer.html').toString();
       await page.goto('http://localhost:3000/index.html', {
-        waitUntil: 'load',
+        waitUntil: 'networkidle0',
+      });
+      // Working:
+      await page.pdf({
+        path: `./dist/react-lernen-${dateTime}.pdf`,
+        // format: 'A4',
+        width: '17cm',
+        height: '24cm',
+        printBackground: true,
+        // displayHeaderFooter: true,
+        headerTemplate: '<span></span>',
+        footerTemplate: footer,
       });
 
-      await page.pdf({
-        path: 'printed.pdf',
-        format: 'A4',
-        // width: '17cm',
-        // height: '24cm',
-        printBackground: true,
-        // preferCSSPageSize: true,
-      });
+      // Experimental:
+      // await page.pdf({
+      //   path: 'printed.pdf',
+      //   // width: '17cm',
+      //   // height: '24cm',
+      //   printBackground: true,
+      //   preferCSSPageSize: true,
+      // });
       await browser.close();
       server.close();
     } catch (error) {
+      console.log(error);
       browser.close();
       server.close();
       process.exit(1);
