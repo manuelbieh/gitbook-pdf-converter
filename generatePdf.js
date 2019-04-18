@@ -1,7 +1,8 @@
 const fs = require('fs');
 const express = require('express');
 const puppeteer = require('puppeteer');
-require('./lib/gitbook-hints');
+const dateTime = require('./lib/getTheFuckingTime');
+// require('./lib/gitbookHints');
 
 const app = express();
 
@@ -17,20 +18,6 @@ const server = app.listen(3000, () => {
       args: ['--no-sandbox', '--disable-setuid-sandbox'],
     });
     try {
-      const now = new Date();
-      const dateTime = `${now.getFullYear()}${(now.getMonth() + 1)
-        .toString()
-        .padStart(2, 0)}${now
-        .getDate()
-        .toString()
-        .padStart(2, 0)}-${now
-        .getHours()
-        .toString()
-        .padStart(2, 0)}${now
-        .getMinutes()
-        .toString()
-        .padStart(2, 0)}`;
-
       const page = await browser.newPage();
       const footer = fs.readFileSync('./templates/footer.html').toString();
       await page.goto('http://localhost:3000/index.html', {

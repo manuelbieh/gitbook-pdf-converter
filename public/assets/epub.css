@@ -45,7 +45,6 @@ blockquote {
   background-color: #fdf7f7;
   border-left: 4px solid #d9534f;
   border-color: #d9534f;
-  background-image: url(./icons/close.svg);
   background-size: 24px 24px;
   border-color: #d9534f;
 }
@@ -53,7 +52,6 @@ blockquote {
 .hint--info {
   /* background: #eff5ff; */
   background-color: #eff5ff;
-  background-image: url(./icons/info.svg);
   background-size: 24px 24px;
   border-color: #42acf3;
   border-left: 4px solid #42acf3;
@@ -64,6 +62,5 @@ blockquote {
   border-left: 4px solid #f0ad4e;
   background-color: #fcf8f2;
   border-color: #f0ad4e;
-  background-image: url(./icons/warning.svg);
   background-size: 28px 28px;
 }

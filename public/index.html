@@ -36,7 +36,7 @@
 <p>Die Komplexität von React ist dabei aber nicht zu unterschätzen. Und so ist es zwar möglich relativ schnell in ziemlich kurzer Zeit eine Anwendung mit React zu entwickeln. Wenn man aber Wert auf hohe Qualität legt gibt es dort viele Stellschrauben an denen man drehen kann um Code-Qualität, Performance und Wartbarkeit zu erhöhen, die teilweise auch Leuten nicht bekannt sind die schon viel und lange mit React entwickelt haben. Und so würde ich mich selbst nach mehrjähriger intensiver und täglicher Arbeit mit React sicher noch immer nicht als absoluten Experten bezeichnen. Aber ich denke, dass mit der Zeit dennoch genug Wissen zusammengekommen ist welches ich in Form dieses Buches weitergeben kann um euch den Einstieg zu erleichtern und auch noch den einen oder anderen Profi-Tipp an die Hand zu geben.</p>
 </div>
 <div class="chapter">
-  <h1 id="einführung">Einführung</h1>
+  <h1 id="i-–-einführung">I – Einführung</h1>
 </div>
 <div class="chapter">
   <h1 id="allgemeines">Allgemeines</h1>
@@ -95,7 +95,11 @@ Eine feste Definition gibt es dafür nicht.</p>
 <pre><code class="hljs javascript language-javascript">&lt;script&gt;
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">HelloWorld</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
   render() {
-    <span class="hljs-keyword">return</span> React.createElement(<span class="hljs-string">'div'</span>, {<span class="hljs-attr">id</span>: <span class="hljs-string">'hello-world'</span>}, <span class="hljs-string">'Hello World'</span>);
+    <span class="hljs-keyword">return</span> React.createElement(
+      <span class="hljs-string">'div'</span>,
+      {<span class="hljs-attr">id</span>: <span class="hljs-string">'hello-world'</span>},
+      <span class="hljs-string">'Hello World'</span>
+    );
   }
 }
 ReactDOM.render(
@@ -251,7 +255,7 @@ Happy hacking!</code></pre>
 </div>
 </div>
 <div class="chapter">
-  <h1 id="die-grundlagen">Die Grundlagen</h1>
+  <h1 id="ii-–-grundlagen">II – Grundlagen</h1>
 </div>
 <div class="chapter">
   <h1 id="exkurs-es2015">Exkurs ES2015+</h1>
@@ -2861,7 +2865,7 @@ export default TextField;</span></code></pre>
 <p>Aus einem langen und potentiell sehr unübersichtlichen Markup haben wir also eine übersichtliche, prägnante <code>render()</code>-Methode gemacht die auf oberster Ebene aus wenigen Komponenten besteht. Möchten wir in Zukunft außerdem eine Änderung vornehmen die sich auf alle Textfelder auswirkt, bspw. eine neue Klasse hinzufügen, muss dies nur noch an einer einzigen Stelle geändert werden, in der neuen <code>TextField</code>-Komponente.</p>
 </div>
 <div class="chapter">
-  <h1 id="erweiterte-konzepte">Erweiterte Konzepte</h1>
+  <h1 id="iii-–-erweiterte-konzepte">III – Erweiterte Konzepte</h1>
 </div>
 <div class="chapter">
   <h1 id="higher-order-components">Higher Order Components</h1>
@@ -4201,7 +4205,7 @@ type StateT = {
 <p>Mit dem Release von Babel 7 wurde auch die Integration vereinfacht und es benötigt nun nicht mehr zwangsweise den <strong>TypeScript</strong> Compiler (<code>tsc</code>) sondern kann in Form eines Babel Plugins verwendet werden. Das Plugin wird mit dem Babel Preset <code>@babel/preset-typescript</code> installiert.</p>
 </div>
 <div class="chapter">
-  <h1 id="hooks">Hooks</h1>
+  <h1 id="iv-–-hooks">IV – Hooks</h1>
 </div>
 <div class="chapter">
   <h1 id="einführung-in-hooks">Einführung in Hooks</h1>
@@ -5304,7 +5308,7 @@ ReactDOM.render(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-n
 ReactDOM.render(&lt;App /&gt;, document.getElementById('root'));</code></pre>
 </div>
 <div class="chapter">
-  <h1 id="das-ecosystem">Das Ecosystem</h1>
+  <h1 id="v-–-das-ecosystem">V – Das Ecosystem</h1>
 <p>Für die einen Fluch, für die anderen Segen: die <strong>Freiheit</strong> die <strong>React</strong> dem Entwickler bietet.</p>
 <p>Während vollwertige Frameworks wie Angular sehr klare Vorgaben machen wie eine Anwendung strukturiert werden soll und auch gleich eigene Methoden für Datenhaltung, Services und Business-Logik mitbringt und klare Wege vorgibt, funktioniert das in React eher nach dem Motto „bring your own“ – also bringe dein eigenes Werkzeug mit.</p>
 <p>Wie bereits zu Beginn dieses Buches erwähnt, ist React erst einmal nur eine <strong>Bibliothek zur Entwicklung von User Interfaces</strong> (Kleine Anekdote am Rande: dieser Satz ist einer der wenigen die ich in diesem Buch aus der Doku zitiert habe, die sich im Laufe der Arbeit an diesem Buch nicht geändert hat ;)). In der Welt der klassischen MVC (<em>Model View Controller</em>) Architektur also sozusagen nur der View-Layer. Wer darüber hinaus ein erweitertes State-Management möchte, wer seine Anwendung mehrsprachig entwickeln möchte oder clientseitiges Routing benötigt, wird hier mit React allein oftmals nicht glücklich.</p>

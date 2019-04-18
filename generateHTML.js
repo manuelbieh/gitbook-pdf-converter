@@ -1,6 +1,5 @@
 const fs = require('fs-extra');
 const path = require('path');
-// const mkdirp = require('mkdirp');
 const showdown = require('showdown');
 const markdownLinkExtractor = require('markdown-link-extractor');
 const showdownHighlight = require('showdown-highlight');
