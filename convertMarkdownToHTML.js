@@ -5,7 +5,7 @@ const showdown = require('showdown');
 const markdownLinkExtractor = require('markdown-link-extractor');
 const showdownHighlight = require('showdown-highlight');
 const prettier = require('prettier');
-require('./lib/gitbook-hints');
+require('./lib/gitbookHints');
 
 const converter = new showdown.Converter({
   extensions: ['gitbook-hints', showdownHighlight],

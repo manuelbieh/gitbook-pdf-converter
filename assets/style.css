@@ -80,8 +80,9 @@ pre {
 pre,
 code {
   /* font-family: Menlo, monospace; */
-  font-family: dm, Menlo, monospace;
-  font-family: dm, 'Dank Mono', monospace;
+  /* font-family: dm, Menlo, monospace; */
+  /* font-family: dm, 'Dank Mono', monospace; */
+  font-family: Dank Mono, monospace;
 }
 
 h1 {

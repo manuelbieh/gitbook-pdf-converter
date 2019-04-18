@@ -1,0 +1,69 @@
+:root body section[class][class] * {
+  font-family: inherit !important;
+}
+
+:root body section[class][class] code,
+:root body section[class][class] pre {
+  font-family: monospace !important;
+}
+
+pre {
+  background: #f8f8f8;
+  padding: 8px;
+  white-space: pre-wrap;
+}
+
+code {
+  background: #f8f8f8;
+  padding: 4px;
+}
+
+pre code {
+  background: transparent;
+  padding: 0;
+}
+
+blockquote {
+  border-left: 5px solid #ccc;
+  color: #999;
+  margin-left: 0;
+  padding-left: 1em;
+}
+
+.hint {
+  padding: 1px 18px;
+}
+
+.hint--success {
+  border-left: 4px solid #50af51;
+  background: #f3f8f3;
+  border-color: #50af51;
+}
+
+.hint--danger {
+  border-left: 4px solid #d9534f;
+  background-color: #fdf7f7;
+  border-left: 4px solid #d9534f;
+  border-color: #d9534f;
+  background-image: url(./icons/close.svg);
+  background-size: 24px 24px;
+  border-color: #d9534f;
+}
+
+.hint--info {
+  /* background: #eff5ff; */
+  background-color: #eff5ff;
+  background-image: url(./icons/info.svg);
+  background-size: 24px 24px;
+  border-color: #42acf3;
+  border-left: 4px solid #42acf3;
+
+}
+
+.hint--warning {
+  border-left: 4px solid #f0ad4e;
+  background-color: #fcf8f2;
+  border-color: #f0ad4e;
+  background-image: url(./icons/warning.svg);
+  background-size: 28px 28px;
+}

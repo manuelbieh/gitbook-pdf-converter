@@ -19,13 +19,13 @@ body {
   margin-bottom: 0.5in;
 }
 
-@page :left {
-  margin-right: 1.5in;
+/* @page :left {
+  margin-right: 1in;
 }
 
 @page :right {
-  margin-left: 1.5in;
-}
+  margin-left: 1in;
+} */
 
 .chapter {
   margin-left: 0.5in;
@@ -56,7 +56,7 @@ body {
 }
 
 /* for debugging */
-.chapter
+/* .chapter
   + .chapter
   + .chapter
   + .chapter
@@ -65,7 +65,7 @@ body {
   + .chapter
   ~ .chapter {
   display: none;
-}
+} */
 
 .test {
   text-decoration: underline;
@@ -80,8 +80,9 @@ pre {
 pre,
 code {
   /* font-family: Menlo, monospace; */
-  font-family: dm, Menlo, monospace;
-  font-family: dm, 'Dank Mono', monospace;
+  /* font-family: dm, Menlo, monospace; */
+  /* font-family: dm, 'Dank Mono', monospace; */
+  font-family: Dank Mono, monospace;
 }
 
 h1 {
