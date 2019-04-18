@@ -30,7 +30,7 @@ const server = app.listen(3000, () => {
         width: '17cm',
         height: '24cm',
         printBackground: true,
-        // displayHeaderFooter: true,
+        displayHeaderFooter: true,
         headerTemplate: '<span></span>',
         footerTemplate: footer,
       });

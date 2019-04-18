@@ -14,9 +14,9 @@ body {
 /* Working: */
 @page {
   size: a4;
-  /* margin: 0.5in 0.25in; */
-  margin-top: 0.5in;
-  margin-bottom: 0.5in;
+  margin: 0.5in 0.25in;
+  /* margin-top: 0.75in;
+  margin-bottom: 0.75in; */
 }
 
 /* @page :left {
@@ -26,6 +26,7 @@ body {
 @page :right {
   margin-left: 1in;
 } */
+
 
 .chapter {
   margin-left: 0.5in;
