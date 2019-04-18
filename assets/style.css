@@ -9,15 +9,23 @@ body {
   font-family: Roboto, Times New Roman, sans-serif;
   font-size: 11pt;
   line-height: 1.65;
+  margin: 0;
+  padding: 0;
 }
 
 /* Working: */
 @page {
   size: a4;
   margin: 0.5in 0.25in;
-  /* margin-top: 0.75in;
-  margin-bottom: 0.75in; */
+  /* experimental: */
+  margin-bottom: 0.75in;
+  margin-top: 0.75in;
 }
+
+/* This would allow me to include the cover but the pages are all cut off then */
+/* @page :first {
+  margin: 0;
+} */
 
 /* @page :left {
   margin-right: 1in;
@@ -31,6 +39,11 @@ body {
 .chapter {
   margin-left: 0.5in;
   margin-right: 0.5in;
+}
+
+.chapter {
+  page-break-after: always;
+  position: relative;
 }
 
 /* Experimental: */
@@ -53,7 +66,14 @@ body {
 }
 
 .cover {
-  display: none;
+  /* display: none; */
+  margin: 0;
+  /* page-break-after: avoid; */
+}
+
+.cover img {
+  width: 100vw;
+  height: 100vh;
 }
 
 /* for debugging */
@@ -122,21 +142,16 @@ blockquote {
   padding-left: 1em;
 }
 
-#cover {
+/* #cover {
   position: absolute;
   top: -1in;
-  /* top: 0; */
   right: 0;
   bottom: 0;
   left: 0;
   width: 210mm;
   height: 297mm;
-}
+} */
 
-.chapter {
-  page-break-after: always;
-  position: relative;
-}
 
 .hint {
   background-position: 12px 20px;
@@ -207,6 +222,7 @@ blockquote {
 
   .cover {
     margin: 0;
+    display: none;
   }
 
   #cover {
