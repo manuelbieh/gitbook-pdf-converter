@@ -1,3 +1,7 @@
+body {
+  font-family: sans-serif;
+}
+
 :root body section[class][class] * {
   font-family: inherit !important;
 }
