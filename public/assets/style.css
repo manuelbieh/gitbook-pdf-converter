@@ -112,13 +112,14 @@ h1 {
   margin-bottom: 24px;
   color: #242a31;
   position: relative;
-  margin-top: 73px;
+  margin-top: 32px;
+  /* margin-top: 73px; */
 }
 
 h1:before {
   content: ' ';
   position: absolute;
-  top: -32px;
+  top: -24px;
   left: 0px;
   height: 1px;
   width: 100%;
