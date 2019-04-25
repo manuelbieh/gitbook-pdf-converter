@@ -68,3 +68,12 @@ blockquote {
   border-color: #f0ad4e;
   background-size: 28px 28px;
 }
+
+pre, pre code, pre code a, a {
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 1 !important;
+}
+
+/* needed for kindle or otherwise code blocks look horrible */
+a.sourceLine { display: inline !important; }

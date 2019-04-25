@@ -22,7 +22,10 @@ files.forEach((file) => {
       (match, className, content) =>
         `<div class="hint hint--${className}">${content}</div>`
     )
-    .replace(/^#/gm, keepHeadlineLevel ? '#' : '##');
+    .replace(/^#/gm, keepHeadlineLevel ? '#' : '##')
+    .replace(/\[@([\w|\\]*)\]/g, (match, handle) => {
+      return `[\\@${handle.replace(/\\*/g, '')}]`;
+    });
 
   fs.mkdirpSync(path.dirname(`./tmp/${file}`));
   fs.writeFileSync(`./tmp/${file}`, newFileContent);
@@ -42,7 +45,7 @@ const preparedFiles = files.map((file) =>
 execSync(
   `pandoc ${preparedFiles.join(
     ' '
-  )} -o "./dist/react-lernen-${dateTime}.epub" --metadata title="React lernen und verstehen" --metadata author="Manuel Bieh" --epub-cover-image="./assets/react_book_cover-front-1000.png" --toc --toc-depth=3 --css="./assets/epub.css" --resource-path="content/.gitbook:|cross-platform-hack|;content/.gitbook"`,
+  )} -o "./dist/react-lernen-${dateTime}.epub" --metadata title="React lernen und verstehen" --metadata author="Manuel Bieh" --epub-cover-image="./assets/react_book_cover-front-1000.png" --toc --toc-depth=2 --css="./assets/epub.css" --resource-path="content/.gitbook:|cross-platform-hack|;content/.gitbook"`,
   (err) => {
     console.log(err);
   }
