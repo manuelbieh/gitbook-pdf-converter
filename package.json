@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "yarn update && yarn start",
+    "generate:docx": "node generateDOCX",
     "generate:epub": "node generateEPUB",
     "generate:html": "node generateHTML",
     "generate:pdf": "node generatePDF",
