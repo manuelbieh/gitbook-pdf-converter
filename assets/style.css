@@ -27,14 +27,13 @@ body {
   margin: 0;
 } */
 
-/* @page :left {
-  margin-right: 1in;
+@page :left {
+  margin-right: 0.6in;
 }
 
 @page :right {
-  margin-left: 1in;
-} */
-
+  margin-left: 0.6in;
+}
 
 .chapter {
   margin-left: 0.5in;
@@ -77,7 +76,8 @@ body {
 }
 
 /* for debugging */
-/* .chapter
+/*
+.chapter
   + .chapter
   + .chapter
   + .chapter
@@ -86,7 +86,8 @@ body {
   + .chapter
   ~ .chapter {
   display: none;
-} */
+}
+*/
 
 .test {
   text-decoration: underline;
