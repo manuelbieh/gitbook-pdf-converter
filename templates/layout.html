@@ -24,9 +24,19 @@
       <ul id="extracted-links"></ul>
     </div>
     <script>
-      var linkList = document.getElementById('extracted-links');
+      const linkList = document.getElementById('extracted-links');
       Array.from(document.querySelectorAll('a'))
         .filter((link) => link.getAttribute('href') !== link.textContent.trim())
+        .filter(
+          (link) =>
+            link.getAttribute('href').startsWith('https://www.twitter.com/') ===
+            false
+        )
+        .filter(
+          (link) =>
+            link.getAttribute('href').startsWith('https://twitter.com/') ===
+            false
+        )
         .map((link, index) => {
           const url = link.getAttribute('href');
           const text = link.textContent.trim();

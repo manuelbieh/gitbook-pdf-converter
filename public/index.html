@@ -432,11 +432,11 @@ string.endsWith(value);</code></pre>
 <span class="hljs-built_in">Array</span>.isArray(links); <span class="hljs-comment">// true</span></code></pre>
 <h4 id="methoden-auf-dem-array-prototypen">Methoden auf dem Array-Prototypen</h4>
 <p>Die Methoden auf dem Array-Prototypen können <strong>direkt auf eine Array-Instanz</strong> angewendet werden. Die gängigsten während der Arbeit mit React und insbesondere später mit Redux sind:</p>
-<pre><code class="hljs javascript language-javascript"><span class="hljs-built_in">Array</span>.find(<span class="hljs-function"><span class="hljs-keyword">function</span>);
-<span class="hljs-title">Array</span>.<span class="hljs-title">findIndex</span>(<span class="hljs-params">function</span>);
-<span class="hljs-title">Array</span>.<span class="hljs-title">includes</span>(<span class="hljs-params">value</span>);</span></code></pre>
+<pre><code class="hljs js language-js"><span class="hljs-built_in">Array</span>.find(func);
+<span class="hljs-built_in">Array</span>.findIndex(func);
+<span class="hljs-built_in">Array</span>.includes(value);</code></pre>
 <p>Die <code>Array.find()</code>-Methode dient, wie der Name es erahnen lässt, dazu, das <strong>erste</strong> Element eines Arrays zu finden, das bestimmte Kriterien erfüllt, die mittels der als ersten Parameter übergebenen Funktion geprüft werden.</p>
-<pre><code class="hljs javascript language-javascript"><span class="hljs-keyword">const</span> numbers = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">5</span>, <span class="hljs-number">9</span>, <span class="hljs-number">13</span>, <span class="hljs-number">24</span>, <span class="hljs-number">27</span>, <span class="hljs-number">39</span>, <span class="hljs-number">50</span>];
+<pre><code class="hljs js language-js"><span class="hljs-keyword">const</span> numbers = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">5</span>, <span class="hljs-number">9</span>, <span class="hljs-number">13</span>, <span class="hljs-number">24</span>, <span class="hljs-number">27</span>, <span class="hljs-number">39</span>, <span class="hljs-number">50</span>];
 <span class="hljs-keyword">const</span> biggerThan10 = numbers.find(<span class="hljs-function">(<span class="hljs-params">number</span>) =&gt;</span> number &gt; <span class="hljs-number">10</span>); <span class="hljs-comment">// 13</span>
 
 <span class="hljs-keyword">const</span> users = [
@@ -6901,9 +6901,36 @@ ReactDOM.render(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-n
 <p>Mehr über mich gibt es auf meiner Website: <a href="https://www.manuelbieh.de/">https://www.manuelbieh.de/</a> – die, wie sollte es anders sein, mit Gatsby entwickelt wurde.</p>
 <p>Ich freue mich über jedes Feedback von euch, egal ob positiv oder negativ! Dazu erreicht ihr mich auch auf Twitter unter <a href="https://www.twitter.com/manuelbieh">@manuelbieh</a>.</p>
 </div>
-<div class="chapter">
-  <h1>Links</h1>
-  <ul id="extracted-links"></ul>
-</div>
+
+    <div class="chapter">
+      <h1>Links</h1>
+      <ul id="extracted-links"></ul>
+    </div>
+    <script>
+      const linkList = document.getElementById('extracted-links');
+      Array.from(document.querySelectorAll('a'))
+        .filter((link) => link.getAttribute('href') !== link.textContent.trim())
+        .filter(
+          (link) =>
+            link.getAttribute('href').startsWith('https://www.twitter.com/') ===
+            false
+        )
+        .filter(
+          (link) =>
+            link.getAttribute('href').startsWith('https://twitter.com/') ===
+            false
+        )
+        .map((link, index) => {
+          const url = link.getAttribute('href');
+          const text = link.textContent.trim();
+          console.log({ text, url });
+          const note = document.createElement('span');
+          note.textContent = ` [${index + 1}]`;
+          link.appendChild(note);
+          const addedLink = document.createElement('li');
+          addedLink.textContent = `[${index + 1}] ${url}`;
+          linkList.appendChild(addedLink);
+        });
+    </script>
   </body>
 </html>
