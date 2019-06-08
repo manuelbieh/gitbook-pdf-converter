@@ -19,5 +19,25 @@
   </head>
   <body>
     {{ content }}
+    <div class="chapter">
+      <h1>Links</h1>
+      <ul id="extracted-links"></ul>
+    </div>
+    <script>
+      var linkList = document.getElementById('extracted-links');
+      Array.from(document.querySelectorAll('a'))
+        .filter((link) => link.getAttribute('href') !== link.textContent.trim())
+        .map((link, index) => {
+          const url = link.getAttribute('href');
+          const text = link.textContent.trim();
+          console.log({ text, url });
+          const note = document.createElement('span');
+          note.textContent = ` [${index + 1}]`;
+          link.appendChild(note);
+          const addedLink = document.createElement('li');
+          addedLink.textContent = `[${index + 1}] ${url}`;
+          linkList.appendChild(addedLink);
+        });
+    </script>
   </body>
 </html>
