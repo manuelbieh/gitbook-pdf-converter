@@ -1,5 +1,7 @@
 # gitbook-pdf-converter
 
+This is the setup to convert [my book](https://lernen.react-js.dev/) into HTML, PDF and ePUB format.
+
 ## Setup
 
 1. clone this repo
