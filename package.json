@@ -9,7 +9,7 @@
     "generate:epub": "node generateEPUB",
     "generate:html": "node generateHTML",
     "generate:pdf": "node generatePDF",
-    "preview": "yarn generate:html && yarn http-server",
+    "preview": "yarn generate:html && yarn http-server -o",
     "setup": "git clone git@github.com:manuelbieh/react-lernen.git content && yarn",
     "start": "concurrently \"yarn generate:html && yarn generate:pdf\" \"yarn generate:epub\"",
     "update": "cd content && git pull"
