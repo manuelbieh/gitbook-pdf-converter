@@ -3,10 +3,7 @@
   <head>
     <link href="./assets/style.css" rel="stylesheet" type="text/css" />
     <link href="./assets/dank-mono.css" rel="stylesheet" type="text/css" />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Roboto:400,700"
-    />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.14.2/styles/github.min.css"
@@ -18,7 +15,51 @@
     <script src="https://unpkg.com/prismjs@1.16.0/prism.js"></script> -->
   </head>
   <body>
-    <div class="chapter">
+    <div class="chapter" data-filename="SUMMARY.md">
+  <h1 id="inhaltsverzeichnis">Inhaltsverzeichnis</h1>
+<ul>
+<li><a href="README.md">React lernen und verstehen</a></li>
+<li><a href="vorwort.md">Vorwort</a></li>
+<li><a href="ueber-den-autor.md">Über den Autor</a></li>
+<li><a href="einfuehrung/README.md">I – Einführung</a><ul>
+<li><a href="einfuehrung/einfuehrung.md">Allgemeines</a></li>
+<li><a href="einfuehrung/ab-ins-kalte-wasser.md">Ab ins kalte Wasser</a></li>
+<li><a href="einfuehrung/tools-und-setup.md">Tools und Setup</a></li></ul></li>
+<li><a href="die-grundlagen/README.md">II – Grundlagen</a><ul>
+<li><a href="die-grundlagen/exkurs-es2015+.md">Exkurs ES2015+</a></li>
+<li><a href="die-grundlagen/jsx-eine-einfuehrung.md">JSX – eine Einführung</a></li>
+<li><a href="die-grundlagen/rendering-von-elementen.md">Rendering von Elementen</a></li>
+<li><a href="die-grundlagen/komponenten-in-react.md">Komponenten in React</a></li>
+<li><a href="die-grundlagen/state-und-lifecycle-methods.md">State und Lifecycle-Methods</a></li>
+<li><a href="die-grundlagen/event-handling.md">Event-Handling</a></li>
+<li><a href="die-grundlagen/formulare.md">Formulare</a></li>
+<li><a href="die-grundlagen/listen-refs-fragments-und-conditional-rendering.md">Listen, Fragments und Conditional Rendering</a></li>
+<li><a href="die-grundlagen/css-und-styling.md">CSS und Styling</a></li></ul></li>
+<li><a href="erweiterte-konzepte/README.md">III – Erweiterte Konzepte</a><ul>
+<li><a href="erweiterte-konzepte/higher-order-components.md">Higher Order Components</a></li>
+<li><a href="erweiterte-konzepte/render-props-und-functions-as-a-child.md">Functions as a Child und Render Props</a></li>
+<li><a href="erweiterte-konzepte/context-api.md">Context API</a></li>
+<li><a href="erweiterte-konzepte/refs.md">Refs</a></li>
+<li><a href="erweiterte-konzepte/error-boundaries.md">Error Boundaries</a></li>
+<li><a href="erweiterte-konzepte/portals.md">Portals</a></li>
+<li><a href="erweiterte-konzepte/code-splitting.md">Code Splitting</a></li>
+<li><a href="erweiterte-konzepte/type-checking.md">Typechecking mit PropTypes, Flow und TypeScript</a></li></ul></li>
+<li><a href="hooks/README.md">IV – Hooks</a><ul>
+<li><a href="hooks/einfuehrung.md">Einführung in Hooks</a></li>
+<li><a href="hooks/hooks-in-aller-kuerze.md">Verwendung von Hooks</a></li>
+<li><a href="hooks/grundsaetze-und-regeln-von-hooks.md">Grundsätze und Regeln von Hooks</a></li>
+<li><a href="hooks/eigene-hooks-implementieren.md">Eigene Hooks implementieren</a></li>
+<li><a href="hooks/hooks-api.md">Hooks API</a></li></ul></li>
+<li><a href="ecosystem/README.md">V – Das Ecosystem</a><ul>
+<li><a href="ecosystem/routing.md">Routing</a></li>
+<li><a href="ecosystem/state-management.md">State Management</a></li>
+<li><a href="ecosystem/mehrsprachigkeit.md">Mehrsprachigkeit</a></li>
+<li><a href="ecosystem/informationsquellen.md">Informationsquellen</a></li>
+<li><a href="ecosystem/tools.md">Tools und Frameworks</a></li></ul></li>
+<li><a href="schlusswort.md">Schlusswort</a></li>
+</ul>
+</div>
+<div class="chapter" data-filename="vorwort.md">
   <h1 id="vorwort">Vorwort</h1>
 <p>In diesem Buch geht es mir darum einen Einstieg zu ermöglichen, fortgeschrittene Themen aufzugreifen und dabei möglichst Best Practices zum Thema React zu vermitteln. Wenn ihr mit dem Buch nicht nur versteht wie etwas funktioniert, sondern auch warum, dann habe ich mein Ziel erfüllt. Nun hat jeder Entwickler andere Vorstellungen davon, welche Methoden die besten sind und wie man den einfachsten, effizientesten oder schönsten Code schreibt. Allerdings halte ich mich hier stark an die Empfehlungen von den Core-Entwicklern bei Facebook, die ebenfalls von der Community gut angenommenen Empfehlungen von AirBnB und noch einiger anderer Größen aus der „React-Szene“. Alles gewürzt mit einer Prise eigener Erfahrung.</p>
 <p>So gibt es bspw. mehrere Wege wie man seine Anwendung später publiziert, ob man es mit Tools wie <strong>Browserify, Rollup</strong> oder <strong>Webpack</strong> zu einem Bundle packt oder nicht. Ob man seine Komponenten als ES2015-Klassen schreibt oder <code>createClass</code> aus „ES5-Zeiten“ verwendet. Dort wo ich es für sinnvoll erachte, werde ich auf die diversen gängigen Methoden eingehen um nicht nur Wege vorzugeben, sondern auch Alternativen aufzuzeigen.</p>
@@ -32,17 +73,17 @@
 <p>Wenn euch das Buch gefällt oder ihr eine Frage habt, erreicht ihr mich am besten via Twitter. Hier freue ich mich über jede Rückmeldung, egal ob aufmunternde, positive Worte oder konstruktive Kritik!</p>
 <p>Und nun wünsche ich euch viel Spaß mit dem Buch!</p>
 </div>
-<div class="chapter">
+<div class="chapter" data-filename="ueber-den-autor.md">
   <h1 id="über-den-autor">Über den Autor</h1>
 <p><strong>Manuel Bieh,</strong> seit 2012 als Freelancer im Bereich Frontend-/JavaScript-Entwicklung tätig.</p>
 <p>Bevor ich mich dazu entschied, als Freelancer zu arbeiten, hatte ich ebenfalls bereits fast 10 Jahre Erfahrung als Web-Entwickler in verschiedenen Unternehmen gesammelt, meist mit dem Fokus auf Frontend-Entwicklung. Lange Zeit habe ich mich eher als Generalist statt als Spezialist gesehen und so gab und gibt es wenige bekannte Frontend-Technologien, mit denen ich während meiner beruflichen Laufbahn nicht schon mal zumindest kurz in Berührung gekommen wäre. Als Spezialist habe ich mich aber (außer wenn es generell um JavaScript geht) nirgendwo gesehen. Dies änderte sich dann schlagartig, als mir ein befreundeter Entwickler in 2014 erstmals von React erzählte und ich dann durch Neugierde und ganz konkret durch ein Projekt für Zalando erstmals intensiver mit React in Kontakt kam.</p>
 <p>Anfangs fremdelte ich noch etwas - so wie übrigens viele, die neu in React einsteigen, doch je länger und intensiver ich mich mit React auseinandersetzte, desto mehr schlug meine anfängliche Skepsis in Begeisterung um. Seitdem hat mich React so gepackt, dass ich meine Projekte allesamt so ausgewählt habe, dass dort React im Einsatz ist (und dessen Einsatz auch sinnvoll ist!). In dieser Zeit habe ich viel gelernt (und lerne auch immer noch jeden Tag dazu), habe dabei in kleinen Teams mit unter 5 und in recht großen Teams mit über 30 Leuten gearbeitet, dort mein React-Wissen eingebracht und selbst immer wieder neue Eindrücke und Wissen mitgenommen.</p>
 <p>Die Komplexität von React ist dabei aber nicht zu unterschätzen. Und so ist es zwar möglich, relativ schnell in ziemlich kurzer Zeit eine Anwendung mit React zu entwickeln. Wenn man aber Wert auf hohe Qualität legt, gibt es dort viele Stellschrauben, an denen man drehen kann, um Code-Qualität, Performance und Wartbarkeit zu erhöhen; diese sind teilweise auch Leuten nicht bekannt, die schon viel und lange mit React entwickelt haben. Und so würde ich mich selbst nach mehrjähriger intensiver und täglicher Arbeit mit React sicher noch immer nicht als absoluten Experten bezeichnen. Aber ich denke, dass mit der Zeit dennoch genug Wissen zusammengekommen ist, welches ich in Form dieses Buches weitergeben kann, um euch den Einstieg zu erleichtern und auch noch den einen oder anderen Profi-Tipp an die Hand zu geben.</p>
 </div>
-<div class="chapter">
+<div class="chapter" data-filename="einfuehrung/README.md">
   <h1 id="i-–-einführung">I – Einführung</h1>
 </div>
-<div class="chapter">
+<div class="chapter" data-filename="einfuehrung/einfuehrung.md">
   <h1 id="allgemeines">Allgemeines</h1>
 <h2 id="was-ist-react-eigentlich-und-was-ist-es-nicht">Was ist React eigentlich und was ist es nicht?</h2>
 <p>Zitieren wir hier an erster Stelle mal die React-Dokumentation, denn die bringt es sehr prägnant auf den Punkt:</p>
@@ -69,9 +110,9 @@
 <p>Dies bedeutet, dass nur neue <em>Major-Releases</em> (<code>16.x.x</code> auf <code>17.x.x</code>) Breaking Changes enthalten, <em>Minor-Releases</em> (bspw. <code>16.6.x</code> auf <code>16.7.x</code>) enthalten neue Features oder bekommen Deprecation Warnings, die den Entwickler auf kommende Major-Releases vorbereiten, während <em>Patch-Releases</em> (bspw.<code>16.8.0</code> auf <code>16.8.1</code>) lediglich Bugfixes beinhalten.</p>
 <p>Vor dem Release von Major- oder Minor-Releases gibt es regelmäßig auch Alpha-, Beta- und RC- (<em>„Release Candidate“</em>) Versionen, mit denen man vorab schon einen Blick auf kommende Features werfen kann. Diese sind aber jeweils mit Vorsicht zu genießen, da sich die Funktionsweise neuer Features bis zum endgültigen Release noch ändern könnten.</p>
 <p class="has-image"><span><img src="./assets/.gitbook/deprecation-warning.png" alt="Beispiel für eine Deprecation Warning" /><span class="caption">Beispiel für eine Deprecation Warning</span></span></p>
-<p>Dies ist sicher dem Umstand geschuldet, dass eben auch bei Facebook sehr viele React-Komponenten im Einsatz sind und man dort nicht einfach mal eben tiefgreifende Änderungen vornehmen kann, ohne Probleme zu verursachen. Die Gedanken und Begründungen der Entwickler lassen sich dabei jederzeit ausführlich im GitHub Issue-Tracker verfolgen, alle wichtigen Änderungen werden dabei in sog.<a href="https://github.com/facebook/react/issues?utf8=%E2%9C%93&q=is%3Aissue%20is%3Aopen%20umbrella"> Umbrella-Tickets</a> zusammengefasst.</p>
+<p>Dies ist sicher dem Umstand geschuldet, dass eben auch bei Facebook sehr viele React-Komponenten im Einsatz sind und man dort nicht einfach mal eben tiefgreifende Änderungen vornehmen kann, ohne Probleme zu verursachen. Die Gedanken und Begründungen der Entwickler lassen sich dabei jederzeit ausführlich im GitHub Issue-Tracker verfolgen, alle wichtigen Änderungen werden dabei in sog. <a href="https://github.com/facebook/react/issues?utf8=%E2%9C%93&q=is%3Aissue%20is%3Aopen%20umbrella">Umbrella-Tickets</a> zusammengefasst.</p>
 </div>
-<div class="chapter">
+<div class="chapter" data-filename="einfuehrung/ab-ins-kalte-wasser.md">
   <h1 id="ab-ins-kalte-wasser">Ab ins kalte Wasser</h1>
 <p>Nun hatten wir bereits das „Was“, das „Wann“ und das „Wo“. Kommen wir also zum „Wie“ und schreiben unsere erste kleine <strong>React-Komponente</strong>. Neben <strong>React</strong> selbst benötigen wir für die Ausgabe unserer App im Browser auch das Package <strong>ReactDOM,</strong> um unsere Anwendung <em>mounten</em> zu können, also grob gesagt: im Browser nutzbar zu machen.</p>
 <p>Ein sehr minimalistisches Setup, um schnell mit React loslegen zu können, sieht wie folgt aus:</p>
@@ -148,7 +189,7 @@ Mittlerweile kamen einige weitere dazu, die aber vorrangig zur Performance-Optim
 </div>
 <p>Damit ist das generelle Funktionsprinzip von React erst einmal erklärt, unsere erste Komponente ist implementiert und im Browser zu sehen!</p>
 </div>
-<div class="chapter">
+<div class="chapter" data-filename="einfuehrung/tools-und-setup.md">
   <h1 id="tools-und-setup">Tools und Setup</h1>
 <h2 id="tools">Tools</h2>
 <p>Um störungsfrei und komfortabel mit React arbeiten zu können, sollten einige Bedingungen erfüllt sein. Nicht alles davon ist <strong>zwingend</strong> notwendig, es erleichtert das Entwicklerleben jedoch ungemein, weswegen ich dennoch <strong>dringend</strong> dazu rate und auch bei allen folgenden Beispielen davon ausgehen werde, dass ihr diese Tools installiert habt:</p>
@@ -264,10 +305,10 @@ Happy hacking!</code></pre>
 <p>Wer CRA nicht installieren möchte oder es eilig hat, dem sei <a href="https://codesandbox.io/">CodeSandbox</a> ans Herz gelegt. Hier kann in einer per Knopfdruck ein neues Setup mit Create React App als Basis erstellt und dann in einer Browser-Entwicklungsumgebung herumprobiert werden.</p>
 </div>
 </div>
-<div class="chapter">
+<div class="chapter" data-filename="die-grundlagen/README.md">
   <h1 id="ii-–-grundlagen">II – Grundlagen</h1>
 </div>
-<div class="chapter">
+<div class="chapter" data-filename="die-grundlagen/exkurs-es2015+.md">
   <h1 id="exkurs-es2015">Exkurs ES2015+</h1>
 <h2 id="das-„neue“-javascript">Das „neue“ JavaScript</h2>
 <p><strong>ES2015</strong> ist kurz gesagt eine modernisierte, aktuelle Version von JavaScript mit vielen neuen Funktionen und Syntax-Erleichterungen. <strong>ES2015</strong> ist der Nachfolger von <strong>ECMAScript</strong> in der Version 5 (<strong>ES5</strong>), hieß daher ursprünglich auch einmal <strong>ES6</strong> und wird auch in einigen Blogs und Artikeln immer noch so bezeichnet. Stößt du also beim Lesen von Artikeln zu React auf den Begriff <strong>ES6,</strong> ist damit <strong>ES2015</strong> gemeint. Ich schreibe hier meist von <strong>ES2015+</strong> und meine damit Änderungen, die seit 2015 in JavaScript eingeflossen sind. Dazu gehören ES2016 (ES7), ES2017 (ES8) und ES2018 (ES9).</p>
@@ -432,11 +473,11 @@ string.endsWith(value);</code></pre>
 <span class="hljs-built_in">Array</span>.isArray(links); <span class="hljs-comment">// true</span></code></pre>
 <h4 id="methoden-auf-dem-array-prototypen">Methoden auf dem Array-Prototypen</h4>
 <p>Die Methoden auf dem Array-Prototypen können <strong>direkt auf eine Array-Instanz</strong> angewendet werden. Die gängigsten während der Arbeit mit React und insbesondere später mit Redux sind:</p>
-<pre><code class="hljs js language-js"><span class="hljs-built_in">Array</span>.find(func);
+<pre><code class="hljs javascript language-javascript"><span class="hljs-built_in">Array</span>.find(func);
 <span class="hljs-built_in">Array</span>.findIndex(func);
 <span class="hljs-built_in">Array</span>.includes(value);</code></pre>
 <p>Die <code>Array.find()</code>-Methode dient, wie der Name es erahnen lässt, dazu, das <strong>erste</strong> Element eines Arrays zu finden, das bestimmte Kriterien erfüllt, die mittels der als ersten Parameter übergebenen Funktion geprüft werden.</p>
-<pre><code class="hljs js language-js"><span class="hljs-keyword">const</span> numbers = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">5</span>, <span class="hljs-number">9</span>, <span class="hljs-number">13</span>, <span class="hljs-number">24</span>, <span class="hljs-number">27</span>, <span class="hljs-number">39</span>, <span class="hljs-number">50</span>];
+<pre><code class="hljs javascript language-javascript"><span class="hljs-keyword">const</span> numbers = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">5</span>, <span class="hljs-number">9</span>, <span class="hljs-number">13</span>, <span class="hljs-number">24</span>, <span class="hljs-number">27</span>, <span class="hljs-number">39</span>, <span class="hljs-number">50</span>];
 <span class="hljs-keyword">const</span> biggerThan10 = numbers.find(<span class="hljs-function">(<span class="hljs-params">number</span>) =&gt;</span> number &gt; <span class="hljs-number">10</span>); <span class="hljs-comment">// 13</span>
 
 <span class="hljs-keyword">const</span> users = [
@@ -1107,7 +1148,7 @@ getUser(id)
 <li><strong>Import</strong> und <strong>Export</strong> für die Kapselung von wiederverwendbarem JavaScript auf Module-Ebene</li>
 </ul>
 </div>
-<div class="chapter">
+<div class="chapter" data-filename="die-grundlagen/jsx-eine-einfuehrung.md">
   <h1 id="jsx-–-eine-einführung">JSX – eine Einführung</h1>
 <h2 id="jsx-als-wichtiger-bestandteil-in-der-react-entwicklung">JSX als wichtiger Bestandteil in der React-Entwicklung</h2>
 <p>Bevor wir tiefer in die Entwicklung von Komponenten einsteigen möchte ich zuerst einmal auf <strong>JSX</strong> eingehen, da JSX einen wesentlichen Teil bei der Arbeit mit React darstellt. Wie eingangs schon erwähnt stellt JSX einen ganz grundlegenden Teil der meisten React-Komponenten dar und ist aus meiner Sicht einer der Gründe, warum React so schnell und positiv von so vielen Entwicklern angenommen wurde. Mittlerweile bieten auch andere Frameworks wie Vue.js die Möglichkeit JSX zur komponentengetriebenen Entwicklung einzusetzen.</p>
@@ -1230,7 +1271,7 @@ getUser(id)
 </ul>
 </div>
 </div>
-<div class="chapter">
+<div class="chapter" data-filename="die-grundlagen/rendering-von-elementen.md">
   <h1 id="rendering-von-elementen">Rendering von Elementen</h1>
 <p>In den vorherigen Kapiteln habe ich sie wie selbstverständlich bereits einige Male erwähnt, doch was genau sind <strong>React-Elemente</strong> eigentlich?</p>
 <p><strong>React-Elemente</strong> sind der kleinstmögliche Baustein in einer <strong>React-Anwendung</strong>. Anhand der <strong>Elemente</strong> beschreibt ihr, was der Benutzer später auf dem Bildschirm zu sehen bekommt. Trotz ihres gleichen Namens unterscheiden sie sich von DOM-Elementen in einem wesentlichen Punkt: Sie sind lediglich ein einfaches Objekt und damit auch günstig (im Sinne der Performance) zu erstellen. Die bloße Erstellung eines <strong>React-Elements</strong> mittels <code>React.createElement()</code> löst dabei noch keine DOM-Operation aus!</p>
@@ -1284,7 +1325,7 @@ setInterval(changeTime, <span class="hljs-number">1000</span>);</code></pre>
 <p>Das Rerendering lösen dann meist <strong>Komponenten</strong> aus, indem sich ihr State ändert oder ihnen von außen neue Props hereingereicht werden. Mit Komponenten geht es im nächsten Kapitel weiter!</p>
 </div>
 </div>
-<div class="chapter">
+<div class="chapter" data-filename="die-grundlagen/komponenten-in-react.md">
   <h1 id="komponenten-in-react">Komponenten in React</h1>
 <h2 id="die-zwei-erscheinungsformen-von-react-components">Die zwei Erscheinungsformen von React Components</h2>
 <p>Eine erste einfache <code>HelloWorld</code>-Komponente haben wir schon beim Sprung ins kalte Wasser implementiert. Jedoch war dies natürlich bewusst eine sehr simple Komponente, die nicht gerade sehr praxisnah war und auch längst nicht alles beinhaltet hat was uns React bietet. Aber sie diente als gute erste Veranschaulichung, um die grundsätzliche Funktionsweise von von <strong>React</strong> und <strong>React-Komponenten</strong> kennenzulernen.</p>
@@ -1746,7 +1787,7 @@ ReactDOM.render(
 </ul>
 </div>
 </div>
-<div class="chapter">
+<div class="chapter" data-filename="die-grundlagen/state-und-lifecycle-methods.md">
   <h1 id="state-und-lifecycle-methods">State und Lifecycle-Methods</h1>
 <p>Kommen wir zu dem, was die Arbeit mit React erstmal wirklich effizient macht: <strong>State</strong> und die sogenannten <strong>Lifecycle-Methods</strong>.</p>
 <p>Wie im vorangegangenen Kapitel bereits angesprochen, können Komponenten einen eigenen Zustand, den <strong>State</strong>, halten, verwalten und verändern. Dabei gilt der Grundsatz: <strong>Ändert sich der State einer Komponente, löst dies immer auch ein Rerendering der Komponente aus!</strong> Dieses Verhalten kann durch die Verwendung von <code>PureComponent</code> auch explizit unterbunden werden, was in einigen Fällen sinnvoll ist. Aber der Grundsatz bleibt unverändert: Eine State-Änderung löst ein Rerendering einer Komponente und ihrer Kind-Komponenten aus, außer diese sind selbst wiederum als <code>PureComponent</code> implementiert oder von einem <code>React.memo()</code>-Aufruf umschlossen.</p>
@@ -2104,7 +2145,7 @@ ReactDOM.render(<span class="hljs-tag">&lt;<span class="hljs-name">ParentCompone
 <h3 id="diagramm-der-lifecycle-methoden">Diagramm der Lifecycle-Methoden</h3>
 <p class="has-image"><span><img src="./assets/.gitbook/lifecycle-methods-2.jpg" alt="Diagram der verschiedenen Lifecycle-Methods in ihren jeweiligen Phasen (CC0 Dan Abramov)" /><span class="caption">Diagram der verschiedenen Lifecycle-Methods in ihren jeweiligen Phasen (CC0 Dan Abramov)</span></span></p>
 </div>
-<div class="chapter">
+<div class="chapter" data-filename="die-grundlagen/event-handling.md">
   <h1 id="event-handling">Event-Handling</h1>
 <p>Ein wesentlicher Teil bei der Entwicklung von Anwendungen mit einem komplexen User Interfaces ist natürlich die Interaktion zwischen Benutzer und dem Interface an sich - insbesondere in Form von <strong>Events</strong>.</p>
 <p>Ich drücke einen Knopf und es passiert etwas. Ich schreibe einen Text in ein Feld und es passiert etwas. Ich wähle ein Element aus einer Liste und es passiert etwas. In einfachem JavaScript stellt uns der Browser dafür die Methoden <code>addEventListener()</code> und <code>removeEventListener()</code> bereit. Auf diese beiden Event-Methoden kann in React in den meisten Fällen nahezu komplett verzichtet werden, da React ein eigenes System zum Definieren von Benutzerinteraktion gleich mitbringt. Und zwar, nicht erschrecken: über <strong>Inline-Events</strong>.</p>
@@ -2260,7 +2301,7 @@ ReactDOM.render(<span class="hljs-tag">&lt;<span class="hljs-name">ParentCompone
 </ul>
 </div>
 </div>
-<div class="chapter">
+<div class="chapter" data-filename="die-grundlagen/formulare.md">
   <h1 id="formulare">Formulare</h1>
 <p>Formulare besitzen in React eine kleine Sonderstellung und funktionieren etwas anders als andere DOM-Elemente, da Formulare eine Art <strong>eigenen State</strong> besitzen, der erst einmal nichts mit dem React-State gemein hat.</p>
 <p>Der State von Textfeldern besteht bspw. aus dem eingegebenen Wert, der State von Checkboxen oder Radio-Buttons resultiert aus der Tatsache ob diese ausgewählt sind oder nicht, Auswahllisten (<code>&lt;select&gt;&lt;/select&gt;</code>) halten als State den ausgewählten Wert bzw. bei Mehrfachauswahl die ausgewählten Werte. React ändert an diesem Verhalten grundsätzlich erstmal nichts. Wer möchte, kann das so beibehalten und muss sich um nichts weiter kümmern.</p>
@@ -2478,7 +2519,7 @@ ReactDOM.render(<span class="hljs-tag">&lt;<span class="hljs-name">ParentCompone
 <p>Anders als in herkömmlichem HTML erwartet React den Wert von Textareas, Selects und Inputfeldern mit Texteingabe im <code>value</code>-Attribut.</p>
 </div>
 </div>
-<div class="chapter">
+<div class="chapter" data-filename="die-grundlagen/listen-refs-fragments-und-conditional-rendering.md">
   <h1 id="listen-fragments-und-conditional-rendering">Listen, Fragments und Conditional Rendering</h1>
 <p>Bis hierher habt ihr schon eine ganze Menge über React erfahren. Ihr wisst, wofür die <strong>Props</strong> sind, was der <strong>State</strong> ist und wie er sich von den <strong>Props</strong> unterscheidet, ihr wisst wie eine React-Komponente implementiert wird, was der Unterschied einer React-<strong>Komponente</strong> und einem React-<strong>Element</strong> ist und wie ihr mit <strong>JSX</strong> einen Elementenbaum beschreibt, der später in eurer Anwendung gerendert wird. <strong>Lifecycle-Methoden</strong> helfen euch, auf Änderungen eurer Daten zu reagieren. Damit habt ihr auch schon alles beisammen um eine simple React-Anwendung zu entwickeln.</p>
 <p>Allerdings gibt es noch einige Details, die in den vorherigen Kapiteln bisher gar keine Erwähnung fanden oder ohne weitere Erklärung in Beispielen benutzt wurden, die aber mit steigender Komplexität eurer Anwendung zunehmend relevanter werden.</p>
@@ -2895,7 +2936,7 @@ export default TextField;</span></code></pre>
 }</code></pre>
 <p>Aus einem langen und potentiell sehr unübersichtlichen Markup haben wir also eine übersichtliche, prägnante <code>render()</code>-Methode gemacht, die auf oberster Ebene aus wenigen Komponenten besteht. Möchten wir in Zukunft außerdem eine Änderung vornehmen, die sich auf alle Textfelder auswirkt, bspw. eine neue Klasse hinzufügen, muss dies nur noch an einer einzigen Stelle geändert werden – in der neuen <code>TextField</code>-Komponente.</p>
 </div>
-<div class="chapter">
+<div class="chapter" data-filename="die-grundlagen/css-und-styling.md">
   <h1 id="css-und-styling">CSS und Styling</h1>
 <p>Styling in React ist ein relativ eigenes Thema. So bietet React keine Hausmittel an, um das Styling von Anwendungen mittels CSS zu erleichtern, mit CSS-in-JS hat sich jedoch eine ganz eigene, teilweise sehr kontrovers diskutierte Bewegung zu der Thematik gebildet. Dabei wird der Styling-Teil ebenfalls in JavaScript umgesetzt, um nicht mit dem Paradigma der komponentenbasierten Entwicklung zu brechen. Doch eins nach dem anderen, starten wir erst einmal mit den Basics und arbeiten uns dann Stück für Stück an das Thema heran.</p>
 <h3 id="styling-mittels-style-attribut">Styling mittels style-Attribut</h3>
@@ -3050,10 +3091,10 @@ ReactDOM.render(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-n
 <li><a href="https://github.com/callstack/linaria">linaria</a></li>
 </ul>
 </div>
-<div class="chapter">
+<div class="chapter" data-filename="erweiterte-konzepte/README.md">
   <h1 id="iii-–-erweiterte-konzepte">III – Erweiterte Konzepte</h1>
 </div>
-<div class="chapter">
+<div class="chapter" data-filename="erweiterte-konzepte/higher-order-components.md">
   <h1 id="higher-order-components">Higher Order Components</h1>
 <p><strong>Higher Order Components</strong> (meist abgekürzt: <strong>HOC</strong> oder <strong>HOCs</strong>) waren und sind ein sehr zentrales Konzept bei der Arbeit mit React. Sie erlauben es, Komponenten mit wiederverwendbarer Logik zu implementieren und sind angelehnt an <strong>Higher Order Functions</strong> aus der funktionalen Programmierung. Das Prinzip hinter derartigen Funktionen ist, dass sie eine Funktion als Parameter entgegennehmen und eine neue Funktion zurückgeben. Im Fall von React wird das Prinzip auf Komponenten angewandt. Daher der von den <strong>Higher Order</strong> <em><strong>Functions</strong></em> abgeleitete Name <strong>Higher Order</strong> <em><strong>Component</strong></em>.</p>
 <p>Zum leichteren Verständnis gleich ein erstes einfaches Beispiel:</p>
@@ -3223,7 +3264,7 @@ ReactDOM.render(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-n
 <p>Zwar werden <strong>Higher Order Components</strong> noch immer häufig verwendet und gegen ihre Verwendung ist nichts einzuwenden. Allerdings gibt es mittlerweile neuere Konzepte und seit den neuesten Updates vor allem neue Wege um eine ähnliche Funktionalität in vielen Fällen in noch übersichtlicher Form zu erreichen. Zwei davon sind <strong>Functions as a Child</strong> und die neue <strong>Context API</strong>, die in Version 16.3.0 ihren Weg in React gefunden hat. Diese werden in den folgenden Kapiteln beschrieben.</p>
 </div>
 </div>
-<div class="chapter">
+<div class="chapter" data-filename="erweiterte-konzepte/render-props-und-functions-as-a-child.md">
   <h1 id="functions-as-a-child-und-render-props">Functions as a Child und Render Props</h1>
 <p><strong>Functions as a Child</strong> (kurz: <em>FaaC</em>) und <strong>Render Props</strong> werden in der offiziellen React-Dokumentation jeweils separat beschrieben, wobei <strong>Functions as Children</strong> im Kapitel zu <strong>Render Props</strong> ebenfalls erwähnt werden. Da beide vom Prinzip her ziemlich identisch funktionieren, möchte ich die beiden Konzepte in einem Kapitel beschreiben. Doch erst einmal: Worum geht es überhaupt?</p>
 <p>Bei <strong>Functions as a Child</strong> (in der offiziellen Doku auch als <strong>Function as Children</strong> bezeichnet) und bei <strong>Render Props</strong> handelt es sich um Patterns, die ähnlich wie <strong>Higher Order Components</strong> Business- oder Applikations-Logik in einer Art übergeordneten Komponente bündeln. Anders als bei <strong>Higher Order Components</strong> wird jedoch keine neue Komponente zurückgegeben, dieser dann entsprechende Daten als Props übergeben werden, sondern es wird eine Funktion aufgerufen, die die entsprechenden Daten als Parameter übergeben bekommt. Beim <strong>Function as Children-</strong>Pattern ist diese Funktion ein Kind-Element der Komponente (also: <code>this.props.children</code>), beim <strong>Render Props-</strong>Pattern eine Prop die in den meisten Fällen den Namen <code>render</code> (also: <code>this.props.render</code>) hat, aber auch jeden anderen Namen haben könnte.</p>
@@ -3392,7 +3433,7 @@ ReactDOM.render(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-n
 <p>Sie lassen sich anders als HOCs jedoch auch innerhalb einer <code>render()</code>-Methode von Komponenten verwenden und müssen nicht starr mit einer Komponente „verknüpft“ werden. Dies macht sie noch etwas flexibler in ihren Einsatzmöglichkeiten als <strong>Higher Order Components,</strong> ohne dabei an Übersichtlichkeit einzubüßen.</p>
 </div>
 </div>
-<div class="chapter">
+<div class="chapter" data-filename="erweiterte-konzepte/context-api.md">
   <h1 id="context-api">Context API</h1>
 <p>Die <strong>Context API</strong> wurde in React sehr lange Zeit eher stiefmütterlich behandelt, zunächst nur prototypisch implementiert und als experimentell bezeichnet, ehe sie in React <strong>16.3.</strong> in grundlegend überarbeiteter Form offizieller Teil von React wurde.</p>
 <p>Sie wurde dafür konzipiert, Daten innerhalb einer Komponenten-Hierarchie an sog. <em>Konsumenten</em> zu verteilen, ohne dabei Props an jede einzelne Komponente explizit übergeben zu müssen. Dies kann in einigen Fällen sehr mühsam sein, wenn es sich um Daten handelt, die von vielen Komponenten innerhalb des Baumes gemeinsam immer wieder verwendet werden. Dazu gehören bspw. Sprach-Einstellungen oder ein globales Style-Schema („Theme“).</p>
@@ -3646,7 +3687,7 @@ Translated.contextType = LanguageContext;</code></pre>
 }</code></pre>
 <p>Im zweiten Beispiel übergeben wir lediglich eine <em>Referenz</em> zum <code>state</code>-Objekt der Komponente. Da diese auch beim Re-Rendering der Komponente erhalten bleibt, löst dieses Vorgehen kein Re-Rendering aus, solange sich der Inhalt des States der Komponente nicht ändert!</p>
 </div>
-<div class="chapter">
+<div class="chapter" data-filename="erweiterte-konzepte/refs.md">
   <h1 id="refs">Refs</h1>
 <p><strong>Refs</strong> (also <strong>References/Referenzen</strong>) erlauben es in React, direkt auf DOM-Elemente zuzugreifen, die während des Render-Prozesses erzeugt wurden. Auch wenn das in React in den meisten Fällen gar nicht notwendig ist, gibt es einige Situationen, in denen man nicht drumherum kommt, direkt auf die DOM-Elemente zuzugreifen. Etwa, wenn die Position oder die Größe eines Elements benötigt wird, um basierend darauf bspw. ein Tooltip einzublenden oder um ein Eingabefeld mittels <code>.focus()</code> nach dem Laden einer Komponente zu fokussieren.</p>
 <p>Hier hat sich React im Laufe der Zeit weiterentwickelt und hat uns so historisch bedingt verschiedene Möglichkeiten geschaffen, solche <strong>Refs</strong> zu erstellen. Die <strong>Refs</strong>, egal in welcher Form, werden dabei stets über die <code>ref</code>-Prop eines DOM-Elements im <strong>JSX</strong> bzw. <code>createElement()</code>-Aufruf definiert.</p>
@@ -3877,7 +3918,7 @@ class App extends React.Component {
   }
 }</code></pre>
 </div>
-<div class="chapter">
+<div class="chapter" data-filename="erweiterte-konzepte/error-boundaries.md">
   <h1 id="error-boundaries">Error Boundaries</h1>
 <p>Tritt innerhalb einer React-Anwendung ein Fehler auf und wird eine Exception geworfen, führt dies unter Umständen dazu, dass die Anwendung nicht mehr angezeigt wird und der Benutzer nur noch einen weißen Bildschirm sieht. Um dieses unschöne Verhalten zu unterbinden, wurden in React 16.0 die sog. <strong>Error Boundaries</strong> eingeführt.</p>
 <p>Dabei handelt es sich um eine bestimmte Art von Komponente die diverse Fehler <strong>innerhalb ihrer Kind-Hierarchie</strong> abfangen und verarbeiten kann und im Falle eines Fehlers einen alternativen Seitenbaum rendern kann, um den Benutzer vor dem völligen Absturz und dem Anblick eines <em>weißen Screens</em> zu bewahren. <strong>Error Boundaries</strong> agieren also stets als Eltern-Komponente eines Seitenbaums. Kommt es in einer Komponente innerhalb dieses Seitenbaums zu einem Fehler springt die Error Boundary ein und kümmert sich um das Handling des entsprechenden Fehlers. Man kann dieses Verhalten durchaus als eine besondere Art eines <code>try</code>/<code>catch</code> Blocks für Komponenten-Hierarchien verstehen.</p>
@@ -3966,7 +4007,7 @@ ReactDOM.render(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-n
 <p>Um derartige Fehler im Rendering von Komponenten vernünftig behandeln zu können wurden die <strong>Error Boundaries</strong> eingeführt. Durch sie können Benutzer auf den fehlerhaften Zustand der Anwendung hingewiesen werden. Da Fehler in einer Anwendung nie ganz ausgeschlossen werden können (Benutzer können hier sehr einfallsreich sein!), ist die Verwendung von <strong>Error Boundaries</strong> sehr zu empfehlen!</p>
 </div>
 </div>
-<div class="chapter">
+<div class="chapter" data-filename="erweiterte-konzepte/portals.md">
   <h1 id="portals">Portals</h1>
 <p>Mit <strong>Portals</strong> (dt. <em>Portale</em>) bietet React die Möglichkeit, Komponenten in DOM Nodes zu rendern, die sich <em>außerhalb</em> der Parent-Node der jeweiligen Komponenten-Hierarchie befinden, aber dennoch Zugriff auf die aktuelle Komponenten-Umgebung haben. Ein möglicher (aber bei weitem nicht ihr einziger) Anwendungsfall hierfür sind u.a. Overlays, die in einem eigenen <code>&lt;div&gt;</code> außerhalb der tatsächlichen Anwendung gerendert werden.</p>
 <p>Ein Portal befindet sich dabei weiter im Kontext der Komponente, die das Portal erstellt und hat somit Zugriff auf alle Daten, die in der Eltern-Komponente zur Verfügung stehen (wie etwa die Props oder den State) befindet sich im HTML jedoch an einer ggf. völlig anderen Stelle als die restliche Anwendung. Dies ist wichtig, wenn innerhalb des Portals bspw. auf Daten aus dem State der Eltern-Komponente oder auf einen gemeinsamen Context wie bspw. Übersetzungen zugegriffen werden soll.</p>
@@ -4102,7 +4143,7 @@ ReactDOM.render(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-n
 <p>Ein besonderes Augenmerk gilt hier der <code>this.closeModal</code> Methode. Diese wird als Methode der App-Komponente definiert, wird aber innerhalb der <code>ModalPortal</code>-Komponente beim Klick auf den „Modal schließen“-Button im Kontext der <code>App</code>-Komponente aufgerufen.</p>
 <p>Sie kann also problemlos den <code>modalIsOpen</code> State der Komponente verändern. Und das, obwohl die Komponente sich gar nicht innerhalb <code>&lt;div id="root&gt;</code> befindet wie der Rest unserer kleinen App. Dies ist möglich, da es sich eben um ein Portal handelt, deren Inhalt sich <strong>aus React-Sicht</strong> im selben Komponenten-Baum wie die App selbst befindet, nicht jedoch <strong>aus HTML-Sicht</strong>.</p>
 </div>
-<div class="chapter">
+<div class="chapter" data-filename="erweiterte-konzepte/code-splitting.md">
   <h1 id="code-splitting">Code Splitting</h1>
 <p>Wer ein Projekt mit React entwickelt, nutzt in den allermeisten Fällen auch einen <strong>Bundler</strong> wie <strong>Webpack,</strong> <strong>Browserify</strong> oder <strong>Rollup</strong>. Diese sorgen dafür, dass alle einzelnen Dateien, alle Imports, später zu einer einzigen großen Datei gebündelt wird, die dann relativ einfach deployed werden kann, ohne dass sich ein Entwickler noch all zu viele Gedanken um relative Verlinkungen machen muss. Dieser Vorgang wird dementsprechend <strong>Bundling</strong> genannt. In sehr großen und komplexen Projekten kann so ein <strong>Bundle</strong> schnell mal ein Megabyte groß oder gar größer werden, insbesondere wenn viele Third-Party-Bibliotheken im Einsatz sind. Das ist in vielerlei Hinsicht ein Problem, denn große Bundles benötigen länger, um vom Browser heruntergeladen zu werden und auch das Ausführen unnötig großer Bundles führt unweigerlich zu Performance-Einbußen.</p>
 <p>Um dem Problem der großen Bundles zu begegnen, gibt es das sog. <strong>Code Splitting</strong>. Beim Code Splitting wird die Anwendung in mehrere kleinere Bundles aufgeteilt, die allesamt für sich allein gesehen lauffähig sind und weitere Bundles nachladen, sollten diese später benötigt werden. So ist die Aufteilung in ein Bundle mit den meist benutzten Abhängigkeiten (bspw. React, React DOM, …) und jeweils ein Bundle pro Route eine recht gängige Methode beim <strong>Code Splitting</strong>.</p>
@@ -4177,7 +4218,7 @@ ReactDOM.render(<span class="hljs-tag">&lt;<span class="hljs-name">App</span> /&
 <p><strong>Vorsicht:</strong> momentan werden <strong>Lazy</strong> und <strong>Suspense</strong> nur bei der Verwendung in <strong>clientseitigen</strong> Anwendungen unterstützt. Unterstützung für <strong>serverseitiges</strong> Rendering gibt es für dieses Feature aktuell noch nicht und befindet sich derzeit in Arbeit.</p>
 </div>
 </div>
-<div class="chapter">
+<div class="chapter" data-filename="erweiterte-konzepte/type-checking.md">
   <h1 id="typechecking-mit-proptypes-flow-und-typescript">Typechecking mit PropTypes, Flow und TypeScript</h1>
 <p><strong>Typechecking</strong> ist eine einfache Methode, um potentielle Fehler in einer Anwendung zu vermeiden. Das Prinzip dabei ist ganz einfach: Komponenten sollten „Pure“ sein, wie wir schon in der Einführung gelernt haben. Sie sollten also keine Seiten-Effekte auslösen und vor allem sollten sie bei den <strong>gleichen Eingabeparametern</strong> (was im Fall von Komponenten die <strong>Props</strong> und deren daraus abgeleiteter <strong>State</strong> sind) auch die <strong>identische Ausgabe</strong> erzeugen.</p>
 <p>Das bedeutet, dass es möglichst vorhersehbar und sehr strikt sein sollte, welche <strong>Props</strong> in eine Komponente hereingereicht werden können und welche von ihr verarbeitet werden. Um dies sicherzustellen, können wir uns das sog. <strong>Typechecking</strong> zunutze machen. JavaScript ist prinzipiell eine untypisierte Sprache. Eine Variable, die ursprünglich mal ein <strong>String</strong> war, kann problemlos in eine <strong>Number</strong> oder gar ein <strong>Object</strong> umgewandelt werden, ohne dass der JavaScript-Interpreter ein Problem damit hat.</p>
@@ -4394,10 +4435,10 @@ type StateT = {
 <p>Im Bezug auf React wichtig zu wissen ist, dass TypeScript-Files üblicherweise eine <code>.ts</code> Datei-Endung haben, enthält eine Datei auch JSX, muss die Datei zwingend mit <code>.tsx</code> enden.</p>
 <p>Mit dem Release von Babel 7 wurde auch die Integration vereinfacht und es benötigt nun nicht mehr zwangsweise den <strong>TypeScript</strong> Compiler (<code>tsc</code>) sondern kann in Form eines Babel-Plugins verwendet werden. Das Plugin wird mit dem Babel Preset <code>@babel/preset-typescript</code> installiert.</p>
 </div>
-<div class="chapter">
+<div class="chapter" data-filename="hooks/README.md">
   <h1 id="iv-–-hooks">IV – Hooks</h1>
 </div>
-<div class="chapter">
+<div class="chapter" data-filename="hooks/einfuehrung.md">
   <h1 id="einführung-in-hooks">Einführung in Hooks</h1>
 <p><strong>Hooks</strong> sind ein komplett neues Konzept, das in React <strong>16.8.0</strong> eingeführt wurde. So komplett neu, dass ich <strong>Hooks</strong> in diesem Buch ein eigenes Kapitel widmen möchte. Einige der React Core-Entwickler haben es bereits als die aufregendste und grundlegendste Änderung an React in den letzten Jahren bezeichnet und in der Tat haben <strong>Hooks</strong> viel Aufsehen erregt, als sie auf der <strong>React Conf 2018</strong> angekündigt und gleich im Anschluss in der ersten Alpha-Version von React 16.7. eingeführt wurden. Inzwischen haben auch andere Frameworks eigene <strong>Hooks</strong> implementiert. Doch worum geht es eigentlich?</p>
 <p>Mit <strong>Hooks</strong> ist es erstmals möglich, Mechanismen in <strong>Function Components</strong> zu benutzen die bisher nur in Klassen-Komponenten möglich waren. Features wie <code>setState</code> oder Lifecycle Methoden, ähnlich wie <code>componentDidMount()</code> oder <code>componentDidUpdate()</code>, werden dank <strong>Hooks</strong> auch in <strong>Function Components</strong> möglich. <strong>Hooks</strong> sind dabei im wesentlichen Sinn nichts anderes als spezielle Funktionen, die einem festen Schema folgen. So gibt es die Konvention, dass <strong>Hooks</strong> zwangsweise mit <code>use</code> anfangen müssen.</p>
@@ -4418,7 +4459,7 @@ type StateT = {
 <p class="has-image"><span><img src="./assets/.gitbook/react-hooks.jpg" alt="Die gleiche Funktionalität mit Hooks" /><span class="caption">Die gleiche Funktionalität mit Hooks</span></span></p>
 <p>Quelle: <a href="https://twitter.com/threepointone/status/1056594421079261185">Sunil Pai auf Twitter</a></p>
 </div>
-<div class="chapter">
+<div class="chapter" data-filename="hooks/hooks-in-aller-kuerze.md">
   <h1 id="verwendung-von-hooks">Verwendung von Hooks</h1>
 <p>Insgesamt bringt React aktuell <strong>10</strong> eigene Hooks mit, von denen die offizielle Dokumentation <strong>3</strong> als <strong>Basic</strong>, also als <em>grundlegende</em>, die restlichen <strong>7</strong> als <strong>Additional</strong>, also als <em>zusätzliche</em> Hooks betitelt. Und in der Tat ist diese Unterteilung sinnvoll, denn in den meisten Fällen, in denen mit Hooks gearbeitet wird, wird man die 3 Basic Hooks <code>useState()</code>, <code>useEffect()</code> und <code>useContext()</code> verwenden.</p>
 <p>Die als <strong>Additional Hooks</strong> bezeichneten Ausprägungen sind insbesondere für spätere Optimierungen oder zum Abdecken von Edge-Cases vorgesehen. In diesem Kapitel soll es daher erst einmal um die „simplen“ Hooks gehen und ich möchte demonstrieren, wie man Funktionalität mit <strong>Function Components</strong> realisieren kann, für die bisher <strong>Klassen-Komponenten</strong> notwendig waren.</p>
@@ -4613,7 +4654,7 @@ ReactDOM.render(<span class="hljs-tag">&lt;<span class="hljs-name">App</span> /&
 <p>Hier sehen wir, wie die <code>ContextExample</code>-Komponente Daten (in diesem Beispiel Pseudo-Account-Daten) aus dem <code>AccountContext</code>-Provider verwendet, ohne dass dafür alles von einer <code>AccountContext.Consumer</code>-Komponente umschlossen sein muss. Dies spart nicht nur einige Zeilen Code in der Komponente selbst, sondern führt auch in der Debug-Ansicht zu einem deutlich übersichtlicheren Baum, da die Verschachtelungstiefe flacher ist.</p>
 <p>Diese Vereinfachung ist aber völlig optional und wer mag, kann auch weiterhin die bekannte Consumer-Komponente für den Zugriff auf Daten aus einem Context-Provider verwenden.</p>
 </div>
-<div class="chapter">
+<div class="chapter" data-filename="hooks/grundsaetze-und-regeln-von-hooks.md">
   <h1 id="grundsätze-und-regeln-von-hooks">Grundsätze und Regeln von Hooks</h1>
 <p>Die Verwendung von <strong>Hooks</strong> ist an einige Grundsätze und Regeln geknüpft, die es zu beachten gilt, damit es nicht zu unangenehmen Überraschungen und unerwarteten Bugs kommt, von denen es mit <strong>Hooks</strong> ja gerade weniger geben soll. Bei der Einhaltung dieser Regeln hilft uns <strong>ESLint</strong> und das vom React-Team höchstpersönlich entwickelte ESLint-Plugin <code>eslint-plugin-react-hooks</code>. Die Verwendung von ESLint hatte ich im Kapitel über <strong>Tools und Setup</strong> bereits empfohlen und an dieser Empfehlung hat sich seitdem auch nichts geändert.</p>
 <p>Um das Plugin im Projekt zu installieren, hilft folgender Aufruf auf der Kommandozeile:</p>
@@ -4673,7 +4714,7 @@ ReactDOM.render(<span class="hljs-tag">&lt;<span class="hljs-name">App</span> /&
 }, [title]);</code></pre>
 <p>Wer das ESLint-Plugin installiert und die Regeln aktiviert, hat hier nichts zu befürchten. ESLint zeigt im Fall einer Missachtung dieser Regeln dann eine Warnung an und weist den Entwickler auf seinen Fehler hin.</p>
 </div>
-<div class="chapter">
+<div class="chapter" data-filename="hooks/eigene-hooks-implementieren.md">
   <h1 id="eigene-hooks-implementieren">Eigene Hooks implementieren</h1>
 <p>Neben den <strong>internen Hooks</strong> wie <code>useState</code> oder <code>useEffect</code> ist es auch möglich, <strong>eigene Hooks</strong> zu erstellen, die selbst wiederum Gebrauch von den <strong>internen Hooks</strong> oder auch von anderen <strong>eigenen Hooks</strong> machen und eigene Logik jeglicher Art in wiederverwendbarer Form kapseln. Sogenannte <strong>Custom Hooks</strong>. Die Entwicklung von solchen <strong>Custom Hooks</strong> ist immer dann besonders sinnvoll, wenn die immer gleiche Logik in mehreren Komponenten verwendet werden soll. Auch wenn die Logik in einer Komponente zunehmend komplexer wird, kann es sinnvoll sein diese aufzuteilen und in <strong>eigene Hooks</strong> mit leicht verständlichen Namen zu verlagern, um die eigentliche <strong>Function Component</strong> übersichtlicher zu halten.</p>
 <h3 id="der-erste-eigene-custom-hook">Der erste eigene Custom Hook</h3>
@@ -4809,7 +4850,7 @@ ReactDOM.render(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-n
 ReactDOM.render(<span class="hljs-tag">&lt;<span class="hljs-name">RepoLookup</span> /&gt;</span>, document.getElementById('root'));</span></code></pre>
 <p>Kurze Info am Rande: Die Public API von GitHub erlaubt nur max. 60 API Requests pro Stunde. Wer hier also ernsthaft rumprobieren will kann sich einen API Token erstellen und diesen per <code>access_token=xyz</code> an die URL dranhängen. Der Token kann hier erstellt werden: <a href="https://github.com/settings/tokens">https://github.com/settings/tokens</a>.</p>
 </div>
-<div class="chapter">
+<div class="chapter" data-filename="hooks/hooks-api.md">
   <h1 id="hooks-api">Hooks API</h1>
 <p>In diesem Kapitel möchte ich auf alle verfügbaren internen Hooks einmal eingehen, ihre genaue Verwendung und ihre Einsatzbereiche beschreiben. In der React-Dokumentation werden diese unterteilt in drei generelle (<em>basic</em>) und sieben zusätzliche (<em>additional</em>) Hooks. Die zusätzlichen Hooks sind insbesondere für spezielle Anwendungsfälle (bspw. Performance-Optimierung) gedacht oder sie sind Abwandlungen der generellen Hooks.</p>
 <p>Zu den drei <strong>generellen Hooks</strong> gehören die bereits in den vorherigen Kapiteln vorgestellten Hooks:</p>
@@ -5475,7 +5516,7 @@ ReactDOM.render(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-n
 
 ReactDOM.render(&lt;App /&gt;, document.getElementById('root'));</code></pre>
 </div>
-<div class="chapter">
+<div class="chapter" data-filename="ecosystem/README.md">
   <h1 id="v-–-das-ecosystem">V – Das Ecosystem</h1>
 <p>Für die einen Fluch, für die anderen Segen: die <strong>Freiheit</strong> die <strong>React</strong> dem Entwickler bietet.</p>
 <p>Während vollwertige Frameworks wie Angular sehr klare Vorgaben darüber machen, wie eine Anwendung strukturiert werden soll und auch gleich eigene Methoden für Datenhaltung, Services und Business-Logik mitbringen sowie klare Wege vorgeben, funktioniert das in React eher nach dem Motto „bring your own“ – also bringe dein eigenes Werkzeug mit.</p>
@@ -5483,7 +5524,7 @@ ReactDOM.render(&lt;App /&gt;, document.getElementById('root'));</code></pre>
 <p>Doch hier hat sich ein sehr wertvolles und aktives Ecosystem um React herum entwickelt mit Tools, die sich hervorragend in ein React-Setup integrieren lassen und den Entwickler vor die Wahl stellen, sich aus mehreren Tools das jeweilige herauszusuchen, dass seinem persönlichen Geschmack am meisten zusagt. Passt gar keins, ist meist auch das kein Problem und React bietet mit seiner Vielzahl an Funktionen und APIs die Möglichkeit, sich eine robuste, eigene Lösung zu entwickeln.</p>
 <p>Da es durch die Vielzahl an Libraries sehr schnell passieren kann, dass man den Überblick verliert, möchte ich in diesem Kapitel einmal auf die gängigsten Tools und Libraries eingehen, die sich in der täglichen Arbeit mit React bewährt haben und oftmals tausende von Stars auf Github haben und zehntausendfach oder (deutlich) mehr über <code>npm</code> installiert werden.</p>
 </div>
-<div class="chapter">
+<div class="chapter" data-filename="ecosystem/routing.md">
   <h1 id="routing">Routing</h1>
 <p>Eine Funktionalität, die in nahezu allen <strong>Single Page Applikationen</strong> (SPA) früher oder später (meist früher als später) benötigt wird, ist das <strong>Routing</strong>. Also das Zuordnen einer URL in der Anwendung zu einer bestimmten Funktion. Rufe ich bspw. die URL <code>/users/manuel</code> auf, möchte ich dort sehr wahrscheinlich das Benutzerprofil des Users <code>manuel</code> anzeigen.</p>
 <p>Hier hat sich der <strong>React Router</strong> in den vergangenen Jahren als de facto Standard etabliert. Entwickelt von Michael Jackson (ja, der Kerl heißt wirklich so!) und Ryan Florence (der laut eigener Aussage inzwischen über 10 verschiedene Router für diverse Zwecke entwickelt hat) bringt er es auf mittlerweile über 35.000 Stars bei GitHub. Er wird regelmäßig gepflegt, hat eine Community bestehend aus über 500 Contributors auf GitHub und passt sich durch seine deklarative Natur wunderbar die React-Prinzipien an. Darüber hinaus ist er kompatibel sowohl mit dem Web (client- und serverseitig!) wie auch React Native. Er ist also sehr universell einsetzbar, sehr gut getestet und durch seine weite Verbreitung auch bewährt.</p>
@@ -5766,7 +5807,7 @@ ReactDOM.render(<span class="hljs-tag">&lt;<span class="hljs-name">App</span> /&
 <pre><code class="hljs javascript language-javascript">withRouter(connect()(MyComponent));</code></pre>
 <p>Dies wurde mit der Verwendung der neuen <strong>Context API</strong> aus <strong>React 16.3.0</strong> im <strong>React Router</strong> ab Version <strong>5.0.0</strong> behoben und ist daher in erster Linie für Projekte relevant, in denen noch ältere Versionen zum Einsatz kommen.</p>
 </div>
-<div class="chapter">
+<div class="chapter" data-filename="ecosystem/state-management.md">
   <h1 id="state-management">State Management</h1>
 <p>Mit zunehmender Größe einer Anwendung wachsen meist auch deren Komplexität und die Daten, die mit der Anwendung verwaltet werden sollen. Also anders gesagt: Der <strong>Application State</strong> wird schwieriger und unübersichtlicher zu verwalten. Wann gebe ich wie welcher Komponente welche Props hinein? Wie wirken sich diese Props auf den State meiner Komponente aus und was passiert wenn ich den State in einer Komponente modifiziere?</p>
 <p>Auch wenn React hier in den letzten Jahren zunehmend deutlich besser geworden ist und gerade mit der neuen <strong>Context API</strong> und dem <strong>useReducer-Hook</strong> einiges zur besseren Übersichtlichkeit von komplexen Datenstrukturen getan hat, ist es noch immer nicht ganz einfach, stets alle Daten und Datentransformationen im Blick zu haben. Um dieses Problem zu lösen, gibt es einige externe Tools für <strong>globales State Management</strong>, die sich im Ecosystem um React herum gebildet haben.</p>
@@ -6603,7 +6644,7 @@ ReactDOM.render(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-n
 <p>Beim Schreiben dieses Kapitels habe ich dann erst einmal wieder gemerkt, wie überwältigend <strong>Redux</strong> aber gerade für Einsteiger sein kann und so kann ich mir vorstellen, dass einige der in diesem Kapitel beschriebenen Dinge trotz meiner Erläuterungen nicht unbedingt gleich verständlich sein werden. Hier sollte es aber tatsächlich helfen, mit geöffneten Devtools etwas mit den <strong>Actions</strong> und den <strong>Reducern</strong> herumzuspielen um zu verstehen, wie das eine das andere beeinflusst und wie die das Zusammenspiel aller Komponenten, also dem Store, dem State, den Props einer Komponente, der <code>connect()</code>-Funktion sowie der <strong>Actions</strong> und <strong>Reducer</strong> letztendlich ablaufen.</p>
 <p>Sollte es danach immer noch Fragen geben, könnt ihr euch jederzeit gern mit Bezug auf dieses Buch an mich wenden!</p>
 </div>
-<div class="chapter">
+<div class="chapter" data-filename="ecosystem/mehrsprachigkeit.md">
   <h1 id="mehrsprachigkeit">Mehrsprachigkeit</h1>
 <p>Eins der Themen, das neben <strong>Routing</strong> und <strong>State Management</strong> immer wieder aufkommt, ist <strong>Mehrsprachigkeit</strong>. Wie bekomme ich meine Anwendung übersetzt, so dass ein deutscher Benutzer ein deutsches Interface sieht, während andere Benutzer bspw. ein englisches Interface sehen.</p>
 <p>Ich möchte in diesem Kapitel nicht generell in die Tiefen der <strong>Internationalisierung</strong> (meist abgekürzt: <strong>i18n</strong>) einsteigen, denn hier soll es um <strong>React</strong> gehen. Ich setze daher ein gewisses (geringes) Grundverständnis voraus, was die Internationalisierung von User Interfaces angeht und konzentriere mich daher insbesondere darauf, wie man diese in React umsetzen kann.</p>
@@ -6801,7 +6842,7 @@ ReactDOM.render(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-n
 <p>Mit den in diesem Kapitel gezeigten Beispielen ist es relativ einfach, seine Anwendung gleich mehrsprachig zu entwickeln. In der Praxis hat sich i18next dabei für mich persönlich als sehr universelles und vollständiges Tool erwiesen. Die Integration in verscheidene Libraries und Frameworks funktioniert einwandfrei, es bietet alle Funktionen, die ein solches i18n-Framework benötigt und mit nur wenigen Funktionen und Komponenten (<code>i18n.changeLanguage()</code>, <code>t</code>, <code>&lt;Trans&gt;</code>) ist es darüber hinaus relativ leicht zu erlernen.</p>
 <p>Einmal korrekt aufgesetzt und eingerichtet, hier empfehle ich einen Blick auf die <a href="https://www.i18next.com/overview/configuration-options">vollständigen Optionen von i18next</a>, realisiert man dabei Mehrsprachigkeit in seiner React-Anwendung, ohne dass es sich wie ein Mehraufwand anfühlt. Dafür sorgen auch Online-Services wie <a href="https://locize.com/">Locize.com</a> oder <a href="https://www.lokalise.co">Lokalise.co</a>, um nur einige Beispiele zu nennen, mit denen die Erstellung von Übersetzungen verwaltet und zum Teil sogar automatisiert outgesourced werden kann.</p>
 </div>
-<div class="chapter">
+<div class="chapter" data-filename="ecosystem/informationsquellen.md">
   <h1 id="informationsquellen">Informationsquellen</h1>
 <p>Die meisten Informationsquellen in Bezug auf React sind englischsprachig. Selbst deutsche Muttersprachler haben zum Teil englische Bücher geschrieben oder schreiben ihre Newsletter oder Blogs auf Englisch, weil damit natürlich eine deutlich größere Zielgruppe erreicht werden kann. Dies war und ist einer der Gründe, warum ich dieses Buch in deutscher Sprache verfasst habe: ich denke, dass es viele deutschsprachige Entwickler da draußen gibt, die sich gerne in ihrer Muttersprache in ein Thema einlesen möchten.</p>
 <p>Dies ändert allerdings nichts daran, dass so ziemlich alle Informationsquellen da draußen nur in Englisch existieren. Ganz kommt man also nicht um Englisch herum, wenn man sich nicht nur einlesen, sondern auch stets auf dem neuesten Stand bleiben möchte. Ich bitte daher um Verzeihung, wenn die Informationsquellen hier zum deutlich überwiegenden Teil nur in englischer Sprache genannt werden.</p>
@@ -6834,7 +6875,7 @@ ReactDOM.render(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-n
 <li><a href="https://syntax.fm/">Syntax.fm</a> (Wes Bos und Scott Tolinski)</li>
 </ul>
 </div>
-<div class="chapter">
+<div class="chapter" data-filename="ecosystem/tools.md">
   <h1 id="tools-und-frameworks">Tools und Frameworks</h1>
 <p>Um React herum hat sich mittlerweile ein ganzes Ökosystem an Tools gebildet. Vom Static Site Generator, um simple bis medium-komplexe statische Websites auf Basis von React-Komponenten zu erzeugen, über Prototyping-Tools bis hin zu Tools um die Komponenten der eigenen Anwendung in einer Art Styleguide übersichtlich darzustellen, ist hier vieles vertreten. In diesem Unterkapitel möchte ich eine <em>kurze</em> Übersicht über die bekanntesten Tools und Frameworks aus der React-Welt geben.</p>
 <h3 id="storybook">Storybook</h3>
@@ -6889,7 +6930,7 @@ ReactDOM.render(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-n
 <strong>URL:</strong> <a href="https://nextjs.org/">https://nextjs.org/</a>  <br />
 <strong>GitHub:</strong> <a href="https://github.com/zeit/next.js">https://github.com/zeit/next.js</a></p>
 </div>
-<div class="chapter">
+<div class="chapter" data-filename="schlusswort.md">
   <h1 id="schlusswort">Schlusswort</h1>
 <p>Lieber Leser, ich hoffe du hast tatsächlich etwas gelernt und verstanden, während du dieses Buch gelesen hast. Mich hat die Arbeit am Buch rund 1,5 Jahre gekostet (abgesehen von den letzten beiden Monaten vor der Veröffentlichung nicht in Vollzeit natürlich). In dieser Zeit ist viel passiert, viele Dinge haben sich geändert und zwar so signifikant, dass ich den Release des Buchs mehrmals um einige Tage bis Wochen verschoben habe, weil ich nicht gleich am Tag der Veröffentlichung veraltetes Material im Buch haben wollte.</p>
 <p>Leider sind dadurch auch einige Themen zu kurz gekommen oder noch gar nicht beschrieben worden, denen ich eigentlich mehr Platz in diesem Buch einräumen wollte, die aber andererseits auch nicht unbedingt ein so zentraler Bestandteil von React sind, als dass ich deswegen den Release noch weiter hinauszögern wollte. Die Optimierung des Build-Setups mit Webpack ist eins dieser Themen. Zu dem Thema habe ich ein anderes Buch auf Amazon gefunden mit knapp 500 Seiten. Das hätte hier definitiv den Rahmen gesprengt.</p>
@@ -6906,31 +6947,43 @@ ReactDOM.render(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-n
       <h1>Links</h1>
       <ul id="extracted-links"></ul>
     </div>
+
     <script>
-      const linkList = document.getElementById('extracted-links');
-      Array.from(document.querySelectorAll('a'))
-        .filter((link) => link.getAttribute('href') !== link.textContent.trim())
-        .filter(
-          (link) =>
-            link.getAttribute('href').startsWith('https://www.twitter.com/') ===
-            false
-        )
-        .filter(
-          (link) =>
-            link.getAttribute('href').startsWith('https://twitter.com/') ===
-            false
-        )
-        .map((link, index) => {
-          const url = link.getAttribute('href');
-          const text = link.textContent.trim();
-          console.log({ text, url });
-          const note = document.createElement('span');
-          note.textContent = ` [${index + 1}]`;
-          link.appendChild(note);
-          const addedLink = document.createElement('li');
-          addedLink.textContent = `[${index + 1}] ${url}`;
-          linkList.appendChild(addedLink);
+      const removeLinksFromTOC = () => {
+        Array.from(
+          document.querySelector('[data-filename="SUMMARY.md"]').querySelectorAll('a')
+        ).forEach((link) => {
+          const text = link.textContent;
+          const textNode = document.createTextNode(text);
+          link.parentNode.replaceChild(textNode, link);
         });
+      };
+
+      const createIndexedLinklist = () => {
+        const linkList = document.getElementById('extracted-links');
+        Array.from(document.querySelectorAll('a'))
+          .filter((link) => link.getAttribute('href') !== link.textContent.trim())
+          .filter(
+            (link) => link.getAttribute('href').startsWith('https://www.twitter.com/') === false
+          )
+          .filter((link) => link.getAttribute('href').startsWith('https://twitter.com/') === false)
+          .map((link, index) => {
+            const url = link.getAttribute('href');
+            const text = link.textContent.trim();
+
+            const note = document.createElement('sup');
+            note.textContent = `[${index + 1}]`;
+            link.appendChild(note);
+            link.parentNode.insertBefore(note, link.nextSibling);
+
+            const addedLink = document.createElement('li');
+            addedLink.textContent = `[${index + 1}] ${url}`;
+            linkList.appendChild(addedLink);
+          });
+      };
+
+      removeLinksFromTOC();
+      createIndexedLinklist();
     </script>
   </body>
 </html>

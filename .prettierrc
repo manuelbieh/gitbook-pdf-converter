@@ -9,3 +9,6 @@ overrides:
   - files: "*.md"
     options:
       parser: markdown
+  - files: "*.html"
+    options:
+      printWidth: 100

@@ -11,6 +11,8 @@ app.use(express.static('public'));
 // app.use('/.gitbook', express.static('assets/.gitbook'));
 // app.use('/assets', express.static('assets'));
 
+// const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
 const server = app.listen(3000, () => {
   console.log('SERVER LISTENING ON http://localhost:3000');
   (async () => {
@@ -23,6 +25,9 @@ const server = app.listen(3000, () => {
       await page.goto('http://localhost:3000/index.html', {
         waitUntil: 'networkidle0',
       });
+
+      // await delay(4000);
+
       // Working:
       await page.pdf({
         path: `./dist/react-lernen-${dateTime}.pdf`,

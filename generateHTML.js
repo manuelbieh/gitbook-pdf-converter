@@ -60,7 +60,9 @@ const convertFile = (filename) => {
     .replace(/..\/.gitbook\/assets/g, './assets/.gitbook');
   // .replace(/<img(.*)alt="(.*)"(.*)>/,'<span><img$1alt="$2"$3><span>$2</span></span>')
 
-  return chapter.replace(/{{\s*content\s*}}/, convertedFile);
+  return chapter
+    .replace(/{{\s*content\s*}}/, convertedFile)
+    .replace(/{{\s*filename\s*}}/, filename);
 };
 
 const writeHtml = (filename, html) => {
@@ -71,13 +73,8 @@ const writeHtml = (filename, html) => {
   );
 };
 
-// const convertAndSave = (filename) => {
-//   const html = convertFile(filename);
-//   writeHtml(filename, html);
-// };
-
 const combineChapters = () => {
-  const combined = links.reduce((acc, filename) => {
+  const combined = ['SUMMARY.md'].concat(links).reduce((acc, filename) => {
     acc += convertFile(filename);
     return acc;
   }, '');

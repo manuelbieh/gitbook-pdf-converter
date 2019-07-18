@@ -5,6 +5,11 @@
   font-variant-ligatures: none;
 }
 
+html {
+  font-size: 10pt;
+}
+
+
 body {
   font-family: Roboto, Times New Roman, sans-serif;
   font-size: 11pt;
@@ -55,13 +60,15 @@ body {
 
 @media screen {
   body {
-    font-size: 15pt;
+    /* font-size: 15pt; */
+    font-size: 1.5rem;
   }
 }
 
 @media print {
   body {
-    font-size: 11pt;
+    /* font-size: 11pt; */
+    font-size: 1.1rem;
   }
 }
 
@@ -132,6 +139,10 @@ ul, ol, dl {
   text-align: left;
 }
 
+sup {
+  line-height: 1;
+}
+
 .hljs {
   overflow: hidden !important;
 }
@@ -140,6 +151,10 @@ pre {
   white-space: pre-wrap;
   overflow: hidden;
   /*page-break-inside: avoid;*/
+}
+
+code, pre, ul, ol, dl {
+  text-align: left;
 }
 
 blockquote {
@@ -247,4 +262,26 @@ img {
 
 h1, h2, h3 {
   page-break-after: avoid;
+}
+
+/* Hide the book title from the TOC */
+[data-filename="SUMMARY.md"] > ul > li:first-child {
+  display: none;
+}
+
+[data-filename="SUMMARY.md"] > ul {
+  font-size: 95%;
+  font-weight: 700;
+  list-style: none;
+  padding-left: 0;
+}
+
+[data-filename="SUMMARY.md"] ul ul {
+  font-weight: 400;
+  list-style: initial;
+  padding-left: 3rem;
+}
+
+.has-image {
+  page-break-inside: avoid;
 }

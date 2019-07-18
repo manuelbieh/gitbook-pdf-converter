@@ -3,10 +3,7 @@
   <head>
     <link href="./assets/style.css" rel="stylesheet" type="text/css" />
     <link href="./assets/dank-mono.css" rel="stylesheet" type="text/css" />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Roboto:400,700"
-    />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.14.2/styles/github.min.css"
@@ -23,31 +20,43 @@
       <h1>Links</h1>
       <ul id="extracted-links"></ul>
     </div>
+
     <script>
-      const linkList = document.getElementById('extracted-links');
-      Array.from(document.querySelectorAll('a'))
-        .filter((link) => link.getAttribute('href') !== link.textContent.trim())
-        .filter(
-          (link) =>
-            link.getAttribute('href').startsWith('https://www.twitter.com/') ===
-            false
-        )
-        .filter(
-          (link) =>
-            link.getAttribute('href').startsWith('https://twitter.com/') ===
-            false
-        )
-        .map((link, index) => {
-          const url = link.getAttribute('href');
-          const text = link.textContent.trim();
-          console.log({ text, url });
-          const note = document.createElement('span');
-          note.textContent = ` [${index + 1}]`;
-          link.appendChild(note);
-          const addedLink = document.createElement('li');
-          addedLink.textContent = `[${index + 1}] ${url}`;
-          linkList.appendChild(addedLink);
+      const removeLinksFromTOC = () => {
+        Array.from(
+          document.querySelector('[data-filename="SUMMARY.md"]').querySelectorAll('a')
+        ).forEach((link) => {
+          const text = link.textContent;
+          const textNode = document.createTextNode(text);
+          link.parentNode.replaceChild(textNode, link);
         });
+      };
+
+      const createIndexedLinklist = () => {
+        const linkList = document.getElementById('extracted-links');
+        Array.from(document.querySelectorAll('a'))
+          .filter((link) => link.getAttribute('href') !== link.textContent.trim())
+          .filter(
+            (link) => link.getAttribute('href').startsWith('https://www.twitter.com/') === false
+          )
+          .filter((link) => link.getAttribute('href').startsWith('https://twitter.com/') === false)
+          .map((link, index) => {
+            const url = link.getAttribute('href');
+            const text = link.textContent.trim();
+
+            const note = document.createElement('sup');
+            note.textContent = `[${index + 1}]`;
+            link.appendChild(note);
+            link.parentNode.insertBefore(note, link.nextSibling);
+
+            const addedLink = document.createElement('li');
+            addedLink.textContent = `[${index + 1}] ${url}`;
+            linkList.appendChild(addedLink);
+          });
+      };
+
+      removeLinksFromTOC();
+      createIndexedLinklist();
     </script>
   </body>
 </html>
