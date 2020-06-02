@@ -45,7 +45,7 @@ const preparedFiles = files.map((file) =>
 execSync(
   `pandoc ${preparedFiles.join(
     ' '
-  )} -o "./dist/react-lernen-${dateTime}.docx" --metadata title="React lernen und verstehen" --metadata author="Manuel Bieh" --epub-cover-image="./assets/react_book_cover-front-1000.png" --toc --toc-depth=2 --css="./assets/epub.css" --resource-path="content/.gitbook:|cross-platform-hack|;content/.gitbook"`,
+  )} -o "./dist/react-lernen-${dateTime}.docx" --metadata title="React lernen und verstehen" --metadata author="Manuel Bieh" --epub-cover-image="./assets/react-lernen-frontcover.jpg" --toc --toc-depth=2 --css="./assets/epub.css" --resource-path="content/.gitbook:|cross-platform-hack|;content/.gitbook"`,
   (err) => {
     console.log(err);
   }

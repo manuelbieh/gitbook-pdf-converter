@@ -16,7 +16,7 @@
   </head>
   <body>
     <div class="chapter" data-filename="SUMMARY.md">
-  <h1 id="inhaltsverzeichnis">Inhaltsverzeichnis</h1>
+  <h1 id="table-of-contents">Table of contents</h1>
 <ul>
 <li><a href="README.md">React lernen und verstehen</a></li>
 <li><a href="vorwort.md">Vorwort</a></li>
@@ -100,7 +100,7 @@
 <p>Insbesondere kurz nachdem React an Fahrt aufnahm, wurde oft die Frage gestellt, ob die Tage von jQuery nun gezählt sind - ob man nun alles mit React entwickeln kann oder gar soll oder wann der Einsatz von React sinnvoll oder vielleicht auch gar nicht sinnvoll ist.</p>
 <p>React ist, wie wir bereits geklärt haben, erst einmal eine <em>Library für die Erstellung von User Interfaces</em>. User Interfaces bedeuten immer Interaktion. Und Interaktion geht zwangsweise in den meisten Fällen einher mit State-Management. Ich drücke einen Knopf und ein Dropdown öffnet sich. Ich ändere also den Zustand von <em>geschlossen</em> auf <em>offen</em>. Ich gebe Daten in ein Eingabefeld ein und bekomme angezeigt, ob meine eingegebenen Daten valide sind. Sind sie es nicht, ändert sich der Zustand des Eingabefeldes von <em>gültig</em> in <em>ungültig</em>. Und genau hier kommt React ins Spiel. Habe ich keine Interaktion oder „sich ändernde Daten“ auf meiner Seite, weil ich etwa eine reine statische Image-Seite für ein Unternehmen entwickle, brauche ich <em>wahrscheinlich</em> kein React.</p>
 <p>Falsch umgesetzt kann React hier sogar schaden, da auf einer Image-Website oftmals der Content im Vordergrund steht und sofern man seine React-Komponenten nicht bereits serverseitig vorrendert, können die meisten Suchmaschinen mit der Seite erst einmal wenig anfangen. React macht es uns aber glücklicherweise sehr einfach, unsere Komponenten serverseitig zu rendern, von daher ist das noch ein Problem, welches sich in der Regel leicht beheben lässt.</p>
-<p>Habe ich hingegen sehr viel Interaktion und ein Interface, das sich oft aktualisiert, wird der Einsatz von React mit ziemlich hoher Wahrscheinlichkeit sehr viel Zeit und Nerven sparen. Grundsätzlich gilt hier die Faustregel: je mehr Interaktion in einer Website oder Web-Anwendung stattfindet und je komplexer diese ist, desto mehr lohnt sich der Einsatz von React. Das griffigste Beispiel sind hier <strong>Single Page Applications</strong> (<em>SPA</em>), bei denen die Anwendung nur einmal im Browser aufgerufen und initialisiert wird und jegliche weitere Interaktion und Kommunikation mit dem Server über XHR (den meisten besser bekannt als „AJAX-Requests“) abläuft.</p>
+<p>Habe ich hingegen sehr viel Interaktion und ein Interface, das sich oft aktualisiert, wird der Einsatz von React mit ziemlich hoher Wahrscheinlichkeit sehr viel Zeit und Nerven sparen. Grundsätzlich gilt hier die Faustregel: je mehr Interaktion in einer Website oder Web-Anwendung stattfindet und je komplexer diese ist, desto mehr lohnt sich der Einsatz von React. Das griffigste Beispiel sind hier <strong>Single Page Applications</strong> (<em>SPA</em>), bei denen die Anwendung nur einmal im Browser aufgerufen und initialisiert wird und jegliche weitere Interaktion und Kommunikation mit dem Server über fetch-Requests oder XHR (den meisten besser bekannt als „AJAX-Requests“) abläuft.</p>
 <p>Ich habe es kürzlich selbst in einem Projekt erlebt, dass ich ein Anmeldeformular entwickeln musste, welches mir ziemlich simpel erschien und ich startete erst einmal ohne React. Im Laufe der Entwicklung stellte sich heraus, dass zum Zwecke besserer Usability immer mehr (Hintergrund-)Interaktion nötig wurde. So sollte bspw. nachträglich eine automatische Live-Validierung von Formulardaten eingebaut und der Anmeldeprozess in 2 Schritte unterteilt werden, so dass ich recht zügig dann doch auf React zurückgegriffen habe, weil mir das manuelle State-Management und die <strong>imperative</strong> Veränderung des User Interfaces einfach zu umständlich wurde.</p>
 <p>Imperativ bedeutet in dem Fall, dass ich dem Browser sage, was er machen soll, wohingegen ich bei <em>deklarativem</em> Code, wie man ihn mit React schreibt, lediglich das gewünschte Endergebnis anhängig vom aktuellen Zustand beschreibe. Eines der Kernprinzipien von React. Um beim Beispiel von oben zu bleiben: statt zu sagen „ich bin nun eingeloggt, lieber Browser, bitte blende nun das Login-Formular aus und zeige mir das Dashboard“, definiere ich zwei Ansichten: So, lieber Browser, soll mein Interface aussehen wenn ich eingeloggt bin (Dashboard-Ansicht) und so, wenn ich es nicht bin (Login-Ansicht). Welche der Ansichten angezeigt wird, entscheidet dann React anhand des Zustands der Komponente.</p>
 <h2 id="wo-hat-react-seinen-ursprung">Wo hat React seinen Ursprung?</h2>
@@ -302,7 +302,7 @@ Happy hacking!</code></pre>
 <p>Mit <code>yarn eject</code> können wir uns von Create React App „verabschieden“. Dabei werden alle Build-Scripts, Dependencies und Config-Files in das aktuelle Projektverzeichnis kopiert und wir sind fortan selbst dafür verantwortlich, dass alles korrekt läuft. Dadurch haben wir mehr Verantwortung, aber eben auch deutlich mehr Freiheiten, da wir von nun an eigene Änderungen an der Standard-Konfiguration von CRA vornehmen können. Wann und ob dieser Schritt überhaupt jemals nötig wird, ist völlig abhängig vom Projekt. Ich selbst habe bereits in Projekten über Monate mit dem CRA Standard-Setup gearbeitet, in anderen Projekten hat es sich bereits nach wenigen Tagen oder Wochen ergeben, dass Änderungen am Setup vorgenommen werden müssen, so dass ein Eject recht frühzeitig vorgenommen wurde.</p>
 <div class="hint hint--info">
 <p>Um die Code-Beispiele in diesem Buch nachzuvollziehen, empfehle ich an dieser Stelle, <strong>Create React App</strong> zu installieren. Die große Mehrzahl der Beispiele können dann per Copy and Paste in die <code>App.js</code>-Datei aus Create React App übertragen und ausgeführt werden. Um den Lern-Effekt zu erhöhen, würde ich sogar empfehlen, die Beispiele nicht zu kopieren, sondern tatsächlich abzutippen.</p>
-<p>Wer CRA nicht installieren möchte oder es eilig hat, dem sei <a href="https://codesandbox.io/">CodeSandbox</a> ans Herz gelegt. Hier kann in einer per Knopfdruck ein neues Setup mit Create React App als Basis erstellt und dann in einer Browser-Entwicklungsumgebung herumprobiert werden.</p>
+<p>Wer CRA nicht installieren möchte oder es eilig hat, dem sei <a href="https://codesandbox.io/">CodeSandbox</a> ans Herz gelegt. Hier kann per Knopfdruck ein neues <a href="https://codesandbox.io/s/new">Setup mit <strong>Create React App</strong></a> als Basis erstellt und dann in einer Browser-Entwicklungsumgebung herumprobiert werden.</p>
 </div>
 </div>
 <div class="chapter" data-filename="die-grundlagen/README.md">
@@ -318,6 +318,7 @@ Happy hacking!</code></pre>
 <p>Wer mit React arbeitet, nutzt in vermutlich 99% der Fälle auch <strong>Babel</strong> als <strong>Transpiler,</strong> um sein <strong>JSX</strong> entsprechend in <code>createElement()</code>-Aufrufe zu transpilieren. Doch <strong>Babel</strong> transpiliert nicht nur <strong>JSX</strong> in ausführbares JavaScript, sondern hieß ursprünglich mal <strong>6to5</strong> und hat genau das gemacht: mit <strong>ES6</strong>-Syntax geschriebenes JavaScript in <strong>ES5</strong> transpiliert, sodass neuere, zukünftige Features und Syntax-Erweiterungen auch in älteren Browsern ohne Unterstützung für „das neue“ JavaScript genutzt werden konnten.</p>
 <p>Auf die meiner Meinung nach wichtigsten und nützlichsten neuen Funktionen und Möglichkeiten in <strong>ES2015</strong> und den folgenden Versionen möchte ich in diesem Kapitel eingehen. Dabei werde ich mich auf die neuen Funktionen beschränken, mit denen man bei der Arbeit mit React häufiger zu tun haben wird und die euch Entwicklern das Leben am meisten vereinfachen.</p>
 <p><strong>Wenn du bereits Erfahrung mit ES2015 und den nachfolgenden Versionen hast, kannst du dieses Kapitel überspringen!</strong></p>
+<div class="force-break-before"></div>
 <h2 id="variablen-deklarationen-mit-let-und-const">Variablen-Deklarationen mit let und const</h2>
 <p>Gab es bisher nur <code>var</code> um in JavaScript eine Variable zu deklarieren, kommen in ES2015 zwei neue Schlüsselwörter dazu, mit denen Variablen deklariert werden können: <code>let</code> und <code>const</code>. Eine Variablendeklaration mit <code>var</code> wird dadurch in fast allen Fällen überflüssig, meist sind <code>let</code> oder <code>const</code> die sauberere Wahl. Doch wo ist der Unterschied?</p>
 <p>Anders als <code>var</code> existieren mit <code>let</code> oder <code>const</code> deklarierte Variablen <strong>nur innerhalb des Scopes ,in dem sie deklariert wurden!</strong> Ein solcher Scope kann eine Funktion sein wie sie bisher auch schon bei <code>var</code> einen neuen Scope erstellt hat, aber auch Schleifen oder gar <code>if-</code>Statements!</p>
@@ -385,6 +386,7 @@ myArray.push(<span class="hljs-number">2</span>);
 <p>Uncaught TypeError: Assignment to constant variable.</p>
 </div>
 <p>Möchten wir <code>myArray</code> also überschreibbar halten, müssen wir stattdessen <code>let</code> verwenden oder uns damit begnügen, dass zwar der Inhalt des mittels <code>const</code> deklarierten Arrays veränderbar ist, nicht jedoch die Variable selbst.</p>
+<div class="force-break-before"></div>
 <h2 id="arrow-functions">Arrow Functions</h2>
 <p><strong>Arrow Functions</strong> sind eine weitere <strong>deutliche</strong> Vereinfachung, die uns ES2015 gebracht hat. Bisher funktionierte eine Funktionsdeklaration so: man schrieb das Keyword <code>function</code>, optional gefolgt von einem Funktionsnamen, Klammern, in der die Funktionsargumente beschrieben wurden, sowie dem <strong>Function Body</strong>, also dem eigentlichen Inhalt der Funktion:</p>
 <pre><code class="hljs javascript language-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">arg1, arg2</span>) </span>{}</code></pre>
@@ -488,7 +490,7 @@ string.endsWith(value);</code></pre>
 
 <span class="hljs-keyword">const</span> userWithId2 = users.find(<span class="hljs-function">(<span class="hljs-params">user</span>) =&gt;</span> user.id === <span class="hljs-number">2</span>);
 <span class="hljs-comment">// { id: 2, name: 'Bianca'}</span></code></pre>
-<p>Die <code>Array.findIndex()</code>-Methode folgt der gleichen Signatur, liefert aber anders als die <code>Array.find()</code>-Methode nicht das gefundene Element selbst zurück, sondern nur dessen Index im Array. In den obigen Beispielen wären dies also <code>3</code> sowie <code>1</code>.</p>
+<p>Die <code>Array.findIndex()</code>-Methode folgt der gleichen Signatur, liefert aber anders als die <code>Array.find()</code>-Methode nicht das gefundene Element selbst zurück, sondern nur dessen Index im Array. In den obigen Beispielen wären dies also <code>4</code> im ersten Beispiel, sowie <code>1</code> im zweiten.</p>
 <p>Die in ES2016 neu dazu gekommene Methode <code>Array.includes()</code> prüft, ob ein Wert innerhalb eines Array existiert und gibt uns <strong>endlich</strong> einen Boolean zurück. Wer selbiges in der Vergangenheit mal mit <code>Array.indexOf()</code> realisiert hat, wird sich erinnern wie umständlich es war. Nun also ein simples <code>Array.includes()</code>:</p>
 <pre><code class="hljs javascript language-javascript">[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>].includes(<span class="hljs-number">4</span>); <span class="hljs-comment">// true</span>
 [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>].includes(<span class="hljs-number">6</span>); <span class="hljs-comment">// false</span></code></pre>
@@ -633,7 +635,7 @@ user[nationality] = <span class="hljs-literal">true</span>;
 <h3 id="spread-operator">Spread Operator</h3>
 <p>Der Spread Operator sorgt dafür, Werte sozusagen „auszupacken“. Wollte man in ES5 mehrere Argumente aus einem Array an eine Funktion übergeben, geschah das bisher meist über <code>Function.prototype.apply()</code>:</p>
 <pre><code class="hljs javascript language-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sumAll</span>(<span class="hljs-params">number1, number2, number3</span>) </span>{
-  <span class="hljs-keyword">return</span> number1, number2, number3;
+  <span class="hljs-keyword">return</span> number1 + number2 + number3;
 }
 <span class="hljs-keyword">var</span> myArray = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];
 sumAll.apply(<span class="hljs-literal">null</span>, myArray);</code></pre>
@@ -643,7 +645,7 @@ sumAll.apply(<span class="hljs-literal">null</span>, myArray);</code></pre>
 </div>
 <p>Mit dem Spread Operator, der aus drei Punkten (…) besteht, kann ich diese Argumente nun auspacken oder eben „spreaden“:</p>
 <pre><code class="hljs javascript language-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sumAll</span>(<span class="hljs-params">number1, number2, number3</span>) </span>{
-  <span class="hljs-keyword">return</span> number1, number2, number3;
+  <span class="hljs-keyword">return</span> number1 + number2 + number3;
 }
 <span class="hljs-keyword">var</span> myArray = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];
 sumAll(...myArray);</code></pre>
@@ -715,6 +717,7 @@ sumAll(...myArray);</code></pre>
 <h3 id="destructuring-assignment--destrukturierende-zuweisung">Destructuring Assignment / destrukturierende Zuweisung</h3>
 <p>Bevor ich zum <strong>Rest Operator</strong> komme, der logisch sehr eng mit dem <strong>Spread Operator</strong> in Verbindung steht und meist mit diesem in einem Atemzug genannt wird, möchte ich auf das <strong>Destructuring Assignment</strong> (kurz: <strong>Destructuring</strong>) oder eben die <strong>destrukturierende Zuweisung</strong> (kurz: <strong>Destrukturierung</strong>), wie der schöne Begriff auf Deutsch heißt, eingehen. Ich werde hier wie so oft beim englischen Begriff bleiben, da ich den deutschen Begriff selbst in deutschsprachigen Texten selten bisher gelesen habe.</p>
 <p>Mittels <strong>Destructuring</strong> ist es möglich, einzelne Elemente aus Objekten oder Arrays zu extrahieren und Variablen zuzuweisen. Eine weitere <strong>deutliche</strong> Syntax-Erweiterung, die uns ES2015 hier beschert hat.</p>
+<div class="force-break-before"></div>
 <h4 id="destructuring-von-arrays">Destructuring von Arrays</h4>
 <p>Stellen wir uns vor, wir möchten aus einem geordneten Array mit den Olympia-Teilnehmern im 100m-Lauf jeweils den Gewinner der Gold-, Silber- und Bronzemedaille in eine eigene Variable schreiben. Auf herkömmlichem (also ES5) Weg funktionierte das bisher folgendermaßen:</p>
 <pre><code class="hljs javascript language-javascript"><span class="hljs-keyword">const</span> athletes = [
@@ -800,7 +803,7 @@ sumAll(...myArray);</code></pre>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
   );
 };</span></code></pre>
-<p>Damit wirkt unsere Komponente schon deutlich aufgeräumter uns lesbarer. Doch es geht noch einfacher. Wie auch bei Arrays ist es auch möglich Objekte direkt bei der Übergabe als Funktionsargument zu destrukturieren. Statt des <code>props</code> Arguments nutzen wir dafür das <strong>Destructuring Assignment</strong> direkt:</p>
+<p>Damit wirkt unsere Komponente schon deutlich aufgeräumter und lesbarer. Doch es geht noch einfacher. Wie auch bei Arrays ist es möglich, Objekte direkt bei der Übergabe als Funktionsargument zu destrukturieren. Statt des <code>props</code>-Arguments nutzen wir dafür das <strong>Destructuring Assignment</strong> direkt:</p>
 <pre><code class="hljs javascript language-javascript"><span class="hljs-keyword">const</span> UserPersona = <span class="hljs-function">(<span class="hljs-params">{ firstName, lastName, image, job }</span>) =&gt;</span> (
   <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">{image}</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">"User Image"</span> /&gt;</span>
@@ -942,6 +945,7 @@ Example(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, 
 <span class="hljs-built_in">console</span>.log(firstName);
 <span class="hljs-built_in">console</span>.log(lastName);
 <span class="hljs-built_in">console</span>.log(other);</code></pre>
+<div class="force-break-before"></div>
 <p><strong>Ausgabe:</strong></p>
 <div class="hint hint--info">
 <p><code>Manuel</code><br />
@@ -950,7 +954,7 @@ Example(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, 
 </div>
 <p>All die Werte, die dabei nicht explizit in eine Variable geschrieben wurden während eines <strong>Destructuring Assignments,</strong> können dann in der als <strong>Rest</strong> deklarierten Variable abgerufen werden.</p>
 <h2 id="template-strings">Template Strings</h2>
-<p><strong>Template Strings</strong> in ES2015 sind eine „dritte Schreibweise“ für Strings in JavaScript. Bisher konnten Strings entweder in einfache Anführungszeichen (<code>'Beispiel'</code>) oder in doppelte Anführungszeichen (<code>"Beispiel"</code>) gesetzt werden. Nun kommt auch die Möglichkeit hinzu, diese in Backticks (<code>Beispiel</code>) zu setzen.</p>
+<p><strong>Template Strings</strong> in ES2015 sind eine „dritte Schreibweise“ für Strings in JavaScript. Bisher konnten Strings entweder in einfache Anführungszeichen (<code>'Beispiel'</code>) oder in doppelte Anführungszeichen (<code>"Beispiel"</code>) gesetzt werden. Nun kommt auch die Möglichkeit hinzu, diese in Backticks (<code>Beispiel</code> ) zu setzen.</p>
 <p><strong>Template Strings</strong> können in zwei Varianten auftreten. Als gewöhnliche <strong>Template Strings</strong>, die JavaScript Ausdrücke enthalten können, sowie in erweiterter Form als sog. <strong>Tagged Template Strings</strong>.</p>
 <p><strong>Tagged Template Strings</strong> sind eine deutlich mächtigere Form von <strong>Template Strings</strong>. Mit ihnen kann die Ausgabe von <strong>Template Strings</strong> mittels einer speziellen Funktion modifiziert werden. Das ist bei der gewöhnlichen Arbeit mit React erst einmal weniger wichtig.</p>
 <p>Wollte man sie mit JavaScript-Ausdrücken oder Werten mischen, griff man in ES5 meist zu einfacher <strong>String Concatenation:</strong></p>
@@ -969,7 +973,7 @@ Example(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, 
 <pre><code class="hljs javascript language-javascript"><span class="hljs-built_in">console</span>.log(<span class="hljs-string">`Das heutige Datum ist <span class="hljs-subst">${<span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>().toISOString()}</span>`</span>);
 <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`<span class="hljs-subst">${firstName.toUpperCase()}</span> <span class="hljs-subst">${lastName.toUpperCase()}</span>`</span>);</code></pre>
 <h2 id="promises-und-asyncawait">Promises und async/await</h2>
-<p>Promises (dt. <em>Versprechen</em>) sind kein grundsätzlich neues Konzept in JavaScript, in ES2015 haben sie aber erstmals Einzug in den Standard erhalten und können nativ ohne eine andere Library (z.B. q, Bluebird, rsvp.js, …) verwendet werden. Ganz grob erlauben Promises es, die asynchrone Entwicklung durch Callbacks zu <em>linearisieren</em>. Ein Promise bekommt eine <strong>Executor-Funktion</strong> übergeben, die ihrerseits die zwei Argumente <code>resolve</code> und <code>reject</code> übergeben bekommen, und kann einen von insgesamt drei verschiedenen Zuständen annehmen: als Initialwert ist dieser Zustand <code>pending</code> und je nachdem ob eine Operation erfolgreich oder fehlerhaft war, die Executor-Funktion also das erste (<code>resolve</code>) oder das zweite (<code>reject</code>) Argument ausgeführt hat, wechselt dieser Zustand zu <code>fulfilled</code> oder <code>rejected</code>. Auf die beiden Endzustände kann dann mittels der Methoden <code>.then()</code> und <code>.catch()</code> reagiert werden. Wird <code>resolve</code> aufgerufen, wird der <code>then()</code>-Teil ausgeführt; wird <code>reject</code> aufgerufen, werden <strong>sämtliche</strong> <code>then()</code> Aufrufe übersprungen und der <code>catch()</code>` Teil wird stattdessen ausgeführt.</p>
+<p>Promises (dt. <em>Versprechen</em>) sind kein grundsätzlich neues Konzept in JavaScript, in ES2015 haben sie aber erstmals Einzug in den Standard erhalten und können nativ ohne eine andere Library (z.B. q, Bluebird, rsvp.js, …) verwendet werden. Ganz grob erlauben Promises es, die asynchrone Entwicklung durch Callbacks zu <em>linearisieren</em>. Ein Promise bekommt eine <strong>Executor-Funktion</strong> übergeben, die ihrerseits die zwei Argumente <code>resolve</code> und <code>reject</code> übergeben bekommen, und kann einen von insgesamt drei verschiedenen Zuständen annehmen: als Initialwert ist dieser Zustand <code>pending</code> und je nachdem ob eine Operation erfolgreich oder fehlerhaft war, die Executor-Funktion also das erste (<code>resolve</code>) oder das zweite (<code>reject</code>) Argument ausgeführt hat, wechselt dieser Zustand zu <code>fulfilled</code> oder <code>rejected</code>. Auf die beiden Endzustände kann dann mittels der Methoden <code>.then()</code> und <code>.catch()</code> reagiert werden. Wird <code>resolve</code> aufgerufen, wird der <code>then()</code>-Teil ausgeführt; wird <code>reject</code> aufgerufen, werden <strong>sämtliche</strong> <code>then()</code>-Aufrufe übersprungen und der <code>catch()</code>-Teil wird stattdessen ausgeführt.</p>
 <p>Eine Executor-Funktion <strong>muss</strong> dabei zwangsweise eine der beiden übergebenen Methoden ausführen, andernfalls bleibt das Promise dauerhaft <em>unfulfilled</em>, was zu fehlerhaften Verhalten und in bestimmten Fällen sogar zu Memory Leaks innerhalb einer Anwendung führen kann.</p>
 <p>Um den Unterschied zwischen Promises und Callbacks einmal zu demonstrieren, werfen wir einen Blick auf das folgende fiktive Beispiel:</p>
 <pre><code class="hljs javascript language-javascript"><span class="hljs-keyword">const</span> errorHandler = <span class="hljs-function">(<span class="hljs-params">err</span>) =&gt;</span> {
@@ -1076,6 +1080,7 @@ getUser(id)
 <p>Babel ist dann vorangegangen und hat eine Lösung implementiert, die auf dem damaligen Stand der offiziellen Spezifikation basierte. Diese Umsetzung wurde dann zwischendurch mal geändert, weil es Updates am entsprechenden Standard gab, dann kam noch Webpack und implementierte einen eigenen Mechanismus zum Auflösen und Laden von JavaScript-Modulen, der sich am nun verabschiedeten Standard orientiert. Ebenso wie TypeScript.</p>
 <p>Mittlerweile ist man sich nach gerade einmal <strong>10</strong> Jahren bei der Spezifikation einig und die Umsetzung auf Seiten der JavaScript-Engines ist im vollen Gange. Klingt kompliziert, ist es zwischendrin auch mal gewesen, inzwischen gibt es aber Konsens und für uns Entwickler herrscht allmählich Klarheit. Aber dennoch gibt es auch noch immer einige Fallstricke, durch die wir auch in Zukunft auf Webpack, Babel oder TypeScript setzen müssen (oder eher: sollten), um komfortabel mit Modulen zu arbeiten. Dazu später mehr.</p>
 <p>Soviel zur Historie. Also wie funktionieren jetzt Imports und was sind Module überhaupt?</p>
+<div class="force-break-before"></div>
 <h3 id="module-in-javascript">Module in JavaScript</h3>
 <p>Das Ziel von Modulen ist es, Scopes in JavaScript auf einer <strong>per Modul-Ebene zu kapseln</strong>. Ein Modul in diesem Sinne ist tatsächlich ein einzelnes <strong>File</strong>. Sofern man sie nicht explizit durch das Erstellen eines neuen Scopes begrenzt, z.B. indem man es in eine <strong>IIFE</strong> (<em>Immediately Invoked Function Expression</em>) einschließt, ist jede Funktion, jede Variable, die in JavaScript definiert wird, erst einmal global verfügbar. Module wirken dem entgegen, indem sämtlicher Code erst einmal nur <strong>innerhalb des Moduls</strong> verfügbar ist. Dadurch vermeidet man Komplikationen, bspw. wenn zwei Libraries die gleiche Variable nutzen, außerdem schafft man auf einfache Art wiederverwendbaren Code, ohne auf der anderen Seite Angst haben zu müssen, dass dieser an anderer Stelle bereits existierende Variablen oder Funktionen ungewollt überschreibt.</p>
 <p>Module können die in ihnen definierten Funktionen, Klassen oder Variablen <strong>exportieren</strong>, andere Module können diese Exports dann bei Bedarf importieren. Für den Export von Funktionen und Variablen gibt es ein <code>export</code>-Keyword, um diese Exports dann später an anderer Stelle zu importieren gibt es, ihr denkt es euch, das entsprechende <code>import</code>-Keyword. Exports können zwei Formen annehmen, nämlich zum einen die eines <strong>Named Exports</strong> (dt. <strong>benannte Exporte</strong>) und auf der anderen Seite den, des <strong>Default Export</strong> (dt. <strong>Standard Export</strong>).</p>
@@ -1136,6 +1141,7 @@ getUser(id)
 <p>Imports wie der folgende sind damit im Browser momentan gar nicht möglich:</p>
 <pre><code class="hljs javascript language-javascript"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;</code></pre>
 <p>Abhilfe schaffen sollen hier später einmal die <strong>Package Name Maps</strong>, ein Proposal, also ein Vorschlag für kommende ECMAScript Versionen, das aber momentan noch ganz am Anfang der Diskussion steht. Darum kommen wir wie eingangs erwähnt in absehbarer Zeit nicht drum herum, auch weiterhin einen Module Bundler wie Webpack zu benutzen, um komfortabel mit ES-Modules arbeiten zu können wenn wir JavaScript-Module gleichzeitig sowohl serverseitig als auch clientseitig nutzen wollen.</p>
+<div class="force-break-before"></div>
 <h2 id="fazit">Fazit</h2>
 <p>ES2015 und die nachfolgenden Versionen bieten eine Menge nützliche neue Funktionen, die es bisher in JavaScript nicht gab. Viele davon sind bei der Arbeit mit React nahezu nicht wegzudenken. Zu den wichtigsten Neuerungen gehören die hier beschriebenen:</p>
 <ul>
@@ -1261,7 +1267,6 @@ getUser(id)
 <p>Derartige Kommentare können sich natürlich auch über mehrere Zeilen erstrecken. Einzeilige JavaScript Kommentare, die mit einem doppelten Slash (<code>//</code>) eingeleitet werden, sind hingegen nicht möglich in JSX. Hier muss also auch bei einem kurzen einzeiligen Kommentar die <code>/* */</code> Syntax für mehrzeilige Kommentare verwendet werden.</p>
 <p>Damit solltest du auch schon ausreichend Kenntnisse über JSX erlangt haben, um die nachfolgenden Beispiele und Beschreibungen im weiteren Verlauf immer besser verstehen und nachvollziehen zu können</p>
 <h2 id="fazit">Fazit</h2>
-<div class="hint hint--info">
 <ul>
 <li>Mehrzeiliges JSX muss stets in Klammern gesetzt werden</li>
 <li>JSX kann JavaScript-Ausdrücke verarbeiten. Diese müssen in geschweifte Klammern gesetzt werden und können dann auch in Props verwendet werden</li>
@@ -1270,7 +1275,6 @@ getUser(id)
 <li>Kommentare werden ebenfalls in geschweifte Klammern gesetzt und verwenden Multiline-Comment Syntax: <code>{/* */}</code></li>
 </ul>
 </div>
-</div>
 <div class="chapter" data-filename="die-grundlagen/rendering-von-elementen.md">
   <h1 id="rendering-von-elementen">Rendering von Elementen</h1>
 <p>In den vorherigen Kapiteln habe ich sie wie selbstverständlich bereits einige Male erwähnt, doch was genau sind <strong>React-Elemente</strong> eigentlich?</p>
@@ -1278,7 +1282,7 @@ getUser(id)
 <div class="hint hint--info">
 <p>React-<strong>Elemente</strong> werden oftmals mit React-<strong>Komponenten</strong> durcheinander geworfen oder im Sprachgebrauch analog verwendet. Das ist aber nicht korrekt! <strong>Elemente</strong> sind das, aus dem <strong>Komponenten</strong> letztendlich bestehen. <strong>Komponenten</strong> werden im nächsten Kapitel noch ausführlich behandelt, bevor es damit weitergeht, solltest du jedoch zuerst dieses Kapitel über <strong>Elemente</strong> gelesen haben.</p>
 </div>
-<p>Wir wissen bereits wie wir mittels <strong>JSX</strong> ein <strong>React-Element</strong> erstellen und das <strong>JSX</strong> nur eine Vereinfachung ist, um uns viel Schreibarbeit und ständige <code>React.createElement()</code>-Aufrufe zu ersparen. Doch wie rendern wir ein erstelltes Element nun, also mit anderen Worten, zeigen es im Browser an?</p>
+<p>Wir wissen bereits, wie wir mittels <strong>JSX</strong> ein <strong>React-Element</strong> erstellen und dass <strong>JSX</strong> nur eine Vereinfachung ist, um uns viel Schreibarbeit und ständige <code>React.createElement()</code>-Aufrufe zu ersparen. Doch wie rendern wir ein erstelltes Element nun, also mit anderen Worten, zeigen es im Browser an?</p>
 <p>Hier bedienen wir uns an <code>ReactDOM</code>, genauer gesagt dessen eigener <code>render()</code>-Methode. Um ein <strong>React-Element</strong> zu rendern, benötigen wir grundsätzlich eine <strong>Root-</strong> oder <strong>Mount-Node</strong>. Dies ist eine DOM-Node, die sozusagen als Platzhalter dient und React mitteilt, wohin ein Element gerendert werden soll. Theoretisch kannst du problemlos mehrere Root-Nodes in deinem HTML-Dokument haben. React kontrolliert diese alle unabhängig voneinander. Statt also nur einer großen <strong>React-Anwendung</strong> kannst du also auch viele kleine (oder auch große) Anwendungen in einem einzigen HTML-Dokument unterbringen. Üblich ist es aber nur <strong>eine Root-Node</strong> für deine <strong>React-Anwendung</strong> zu haben.</p>
 <p>Kommen wir also zum Wesentlichen: um ein <strong>React-Element</strong> zu rendern, übergibst du dieses als erstes Argument der <code>ReactDOM.render()</code>-Methode zusammen mit der <strong>Root-Node</strong> als zweitem Argument, also der DOM-Node, in das dein <strong>Element</strong> gerendert werden soll.</p>
 <p>Stellen wir uns einmal vor du hast ein <code>div</code> mit der ID <code>root</code>in deinem HTML-Dokument, das als <strong>Root-Node</strong> dienen soll:</p>
@@ -1597,6 +1601,7 @@ function Header() {
 <p>Auch wenn der Code jetzt erstmal länger geworden ist, haben wir uns dadurch dennoch einige große Vorteile geschaffen.</p>
 <h3 id="leichtere-kollaboration">Leichtere Kollaboration</h3>
 <p>Alle Komponenten können (und sollten!) in einem eigenen File gespeichert werden, was die Arbeit im Team immens erleichtert. So könnte jedes Team-Mitglied oder auch einzelne Teams innerhalb eines großen Projekt-Teams für eine oder mehrere Komponenten hauptverantwortlich sein („Ownership übernehmen“) und Änderungen in diesen vornehmen, während das Risiko, die Änderungen eines Kollegen zu überschreiben oder später Merge-Konflikte in Git auflösen zu müssen, immens sinkt. Teams werden zu <em>Konsumenten</em> von Komponenten anderer Teams, die anhand eventuell verfügbarer Props ein simples Interface für ihre Komponente bereitstellen.</p>
+<div class="force-break-before"></div>
 <h3 id="single-responsibility-prinzip">Single Responsibility Prinzip</h3>
 <p>Wir haben nun außerdem „sprechende“ Komponenten, von denen jede eine klar definierte Aufgabe hat, die direkt anhand ihres Namens ersichtlich wird. Das Logo zeigt mir überall wo es verwendet wird dasselbe Logo an. Möchte ich später eine Änderung an der Suchleiste vornehmen, suche ich gezielt nach der Searchbar.js und ändere diese entsprechend meinen neuen Anforderungen. Die Header-Komponente dient als übergeordnete Komponente, die selbst dafür verantwortlich ist, alle ihre Bestandteile zu beinhalten und diese überall hin mitzubringen, wo sie eingesetzt wird.</p>
 <h3 id="wiederverwendbarkeit">Wiederverwendbarkeit</h3>
@@ -1774,8 +1779,8 @@ ReactDOM.render(
   &lt;User name={user.name} image={user.image} posts={user.posts} /&gt;,
   document.getElementById('app')
 );</code></pre>
+<div class="force-break-before"></div>
 <h3 id="die-wichtigsten-punkte-im-überblick">Die wichtigsten Punkte im Überblick</h3>
-<div class="hint hint--info">
 <p>Komponenten müssen sich hinsichtlich ihrer Props als <strong>Pure Functions</strong> verhalten und bei gleichen Props stets die gleiche Ausgabe erzeugen.</p>
 <ul>
 <li>Props sind innerhalb einer Komponente grundsätzlich als <strong>readonly</strong> zu betrachten</li>
@@ -1785,7 +1790,6 @@ ReactDOM.render(
 <li>Props können <strong>sämtliche JavaScript-Ausdrücke</strong> („Expressions“) als Wert entgegennehmen</li>
 <li>Empfangene Props können beliebig viele Ebenen tief im Komponenten-Baum an Kind-Elemente weitergegeben werden</li>
 </ul>
-</div>
 </div>
 <div class="chapter" data-filename="die-grundlagen/state-und-lifecycle-methods.md">
   <h1 id="state-und-lifecycle-methods">State und Lifecycle-Methods</h1>
@@ -1819,6 +1823,7 @@ ReactDOM.render(
 }</code></pre>
 <p><strong>Create React App</strong> unterstützt die <strong>Class Property Syntax</strong> standardmäßig und da viele React-Projekte heute vollständig oder zumindest zu gewissen Teilen auf dem CRA-Setup oder Varianten davon basieren, kommt diese Syntax heute in den meisten Projekten zum Einsatz und kann genutzt werden. Sollte dies einmal in einem Projekt nicht der Fall sein, empfehle ich dringend die Installation und Nutzung des Babel-Plugins, da es wirklich viele unnötige Zeilen Code bei der täglichen Arbeit mit React einspart, während es gleichzeitig in nur wenigen Minuten eingerichtet ist.</p>
 <p>Ist der <strong>State</strong> erst einmal definiert, können wir innerhalb der <strong>Klassen-Komponente</strong> mittels <code>this.state</code> <strong>lesend</strong> auf ihn zugreifen. <strong>Lesend</strong> ist hier ein entscheidendes Stichwort. Denn auch wenn es prinzipiell möglich, ist den State direkt über <code>this.state</code> zu verändern, sollte dies aus verschiedenen Gründen vermieden werden.</p>
+<div class="force-break-before"></div>
 <h2 id="den-state-verändern-mit-thissetstate">Den State verändern mit this.setState()</h2>
 <p>Um State zu verändern, stellt React eine eigene Methode innerhalb einer <strong>Klassen-Komponente</strong> bereit:</p>
 <pre><code class="hljs javascript language-javascript"><span class="hljs-keyword">this</span>.setState(updatedState);</code></pre>
@@ -2142,6 +2147,7 @@ ReactDOM.render(<span class="hljs-tag">&lt;<span class="hljs-name">ParentCompone
 <p>Zugegeben, im obigen Log habe ich etwas geschummelt, denn die <code>componentWillUnmount()</code>-Methode wird immer dann (und nur dann) ausgeführt, wenn eine Komponente komplett aus dem DOM entfernt wird. Das wird sie im dazugehörigen Code-Beispiel allerdings nie. Eine Komponente gilt dann als unmounted, wenn sie über den Aufruf von <code>ReactDOM.unmountComponentAtNode()</code> explizit entfernt wird (das gilt insbesondere für Mount-Nodes) oder wenn sie implizit nicht mehr aus der render()-Methode einer Eltern-Komponente zurückgegeben wird.</p>
 <p>Immer dann wird die <code>componentWillUnmount()</code>-Methode einer Komponente aufgerufen; natürlich wie bei allen Methoden, abgesehen von <code>render()</code>, nur dann wenn sie auch implementiert wurde. Diese <strong>Lifecycle-Methode</strong> ist essentiell, wenn es um das „Aufräumen“ geht. Hier können und <strong>sollten</strong> all die Funktionen aufgerufen werden, die benötigt sind damit die Komponente keine „Spuren hinterlässt“. Das können noch ausstehende Timeouts (<code>setTimeout</code>) oder fortlaufende Intervalle (<code>setInterval</code>) sein aber auch DOM-Modifikationen, die außerhalb des eigenen Komponenten-JSX vorgenommen wurden, noch laufende Netzwerkverbindungen bzw. XHR/Fetch-Aufrufe oder auch eigene Event Listener, die mittels der DOM API Methode <code>Element.addEventListener()</code> hinzugefügt wurden.</p>
 <p>Event Listener. Gutes Stichwort. Darum kümmern wir uns im nächsten Kapitel, denn in den meisten Fällen ist der Einsatz von <code>addEventListener()</code> in React nicht mehr nötig, da React ein eigenes Event-System mitbringt, um für bessere Übersicht zu sorgen.</p>
+<div class="force-break-before"></div>
 <h3 id="diagramm-der-lifecycle-methoden">Diagramm der Lifecycle-Methoden</h3>
 <p class="has-image"><span><img src="./assets/.gitbook/lifecycle-methods-2.jpg" alt="Diagram der verschiedenen Lifecycle-Methods in ihren jeweiligen Phasen (CC0 Dan Abramov)" /><span class="caption">Diagram der verschiedenen Lifecycle-Methods in ihren jeweiligen Phasen (CC0 Dan Abramov)</span></span></p>
 </div>
@@ -2290,8 +2296,8 @@ ReactDOM.render(<span class="hljs-tag">&lt;<span class="hljs-name">ParentCompone
   }));
 };</code></pre>
 <p>Zuerst rufen wir besagte <code>e.persist()</code>-Methode auf. Anschließend können wir auch in der <strong>Updater-Funktion</strong> sorglos auf <code>e.target</code> und dessen <code>value</code>-Eigenschaft zugreifen.</p>
+<div class="force-break-before"></div>
 <h3 id="fazit">Fazit</h3>
-<div class="hint hint--info">
 <ul>
 <li>Zum Definieren von Events möglichst <strong>immer</strong> die Event-Props im JSX verwenden: <code>onChange</code>, <code>onMouseOver</code>, <code>onTouchStart</code>, <code>onKeyDown</code>, <code>onAnimationStart</code> usw. auch wenn es anfangs gewöhnungsbedürftig wirken sollte.</li>
 <li>Event-Handler müssen explizit an die Klassen-Instanz gebunden werden, wenn auf andere Klassen-Methoden wie bspw. <code>this.setState()</code> zugegriffen wird. Der eleganteste Weg hierfür sind <strong>Public Class Properties</strong> und <strong>Arrow Functions.</strong></li>
@@ -2299,7 +2305,6 @@ ReactDOM.render(<span class="hljs-tag">&lt;<span class="hljs-name">ParentCompone
 <li><code>SyntheticEvent</code>-Objekte werden „nullified“. Vorsicht bei der Verwendung in Callback-Funktionen außerhalb des jeweiligen Event-Handlers! Hier ist es gut möglich, dass das Event-Objekt beim Aufruf des Callbacks mittlerweile nicht mehr existiert.</li>
 <li>Mittels <code>event.persist()</code> kann erzwungen werden, dass das das Event-Objekt nicht durch React auf <code>null</code> gesetzt wird.</li>
 </ul>
-</div>
 </div>
 <div class="chapter" data-filename="die-grundlagen/formulare.md">
   <h1 id="formulare">Formulare</h1>
@@ -3667,9 +3672,11 @@ Translated.contextType = LanguageContext;</code></pre>
   };
 
   render() {
-    &lt;Provider value={{ <span class="hljs-attr">color</span>: <span class="hljs-keyword">this</span>.state.color }}&gt;
-      <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">MoreComponents</span> /&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">Provider</span>&gt;</span></span>;
+    <span class="hljs-keyword">return</span> (
+      <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Provider</span> <span class="hljs-attr">value</span>=<span class="hljs-string">{{</span> <span class="hljs-attr">color:</span> <span class="hljs-attr">this.state.color</span> }}&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">MoreComponents</span> /&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">Provider</span>&gt;</span></span>
+    );
   }
 }</code></pre>
 <p>In diesem Fall erzeugen wir bei jedem neuen Aufruf der render()-Methode ein neues Objekt <code>{color: this.state.color}</code>, welches wir als Wert für den Context-Provider benutzen. Da React lediglich überprüft ob die Referenz zum entsprechenden <code>value</code> im aktuellen <code>render()</code>-Aufruf der aus dem vorherigen <code>render()</code>-Aufruf entspricht, dies hier jedoch niemals der Fall ist, da ja ein neues Objekt an Ort und Stelle erzeugt wird, werden hier sämtliche Consumer-Komponenten neu gerendert.</p>
@@ -3680,11 +3687,14 @@ Translated.contextType = LanguageContext;</code></pre>
   };
 
   render() {
-    &lt;Provider value={<span class="hljs-keyword">this</span>.state}&gt;
-      <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">MoreComponents</span> /&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">Provider</span>&gt;</span></span>;
+    <span class="hljs-keyword">return</span> (
+      <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Provider</span> <span class="hljs-attr">value</span>=<span class="hljs-string">{this.state}</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">MoreComponents</span> /&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">Provider</span>&gt;</span></span>
+    );
   }
 }</code></pre>
+<div class="force-break-before"></div>
 <p>Im zweiten Beispiel übergeben wir lediglich eine <em>Referenz</em> zum <code>state</code>-Objekt der Komponente. Da diese auch beim Re-Rendering der Komponente erhalten bleibt, löst dieses Vorgehen kein Re-Rendering aus, solange sich der Inhalt des States der Komponente nicht ändert!</p>
 </div>
 <div class="chapter" data-filename="erweiterte-konzepte/refs.md">
@@ -4002,10 +4012,8 @@ ReactDOM.render(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-n
 <p>Hier haben wir es mit zwei <strong>Error-Boundary</strong>-Komponenten zu tun: <code>ErrorBoundary</code> und <code>ServiceUnavailableBoundary</code>. Während die äußere <code>ErrorBoundary</code>-Komponente durchaus 1:1 das obige Beispiel repräsentieren könnte, also lediglich ein <code>&lt;h1&gt;Ein Fehler ist aufgetreten.&lt;/h1&gt;</code> ausgibt, sollte in der <code>ApplicationLogic</code>-Komponente ein Fehler auftreten, könnte die <code>ServiceUnavailableBoundary</code>-Komponente eine alternative Meldung ausgeben wie bspw <em>„Der angeforderte Dienst ist momentan nicht erreichbar. Bitte versuchen Sie es später wieder“</em>, wenn der Fehler in der (fiktiven) <code>WeatherWidget</code>-Komponente auftritt.</p>
 <p>Tritt in der <code>WeatherWidget</code>-Komponente ein Fehler auf, wird dieser dann von der <code>ServiceUnavailableBoundary</code> abgefangen und alles, was in der <code>ApplicationLogic</code>-Komponente gerendert wird, bleibt intakt! Würden wir das <code>WeatherWidget</code> nicht in seiner eigene <strong>Error Boundary</strong> einschließen, würde die äußere <strong>Error Boundary</strong> greifen und auch die <code>ApplicationLogic</code>-Komponente nicht mehr anzeigen!</p>
 <p>Generell lässt sich sagen, dass es empfehlenswert ist, immer mindestens eine <strong>Error Boundary</strong> in seiner Anwendung zu haben, die sich möglichst weit oben in der Komponenten-Hierarchie befindet und sämtliche unerwartete Fehler abfängt (und möglichst logged!) und ähnlich wie eine <code>500 Internal Server Error</code> Seite agiert. Nach Bedarf kann und sollte man dann weitere <strong>Error Boundaries</strong> hinzufügen und bestimmte Seitenbäume damit umschließen. Je nachdem, wie groß die Gefahr eines Rendering-Fehlers in einem bestimmten Bereich eines Baums ist (bspw. weil man mit unbekannten oder mit sich-ändernden Daten zu tun hat), oder wie stark vernachlässigbar ein bestimmter Komponentenbaum ist.</p>
-<div class="hint hint--info">
 <p>Seit Version 16 werden Komponenten, in denen ein schwerer Fehler auftritt, kurz gesagt in denen ein Error/Exception geworfen wird, durch React komplett „unmounted“ und verschwinden aus dem Seitenbaum. Dies ist wichtig, damit bei einem unbehandelten Fehler das User Interface nicht plötzlich in einem unerwarteten und fehlerhaften Zustand bleibt. Dies ist bspw. in einer Online-Banking-Anwendung kritisch, wenn Überweisungen dann an einen falschen Empfänger gehen oder ein falscher Betrag überwiesen wird.</p>
 <p>Um derartige Fehler im Rendering von Komponenten vernünftig behandeln zu können wurden die <strong>Error Boundaries</strong> eingeführt. Durch sie können Benutzer auf den fehlerhaften Zustand der Anwendung hingewiesen werden. Da Fehler in einer Anwendung nie ganz ausgeschlossen werden können (Benutzer können hier sehr einfallsreich sein!), ist die Verwendung von <strong>Error Boundaries</strong> sehr zu empfehlen!</p>
-</div>
 </div>
 <div class="chapter" data-filename="erweiterte-konzepte/portals.md">
   <h1 id="portals">Portals</h1>
@@ -4227,6 +4235,7 @@ ReactDOM.render(<span class="hljs-tag">&lt;<span class="hljs-name">App</span> /&
 <p>TypeError: Cannot read property 'settings' of undefined</p>
 </div>
 <p><strong>Typechecking</strong> kann uns hier also helfen, derartige potentielle Fehler schon vorher zu entdecken. Dazu gibt es neben <strong>Flow</strong> und <strong>TypeScript</strong>, die statische Typisierung ermöglichen, mit den sogenannten <strong>PropTypes</strong> auch eine recht simple React-eigene Lösung. Während <strong>Flow</strong> und <strong>TypeScript</strong> generell statische Typisierung in JavaScript ermöglichen, beschränken sich die React <strong>PropTypes</strong> allein auf React-Komponenten und finden außerhalb von Komponenten keine Anwendung. Wer also an statischer Typisierung Gefallen findet, sollte durchaus mal einen Blick auf <strong>Flow</strong> oder <strong>TypeScript</strong> wagen.</p>
+<div class="force-break-before"></div>
 <h2 id="proptypes">PropTypes</h2>
 <p><strong>PropTypes</strong> reichen bis in ganz frühe Versionen von React zurück, lange bevor React seine heutige Popularität erreicht hat, und wurden in React 15.5. aus dem Core heraus und in ein eigenes <code>prop-types</code>-Package ausgelagert. Während man seine <strong>PropTypes</strong> vorher mittels bspw. <code>React.PropTypes.string</code> direkt in der Core-Library definieren konnte, erfolgt der Zugriff nun über das zuvor importierte <code>PropTypes</code>-Modul: <code>PropTypes.string</code>.</p>
 <p>Das bedeutet auch, dass das Modul zuerst als <code>devDependency</code> installiert werden muss. Auf der Kommandozeile reicht dafür ein simples:</p>
@@ -4317,6 +4326,7 @@ Greeting.defaultProps = {
 <pre><code class="hljs bash language-bash">yarn add --dev babel-plugin-transform-react-remove-prop-types
 </code></pre>
 </div>
+<div class="force-break-before"></div>
 <h2 id="flow">Flow</h2>
 <p>Anders als die <strong>React PropTypes</strong> ist <strong>Flow</strong> ein <strong>statischer Typechecker</strong> für <strong>sämtliches</strong> JavaScript, nicht allein nur für React-Komponenten. Wie React selbst wird auch <strong>Flow</strong> von Facebook entwickelt und fügt sich dadurch schön nahtlos in die meisten React Setups ein. Bis <strong>Babel 6</strong> war es sogar Teil des <code>babel-preset-react</code>-Pakets, wurde also sozusagen zur Verwendung mit React „mit-installiert“ und konnte ohne jeglichen zusätzlichen Aufwand einfach verwendet werden.</p>
 <p>Seit <strong>Babel 7</strong> ist <strong>Flow</strong> in ein eigenes <strong>Babel Preset</strong> ausgelagert worden, das sich aber ebenso einfach über <code>npm install @babel/preset-flow</code> (bzw. analog dazu <code>yarn add @babel/preset-flow</code>) installieren lässt. Anschließend muss dann lediglich noch das entsprechende <code>@babel/preset-flow</code> als Preset in die Babel-Config eingetragen werden. Das <strong>Preset</strong> wird benötigt, um die <strong>Flow-Syntax</strong>, die kein valides JavaScript wäre, im <strong>Build-Prozess</strong> aus dem entsprechenden Files zu entfernen, sodass es beim Aufruf im Browser nicht zu Syntax-Fehlern kommt.</p>
@@ -4429,11 +4439,12 @@ type StateT = {
 <p>… wurde React in diesem Kapitel folgendermaßen importiert:</p>
 <pre><code class="hljs jsx language-jsx"><span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;</code></pre>
 <p>Dies führt dazu, dass gleichzeitig auch die von React mitgelieferten <strong>Type Definitions</strong> mit importiert wurden. Dies ist notwendig, wenn wir bspw. ein React-Element aus einer Funktion zurückgeben und dieses typisieren wollen.</p>
+<div class="force-break-before"></div>
 <h2 id="typescript">TypeScript</h2>
-<p><strong>TypeScript</strong> wird von Microsoft entwickelt und ist ein sogenanntes typisiertes <strong>Superset</strong> von JavaScript, was bedeutet, dass es nicht direkt im Browser ausgeführt werden kann, sondern zuvor in einem Zwischenschritt von einem Compiler in „echtes“ JavaScript kompiliert wird, gültiges JavaScript aber immer auch gleichzeitig gültiges <strong>TypeScript</strong> ist. <strong>TypeScript</strong> sieht auf den ersten Blick erst einmal ähnlich aus wie <strong>Flow</strong> und funktioniert auch ähnlich. Während <strong>Flow</strong> allerdings lediglich ein reiner <strong>Typechecker</strong> ist, bringt <strong>TypeScript</strong> als Superset noch etwas mehr mit. So war es lange vor <strong>ES2015</strong> schon möglich, Klassen und Imports in <strong>TypeScript</strong> zu verwenden.</p>
+<p><strong>TypeScript</strong> wird von Microsoft entwickelt und ist ein sogenanntes <strong>typisiertes Superset</strong> von JavaScript, was bedeutet, dass es nicht direkt im Browser ausgeführt werden kann, sondern zuvor in einem Zwischenschritt von einem Compiler in „echtes“ JavaScript kompiliert wird, gültiges JavaScript aber immer auch gleichzeitig gültiges <strong>TypeScript</strong> ist. <strong>TypeScript</strong> sieht auf den ersten Blick erst einmal ähnlich aus wie <strong>Flow</strong> und funktioniert auch ähnlich. Während <strong>Flow</strong> allerdings lediglich ein reiner <strong>Typechecker</strong> ist, bringt <strong>TypeScript</strong> als Superset noch etwas mehr mit. So war es lange vor <strong>ES2015</strong> schon möglich, Klassen und Imports in <strong>TypeScript</strong> zu verwenden.</p>
 <p>In der JavaScript-Community erfreut sich <strong>TypeScript</strong> immer wachsender Beliebtheit und auch in Verbindung mit React ist es immer häufiger zu finden. Aus diesem Grund möchte ich das hier nicht ganz unerwähnt lassen, wobei ich hier gleichzeitig nicht all zu sehr in die Tiefe gehen möchte, da <strong>TypeScript</strong> allein genug Material für ein eigenes Buch hergeben würde.</p>
-<p>Im Bezug auf React wichtig zu wissen ist, dass TypeScript-Files üblicherweise eine <code>.ts</code> Datei-Endung haben, enthält eine Datei auch JSX, muss die Datei zwingend mit <code>.tsx</code> enden.</p>
-<p>Mit dem Release von Babel 7 wurde auch die Integration vereinfacht und es benötigt nun nicht mehr zwangsweise den <strong>TypeScript</strong> Compiler (<code>tsc</code>) sondern kann in Form eines Babel-Plugins verwendet werden. Das Plugin wird mit dem Babel Preset <code>@babel/preset-typescript</code> installiert.</p>
+<p>Im Bezug auf React wichtig zu wissen ist, dass <strong>TypeScript</strong>-Files üblicherweise eine <code>.ts</code> Datei-Endung haben, enthält eine Datei auch JSX, muss die Datei zwingend mit <code>.tsx</code> enden.</p>
+<p>Mit dem Release von <strong>Babel 7</strong> wurde auch die Integration vereinfacht und es benötigt nun nicht mehr zwangsweise den <strong>TypeScript</strong> Compiler (<code>tsc</code>) sondern kann in Form eines Babel-Plugins verwendet werden. Das Plugin wird mit dem Babel Preset <code>@babel/preset-typescript</code> installiert. Genaue Informationen wie <strong>TypeScript</strong> in Verbindung mit React verwendet werden kann, liefert die offizielle <strong>TypeScript</strong>-Dokumentation unter <a href="https://www.typescriptlang.org/docs">https://www.typescriptlang.org/docs</a>.</p>
 </div>
 <div class="chapter" data-filename="hooks/README.md">
   <h1 id="iv-–-hooks">IV – Hooks</h1>
@@ -5024,6 +5035,7 @@ ReactDOM.render(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-n
 <p>Dieser Hook erwartet als einzigen Parameter einen Context-Typen, der mittels <code>React.createContext()</code> erstellt wurde und gibt dann den Wert des in der Komponenten-Hierarchie nächsthöheren Context-Providers des entsprechenden Typs zurück.</p>
 <p>Der <code>useContext()</code>-Hook verhält sich dabei wie eine Context-Consumer-Komponente und verursacht ein Rerendering der <strong>Function Component,</strong> sobald der Wert des Contexts im jeweiligen Provider-Element geändert wurde.</p>
 <p>Die Verwendung des Hooks ist optional und so ist es auch weiterhin möglich, Context-Consumer im <strong>JSX</strong> der <strong>Function Component</strong> zu verwenden. Allerdings ist der Hook die deutlich übersichtlichere Variante, da dieser keine neue Hierarchie-Ebene im Komponentenbaum erzeugt.</p>
+<div class="force-break-before"></div>
 <h2 id="usereducer">useReducer</h2>
 <pre><code class="hljs javascript language-javascript"><span class="hljs-keyword">const</span> [state, dispatch] = useReducer(reducerFunc, initialState, initFunc);</code></pre>
 <p>Der <code>useReducer()</code>-Hook ist eine Alternative zu <code>useState()</code>, die es erlaubt auch komplexere States zu managen. Der Hook ist angelehnt an die Flux-Architektur, bei der, kurz gesagt, eine <strong>Reducer-</strong> Funktion einen <strong>neuen State erzeugt</strong>, indem sie den <strong>letzten State</strong> und eine sog. <strong>Action</strong> übergeben bekommt.</p>
@@ -5103,6 +5115,7 @@ ReactDOM.render(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-n
 
 ReactDOM.render(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Counter</span> <span class="hljs-attr">startValue</span>=<span class="hljs-string">{3}</span> /&gt;</span>, document.getElementById('root'));</span></code></pre>
 <p>In diesem Beispiel erweitern wir den <code>useReducer()</code>-Hook um den dritten, optionalen Parameter: die <strong>Init-</strong> Funktion. Aus dem <code>initialState</code> im ersten Beispiel wird ein Argument für die <strong>Init-</strong>Funktion. Der Wert für dieses Funktions-Argument wird der Komponente hier als <code>startValue</code> über die Props übergeben.</p>
+<div class="force-break-before"></div>
 <h3 id="reducer-in-der-praxis">Reducer in der Praxis</h3>
 <p>Das Prinzip von <strong>Reducern</strong> dürfte einem großen Teil der React-Community wohl erstmals durch den Aufstieg von <strong>Redux</strong> nahegebracht worden sein. <strong>Redux</strong> ist ein Paket um globalen State komfortabel managen zu können und wurde in der Vergangenheit häufig verwendet, wenn das Handling von lokalen States in React zu unübersichtlich wurde oder über zu viele Komponenten hinweg durch sog. „Props Drilling“ (also dem Weiterreichen von Props über mehrere Hierarchie-Ebenen hinweg) zu umständlich wurde.</p>
 <p><strong>Redux</strong> (und daher der Name) besteht in seinem Kern darin, Reducer-Funktionen zu verwalten und deren State und Dispatch-Funktion in den Komponenten verfügbar zu machen, die den globalen State lesen oder verändern sollen. Mit dem <code>useReducer()</code>-Hook bekommt React nun eine eigene Funktion um komplexes State-Management mittels Reducer-Funktionen zu bewerkstelligen.</p>
@@ -5527,9 +5540,9 @@ ReactDOM.render(&lt;App /&gt;, document.getElementById('root'));</code></pre>
 <div class="chapter" data-filename="ecosystem/routing.md">
   <h1 id="routing">Routing</h1>
 <p>Eine Funktionalität, die in nahezu allen <strong>Single Page Applikationen</strong> (SPA) früher oder später (meist früher als später) benötigt wird, ist das <strong>Routing</strong>. Also das Zuordnen einer URL in der Anwendung zu einer bestimmten Funktion. Rufe ich bspw. die URL <code>/users/manuel</code> auf, möchte ich dort sehr wahrscheinlich das Benutzerprofil des Users <code>manuel</code> anzeigen.</p>
-<p>Hier hat sich der <strong>React Router</strong> in den vergangenen Jahren als de facto Standard etabliert. Entwickelt von Michael Jackson (ja, der Kerl heißt wirklich so!) und Ryan Florence (der laut eigener Aussage inzwischen über 10 verschiedene Router für diverse Zwecke entwickelt hat) bringt er es auf mittlerweile über 35.000 Stars bei GitHub. Er wird regelmäßig gepflegt, hat eine Community bestehend aus über 500 Contributors auf GitHub und passt sich durch seine deklarative Natur wunderbar die React-Prinzipien an. Darüber hinaus ist er kompatibel sowohl mit dem Web (client- und serverseitig!) wie auch React Native. Er ist also sehr universell einsetzbar, sehr gut getestet und durch seine weite Verbreitung auch bewährt.</p>
-<p>Dabei ist sein Interface selbst ziemlich simpel. In ca. 95% der Zeit wird man mit lediglich fünf Komponenten in Berührung kommen: <code>BrowserRouter</code>, <code>Link</code>, <code>Route</code>, <code>Redirect</code> und <code>Switch</code>. Darüber hinaus gibt es noch die imperative History API die auf dem gleichnamigen <code>history</code> Package basiert und die HOC <code>withRouter</code>, um für das Routing relevante Daten aus dem Router in eine Komponente herein zu reichen.</p>
-<p>Installiert wird er via:</p>
+<p>Hier hat sich der <strong>React Router</strong> in den vergangenen Jahren als de facto Standard etabliert. Entwickelt von Michael Jackson (ja, der Kerl heißt wirklich so!) und Ryan Florence (der laut eigener Aussage inzwischen über 10 verschiedene Router für diverse Zwecke entwickelt hat) bringt er es auf mittlerweile über 35.000 Stars bei GitHub. Das Paket wird regelmäßig gepflegt, hat eine Community bestehend aus über 500 Contributors auf GitHub und passt sich durch seine deklarative Natur wunderbar an die React-Prinzipien an. Darüber hinaus ist er kompatibel sowohl mit dem Web (client- und serverseitig!) wie auch React Native. Er ist also sehr universell einsetzbar, sehr gut getestet und durch seine weite Verbreitung auch bewährt.</p>
+<p>Dabei ist sein Interface selbst ziemlich simpel. In ca. 95% der Zeit wird man mit lediglich fünf Komponenten in Berührung kommen: <code>BrowserRouter</code>, <code>Link</code>, <code>Route</code>, <code>Redirect</code> und <code>Switch</code>. Darüber hinaus gibt es noch die imperative History API, die durch das <code>history</code>-Package, einem dünnen Layer über der nativen Browserimplementierung, wodurch diese cross-browser fähig gemacht wird, sowie die Higher Order Component <code>withRouter</code>, um für das Routing relevante Daten aus dem Router in eine Komponente hinein zu reichen.</p>
+<p>Installiert wird der <strong>React Router</strong> via:</p>
 <pre><code class="hljs bash language-bash">npm install --save react-router-dom</code></pre>
 <p>bzw.</p>
 <pre><code class="hljs bash language-bash">yarn add react-router-dom</code></pre>
@@ -5652,6 +5665,7 @@ ReactDOM.render(&lt;App /&gt;, document.getElementById('root'));</code></pre>
 <p>Um das Matching zwischen dem <code>path</code> und der URL bewusst einzuschränken, bietet uns React Router die <code>exact</code> Prop auf der <code>Route</code>-Komponente. Wird diese Boolean-Prop angegeben, wird eine Route nur noch dann gerendert, wenn ihre <code>path</code>-Prop auch exakt mit der aktuellen URL übereinstimmt:</p>
 <pre><code class="hljs jsx language-jsx">&lt;Route exact path=<span class="hljs-string">"/"</span> component={Home} /&gt;</code></pre>
 <p>Die Stelle, an der die Prop genau angegeben wird ist dabei, wie immer in <strong>JSX</strong>, zu vernachlässigen; ich schreibe sie gern direkt vor die <code>path</code>-Prop, um den Eindruck einer „sprechenden“ Prop zu vermitteln: hier habe ich eine <strong>Route</strong> mit dem <strong>exact path</strong>. In unserem Beispiel mit der Account-Sidebar würde die Sidebar bei Verwendung der <code>exact</code>-Prop nun nur noch dann gerendert, wenn die URL <code>/account</code> entspricht, jedoch nicht mehr bei <code>/account/edit</code>, <code>/account/images</code> oder <code>/account/settings</code>.</p>
+<div class="force-break-before"></div>
 <h3 id="matching-auf-eine-route-limitieren-via-switch-komponente">Matching auf eine Route limitieren via Switch-Komponente</h3>
 <p>Die <code>exact</code>-Prop bezieht sich dabei immer nur auf eine <strong>einzelne Route</strong> und lässt andere Routen davon gänzlich unberührt. Haben wir eine Reihe von URLs, von denen in bestimmten Fällen mehrere Routen matchen können, wird das mitunter mühsam, jeder einzelnen dieser Routen eine weitere Prop hinzuzufügen. Hier hilft uns der nächste Import aus dem <strong>React Router</strong> Paket weiter: <code>Switch</code>.</p>
 <p>Mit der <code>Switch</code>-Komponente, die sich um eine Reihe von <code>&lt;Route /&gt;</code>-Elementen legt, sorgen wir dafür, dass jeweils immer nur die <strong>erste</strong> Route, deren <code>path</code> mit der aktuellen URL übereinstimmt, gerendert wird. Oft ist es keine schlechte Idee, Routen grundsätzlich in einem <code>Switch</code>-Element zu verpacken, außer man möchte eben explizit, dass mehrere Routen gerendert werden. Statt der Verwendung der <code>exact</code>-Prop wie im obigen Beispiel, wäre auch die Verwendung der <code>Switch</code>-Komponente möglich:</p>
@@ -5686,6 +5700,7 @@ const App = () =&gt; (
 <p>Die obige Route würde dann nur zutreffen, wenn die URL <code>/products/asc</code> oder <code>/products/desc</code> lautet.</p>
 <p>Möchte ich im ersten Beispiel, dass nur numerische Werte als <code>:userid</code> erlaubt sind, so kann ich dafür die Route definieren: <code>/users/:userid(\d*)</code> oder <code>/users/:userid([0-9]*)</code> und somit würde die URL <code>/users/123</code> die <code>UserProfile</code>-Komponente rendern, <code>/users/abc</code> hingegen nicht.</p>
 <p>Findet der <strong>React Router</strong> eine solche URL mit einem Parameter, extrahiert er dessen Wert und übergibt ihn in einer <code>match</code>-Prop an die gerenderte Komponente.</p>
+<div class="force-break-before"></div>
 <h3 id="weiterleitung-bestimmter-routen-steuern">Weiterleitung bestimmter Routen steuern</h3>
 <p>Neben der <code>Route</code>-Komponente, um auf bestimmte Routen zu reagieren, bietet React Router auch noch eine <code>Redirect</code>-Komponente. Diese enthält eine <code>to</code>-Prop, mit der ein Ziel angegeben werden kann und sie ist dazu gedacht um deklarativ (d.h. im <strong>JSX</strong>) entscheiden zu können, wohin ein Benutzer in bestimmten Situationen umgeleitet wird. Wann immer eine <code>Redirect</code>-Komponente mit lediglich einer <code>to</code>-Prop gerendert wird, wird eine entsprechende Weiterleitung auf die in der <code>to</code>-Prop angegebene URL ausgeführt.</p>
 <p>Ein gängiger Anwendungsfall für eine <code>Redirect</code>-Komponente ist bspw. die Umleitung auf eine Login-Seite für eingeloggte Benutzer, wenn dieser noch nicht eingeloggt ist:</p>
@@ -5806,6 +5821,75 @@ ReactDOM.render(<span class="hljs-tag">&lt;<span class="hljs-name">App</span> /&
 <p>In diesem Fall hilft es dann entsprechend, die Komponente mit einem <code>withRouter()</code> Aufruf zu wrappen:</p>
 <pre><code class="hljs javascript language-javascript">withRouter(connect()(MyComponent));</code></pre>
 <p>Dies wurde mit der Verwendung der neuen <strong>Context API</strong> aus <strong>React 16.3.0</strong> im <strong>React Router</strong> ab Version <strong>5.0.0</strong> behoben und ist daher in erster Linie für Projekte relevant, in denen noch ältere Versionen zum Einsatz kommen.</p>
+<h3 id="react-router-und-hooks">React Router und Hooks</h3>
+<p>Seit React-Router <strong>v5.1.0</strong> bringt auch die beliebte Routing-Bibliothek eine Reihe eigener Hooks mit. Dadurch ist es nun erstmals möglich, Router bezogene Informationen in <strong>Function Components</strong> ohne die <code>withRouter()</code>-HOC zu verwenden, wenn diese nicht direkt als Komponente eines <code>&lt;Route /&gt;</code>-Elements verwendet werden (also etwa <code>&lt;Route component={MyComponent} /&gt;</code>).</p>
+<p>Wie für die meisten Hooks üblich, ist die Verwendung der React Router Hooks ziemlich schnörkellos und gradlinig. Es existieren vier Hooks die den Zugriff auf das <code>location</code>-Objekt, die <code>history</code>-Instanz, die Route-Parameter oder das <code>match</code>-Objekt erlauben. Die Hooks heißen entsprechend <code>useLocation</code>, <code>useHistory</code>, <code>useParams</code> und <code>useRouteMatch</code>. Voraussetzung für die Verwendung der Hooks ist, dass sich die Komponente in der der Hook verwendet werden soll innerhalb eines <code>&lt;Router&gt;</code> Baumes befindet. Das muss aber nicht auf oberster Ebene und direkt unterhalb des <code>Router</code>-Elements sein. Die Hooks greifen jeweils auf den Router-Context zu und können sich so an beliebiger Stelle in einer Anwendung befinden.</p>
+<h4 id="uselocation">useLocation()</h4>
+<p>Schauen wir uns einmal den vermutlich simpelsten Hook an: <code>useLocation</code>. Diesen importieren wir zuerst als benannten Import aus dem <code>react-router-dom</code>-Paket. Anschließend können wir auf die Location-Daten zugreifen indem wir den Rückgabewert des Hooks verwenden:</p>
+<pre><code class="hljs jsx language-jsx"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
+<span class="hljs-keyword">import</span> { useLocation } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-router-dom'</span>;
+
+<span class="hljs-keyword">const</span> ShowLocationInfo = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+  <span class="hljs-keyword">const</span> location = useLocation();
+  <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">pre</span>&gt;</span>{JSON.stringify(location, null, 2)}<span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span></span>;
+};</code></pre>
+<p>In diesem Fall würde die <code>ShowLocationInfo</code>-Komponente bei ihrer Verwendung etwa eine Ausgabe wie die folgende verursachen:</p>
+<pre><code class="hljs javascript language-javascript">{
+  <span class="hljs-string">"pathname"</span>: <span class="hljs-string">"/"</span>,
+  <span class="hljs-string">"search"</span>: <span class="hljs-string">""</span>,
+  <span class="hljs-string">"hash"</span>: <span class="hljs-string">""</span>
+}</code></pre>
+<h4 id="usehistory">useHistory()</h4>
+<p>Der <code>useHistory()</code>-Hook erlaubt uns den Zugriff auf die verwendete <code>history</code>-Instanz des React Routers. Dieses bietet uns die Möglichkeit, die URL über die bereits beschriebenen <code>push()</code> und <code>replace()</code> Methoden zu verändern (und dabei ein Rerendering der Anwendung auszulösen) oder über <code>go()</code>, <code>goBack()</code>, <code>goForward()</code> durch die Browser-History zu navigieren.</p>
+<pre><code class="hljs jsx language-jsx"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
+<span class="hljs-keyword">import</span> { useHistory } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-router-dom'</span>;
+
+<span class="hljs-keyword">const</span> NavigateHomeButton = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+  <span class="hljs-keyword">const</span> history = useHistory();
+
+  <span class="hljs-keyword">const</span> goHome = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+    history.push(<span class="hljs-string">'/'</span>);
+  };
+
+  <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onClick</span>=<span class="hljs-string">{goHome}Take</span> <span class="hljs-attr">me</span> <span class="hljs-attr">home</span>&lt;/<span class="hljs-attr">button</span>&gt;</span></span>;
+}</code></pre>
+<p>Hier implementieren wir einen simplen Button, der uns zur Startseite führt, sobald er gedrückt wird.</p>
+<p><strong>useParams</strong></p>
+<p>Dieser Hook ist ein Shortcut um auf die Parameter zuzugreifen, die sich bisher unter <code>match.params</code> etwas versteckt haben. Definiere ich eine Route mit Platzhaltern, also etwa <code>/users/:userid</code> und rufe dann eine URL auf wie <code>/users/123</code> enthalt das params-Objekt ein key/value Paar in der Form <code>{ "userid": "123" }</code>.</p>
+<p>Der useParams-Hook erlaubt es uns nun, direkt auf dieses Objekt zuzugreifen:</p>
+<pre><code class="hljs jsx language-jsx"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
+<span class="hljs-keyword">import</span> { useParams, useLocation } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-router-dom'</span>;
+
+<span class="hljs-keyword">const</span> ShowParams = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+  <span class="hljs-keyword">const</span> params = useParams();
+  <span class="hljs-keyword">const</span> location = useLocation();
+  <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">pre</span>&gt;</span>{JSON.stringify({ location, params }, null, 2)}<span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span></span>;
+};</code></pre>
+<p>Diese Komponente würde beim einer entsprechend angelegten Route (<code>/users/:userid</code>) und dem Aufruf etwa von <code>/users/123</code> folgende Ausgabe erzeugen:</p>
+<pre><code class="hljs javascript language-javascript">{
+  <span class="hljs-string">"location"</span>: {
+    <span class="hljs-string">"pathname"</span>: <span class="hljs-string">"/users/123"</span>,
+    <span class="hljs-string">"search"</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-string">"hash"</span>: <span class="hljs-string">""</span>
+  },
+  <span class="hljs-string">"params"</span>: {
+    <span class="hljs-string">"userid"</span>: <span class="hljs-string">"123"</span>
+  }
+}</code></pre>
+<h4 id="useroutematch">useRouteMatch()</h4>
+<p>Der letzte Hook, <code>useRouteMatch()</code>, gibt dem Entwickler Zugriff auf das komplette <code>match</code>-Objekt zu einer Route, bestehend aus den <code>params</code>, der <code>url</code>, dem <code>path</code> und <code>isExact</code>, also der Information, ob die komplette URL mit dem <code>path</code> der Route übereinstimmt.</p>
+<p>Der Funktion kann ein Pfad übergeben werden, dann gibt sie das <code>match</code>-Objekt zu dieser Route zurück. Wird kein Pfad übergeben wird der Pfad der aktuellen Route verwendet. Bleiben wir beim obigen Beispiel mit einem Pfad <code>/users/:userid</code> , ergibt die Route <code>&lt;Route path="/users/:userid"&gt;</code> beim Aufruf der URL <code>/users/123</code> und dem Aufruf des Hooks ohne Parameter etwa folgendes Match-Objekt:</p>
+<pre><code class="hljs javascript language-javascript">{
+  <span class="hljs-string">"path"</span>: <span class="hljs-string">"/users/:userid"</span>,
+  <span class="hljs-string">"url"</span>: <span class="hljs-string">"/users/123"</span>,
+  <span class="hljs-string">"isExact"</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-string">"params"</span>: {
+    <span class="hljs-string">"userid"</span>: <span class="hljs-string">"123"</span>
+  }
+}</code></pre>
+<p>Wird der Hook mit einem Pfad aufgerufen, zu dem die aktuelle Route nicht passt, wird <code>null</code> aus der Funktion zurückgegeben:</p>
+<pre><code class="hljs jsx language-jsx">useRouteMatch(<span class="hljs-string">'/orders/:orderid'</span>);</code></pre>
+<p>Der obige Funktionsaufruf würde beim Aufruf der URL <code>/users/:userid</code> also <code>null</code> zurückgeben.</p>
 </div>
 <div class="chapter" data-filename="ecosystem/state-management.md">
   <h1 id="state-management">State Management</h1>
@@ -6639,6 +6723,84 @@ ReactDOM.render(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-n
 <p>In die folgende:</p>
 <pre><code class="hljs javascript language-javascript"><span class="hljs-keyword">const</span> store = createStore(rootReducer, __REDUX_DEVTOOLS_EXTENSIONS__());</code></pre>
 <p>Dabei muss sichergestellt sein, dass im verwendeten Browser die Redux Devtools installiert sind.</p>
+<h3 id="redux-mit-react-hooks">Redux mit React Hooks</h3>
+<p>In React-Redux v7.1.0 haben endlich auch Hooks ihren Weg in die offiziellen React Bindings für Redux gefunden. Hooks vereinfachen die Verwendung von Redux in React enorm. Während bei der Erstellung des Stores alles beim Alten bleibt, kann durch die Verwendung von Hooks gänzlich auf die <code>connect()</code> HOC verzichtet werden. Jeglicher Zugriff, egal ob lesend, oder schreibend durch das Auslösen von Actions, kann von innerhalb einer Komponente und durch die Verwendung der entsprechenden Hooks realisiert werden.</p>
+<p>Im Wesentlichen geht es hier um die beiden Hooks <code>useSelector</code> und <code>useDispatch</code>, die man <strong>grob</strong> mit <code>mapStateToProps</code> und <code>mapDispatchToProps</code> vergleichen kann. Der <code>useSelector</code> Hook wird zum <em>Lesen</em> von Daten aus dem Store verwendet, <code>useDispatch</code> wird verwendet, um Actions zu <em>dispatchen</em>, um somit in den Store <em>schreiben</em> zu können. Es gibt noch einen dritten offiziellen Hook <code>useStore</code>, dessen Verwendung ist in der Praxis aber eher selten bis unüblich und dient lediglich als letzter Ausweg, sollte wirklich der Zugriff auf das Store-Objekt notwendig werden.</p>
+<p>Importiert werden die Hooks als benannte Imports aus dem react-redux Paket:</p>
+<pre><code class="hljs javascript language-javascript"><span class="hljs-keyword">import</span> { useSelector, useDispatch, useStore } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-redux'</span>;</code></pre>
+<p>Zu beachten ist hier, dass die Redux Hooks, wie alle Hooks, lediglich in Function Components verwendet werden können, nicht jedoch in Class Components. Für Class Components steht auch weiterhin die <code>connect()</code> HOC bereit.</p>
+<h4 id="useselectorselectorfn-equalityfn">useSelector(selectorFn, equalityFn)</h4>
+<p>Der <code>useSelector</code> Hook dient zum Auslesen von Werten aus dem Store und erwartet eine sog. Selector-Funktion als ersten Parameter. Diese Funktion bekommt den kompletten Store übergeben und liefert dann einen einfachen oder berechneten Wert oder auch einen ganzen Baum von Daten als Rückgabewert:</p>
+<pre><code class="hljs jsx language-jsx"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
+<span class="hljs-keyword">import</span> { useSelector } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-redux'</span>;
+
+<span class="hljs-keyword">const</span> TodoList = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+  <span class="hljs-keyword">const</span> openTodos = useSelector(<span class="hljs-function">(<span class="hljs-params">state</span>) =&gt;</span>
+    state.todos.filter(<span class="hljs-function">(<span class="hljs-params">todo</span>) =&gt;</span> todo.completed !== <span class="hljs-literal">true</span>)
+  );
+  <span class="hljs-keyword">const</span> completedTodos = useSelector(<span class="hljs-function">(<span class="hljs-params">state</span>) =&gt;</span>
+    state.todos.filter(<span class="hljs-function">(<span class="hljs-params">todo</span>) =&gt;</span> todo.completed === <span class="hljs-literal">true</span>)
+  );
+  <span class="hljs-keyword">const</span> allTodos = useSelector(<span class="hljs-function">(<span class="hljs-params">state</span>) =&gt;</span> state.todos);
+
+  <span class="hljs-keyword">return</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>
+        {allTodos.length} Todos. Davon {completedTodos.length} abgeschlossen und{' '}
+        {openTodos.length} noch offen.
+      <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+  );
+};</code></pre>
+<p>Die Selector-Funktionen können dabei zur besseren Übersicht und gleichzeitig zur besseren Wiederverwendbarkeit auch ausgelagert werden und müssen nicht Teil der Komponente sein:</p>
+<pre><code class="hljs jsx language-jsx"><span class="hljs-keyword">import</span> { useSelector } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-redux'</span>;
+
+<span class="hljs-keyword">const</span> selectOpenTodos = <span class="hljs-function">(<span class="hljs-params">state</span>) =&gt;</span>
+  state.todos.filter(<span class="hljs-function">(<span class="hljs-params">todo</span>) =&gt;</span> todo.completed !== <span class="hljs-literal">true</span>);
+
+<span class="hljs-keyword">const</span> selectCompletedTodos = <span class="hljs-function">(<span class="hljs-params">state</span>) =&gt;</span>
+  state.todos.filter(<span class="hljs-function">(<span class="hljs-params">todo</span>) =&gt;</span> todo.completed === <span class="hljs-literal">true</span>);
+
+<span class="hljs-keyword">const</span> selectAllTodos = <span class="hljs-function">(<span class="hljs-params">state</span>) =&gt;</span> state.todos;
+
+<span class="hljs-keyword">const</span> TodoList = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+  <span class="hljs-keyword">const</span> openTodos = useSelector(selectOpenTodos);
+  <span class="hljs-keyword">const</span> completedTodos = useSelector(selectCompletedTodos);
+  <span class="hljs-keyword">const</span> allTodos = useSelector(selectAllTodos);
+
+  <span class="hljs-keyword">return</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>
+        {allTodos.length} Todos. Davon {completedTodos.length} abgeschlossen und{' '}
+        {openTodos.length} noch offen.
+      <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+  );
+};</code></pre>
+<p>Wann immer eine Komponente gerendert wird, wird auch die Selector-Funktion aufgerufen. Diese kann einen zwischengespeicherten Wert zurückgeben, wenn die Selector-Funktion bereits einmal aufgerufen wurde und der Wert sich seitdem nicht geändert hat. Redux nutzt hierzu einen <em>Strict Reference Equality</em> Check, vergleicht also mittels <code>===</code>, ob der Wert des aktuellen Render-Durchlaufs die selbe Referenz hat wie die, des vorherigen Durchlaufs.</p>
+<p>Wird eine Action <em>dispatched</em>, löst <code>useSelector</code> immer dann ein Rerendering der Komponente aus, wenn der Wert nicht strikt identisch ist. Dies kann zu vermehrten Rerenderings führen, verglichen mit der <code>connect()</code>-Methode. So wird die Selector-Funktion auch aufgerufen wenn eine Komponente neu gerendert wird, ohne dass sich jedoch ihre Props geändert haben. Wer hier auf Performance-Probleme stößt und diese in der Verwendung des <code>useSelector</code> Hooks begründet vermutet hat einige Möglichkeiten.</p>
+<ul>
+<li>Die Komponente selbst kann in ein <code>React.memo</code> eingeschlossen werden. Unnötige Rerenderings in denen sich die Props der Komponente gar nicht geändert haben, werden so verhindert.</li>
+<li>Der <code>useSelector</code>-Hook kann auf einen shallowEqual Vergleich umgestellt werden, bei dem nicht strikt per <code>===</code> auf referentielle Gleichheit geprüft wird sondern nur auf oberflächliche Gleichheit (Vergleich mittels <code>==</code>). Dazu kann <code>shallowEqual</code> aus <code>react-redux</code> importiert und an den Hook übergeben werden: <code>useSelector(selectorFn, shallowEqual)</code>.</li>
+<li>Auch die Verwendung von <a href="https://github.com/reduxjs/reselect">Reselect</a> kann hier sinnvoll sein, da Reselect strikt gleiche Werte zurückgibt, solange sich im State nichts geändert hat.</li>
+</ul>
+<h4 id="usedispatch">useDispatch()</h4>
+<p>Der <code>useDispatch</code>-Hook gibt eine Referenz zur <code>dispatch</code>-Funktion des Stores zurück. Diese ganz anschließend verwendet werden um Actions zu <em>dispatchen</em>, ähnlich wie das in der <code>connect()</code>-HOC mit <code>mapDispatchToProps</code> realisiert wird.</p>
+<pre><code class="hljs javascript language-javascript"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
+<span class="hljs-keyword">import</span> { useDispatch } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-redux'</span>;
+
+<span class="hljs-keyword">const</span> addTodoAction = <span class="hljs-function">(<span class="hljs-params">text</span>) =&gt;</span> ({
+  <span class="hljs-attr">type</span>: <span class="hljs-string">'ADD_TODO'</span>,
+  <span class="hljs-attr">payload</span>: { text },
+});
+
+<span class="hljs-keyword">const</span> TodoApp = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+  <span class="hljs-keyword">const</span> dispatch = useDispatch();
+  <span class="hljs-keyword">const</span> addTodo = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> dispatch(addTodoAction(<span class="hljs-string">'Ein neues Todo-Element'</span>));
+
+  <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onClick</span>=<span class="hljs-string">{addTodo}</span>&gt;</span>Todo hinzufügen<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span>;
+};</code></pre>
+<p>Die Action wird also ausgelöst durch den Aufruf der <code>dispatch</code>-Funktion. Jedoch muss diese nicht, wie bei der <code>connect()</code>-HOC, erst umständlich über <code>mapDispatchToProps</code> in die Komponente herein gegeben werden.</p>
 <h3 id="fazit">Fazit</h3>
 <p>Ich muss gestehen, dass ich die Komplexität dieses Kapitels bei weitem unterschätzt habe. <strong>Redux</strong> gehört für mich in vielen Projekten seit Jahren zum Alltagsgeschäft und so fühlt sich die Verwendung von <strong>Redux</strong> mittlerweile ein Stück weit sehr <em>natürlich</em> an, also wie etwas, über dass ich nicht viel nachdenken muss. Grundsätzlich würde ich <strong>Redux</strong> als Tool beschreiben, dass es schafft, sehr komplexes State Management sehr einfach, nachvollziehbar und eben <em>vorhersehbar</em> zu machen.</p>
 <p>Beim Schreiben dieses Kapitels habe ich dann erst einmal wieder gemerkt, wie überwältigend <strong>Redux</strong> aber gerade für Einsteiger sein kann und so kann ich mir vorstellen, dass einige der in diesem Kapitel beschriebenen Dinge trotz meiner Erläuterungen nicht unbedingt gleich verständlich sein werden. Hier sollte es aber tatsächlich helfen, mit geöffneten Devtools etwas mit den <strong>Actions</strong> und den <strong>Reducern</strong> herumzuspielen um zu verstehen, wie das eine das andere beeinflusst und wie die das Zusammenspiel aller Komponenten, also dem Store, dem State, den Props einer Komponente, der <code>connect()</code>-Funktion sowie der <strong>Actions</strong> und <strong>Reducer</strong> letztendlich ablaufen.</p>
@@ -6838,6 +7000,7 @@ ReactDOM.render(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-n
   &lt;/Link&gt;
   .
 &lt;/Trans&gt;</code></pre>
+<div class="force-break-before"></div>
 <h3 id="fazit">Fazit</h3>
 <p>Mit den in diesem Kapitel gezeigten Beispielen ist es relativ einfach, seine Anwendung gleich mehrsprachig zu entwickeln. In der Praxis hat sich i18next dabei für mich persönlich als sehr universelles und vollständiges Tool erwiesen. Die Integration in verscheidene Libraries und Frameworks funktioniert einwandfrei, es bietet alle Funktionen, die ein solches i18n-Framework benötigt und mit nur wenigen Funktionen und Komponenten (<code>i18n.changeLanguage()</code>, <code>t</code>, <code>&lt;Trans&gt;</code>) ist es darüber hinaus relativ leicht zu erlernen.</p>
 <p>Einmal korrekt aufgesetzt und eingerichtet, hier empfehle ich einen Blick auf die <a href="https://www.i18next.com/overview/configuration-options">vollständigen Optionen von i18next</a>, realisiert man dabei Mehrsprachigkeit in seiner React-Anwendung, ohne dass es sich wie ein Mehraufwand anfühlt. Dafür sorgen auch Online-Services wie <a href="https://locize.com/">Locize.com</a> oder <a href="https://www.lokalise.co">Lokalise.co</a>, um nur einige Beispiele zu nennen, mit denen die Erstellung von Übersetzungen verwaltet und zum Teil sogar automatisiert outgesourced werden kann.</p>
@@ -6849,7 +7012,8 @@ ReactDOM.render(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-n
 <h3 id="twitter">Twitter</h3>
 <p>Twitter ist seit jeher eine top aktuelle Quelle, wenn es darum geht zu wissen, was gerade angesagt ist. Auch das React-Team veröffentlicht neue Änderungen regelmäßig sehr zeitnah auf Twitter. Wer also hier noch keinen Account hat, aber regelmäßig auf dem Laufenden bleiben will, der sollte sich schleunigst einen Account zulegen und hin und wieder mal dort reinschauen.</p>
 <p>Ich bin mir ziemlich sicher, dass ich einer Menge Leute unrecht tun werde, indem ich hier eine Vielzahl an Accounts auflisten werde, die meiner Meinung nach sehr regelmäßig und zum deutlich überwiegenden Teil interessante Tweets über React verfassen. Denn ich werde vermutlich genau so viele Accounts die ebenso erwähnenswert wären nicht erwähnen. Hier jedoch eine Liste an Accounts, denen ich selber folge und die ich ohne Einschränkung empfehlen kann:</p>
-<p><a href="https://www.twitter.com/reactjs">@reactjs</a> <a href="https://www.twitter.com/dan_abramov">@dan_abramov</a> <a href="https://www.twitter.com/sophiebits">@sophiebits</a> <a href="https://www.twitter.com/sebmarkbage">@sebmarkbage</a> <a href="https://www.twitter.com/acdlite">@acdlite</a> <a href="https://www.twitter.com/brian_d_vaughn">@brian_d_vaughn</a> <a href="https://www.twitter.com/trueadm">@trueadm</a> <a href="https://www.twitter.com/threepointone">@threepointone</a> <a href="https://www.twitter.com/aweary">@aweary</a> <a href="https://twitter.com/necolas">@necolas</a> <a href="https://twitter.com/tomocchino">@tomocchino</a> <a href="https://twitter.com/yuzhiz">@yuzhiz</a> <a href="https://twitter.com/rachelnabors">@rachelnabors</a> (allesamt React Core Members oder Alumni) <a href="https://www.twitter.com/ryanflorence">@ryanflorence</a> <a href="https://www.twitter.com/mjackson">@mjackson</a> <a href="https://www.twitter.com/ken_wheeler">@ken_wheeler</a> <a href="https://www.twitter.com/kentcdodds">@kentcdodds</a> <a href="https://www.twitter.com/kyleshevlin">@kyleshevlin</a> <a href="https://www.twitter.com/mweststrate">@mweststrate</a> <a href="https://www.twitter.com/jaredpalmer">@jaredpalmer</a> <a href="https://www.twitter.com/sebmck">@sebmck</a> <a href="https://www.twitter.com/thekitze">@thekitze</a> <a href="https://www.twitter.com/PhilippSpiess">@PhilippSpiess</a> <a href="https://www.twitter.com/monicalent">@monicalent</a> <a href="https://www.twitter.com/nikkitaftw">@nikkitaftw</a> <a href="https://www.twitter.com/rwieruch">@rwieruch</a> <a href="https://www.twitter.com/jlongster">@jlongster</a> <a href="https://www.twitter.com/eveporcello">@eveporcello</a> <a href="https://www.twitter.com/vincentriemer">@vincentriemer</a> <a href="https://www.twitter.com/kylemathews">@kylemathews</a> <a href="https://www.twitter.com/rauchg">@rauchg</a> <a href="https://www.twitter.com/erinfoox">@erinfoox</a> <a href="https://www.twitter.com/jevakallio">@jevakallio</a> <a href="https://www.twitter.com/okonetchnikov">@okonetchnikov</a> <a href="https://www.twitter.com/manuelbieh">@manuelbieh</a> <a href="https://www.twitter.com/manjula_dube">@manjula_dube</a> <a href="https://www.twitter.com/acemarke">@acemarke</a> <a href="https://www.twitter.com/wisecobbler">@wisecobbler</a> <a href="https://www.twitter.com/mxstbr">@mxstbr</a> <a href="https://www.twitter.com/cpojer">@cpojer</a> <a href="https://www.twitter.com/lithinn">@lithinn</a> <a href="https://www.twitter.com/dabit3">@dabit3</a> <a href="https://www.twitter.com/saifadin">@saifadin</a> <a href="https://www.twitter.com/rickhanlonii">@rickhanlonii</a> <a href="https://www.twitter.com/tylermcginnis">@tylermcginnis</a> <a href="https://www.twitter.com/wesbos">@wesbos</a> <a href="https://www.twitter.com/_developit">@_developit</a> <a href="https://www.twitter.com/ProvablyFlarnie">@ProvablyFlarnie</a> <a href="https://www.twitter.com/emmawedekind">@emmawedekind</a> <a href="https://www.twitter.com/grabbou">@grabbou</a></p>
+<p><a href="https://www.twitter.com/reactjs">@reactjs</a> <a href="https://www.twitter.com/dan_abramov">@dan_abramov</a> <a href="https://www.twitter.com/sophiebits">@sophiebits</a> <a href="https://www.twitter.com/sebmarkbage">@sebmarkbage</a> <a href="https://www.twitter.com/acdlite">@acdlite</a> <a href="https://www.twitter.com/brian_d_vaughn">@brian_d_vaughn</a> <a href="https://www.twitter.com/trueadm">@trueadm</a> <a href="https://www.twitter.com/threepointone">@threepointone</a> <a href="https://www.twitter.com/aweary">@aweary</a> <a href="https://twitter.com/necolas">@necolas</a> <a href="https://twitter.com/tomocchino">@tomocchino</a> <a href="https://twitter.com/yuzhiz">@yuzhiz</a> <a href="https://twitter.com/rachelnabors">@rachelnabors</a> <a href="https://www.twitter.com/mweststrate">@mweststrate</a> <a href="https://twitter.com/lunaruan">@lunaruan</a> (allesamt React Core Members oder Alumni) <a href="https://www.twitter.com/ryanflorence">@ryanflorence</a> <a href="https://www.twitter.com/mjackson">@mjackson</a> <a href="https://www.twitter.com/ken_wheeler">@ken_wheeler</a> <a href="https://www.twitter.com/kentcdodds">@kentcdodds</a> <a href="https://www.twitter.com/kyleshevlin">@kyleshevlin</a> <a href="https://www.twitter.com/jaredpalmer">@jaredpalmer</a> <a href="https://www.twitter.com/sebmck">@sebmck</a> <a href="https://www.twitter.com/thekitze">@thekitze</a> <a href="https://www.twitter.com/PhilippSpiess">@PhilippSpiess</a> <a href="https://www.twitter.com/monicalent">@monicalent</a> <a href="https://www.twitter.com/nikkitaftw">@nikkitaftw</a> <a href="https://www.twitter.com/rwieruch">@rwieruch</a> <a href="https://www.twitter.com/jlongster">@jlongster</a> <a href="https://www.twitter.com/eveporcello">@eveporcello</a> <a href="https://www.twitter.com/vincentriemer">@vincentriemer</a> <a href="https://www.twitter.com/kylemathews">@kylemathews</a> <a href="https://www.twitter.com/rauchg">@rauchg</a> <a href="https://www.twitter.com/erinfoox">@erinfoox</a> <a href="https://www.twitter.com/jevakallio">@jevakallio</a> <a href="https://www.twitter.com/okonetchnikov">@okonetchnikov</a> <a href="https://www.twitter.com/manuelbieh">@manuelbieh</a> <a href="https://www.twitter.com/manjula_dube">@manjula_dube</a> <a href="https://www.twitter.com/acemarke">@acemarke</a> <a href="https://www.twitter.com/wisecobbler">@wisecobbler</a> <a href="https://www.twitter.com/mxstbr">@mxstbr</a> <a href="https://www.twitter.com/cpojer">@cpojer</a> <a href="https://www.twitter.com/lithinn">@lithinn</a> <a href="https://www.twitter.com/dabit3">@dabit3</a> <a href="https://www.twitter.com/saifadin">@saifadin</a> <a href="https://www.twitter.com/rickhanlonii">@rickhanlonii</a> <a href="https://www.twitter.com/tylermcginnis">@tylermcginnis</a> <a href="https://www.twitter.com/wesbos">@wesbos</a> <a href="https://www.twitter.com/_developit">@_developit</a> <a href="https://www.twitter.com/ProvablyFlarnie">@ProvablyFlarnie</a> <a href="https://www.twitter.com/emmabostian">@emmabostian</a> <a href="https://www.twitter.com/grabbou">@grabbou</a> <a href="https://twitter.com/cassidoo">@cassidoo</a> <a href="https://www.twitter.com/s_ibylle">@s_ibylle</a></p>
+<div class="force-break-before"></div>
 <h3 id="newsletter">Newsletter</h3>
 <p>Keine Angst, hier meine ich nicht die Werbeschleudern die jeder von uns ständig ungefragt bekommt und bei denen man sich fragt, ob man sich dort wirklich jemals angemeldet hat. In der React-Szene gibt es tatsächlich eine ganze Reihe sehr interessanter, liebevoll gepflegter und schön gestalteter Newsletter die es sich definitiv lohnt zu abonnieren. Die meisten davon werden wöchentlich verschickt und enthalten einen guten Überblick darüber, was in der letzten Woche in der React-Welt so passiert ist. Für alle, denen Twitter zu schnelllebig, stressig oder zu anstrengend ist:</p>
 <ul>

@@ -9,7 +9,6 @@ html {
   font-size: 10pt;
 }
 
-
 body {
   font-family: Roboto, Times New Roman, sans-serif;
   font-size: 11pt;
@@ -84,8 +83,10 @@ body {
 }
 
 /* for debugging */
-/*
-.chapter
+
+/* .chapter
+  + .chapter
+  + .chapter
   + .chapter
   + .chapter
   + .chapter
@@ -94,8 +95,7 @@ body {
   + .chapter
   ~ .chapter {
   display: none;
-}
-*/
+} */
 
 .test {
   text-decoration: underline;
@@ -135,7 +135,9 @@ h1:before {
   background-color: #e6ecf1;
 }
 
-ul, ol, dl {
+ul,
+ol,
+dl {
   text-align: left;
 }
 
@@ -153,7 +155,11 @@ pre {
   /*page-break-inside: avoid;*/
 }
 
-code, pre, ul, ol, dl {
+code,
+pre,
+ul,
+ol,
+dl {
   text-align: left;
 }
 
@@ -173,7 +179,6 @@ blockquote {
   width: 210mm;
   height: 297mm;
 } */
-
 
 .hint {
   background-position: 12px 20px;
@@ -195,19 +200,19 @@ blockquote {
 }
 
 .hint--success {
-  border-left: 4px solid #50af51;
-  background: #f3f8f3;
+  background-color: #f3f8f3;
+  background-image: url(./icons/checkmark.svg);
+  background-size: 24px 24px;
   border-color: #50af51;
+  border-left: 4px solid #50af51;
 }
 
 .hint--danger {
-  border-left: 4px solid #d9534f;
   background-color: #fdf7f7;
-  border-left: 4px solid #d9534f;
-  border-color: #d9534f;
   background-image: url(./icons/close.svg);
   background-size: 24px 24px;
   border-color: #d9534f;
+  border-left: 4px solid #d9534f;
 }
 
 .hint--info {
@@ -217,15 +222,14 @@ blockquote {
   background-size: 24px 24px;
   border-color: #42acf3;
   border-left: 4px solid #42acf3;
-
 }
 
 .hint--warning {
-  border-left: 4px solid #f0ad4e;
   background-color: #fcf8f2;
-  border-color: #f0ad4e;
   background-image: url(./icons/warning.svg);
   background-size: 28px 28px;
+  border-color: #f0ad4e;
+  border-left: 4px solid #f0ad4e;
 }
 
 .has-image {
@@ -260,23 +264,25 @@ img {
   max-width: 100%;
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   page-break-after: avoid;
 }
 
 /* Hide the book title from the TOC */
-[data-filename="SUMMARY.md"] > ul > li:first-child {
+[data-filename='SUMMARY.md'] > ul > li:first-child {
   display: none;
 }
 
-[data-filename="SUMMARY.md"] > ul {
+[data-filename='SUMMARY.md'] > ul {
   font-size: 95%;
   font-weight: 700;
   list-style: none;
   padding-left: 0;
 }
 
-[data-filename="SUMMARY.md"] ul ul {
+[data-filename='SUMMARY.md'] ul ul {
   font-weight: 400;
   list-style: initial;
   padding-left: 3rem;
@@ -284,4 +290,12 @@ h1, h2, h3 {
 
 .has-image {
   page-break-inside: avoid;
+}
+
+.force-break-before {
+  page-break-before: always;
+}
+
+.force-break-after {
+  page-break-after: always;
 }
