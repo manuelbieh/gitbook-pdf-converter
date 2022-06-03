@@ -21,7 +21,7 @@
     "express": "^4.16.4",
     "fs-extra": "^7.0.1",
     "glob": "^7.1.2",
-    "markdown-link-extractor": "^1.2.0",
+    "markdown-link-extractor": "^3.0.2",
     "mkdirp": "^0.5.1",
     "prettier": "1.16.4",
     "puppeteer": "^1.13.0",
